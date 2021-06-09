@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OPERADBModelStoreContainer" CdmEntityContainer="OPERADB">
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="OPERADBModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nm_cliente_corto" ColumnName="nm_cliente_corto" />
+          <ScalarProperty Name="nm_cliente" ColumnName="nm_cliente" />
+          <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+          <ScalarProperty Name="tipo_identificacion" ColumnName="tipo_identificacion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servicio">
+      <EntityTypeMapping TypeName="OPERADBModel.servicio">
+        <MappingFragment StoreEntitySet="servicio">
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="secuencia_actual" ColumnName="secuencia_actual" />
+          <ScalarProperty Name="secuencia_inicial" ColumnName="secuencia_inicial" />
+          <ScalarProperty Name="prefijo" ColumnName="prefijo" />
+          <ScalarProperty Name="nm_servicio" ColumnName="nm_servicio" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_documento">
+      <EntityTypeMapping TypeName="OPERADBModel.tipo_documento">
+        <MappingFragment StoreEntitySet="tipo_documento">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="OPERADBModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+          <ScalarProperty Name="fecha_ultm_autenticacion" ColumnName="fecha_ultm_autenticacion" />
+          <ScalarProperty Name="fecha_ultm_act_contrasenia" ColumnName="fecha_ultm_act_contrasenia" />
+          <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="fecha_ultm_act" ColumnName="fecha_ultm_act" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="numero_documento" ColumnName="numero_documento" />
+          <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parametro">
+      <EntityTypeMapping TypeName="OPERADBModel.parametro">
+        <MappingFragment StoreEntitySet="parametro">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="valor3" ColumnName="valor3" />
+          <ScalarProperty Name="valor2" ColumnName="valor2" />
+          <ScalarProperty Name="valor1" ColumnName="valor1" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="nm_descriptivo" ColumnName="nm_descriptivo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orden_servicio">
+      <EntityTypeMapping TypeName="OPERADBModel.orden_servicio">
+        <MappingFragment StoreEntitySet="orden_servicio">
+          <ScalarProperty Name="id_contrato" ColumnName="id_contrato" />
+          <ScalarProperty Name="id_canton_carga" ColumnName="id_canton_carga" />
+          <ScalarProperty Name="id_provincia_carga" ColumnName="id_provincia_carga" />
+          <ScalarProperty Name="id_oficina_carga" ColumnName="id_oficina_carga" />
+          <ScalarProperty Name="id_usuario_ultima_gestion" ColumnName="id_usuario_ultima_gestion" />
+          <ScalarProperty Name="fecha_ultima_gestion" ColumnName="fecha_ultima_gestion" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="numero_registros_cargados" ColumnName="numero_registros_cargados" />
+          <ScalarProperty Name="fecha_carga" ColumnName="fecha_carga" />
+          <ScalarProperty Name="id_tipo_servicio" ColumnName="id_tipo_servicio" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="codigo_orden_servicio" ColumnName="codigo_orden_servicio" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paquete">
+      <EntityTypeMapping TypeName="OPERADBModel.paquete">
+        <MappingFragment StoreEntitySet="paquete">
+          <ScalarProperty Name="id_orden_servicio" ColumnName="id_orden_servicio" />
+          <ScalarProperty Name="dato_adicional2" ColumnName="dato_adicional2" />
+          <ScalarProperty Name="dato_adicional1" ColumnName="dato_adicional1" />
+          <ScalarProperty Name="guia_generada" ColumnName="guia_generada" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_oficina_ultm_evento" ColumnName="id_oficina_ultm_evento" />
+          <ScalarProperty Name="id_ultm_evento" ColumnName="id_ultm_evento" />
+          <ScalarProperty Name="fecha_ultimo_evento" ColumnName="fecha_ultimo_evento" />
+          <ScalarProperty Name="id_oficina_carga" ColumnName="id_oficina_carga" />
+          <ScalarProperty Name="fecha_evento_carga" ColumnName="fecha_evento_carga" />
+          <ScalarProperty Name="peso_volumentrico" ColumnName="peso_volumentrico" />
+          <ScalarProperty Name="profundidad" ColumnName="profundidad" />
+          <ScalarProperty Name="ancho" ColumnName="ancho" />
+          <ScalarProperty Name="alto" ColumnName="alto" />
+          <ScalarProperty Name="monto_seguro" ColumnName="monto_seguro" />
+          <ScalarProperty Name="tipo_contenido" ColumnName="tipo_contenido" />
+          <ScalarProperty Name="seguro" ColumnName="seguro" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
+          <ScalarProperty Name="identificador" ColumnName="identificador" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="destinatario">
+      <EntityTypeMapping TypeName="OPERADBModel.destinatario">
+        <MappingFragment StoreEntitySet="destinatario">
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="interseccion" ColumnName="interseccion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="calle_principal" ColumnName="calle_principal" />
+          <ScalarProperty Name="parroquia" ColumnName="parroquia" />
+          <ScalarProperty Name="canton" ColumnName="canton" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="destinatario1" ColumnName="destinatario" />
+          <ScalarProperty Name="id_paquete" ColumnName="id_paquete" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oficina">
+      <EntityTypeMapping TypeName="OPERADBModel.oficina">
+        <MappingFragment StoreEntitySet="oficina">
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="codigo_oficina" ColumnName="codigo_oficina" />
+          <ScalarProperty Name="nm_oficina" ColumnName="nm_oficina" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SPR_CONSULTA_USUARIO_CONTRATO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_USUARIO_CONTRATO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_USUARIO_CONTRATO_Result">
+          <ScalarProperty Name="id_codigo_contrato" ColumnName="id_codigo_contrato" />
+          <ScalarProperty Name="contrato" ColumnName="contrato" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="tipo_identificacion" ColumnName="tipo_identificacion" />
+          <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+          <ScalarProperty Name="nm_cliente" ColumnName="nm_cliente" />
+          <ScalarProperty Name="nm_cliente_corto" ColumnName="nm_cliente_corto" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ubicacion_geografica">
+      <EntityTypeMapping TypeName="OPERADBModel.ubicacion_geografica">
+        <MappingFragment StoreEntitySet="ubicacion_geografica">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nm_parroquia" ColumnName="nm_parroquia" />
+          <ScalarProperty Name="nm_canton" ColumnName="nm_canton" />
+          <ScalarProperty Name="nm_provincia" ColumnName="nm_provincia" />
+          <ScalarProperty Name="id_parroquia" ColumnName="id_parroquia" />
+          <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS" FunctionName="OPERADBModel.Store.SPR_CONSULTA_UBICACIONES_GEOGRAFICAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_UBICACIONES_GEOGRAFICAS_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+          <ScalarProperty Name="ID_CANTON" ColumnName="ID_CANTON" />
+          <ScalarProperty Name="ID_PARROQUIA" ColumnName="ID_PARROQUIA" />
+          <ScalarProperty Name="NM_PROVINCIA" ColumnName="NM_PROVINCIA" />
+          <ScalarProperty Name="NM_CANTON" ColumnName="NM_CANTON" />
+          <ScalarProperty Name="NM_PARROQUIA" ColumnName="NM_PARROQUIA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ORDENES_SERVICIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ORDENES_SERVICIO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ORDENES_SERVICIO_Result">
+          <ScalarProperty Name="orden" ColumnName="orden" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codigo_orden_servicio" ColumnName="codigo_orden_servicio" />
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="servicio" ColumnName="servicio" />
+          <ScalarProperty Name="fecha_carga" ColumnName="fecha_carga" />
+          <ScalarProperty Name="oficina_carga" ColumnName="oficina_carga" />
+          <ScalarProperty Name="numero_registros_cargados" ColumnName="numero_registros_cargados" />
+          <ScalarProperty Name="usuario_carga" ColumnName="usuario_carga" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="fecha_ultima_gestion" ColumnName="fecha_ultima_gestion" />
+          <ScalarProperty Name="usuario_ultima_transaccion" ColumnName="usuario_ultima_transaccion" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="canton" ColumnName="canton" />
+          <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+          <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

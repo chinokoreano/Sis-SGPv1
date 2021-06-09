@@ -1,0 +1,5 @@
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaEntidad\bin\x64\Debug\CapaEntidad.dll
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaEntidad\bin\x64\Debug\CapaEntidad.pdb
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaEntidad\obj\x64\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaEntidad\obj\x64\Debug\CapaEntidad.dll
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaEntidad\obj\x64\Debug\CapaEntidad.pdb

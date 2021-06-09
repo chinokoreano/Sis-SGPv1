@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OPERADBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="OPERADB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cliente" EntityType="OPERADBModel.cliente" />
+    <EntitySet Name="servicio" EntityType="OPERADBModel.servicio" />
+    <EntitySet Name="tipo_documento" EntityType="OPERADBModel.tipo_documento" />
+    <EntitySet Name="usuario" EntityType="OPERADBModel.usuario" />
+    <EntitySet Name="parametro" EntityType="OPERADBModel.parametro" />
+    <EntitySet Name="orden_servicio" EntityType="OPERADBModel.orden_servicio" />
+    <EntitySet Name="paquete" EntityType="OPERADBModel.paquete" />
+    <EntitySet Name="destinatario" EntityType="OPERADBModel.destinatario" />
+    <EntitySet Name="oficina" EntityType="OPERADBModel.oficina" />
+    <AssociationSet Name="FK_usuario_oficina" Association="OPERADBModel.FK_usuario_oficina">
+      <End Role="oficina" EntitySet="oficina" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <FunctionImport Name="SPR_CONSULTA_USUARIO_CONTRATO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_USUARIO_CONTRATO_Result)">
+      <Parameter Name="opcion" Mode="In" Type="Int32" />
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="numero_identificacion" Mode="In" Type="String" />
+      <Parameter Name="nm_cliente" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="ubicacion_geografica" EntityType="OPERADBModel.ubicacion_geografica" />
+    <FunctionImport Name="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_UBICACIONES_GEOGRAFICAS_Result)">
+      <Parameter Name="opcion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPR_CONSULTA_ORDENES_SERVICIO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_ORDENES_SERVICIO_Result)">
+      <Parameter Name="opcion" Mode="In" Type="Int32" />
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="orden_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="tipo_identificacion" Type="Int32" />
+    <Property Name="numero_identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="nm_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nm_cliente_corto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+    <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+    <Property Name="correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nm_servicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="prefijo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="secuencia_inicial" Type="Int32" />
+    <Property Name="secuencia_actual" Type="Int32" />
+    <Property Name="estado" Type="Boolean" />
+    <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tipo_documento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_documento" Type="Int32" />
+    <Property Name="numero_documento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="activo" Type="Boolean" />
+    <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+    <Property Name="fecha_ultm_act" Type="DateTime" Precision="3" />
+    <Property Name="usuario1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_usuario" Type="Int32" />
+    <Property Name="contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ultm_act_contrasenia" Type="DateTime" Precision="3" />
+    <Property Name="fecha_ultm_autenticacion" Type="DateTime" Precision="3" />
+    <Property Name="id_oficina" Type="Int32" />
+    <NavigationProperty Name="oficina" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="usuario" ToRole="oficina" />
+  </EntityType>
+  <EntityType Name="parametro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nm_descriptivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valor1" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="valor2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valor3" Type="Int32" />
+    <Property Name="estado" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="orden_servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="codigo_orden_servicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_cliente" Type="Int32" />
+    <Property Name="id_tipo_servicio" Type="Int32" />
+    <Property Name="fecha_carga" Type="DateTime" Precision="3" />
+    <Property Name="numero_registros_cargados" Type="Int32" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ultima_gestion" Type="DateTime" Precision="3" />
+    <Property Name="id_usuario_ultima_gestion" Type="Int32" />
+    <Property Name="id_oficina_carga" Type="Int32" />
+    <Property Name="id_provincia_carga" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_canton_carga" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_contrato" Type="Int32" />
+  </EntityType>
+  <EntityType Name="paquete">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="identificador" Type="Guid" />
+    <Property Name="codigo_alterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="peso" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="seguro" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="tipo_contenido" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="monto_seguro" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="alto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ancho" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="profundidad" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="peso_volumentrico" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fecha_evento_carga" Type="DateTime" Precision="3" />
+    <Property Name="id_oficina_carga" Type="Int32" />
+    <Property Name="fecha_ultimo_evento" Type="DateTime" Precision="3" />
+    <Property Name="id_ultm_evento" Type="Int32" />
+    <Property Name="id_oficina_ultm_evento" Type="Int32" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="guia_generada" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="dato_adicional1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dato_adicional2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_orden_servicio" Type="Int32" />
+  </EntityType>
+  <EntityType Name="destinatario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_paquete" Type="Guid" />
+    <Property Name="destinatario1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="provincia" Type="Int32" />
+    <Property Name="canton" Type="Int32" />
+    <Property Name="parroquia" Type="Int32" />
+    <Property Name="calle_principal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="interseccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="referencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="codigo_postal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="latitud" Type="Int32" />
+    <Property Name="longitud" Type="Int32" />
+  </EntityType>
+  <EntityType Name="oficina">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nm_oficina" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="codigo_oficina" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="oficina" ToRole="usuario" />
+  </EntityType>
+  <Association Name="FK_usuario_oficina">
+    <End Type="OPERADBModel.oficina" Role="oficina" Multiplicity="0..1" />
+    <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="oficina">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="id_oficina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SPR_CONSULTA_USUARIO_CONTRATO_Result">
+    <Property Type="Int32" Name="id_codigo_contrato" Nullable="true" />
+    <Property Type="String" Name="contrato" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="id_cliente" Nullable="false" />
+    <Property Type="Int32" Name="tipo_identificacion" Nullable="true" />
+    <Property Type="String" Name="numero_identificacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="nm_cliente" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="nm_cliente_corto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="telefono" Nullable="true" MaxLength="30" />
+    <Property Type="Boolean" Name="estado" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_ingreso" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="ubicacion_geografica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_provincia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="id_canton" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="id_parroquia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="nm_provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nm_canton" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nm_parroquia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ID_PROVINCIA" Nullable="false" />
+    <Property Type="String" Name="ID_CANTON" Nullable="true" MaxLength="5" />
+    <Property Type="Int32" Name="ID_PARROQUIA" Nullable="false" />
+    <Property Type="String" Name="NM_PROVINCIA" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="NM_CANTON" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NM_PARROQUIA" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="SPR_CONSULTA_ORDENES_SERVICIO_Result">
+    <Property Type="Int64" Name="orden" Nullable="true" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="codigo_orden_servicio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cliente" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="servicio" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="fecha_carga" Nullable="true" Precision="23" />
+    <Property Type="String" Name="oficina_carga" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="numero_registros_cargados" Nullable="true" />
+    <Property Type="String" Name="usuario_carga" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="estado" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="detalle" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="fecha_ultima_gestion" Nullable="true" Precision="23" />
+    <Property Type="String" Name="usuario_ultima_transaccion" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="provincia" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="canton" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="numero_identificacion" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="numero_contrato" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="direccion" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="telefono" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="correo_electronico" Nullable="false" MaxLength="1" />
+  </ComplexType>
+</Schema>

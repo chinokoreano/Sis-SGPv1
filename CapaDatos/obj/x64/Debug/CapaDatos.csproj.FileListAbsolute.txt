@@ -1,0 +1,14 @@
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\CapaDatos.dll.config
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\CapaDatos.dll
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\CapaDatos.pdb
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\CapaEntidad.dll
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\EntityFramework.dll
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\EntityFramework.SqlServer.dll
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\CapaEntidad.pdb
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\EntityFramework.xml
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\bin\x64\Debug\EntityFramework.SqlServer.xml
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\obj\x64\Debug\CapaDatos.csprojResolveAssemblyReference.cache
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\obj\x64\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\obj\x64\Debug\CapaDatos.csproj.CopyComplete
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\obj\x64\Debug\CapaDatos.dll
+C:\DesarrollosPersonales\SisCarlitosV1.1\CapaDatos\obj\x64\Debug\CapaDatos.pdb

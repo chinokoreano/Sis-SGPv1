@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OPERADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cartero">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
+    <Property Name="nm_cartero" Type="varchar" MaxLength="100" />
+    <Property Name="direccion" Type="varchar" MaxLength="200" />
+    <Property Name="telefono" Type="varchar" MaxLength="50" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="100" />
+    <Property Name="estado" Type="int" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="tipo_identificacion" Type="int" />
+    <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
+    <Property Name="nm_cliente" Type="varchar" MaxLength="100" />
+    <Property Name="nm_cliente_corto" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="contrato">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="numero_contrato" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_inicio" Type="datetime" />
+    <Property Name="fecha_fin" Type="datetime" />
+    <Property Name="id_asesor" Type="int" />
+    <Property Name="fecha_registro" Type="datetime" />
+    <Property Name="estado" Type="int" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="renovacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="destinatario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="identificador_paquete" Type="uniqueidentifier" />
+    <Property Name="destinatario" Type="varchar" MaxLength="200" />
+    <Property Name="provincia" Type="int" />
+    <Property Name="canton" Type="int" />
+    <Property Name="parroquia" Type="int" />
+    <Property Name="calle_principal" Type="varchar" MaxLength="200" />
+    <Property Name="numero" Type="varchar" MaxLength="50" />
+    <Property Name="interseccion" Type="varchar" MaxLength="100" />
+    <Property Name="referencia" Type="varchar" MaxLength="100" />
+    <Property Name="codigo_postal" Type="varchar" MaxLength="30" />
+    <Property Name="latitud" Type="int" />
+    <Property Name="longitud" Type="int" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="entrega">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="identificador_paquete" Type="uniqueidentifier" />
+    <Property Name="fecha_registro" Type="datetime" />
+    <Property Name="fecha_entrega" Type="varchar" MaxLength="50" />
+    <Property Name="hora_entrega" Type="varchar" MaxLength="50" />
+    <Property Name="receptor" Type="varchar" MaxLength="100" />
+    <Property Name="identificacion_receptor" Type="varchar" MaxLength="50" />
+    <Property Name="observacion" Type="varchar" MaxLength="500" />
+    <Property Name="locacion_entrega" Type="int" />
+    <Property Name="control_dir_entrega" Type="int" />
+    <Property Name="direccion_actualizada" Type="varchar" MaxLength="500" />
+    <Property Name="estado" Type="int" />
+    <Property Name="id_oficina" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="latitud" Type="varchar" MaxLength="10" />
+    <Property Name="longitud" Type="varchar" MaxLength="10" />
+    <Property Name="registro_fotografico" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="evento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="identificador_paquete" Type="uniqueidentifier" />
+    <Property Name="id_tipo_evento" Type="int" />
+    <Property Name="id_oficina" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="observacion1" Type="varchar" MaxLength="500" />
+    <Property Name="observacion2" Type="varchar" MaxLength="500" />
+    <Property Name="fecha_registro" Type="datetime" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="evento_orden_servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_orden_servicio" Type="int" />
+    <Property Name="id_tipo_evento" Type="int" />
+    <Property Name="id_oficina" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="fecha_registro" Type="datetime" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="gestion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm" Type="varchar" MaxLength="50" />
+    <Property Name="estado" Type="int" />
+    <Property Name="fecha_registro" Type="datetime" />
+    <Property Name="estado_catalogo" Type="int" />
+  </EntityType>
+  <EntityType Name="lista_manifiesto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_manifiesto" Type="int" Nullable="false" />
+    <Property Name="identificador_paquete" Type="uniqueidentifier" />
+    <Property Name="orden" Type="int" />
+    <Property Name="estado" Type="int" />
+    <Property Name="fecha_registro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="manifiesto_entrega">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_cartero" Type="int" />
+    <Property Name="codigo_manifiesto" Type="varchar" MaxLength="100" />
+    <Property Name="secuencia" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_oficina" Type="int" />
+    <Property Name="estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="oficina">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm_oficina" Type="varchar" MaxLength="200" />
+    <Property Name="codigo_oficina" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="int" />
+    <Property Name="fecha_registro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="orden_servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo_orden_servicio" Type="varchar" MaxLength="50" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="id_tipo_servicio" Type="int" />
+    <Property Name="fecha_carga" Type="datetime" />
+    <Property Name="numero_registros_cargados" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="estado" Type="int" />
+    <Property Name="detalle" Type="varchar" MaxLength="100" />
+    <Property Name="fecha_ultima_gestion" Type="datetime" />
+    <Property Name="id_usuario_ultima_gestion" Type="int" />
+    <Property Name="id_oficina_carga" Type="int" />
+    <Property Name="id_provincia_carga" Type="varchar" MaxLength="10" />
+    <Property Name="id_canton_carga" Type="varchar" MaxLength="10" />
+    <Property Name="id_contrato" Type="int" />
+  </EntityType>
+  <EntityType Name="paquete">
+    <Key>
+      <PropertyRef Name="identificador" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="identificador" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="codigo_alterno" Type="varchar" MaxLength="50" />
+    <Property Name="peso" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="seguro" Type="char" MaxLength="1" />
+    <Property Name="tipo_contenido" Type="char" MaxLength="1" />
+    <Property Name="monto_seguro" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="alto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ancho" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="profundidad" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="peso_volumentrico" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fecha_evento_carga" Type="datetime" />
+    <Property Name="id_oficina_carga" Type="int" />
+    <Property Name="fecha_ultimo_evento" Type="datetime" />
+    <Property Name="id_ultm_evento" Type="int" />
+    <Property Name="id_oficina_ultm_evento" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="guia_generada" Type="char" MaxLength="1" />
+    <Property Name="dato_adicional1" Type="varchar" MaxLength="100" />
+    <Property Name="dato_adicional2" Type="varchar" MaxLength="100" />
+    <Property Name="id_orden_servicio" Type="int" />
+  </EntityType>
+  <EntityType Name="parametro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm_descriptivo" Type="varchar" MaxLength="100" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="valor1" Type="varchar" MaxLength="300" />
+    <Property Name="valor2" Type="varchar" MaxLength="50" />
+    <Property Name="valor3" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="proceso_tmp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="proceso_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="orden" Type="int" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nm_servicio" Type="varchar" MaxLength="30" />
+    <Property Name="prefijo" Type="varchar" MaxLength="5" />
+    <Property Name="secuencia_inicial" Type="int" />
+    <Property Name="secuencia_actual" Type="int" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tipo_documento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="ubicacion_geografica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_provincia" Type="varchar" MaxLength="5" />
+    <Property Name="id_canton" Type="varchar" MaxLength="5" />
+    <Property Name="id_parroquia" Type="varchar" MaxLength="5" />
+    <Property Name="nm_provincia" Type="varchar" MaxLength="100" />
+    <Property Name="nm_canton" Type="varchar" MaxLength="100" />
+    <Property Name="nm_parroquia" Type="varchar" MaxLength="100" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nm" Type="varchar" MaxLength="100" />
+    <Property Name="tipo_documento" Type="int" />
+    <Property Name="numero_documento" Type="varchar" MaxLength="30" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" />
+    <Property Name="activo" Type="bit" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="fecha_ultm_act" Type="datetime" />
+    <Property Name="usuario" Type="varchar" MaxLength="30" />
+    <Property Name="tipo_usuario" Type="int" />
+    <Property Name="contrasenia" Type="varchar" MaxLength="30" />
+    <Property Name="fecha_ultm_act_contrasenia" Type="datetime" />
+    <Property Name="fecha_ultm_autenticacion" Type="datetime" />
+    <Property Name="id_oficina" Type="int" />
+  </EntityType>
+  <EntityType Name="usuario_contrato">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_contrato" Type="int" />
+    <Property Name="estado" Type="int" />
+    <Property Name="fecha_registro" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_contrato_cliente">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contrato">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_destinatario_paquete">
+    <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+    <End Role="destinatario" Type="Self.destinatario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paquete">
+        <PropertyRef Name="identificador" />
+      </Principal>
+      <Dependent Role="destinatario">
+        <PropertyRef Name="identificador_paquete" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_entrega_paquete">
+    <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+    <End Role="entrega" Type="Self.entrega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paquete">
+        <PropertyRef Name="identificador" />
+      </Principal>
+      <Dependent Role="entrega">
+        <PropertyRef Name="identificador_paquete" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_evento_gestion">
+    <End Role="gestion" Type="Self.gestion" Multiplicity="0..1" />
+    <End Role="evento" Type="Self.evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gestion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="evento">
+        <PropertyRef Name="id_tipo_evento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_evento_oficina">
+    <End Role="oficina" Type="Self.oficina" Multiplicity="0..1" />
+    <End Role="evento" Type="Self.evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="oficina">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="evento">
+        <PropertyRef Name="id_oficina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_evento_orden_servicio_orden_servicio">
+    <End Role="orden_servicio" Type="Self.orden_servicio" Multiplicity="0..1" />
+    <End Role="evento_orden_servicio" Type="Self.evento_orden_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orden_servicio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="evento_orden_servicio">
+        <PropertyRef Name="id_orden_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_evento_paquete">
+    <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+    <End Role="evento" Type="Self.evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paquete">
+        <PropertyRef Name="identificador" />
+      </Principal>
+      <Dependent Role="evento">
+        <PropertyRef Name="identificador_paquete" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lista_manifiesto_manifiesto_entrega">
+    <End Role="manifiesto_entrega" Type="Self.manifiesto_entrega" Multiplicity="1" />
+    <End Role="lista_manifiesto" Type="Self.lista_manifiesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="manifiesto_entrega">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lista_manifiesto">
+        <PropertyRef Name="id_manifiesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lista_manifiesto_paquete">
+    <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+    <End Role="lista_manifiesto" Type="Self.lista_manifiesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paquete">
+        <PropertyRef Name="identificador" />
+      </Principal>
+      <Dependent Role="lista_manifiesto">
+        <PropertyRef Name="identificador_paquete" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_manifiesto_entrega_cartero">
+    <End Role="cartero" Type="Self.cartero" Multiplicity="0..1" />
+    <End Role="manifiesto_entrega" Type="Self.manifiesto_entrega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cartero">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="manifiesto_entrega">
+        <PropertyRef Name="id_cartero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_servicio_servicio">
+    <End Role="servicio" Type="Self.servicio" Multiplicity="0..1" />
+    <End Role="orden_servicio" Type="Self.orden_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servicio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orden_servicio">
+        <PropertyRef Name="id_tipo_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paquete_orden_servicio">
+    <End Role="orden_servicio" Type="Self.orden_servicio" Multiplicity="0..1" />
+    <End Role="paquete" Type="Self.paquete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orden_servicio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="paquete">
+        <PropertyRef Name="id_orden_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_contrato_contrato">
+    <End Role="contrato" Type="Self.contrato" Multiplicity="0..1" />
+    <End Role="usuario_contrato" Type="Self.usuario_contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="contrato">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario_contrato">
+        <PropertyRef Name="id_contrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_contrato_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="usuario_contrato" Type="Self.usuario_contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario_contrato">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_oficina">
+    <End Role="oficina" Type="Self.oficina" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="oficina">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="id_oficina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_tipo_documento">
+    <End Role="tipo_documento" Type="Self.tipo_documento" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_documento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="tipo_documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SPR_CONSULTA_ENVIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OPCION" Type="int" Mode="In" />
+    <Parameter Name="CODIGO_ENVIO" Type="varchar" Mode="In" />
+    <Parameter Name="CODIGO_ORDEN_SERVICIO" Type="varchar" Mode="In" />
+    <Parameter Name="DESTINATARIO" Type="varchar" Mode="In" />
+    <Parameter Name="USUARIO" Type="int" Mode="In" />
+    <Parameter Name="FECHA1" Type="varchar" Mode="In" />
+    <Parameter Name="FECHA2" Type="varchar" Mode="In" />
+    <Parameter Name="GESTION" Type="varchar" Mode="In" />
+    <Parameter Name="ID_CLIENTE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_ENVIO_GUIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OPCION" Type="int" Mode="In" />
+    <Parameter Name="ID_ORDEN" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_EVENTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OPCION" Type="int" Mode="In" />
+    <Parameter Name="IDENTIFICADOR_PAQUETE" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_MANIFIESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OPCION" Type="int" Mode="In" />
+    <Parameter Name="ID_MANIFIESTO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_ORDENES_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="opcion" Type="int" Mode="In" />
+    <Parameter Name="id_usuario" Type="int" Mode="In" />
+    <Parameter Name="orden_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="opcion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_USUARIO_CONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="opcion" Type="int" Mode="In" />
+    <Parameter Name="id_usuario" Type="int" Mode="In" />
+    <Parameter Name="numero_identificacion" Type="varchar" Mode="In" />
+    <Parameter Name="nm_cliente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SPR_GENERAR_COD_MANIFIESTO_ENTREGA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_oficina" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_INSERTAR_LISTA_MANIFIESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_MANIFIESTO" Type="int" Mode="In" />
+    <Parameter Name="ID_PROCESO" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OPCION" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="OPERADBModelStoreContainer">
+    <EntitySet Name="cartero" EntityType="Self.cartero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contrato" EntityType="Self.contrato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="destinatario" EntityType="Self.destinatario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entrega" EntityType="Self.entrega" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="evento" EntityType="Self.evento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="evento_orden_servicio" EntityType="Self.evento_orden_servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gestion" EntityType="Self.gestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lista_manifiesto" EntityType="Self.lista_manifiesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="manifiesto_entrega" EntityType="Self.manifiesto_entrega" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oficina" EntityType="Self.oficina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden_servicio" EntityType="Self.orden_servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paquete" EntityType="Self.paquete" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ubicacion_geografica" EntityType="Self.ubicacion_geografica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario_contrato" EntityType="Self.usuario_contrato" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_contrato_cliente" Association="Self.FK_contrato_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="contrato" EntitySet="contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_destinatario_paquete" Association="Self.FK_destinatario_paquete">
+      <End Role="paquete" EntitySet="paquete" />
+      <End Role="destinatario" EntitySet="destinatario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_entrega_paquete" Association="Self.FK_entrega_paquete">
+      <End Role="paquete" EntitySet="paquete" />
+      <End Role="entrega" EntitySet="entrega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_evento_gestion" Association="Self.FK_evento_gestion">
+      <End Role="gestion" EntitySet="gestion" />
+      <End Role="evento" EntitySet="evento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_evento_oficina" Association="Self.FK_evento_oficina">
+      <End Role="oficina" EntitySet="oficina" />
+      <End Role="evento" EntitySet="evento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_evento_orden_servicio_orden_servicio" Association="Self.FK_evento_orden_servicio_orden_servicio">
+      <End Role="orden_servicio" EntitySet="orden_servicio" />
+      <End Role="evento_orden_servicio" EntitySet="evento_orden_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_evento_paquete" Association="Self.FK_evento_paquete">
+      <End Role="paquete" EntitySet="paquete" />
+      <End Role="evento" EntitySet="evento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lista_manifiesto_manifiesto_entrega" Association="Self.FK_lista_manifiesto_manifiesto_entrega">
+      <End Role="manifiesto_entrega" EntitySet="manifiesto_entrega" />
+      <End Role="lista_manifiesto" EntitySet="lista_manifiesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lista_manifiesto_paquete" Association="Self.FK_lista_manifiesto_paquete">
+      <End Role="paquete" EntitySet="paquete" />
+      <End Role="lista_manifiesto" EntitySet="lista_manifiesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_manifiesto_entrega_cartero" Association="Self.FK_manifiesto_entrega_cartero">
+      <End Role="cartero" EntitySet="cartero" />
+      <End Role="manifiesto_entrega" EntitySet="manifiesto_entrega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_servicio_servicio" Association="Self.FK_orden_servicio_servicio">
+      <End Role="servicio" EntitySet="servicio" />
+      <End Role="orden_servicio" EntitySet="orden_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paquete_orden_servicio" Association="Self.FK_paquete_orden_servicio">
+      <End Role="orden_servicio" EntitySet="orden_servicio" />
+      <End Role="paquete" EntitySet="paquete" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_contrato_contrato" Association="Self.FK_usuario_contrato_contrato">
+      <End Role="contrato" EntitySet="contrato" />
+      <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_contrato_usuario" Association="Self.FK_usuario_contrato_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_oficina" Association="Self.FK_usuario_oficina">
+      <End Role="oficina" EntitySet="oficina" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_tipo_documento" Association="Self.FK_usuario_tipo_documento">
+      <End Role="tipo_documento" EntitySet="tipo_documento" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

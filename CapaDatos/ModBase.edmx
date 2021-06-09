@@ -1,0 +1,1829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OPERADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cartero">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
+          <Property Name="nm_cartero" Type="varchar" MaxLength="100" />
+          <Property Name="direccion" Type="varchar" MaxLength="200" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="correo_electronico" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="int" />
+          <Property Name="fecha_ingreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="tipo_identificacion" Type="int" />
+          <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
+          <Property Name="nm_cliente" Type="varchar" MaxLength="100" />
+          <Property Name="nm_cliente_corto" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="30" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="fecha_ingreso" Type="datetime" />
+          <Property Name="correo_electronico" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="contrato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="numero_contrato" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_fin" Type="datetime" />
+          <Property Name="id_asesor" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="estado" Type="int" />
+          <Property Name="id_cliente" Type="int" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="renovacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="destinatario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="identificador_paquete" Type="uniqueidentifier" />
+          <Property Name="destinatario" Type="varchar" MaxLength="200" />
+          <Property Name="provincia" Type="int" />
+          <Property Name="canton" Type="int" />
+          <Property Name="parroquia" Type="int" />
+          <Property Name="calle_principal" Type="varchar" MaxLength="200" />
+          <Property Name="numero" Type="varchar" MaxLength="50" />
+          <Property Name="interseccion" Type="varchar" MaxLength="100" />
+          <Property Name="referencia" Type="varchar" MaxLength="100" />
+          <Property Name="codigo_postal" Type="varchar" MaxLength="30" />
+          <Property Name="latitud" Type="int" />
+          <Property Name="longitud" Type="int" />
+          <Property Name="telefono" Type="varchar" MaxLength="30" />
+          <Property Name="correo_electronico" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="entrega">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="identificador_paquete" Type="uniqueidentifier" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="fecha_entrega" Type="varchar" MaxLength="50" />
+          <Property Name="hora_entrega" Type="varchar" MaxLength="50" />
+          <Property Name="receptor" Type="varchar" MaxLength="100" />
+          <Property Name="identificacion_receptor" Type="varchar" MaxLength="50" />
+          <Property Name="observacion" Type="varchar" MaxLength="500" />
+          <Property Name="locacion_entrega" Type="int" />
+          <Property Name="control_dir_entrega" Type="int" />
+          <Property Name="direccion_actualizada" Type="varchar" MaxLength="500" />
+          <Property Name="estado" Type="int" />
+          <Property Name="id_oficina" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="latitud" Type="varchar" MaxLength="10" />
+          <Property Name="longitud" Type="varchar" MaxLength="10" />
+          <Property Name="registro_fotografico" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="evento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="identificador_paquete" Type="uniqueidentifier" />
+          <Property Name="id_tipo_evento" Type="int" />
+          <Property Name="id_oficina" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="observacion1" Type="varchar" MaxLength="500" />
+          <Property Name="observacion2" Type="varchar" MaxLength="500" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="evento_orden_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_orden_servicio" Type="int" />
+          <Property Name="id_tipo_evento" Type="int" />
+          <Property Name="id_oficina" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="gestion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nm" Type="varchar" MaxLength="50" />
+          <Property Name="estado" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="estado_catalogo" Type="int" />
+        </EntityType>
+        <EntityType Name="lista_manifiesto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_manifiesto" Type="int" Nullable="false" />
+          <Property Name="identificador_paquete" Type="uniqueidentifier" />
+          <Property Name="orden" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="manifiesto_entrega">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_cartero" Type="int" />
+          <Property Name="codigo_manifiesto" Type="varchar" MaxLength="100" />
+          <Property Name="secuencia" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="id_oficina" Type="int" />
+          <Property Name="estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_registro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="oficina">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nm_oficina" Type="varchar" MaxLength="200" />
+          <Property Name="codigo_oficina" Type="varchar" MaxLength="30" />
+          <Property Name="estado" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="orden_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_orden_servicio" Type="varchar" MaxLength="50" />
+          <Property Name="id_cliente" Type="int" />
+          <Property Name="id_tipo_servicio" Type="int" />
+          <Property Name="fecha_carga" Type="datetime" />
+          <Property Name="numero_registros_cargados" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="detalle" Type="varchar" MaxLength="100" />
+          <Property Name="fecha_ultima_gestion" Type="datetime" />
+          <Property Name="id_usuario_ultima_gestion" Type="int" />
+          <Property Name="id_oficina_carga" Type="int" />
+          <Property Name="id_provincia_carga" Type="varchar" MaxLength="10" />
+          <Property Name="id_canton_carga" Type="varchar" MaxLength="10" />
+          <Property Name="id_contrato" Type="int" />
+        </EntityType>
+        <EntityType Name="paquete">
+          <Key>
+            <PropertyRef Name="identificador" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" />
+          <Property Name="identificador" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="codigo_alterno" Type="varchar" MaxLength="50" />
+          <Property Name="peso" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="seguro" Type="char" MaxLength="1" />
+          <Property Name="tipo_contenido" Type="char" MaxLength="1" />
+          <Property Name="monto_seguro" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="alto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ancho" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="profundidad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="peso_volumentrico" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fecha_evento_carga" Type="datetime" />
+          <Property Name="id_oficina_carga" Type="int" />
+          <Property Name="fecha_ultimo_evento" Type="datetime" />
+          <Property Name="id_ultm_evento" Type="int" />
+          <Property Name="id_oficina_ultm_evento" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="guia_generada" Type="char" MaxLength="1" />
+          <Property Name="dato_adicional1" Type="varchar" MaxLength="100" />
+          <Property Name="dato_adicional2" Type="varchar" MaxLength="100" />
+          <Property Name="id_orden_servicio" Type="int" />
+        </EntityType>
+        <EntityType Name="parametro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nm_descriptivo" Type="varchar" MaxLength="100" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" />
+          <Property Name="valor1" Type="varchar" MaxLength="300" />
+          <Property Name="valor2" Type="varchar" MaxLength="50" />
+          <Property Name="valor3" Type="int" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="proceso_tmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="proceso_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="orden" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_servicio" Type="varchar" MaxLength="30" />
+          <Property Name="prefijo" Type="varchar" MaxLength="5" />
+          <Property Name="secuencia_inicial" Type="int" />
+          <Property Name="secuencia_actual" Type="int" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="fecha_ingreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tipo_documento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nm" Type="varchar" MaxLength="30" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="ubicacion_geografica">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_provincia" Type="varchar" MaxLength="5" />
+          <Property Name="id_canton" Type="varchar" MaxLength="5" />
+          <Property Name="id_parroquia" Type="varchar" MaxLength="5" />
+          <Property Name="nm_provincia" Type="varchar" MaxLength="100" />
+          <Property Name="nm_canton" Type="varchar" MaxLength="100" />
+          <Property Name="nm_parroquia" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm" Type="varchar" MaxLength="100" />
+          <Property Name="tipo_documento" Type="int" />
+          <Property Name="numero_documento" Type="varchar" MaxLength="30" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="30" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="fecha_ingreso" Type="datetime" />
+          <Property Name="fecha_ultm_act" Type="datetime" />
+          <Property Name="usuario" Type="varchar" MaxLength="30" />
+          <Property Name="tipo_usuario" Type="int" />
+          <Property Name="contrasenia" Type="varchar" MaxLength="30" />
+          <Property Name="fecha_ultm_act_contrasenia" Type="datetime" />
+          <Property Name="fecha_ultm_autenticacion" Type="datetime" />
+          <Property Name="id_oficina" Type="int" />
+        </EntityType>
+        <EntityType Name="usuario_contrato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="id_contrato" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_contrato_cliente">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contrato">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_destinatario_paquete">
+          <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+          <End Role="destinatario" Type="Self.destinatario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="destinatario">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_entrega_paquete">
+          <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+          <End Role="entrega" Type="Self.entrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="entrega">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_gestion">
+          <End Role="gestion" Type="Self.gestion" Multiplicity="0..1" />
+          <End Role="evento" Type="Self.evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_tipo_evento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_oficina">
+          <End Role="oficina" Type="Self.oficina" Multiplicity="0..1" />
+          <End Role="evento" Type="Self.evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oficina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_oficina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_orden_servicio_orden_servicio">
+          <End Role="orden_servicio" Type="Self.orden_servicio" Multiplicity="0..1" />
+          <End Role="evento_orden_servicio" Type="Self.evento_orden_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orden_servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento_orden_servicio">
+              <PropertyRef Name="id_orden_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_paquete">
+          <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+          <End Role="evento" Type="Self.evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_lista_manifiesto_manifiesto_entrega">
+          <End Role="manifiesto_entrega" Type="Self.manifiesto_entrega" Multiplicity="1" />
+          <End Role="lista_manifiesto" Type="Self.lista_manifiesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manifiesto_entrega">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lista_manifiesto">
+              <PropertyRef Name="id_manifiesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_lista_manifiesto_paquete">
+          <End Role="paquete" Type="Self.paquete" Multiplicity="0..1" />
+          <End Role="lista_manifiesto" Type="Self.lista_manifiesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="lista_manifiesto">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_manifiesto_entrega_cartero">
+          <End Role="cartero" Type="Self.cartero" Multiplicity="0..1" />
+          <End Role="manifiesto_entrega" Type="Self.manifiesto_entrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cartero">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="manifiesto_entrega">
+              <PropertyRef Name="id_cartero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orden_servicio_servicio">
+          <End Role="servicio" Type="Self.servicio" Multiplicity="0..1" />
+          <End Role="orden_servicio" Type="Self.orden_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_servicio">
+              <PropertyRef Name="id_tipo_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paquete_orden_servicio">
+          <End Role="orden_servicio" Type="Self.orden_servicio" Multiplicity="0..1" />
+          <End Role="paquete" Type="Self.paquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orden_servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paquete">
+              <PropertyRef Name="id_orden_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_contrato_contrato">
+          <End Role="contrato" Type="Self.contrato" Multiplicity="0..1" />
+          <End Role="usuario_contrato" Type="Self.usuario_contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contrato">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_contrato">
+              <PropertyRef Name="id_contrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_contrato_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="usuario_contrato" Type="Self.usuario_contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_contrato">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_oficina">
+          <End Role="oficina" Type="Self.oficina" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oficina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_oficina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_tipo_documento">
+          <End Role="tipo_documento" Type="Self.tipo_documento" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_documento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="tipo_documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SPR_CONSULTA_ENVIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OPCION" Type="int" Mode="In" />
+          <Parameter Name="CODIGO_ENVIO" Type="varchar" Mode="In" />
+          <Parameter Name="CODIGO_ORDEN_SERVICIO" Type="varchar" Mode="In" />
+          <Parameter Name="DESTINATARIO" Type="varchar" Mode="In" />
+          <Parameter Name="USUARIO" Type="int" Mode="In" />
+          <Parameter Name="FECHA1" Type="varchar" Mode="In" />
+          <Parameter Name="FECHA2" Type="varchar" Mode="In" />
+          <Parameter Name="GESTION" Type="varchar" Mode="In" />
+          <Parameter Name="ID_CLIENTE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPR_CONSULTA_ENVIO_GUIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OPCION" Type="int" Mode="In" />
+          <Parameter Name="ID_ORDEN" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPR_CONSULTA_EVENTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OPCION" Type="int" Mode="In" />
+          <Parameter Name="IDENTIFICADOR_PAQUETE" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="SPR_CONSULTA_MANIFIESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OPCION" Type="int" Mode="In" />
+          <Parameter Name="ID_MANIFIESTO" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPR_CONSULTA_ORDENES_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="opcion" Type="int" Mode="In" />
+          <Parameter Name="id_usuario" Type="int" Mode="In" />
+          <Parameter Name="orden_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="opcion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPR_CONSULTA_USUARIO_CONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="opcion" Type="int" Mode="In" />
+          <Parameter Name="id_usuario" Type="int" Mode="In" />
+          <Parameter Name="numero_identificacion" Type="varchar" Mode="In" />
+          <Parameter Name="nm_cliente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPR_GENERAR_COD_MANIFIESTO_ENTREGA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_oficina" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPR_INSERTAR_LISTA_MANIFIESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_MANIFIESTO" Type="int" Mode="In" />
+          <Parameter Name="ID_PROCESO" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="OPCION" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="OPERADBModelStoreContainer">
+          <EntitySet Name="cartero" EntityType="Self.cartero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contrato" EntityType="Self.contrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="destinatario" EntityType="Self.destinatario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entrega" EntityType="Self.entrega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="evento" EntityType="Self.evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="evento_orden_servicio" EntityType="Self.evento_orden_servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gestion" EntityType="Self.gestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lista_manifiesto" EntityType="Self.lista_manifiesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="manifiesto_entrega" EntityType="Self.manifiesto_entrega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="oficina" EntityType="Self.oficina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orden_servicio" EntityType="Self.orden_servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="paquete" EntityType="Self.paquete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ubicacion_geografica" EntityType="Self.ubicacion_geografica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario_contrato" EntityType="Self.usuario_contrato" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_contrato_cliente" Association="Self.FK_contrato_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="contrato" EntitySet="contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_destinatario_paquete" Association="Self.FK_destinatario_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="destinatario" EntitySet="destinatario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_entrega_paquete" Association="Self.FK_entrega_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="entrega" EntitySet="entrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_gestion" Association="Self.FK_evento_gestion">
+            <End Role="gestion" EntitySet="gestion" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_oficina" Association="Self.FK_evento_oficina">
+            <End Role="oficina" EntitySet="oficina" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_orden_servicio_orden_servicio" Association="Self.FK_evento_orden_servicio_orden_servicio">
+            <End Role="orden_servicio" EntitySet="orden_servicio" />
+            <End Role="evento_orden_servicio" EntitySet="evento_orden_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_paquete" Association="Self.FK_evento_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_lista_manifiesto_manifiesto_entrega" Association="Self.FK_lista_manifiesto_manifiesto_entrega">
+            <End Role="manifiesto_entrega" EntitySet="manifiesto_entrega" />
+            <End Role="lista_manifiesto" EntitySet="lista_manifiesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_lista_manifiesto_paquete" Association="Self.FK_lista_manifiesto_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="lista_manifiesto" EntitySet="lista_manifiesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_manifiesto_entrega_cartero" Association="Self.FK_manifiesto_entrega_cartero">
+            <End Role="cartero" EntitySet="cartero" />
+            <End Role="manifiesto_entrega" EntitySet="manifiesto_entrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orden_servicio_servicio" Association="Self.FK_orden_servicio_servicio">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="orden_servicio" EntitySet="orden_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paquete_orden_servicio" Association="Self.FK_paquete_orden_servicio">
+            <End Role="orden_servicio" EntitySet="orden_servicio" />
+            <End Role="paquete" EntitySet="paquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_contrato_contrato" Association="Self.FK_usuario_contrato_contrato">
+            <End Role="contrato" EntitySet="contrato" />
+            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_contrato_usuario" Association="Self.FK_usuario_contrato_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_oficina" Association="Self.FK_usuario_oficina">
+            <End Role="oficina" EntitySet="oficina" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_tipo_documento" Association="Self.FK_usuario_tipo_documento">
+            <End Role="tipo_documento" EntitySet="tipo_documento" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OPERADBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OPERADB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cliente" EntityType="OPERADBModel.cliente" />
+          <EntitySet Name="servicio" EntityType="OPERADBModel.servicio" />
+          <EntitySet Name="tipo_documento" EntityType="OPERADBModel.tipo_documento" />
+          <EntitySet Name="usuario" EntityType="OPERADBModel.usuario" />
+          <EntitySet Name="parametro" EntityType="OPERADBModel.parametro" />
+          <EntitySet Name="orden_servicio" EntityType="OPERADBModel.orden_servicio" />
+          <EntitySet Name="oficina" EntityType="OPERADBModel.oficina" />
+          <AssociationSet Name="FK_usuario_oficina" Association="OPERADBModel.FK_usuario_oficina">
+            <End Role="oficina" EntitySet="oficina" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <FunctionImport Name="SPR_CONSULTA_USUARIO_CONTRATO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_USUARIO_CONTRATO_Result)">
+            <Parameter Name="opcion" Mode="In" Type="Int32" />
+            <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+            <Parameter Name="numero_identificacion" Mode="In" Type="String" />
+            <Parameter Name="nm_cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ubicacion_geografica" EntityType="OPERADBModel.ubicacion_geografica" />
+          <FunctionImport Name="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_UBICACIONES_GEOGRAFICAS_Result)">
+          <Parameter Name="opcion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="gestion" EntityType="OPERADBModel.gestion" />
+          <EntitySet Name="cartero" EntityType="OPERADBModel.cartero" />
+          <AssociationSet Name="FK_orden_servicio_servicio" Association="OPERADBModel.FK_orden_servicio_servicio">
+            <End Role="servicio" EntitySet="servicio" />
+            <End Role="orden_servicio" EntitySet="orden_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_tipo_documento" Association="OPERADBModel.FK_usuario_tipo_documento">
+            <End Role="tipo_documento" EntitySet="tipo_documento" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <EntitySet Name="destinatario" EntityType="OPERADBModel.destinatario" />
+          <EntitySet Name="manifiesto_entrega" EntityType="OPERADBModel.manifiesto_entrega" />
+          <EntitySet Name="paquete" EntityType="OPERADBModel.paquete" />
+          <AssociationSet Name="FK_manifiesto_entrega_cartero" Association="OPERADBModel.FK_manifiesto_entrega_cartero">
+            <End Role="cartero" EntitySet="cartero" />
+            <End Role="manifiesto_entrega" EntitySet="manifiesto_entrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_destinatario_paquete" Association="OPERADBModel.FK_destinatario_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="destinatario" EntitySet="destinatario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paquete_orden_servicio" Association="OPERADBModel.FK_paquete_orden_servicio">
+            <End Role="orden_servicio" EntitySet="orden_servicio" />
+            <End Role="paquete" EntitySet="paquete" />
+          </AssociationSet>
+          <EntitySet Name="contrato" EntityType="OPERADBModel.contrato" />
+          <EntitySet Name="evento" EntityType="OPERADBModel.evento" />
+          <EntitySet Name="evento_orden_servicio" EntityType="OPERADBModel.evento_orden_servicio" />
+          <EntitySet Name="usuario_contrato" EntityType="OPERADBModel.usuario_contrato" />
+          <AssociationSet Name="FK_contrato_cliente" Association="OPERADBModel.FK_contrato_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="contrato" EntitySet="contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_contrato_contrato" Association="OPERADBModel.FK_usuario_contrato_contrato">
+            <End Role="contrato" EntitySet="contrato" />
+            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_gestion" Association="OPERADBModel.FK_evento_gestion">
+            <End Role="gestion" EntitySet="gestion" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_oficina" Association="OPERADBModel.FK_evento_oficina">
+            <End Role="oficina" EntitySet="oficina" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_paquete" Association="OPERADBModel.FK_evento_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_evento_orden_servicio_orden_servicio" Association="OPERADBModel.FK_evento_orden_servicio_orden_servicio">
+            <End Role="orden_servicio" EntitySet="orden_servicio" />
+            <End Role="evento_orden_servicio" EntitySet="evento_orden_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_contrato_usuario" Association="OPERADBModel.FK_usuario_contrato_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+          </AssociationSet>
+          <FunctionImport Name="SPR_GENERAR_COD_MANIFIESTO_ENTREGA" ReturnType="Collection(OPERADBModel.SPR_GENERAR_COD_MANIFIESTO_ENTREGA_Result)">
+          <Parameter Name="id_oficina" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="proceso_tmp" EntityType="OPERADBModel.proceso_tmp" />
+          <EntitySet Name="lista_manifiesto" EntityType="OPERADBModel.lista_manifiesto" />
+          <AssociationSet Name="FK_lista_manifiesto_manifiesto_entrega" Association="OPERADBModel.FK_lista_manifiesto_manifiesto_entrega">
+            <End Role="manifiesto_entrega" EntitySet="manifiesto_entrega" />
+            <End Role="lista_manifiesto" EntitySet="lista_manifiesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_lista_manifiesto_paquete" Association="OPERADBModel.FK_lista_manifiesto_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="lista_manifiesto" EntitySet="lista_manifiesto" />
+          </AssociationSet>
+          <FunctionImport Name="SPR_INSERTAR_LISTA_MANIFIESTO">
+            <Parameter Name="ID_MANIFIESTO" Mode="In" Type="Int32" />
+            <Parameter Name="ID_PROCESO" Mode="In" Type="Guid" />
+            <Parameter Name="OPCION" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPR_CONSULTA_MANIFIESTO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_MANIFIESTO_Result)">
+            <Parameter Name="OPCION" Mode="In" Type="Int32" />
+            <Parameter Name="ID_MANIFIESTO" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPR_CONSULTA_EVENTOS" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_EVENTOS_Result)">
+            <Parameter Name="OPCION" Mode="In" Type="Int32" />
+            <Parameter Name="IDENTIFICADOR_PAQUETE" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="entrega" EntityType="OPERADBModel.entrega" />
+          <AssociationSet Name="FK_entrega_paquete" Association="OPERADBModel.FK_entrega_paquete">
+            <End Role="paquete" EntitySet="paquete" />
+            <End Role="entrega" EntitySet="entrega" />
+          </AssociationSet>
+          <FunctionImport Name="SPR_CONSULTA_ENVIO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_ENVIO_Result)">
+            <Parameter Name="OPCION" Mode="In" Type="Int32" />
+            <Parameter Name="CODIGO_ENVIO" Mode="In" Type="String" />
+            <Parameter Name="CODIGO_ORDEN_SERVICIO" Mode="In" Type="String" />
+            <Parameter Name="DESTINATARIO" Mode="In" Type="String" />
+            <Parameter Name="USUARIO" Mode="In" Type="Int32" />
+            <Parameter Name="FECHA1" Mode="In" Type="String" />
+            <Parameter Name="FECHA2" Mode="In" Type="String" />
+            <Parameter Name="GESTION" Mode="In" Type="String" />
+            <Parameter Name="ID_CLIENTE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPR_CONSULTA_ORDENES_SERVICIO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_ORDENES_SERVICIO_Result)">
+            <Parameter Name="opcion" Mode="In" Type="Int32" />
+            <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+            <Parameter Name="orden_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPR_CONSULTA_ENVIO_GUIAS" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_ENVIO_GUIAS_Result)">
+            <Parameter Name="OPCION" Mode="In" Type="Int32" />
+            <Parameter Name="ID_ORDEN" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="tipo_identificacion" Type="Int32" />
+          <Property Name="numero_identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nm_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nm_cliente_corto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <Property Name="correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="contrato" Relationship="OPERADBModel.FK_contrato_cliente" FromRole="cliente" ToRole="contrato" />
+        </EntityType>
+        <EntityType Name="servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_servicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="prefijo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="secuencia_inicial" Type="Int32" />
+          <Property Name="secuencia_actual" Type="Int32" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="orden_servicio" Relationship="OPERADBModel.FK_orden_servicio_servicio" FromRole="servicio" ToRole="orden_servicio" />
+        </EntityType>
+        <EntityType Name="tipo_documento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_tipo_documento" FromRole="tipo_documento" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_documento" Type="Int32" />
+          <Property Name="numero_documento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <Property Name="fecha_ultm_act" Type="DateTime" Precision="3" />
+          <Property Name="usuario1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_usuario" Type="Int32" />
+          <Property Name="contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ultm_act_contrasenia" Type="DateTime" Precision="3" />
+          <Property Name="fecha_ultm_autenticacion" Type="DateTime" Precision="3" />
+          <Property Name="id_oficina" Type="Int32" />
+          <NavigationProperty Name="oficina" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="usuario" ToRole="oficina" />
+          <NavigationProperty Name="tipo_documento1" Relationship="OPERADBModel.FK_usuario_tipo_documento" FromRole="usuario" ToRole="tipo_documento" />
+          <NavigationProperty Name="usuario_contrato" Relationship="OPERADBModel.FK_usuario_contrato_usuario" FromRole="usuario" ToRole="usuario_contrato" />
+        </EntityType>
+        <EntityType Name="parametro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nm_descriptivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor1" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="valor2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor3" Type="Int32" />
+          <Property Name="estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="orden_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="codigo_orden_servicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="id_tipo_servicio" Type="Int32" />
+          <Property Name="fecha_carga" Type="DateTime" Precision="3" />
+          <Property Name="numero_registros_cargados" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ultima_gestion" Type="DateTime" Precision="3" />
+          <Property Name="id_usuario_ultima_gestion" Type="Int32" />
+          <Property Name="id_oficina_carga" Type="Int32" />
+          <Property Name="id_provincia_carga" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="id_canton_carga" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="id_contrato" Type="Int32" />
+          <NavigationProperty Name="servicio" Relationship="OPERADBModel.FK_orden_servicio_servicio" FromRole="orden_servicio" ToRole="servicio" />
+          <NavigationProperty Name="paquete" Relationship="OPERADBModel.FK_paquete_orden_servicio" FromRole="orden_servicio" ToRole="paquete" />
+          <NavigationProperty Name="evento_orden_servicio" Relationship="OPERADBModel.FK_evento_orden_servicio_orden_servicio" FromRole="orden_servicio" ToRole="evento_orden_servicio" />
+        </EntityType>
+        <EntityType Name="oficina">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nm_oficina" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_oficina" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="oficina" ToRole="usuario" />
+          <NavigationProperty Name="evento" Relationship="OPERADBModel.FK_evento_oficina" FromRole="oficina" ToRole="evento" />
+        </EntityType>
+        <Association Name="FK_usuario_oficina">
+          <End Type="OPERADBModel.oficina" Role="oficina" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oficina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_oficina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SPR_CONSULTA_USUARIO_CONTRATO_Result">
+          <Property Type="Int32" Name="id_codigo_contrato" Nullable="true" />
+          <Property Type="String" Name="contrato" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="id_cliente" Nullable="false" />
+          <Property Type="Int32" Name="tipo_identificacion" Nullable="true" />
+          <Property Type="String" Name="numero_identificacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nm_cliente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="nm_cliente_corto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="estado" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="ubicacion_geografica">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_provincia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="id_canton" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="id_parroquia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="nm_provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nm_canton" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nm_parroquia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ID_PROVINCIA" Nullable="false" />
+          <Property Type="String" Name="ID_CANTON" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="ID_PARROQUIA" Nullable="false" />
+          <Property Type="String" Name="NM_PROVINCIA" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="NM_CANTON" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NM_PARROQUIA" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <EntityType Name="gestion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="estado_catalogo" Type="Int32" />
+          <NavigationProperty Name="evento" Relationship="OPERADBModel.FK_evento_gestion" FromRole="gestion" ToRole="evento" />
+        </EntityType>
+        <EntityType Name="cartero">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nm_cartero" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="manifiesto_entrega" Relationship="OPERADBModel.FK_manifiesto_entrega_cartero" FromRole="cartero" ToRole="manifiesto_entrega" />
+        </EntityType>
+        <Association Name="FK_orden_servicio_servicio">
+          <End Type="OPERADBModel.servicio" Role="servicio" Multiplicity="0..1" />
+          <End Type="OPERADBModel.orden_servicio" Role="orden_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_servicio">
+              <PropertyRef Name="id_tipo_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_tipo_documento">
+          <End Type="OPERADBModel.tipo_documento" Role="tipo_documento" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_documento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="tipo_documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="destinatario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="identificador_paquete" Type="Guid" />
+          <Property Name="destinatario1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="provincia" Type="Int32" />
+          <Property Name="canton" Type="Int32" />
+          <Property Name="parroquia" Type="Int32" />
+          <Property Name="calle_principal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="interseccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="referencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_postal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="latitud" Type="Int32" />
+          <Property Name="longitud" Type="Int32" />
+          <NavigationProperty Name="paquete" Relationship="OPERADBModel.FK_destinatario_paquete" FromRole="destinatario" ToRole="paquete" />
+          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="correo_electronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="manifiesto_entrega">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_cartero" Type="Int32" />
+          <Property Name="codigo_manifiesto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="id_oficina" Type="Int32" />
+          <Property Name="estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="cartero" Relationship="OPERADBModel.FK_manifiesto_entrega_cartero" FromRole="manifiesto_entrega" ToRole="cartero" />
+          <Property Name="secuencia" Type="Int32" />
+          <NavigationProperty Name="lista_manifiesto" Relationship="OPERADBModel.FK_lista_manifiesto_manifiesto_entrega" FromRole="manifiesto_entrega" ToRole="lista_manifiesto" />
+        </EntityType>
+        <EntityType Name="paquete">
+          <Key>
+            <PropertyRef Name="identificador" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="identificador" Type="Guid" Nullable="false" />
+          <Property Name="codigo_alterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="peso" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="seguro" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tipo_contenido" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="monto_seguro" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="alto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ancho" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="profundidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="peso_volumentrico" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="fecha_evento_carga" Type="DateTime" Precision="3" />
+          <Property Name="id_oficina_carga" Type="Int32" />
+          <Property Name="fecha_ultimo_evento" Type="DateTime" Precision="3" />
+          <Property Name="id_ultm_evento" Type="Int32" />
+          <Property Name="id_oficina_ultm_evento" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="guia_generada" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dato_adicional1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dato_adicional2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_orden_servicio" Type="Int32" />
+          <NavigationProperty Name="destinatario" Relationship="OPERADBModel.FK_destinatario_paquete" FromRole="paquete" ToRole="destinatario" />
+          <NavigationProperty Name="orden_servicio" Relationship="OPERADBModel.FK_paquete_orden_servicio" FromRole="paquete" ToRole="orden_servicio" />
+          <NavigationProperty Name="evento" Relationship="OPERADBModel.FK_evento_paquete" FromRole="paquete" ToRole="evento" />
+          <NavigationProperty Name="lista_manifiesto" Relationship="OPERADBModel.FK_lista_manifiesto_paquete" FromRole="paquete" ToRole="lista_manifiesto" />
+          <NavigationProperty Name="entrega" Relationship="OPERADBModel.FK_entrega_paquete" FromRole="paquete" ToRole="entrega" />
+        </EntityType>
+        <Association Name="FK_manifiesto_entrega_cartero">
+          <End Type="OPERADBModel.cartero" Role="cartero" Multiplicity="0..1" />
+          <End Type="OPERADBModel.manifiesto_entrega" Role="manifiesto_entrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cartero">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="manifiesto_entrega">
+              <PropertyRef Name="id_cartero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_destinatario_paquete">
+          <End Type="OPERADBModel.paquete" Role="paquete" Multiplicity="0..1" />
+          <End Type="OPERADBModel.destinatario" Role="destinatario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="destinatario">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paquete_orden_servicio">
+          <End Type="OPERADBModel.orden_servicio" Role="orden_servicio" Multiplicity="0..1" />
+          <End Type="OPERADBModel.paquete" Role="paquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orden_servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paquete">
+              <PropertyRef Name="id_orden_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="contrato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="numero_contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_fin" Type="DateTime" Precision="3" />
+          <Property Name="id_asesor" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="renovacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cliente" Relationship="OPERADBModel.FK_contrato_cliente" FromRole="contrato" ToRole="cliente" />
+          <NavigationProperty Name="usuario_contrato" Relationship="OPERADBModel.FK_usuario_contrato_contrato" FromRole="contrato" ToRole="usuario_contrato" />
+        </EntityType>
+        <EntityType Name="evento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="identificador_paquete" Type="Guid" />
+          <Property Name="id_tipo_evento" Type="Int32" />
+          <Property Name="id_oficina" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="observacion1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="observacion2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="gestion" Relationship="OPERADBModel.FK_evento_gestion" FromRole="evento" ToRole="gestion" />
+          <NavigationProperty Name="oficina" Relationship="OPERADBModel.FK_evento_oficina" FromRole="evento" ToRole="oficina" />
+          <NavigationProperty Name="paquete" Relationship="OPERADBModel.FK_evento_paquete" FromRole="evento" ToRole="paquete" />
+        </EntityType>
+        <EntityType Name="evento_orden_servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_orden_servicio" Type="Int32" />
+          <Property Name="id_tipo_evento" Type="Int32" />
+          <Property Name="id_oficina" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="orden_servicio" Relationship="OPERADBModel.FK_evento_orden_servicio_orden_servicio" FromRole="evento_orden_servicio" ToRole="orden_servicio" />
+        </EntityType>
+        <EntityType Name="usuario_contrato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="id_contrato" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="contrato" Relationship="OPERADBModel.FK_usuario_contrato_contrato" FromRole="usuario_contrato" ToRole="contrato" />
+          <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_contrato_usuario" FromRole="usuario_contrato" ToRole="usuario" />
+        </EntityType>
+        <Association Name="FK_contrato_cliente">
+          <End Type="OPERADBModel.cliente" Role="cliente" Multiplicity="0..1" />
+          <End Type="OPERADBModel.contrato" Role="contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contrato">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_contrato_contrato">
+          <End Type="OPERADBModel.contrato" Role="contrato" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario_contrato" Role="usuario_contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contrato">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_contrato">
+              <PropertyRef Name="id_contrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_gestion">
+          <End Type="OPERADBModel.gestion" Role="gestion" Multiplicity="0..1" />
+          <End Type="OPERADBModel.evento" Role="evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_tipo_evento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_oficina">
+          <End Type="OPERADBModel.oficina" Role="oficina" Multiplicity="0..1" />
+          <End Type="OPERADBModel.evento" Role="evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oficina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_oficina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_paquete">
+          <End Type="OPERADBModel.paquete" Role="paquete" Multiplicity="0..1" />
+          <End Type="OPERADBModel.evento" Role="evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_evento_orden_servicio_orden_servicio">
+          <End Type="OPERADBModel.orden_servicio" Role="orden_servicio" Multiplicity="0..1" />
+          <End Type="OPERADBModel.evento_orden_servicio" Role="evento_orden_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orden_servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento_orden_servicio">
+              <PropertyRef Name="id_orden_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_contrato_usuario">
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario_contrato" Role="usuario_contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_contrato">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SPR_GENERAR_COD_MANIFIESTO_ENTREGA_Result">
+          <Property Type="String" Name="codigo_manifiesto" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="secuencia" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="proceso_tmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="proceso_id" Type="Guid" Nullable="false" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orden" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="lista_manifiesto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_manifiesto" Type="Int32" Nullable="false" />
+          <Property Name="identificador_paquete" Type="Guid" />
+          <Property Name="orden" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="manifiesto_entrega" Relationship="OPERADBModel.FK_lista_manifiesto_manifiesto_entrega" FromRole="lista_manifiesto" ToRole="manifiesto_entrega" />
+          <NavigationProperty Name="paquete" Relationship="OPERADBModel.FK_lista_manifiesto_paquete" FromRole="lista_manifiesto" ToRole="paquete" />
+        </EntityType>
+        <Association Name="FK_lista_manifiesto_manifiesto_entrega">
+          <End Type="OPERADBModel.manifiesto_entrega" Role="manifiesto_entrega" Multiplicity="1" />
+          <End Type="OPERADBModel.lista_manifiesto" Role="lista_manifiesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manifiesto_entrega">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lista_manifiesto">
+              <PropertyRef Name="id_manifiesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_lista_manifiesto_paquete">
+          <End Type="OPERADBModel.paquete" Role="paquete" Multiplicity="0..1" />
+          <End Type="OPERADBModel.lista_manifiesto" Role="lista_manifiesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="lista_manifiesto">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SPR_CONSULTA_MANIFIESTO_Result">
+          <Property Type="Int64" Name="orden" Nullable="true" />
+          <Property Type="String" Name="cartero" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="destinatario" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="453" />
+          <Property Type="String" Name="oficina" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="usuario_creacion" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SPR_CONSULTA_EVENTOS_Result">
+          <Property Type="Int64" Name="orden" Nullable="true" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Guid" Name="identificador" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="gestion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="oficina" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="usuario" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="observacion" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <EntityType Name="entrega">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="identificador_paquete" Type="Guid" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="fecha_entrega" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hora_entrega" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="receptor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="identificacion_receptor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="locacion_entrega" Type="Int32" />
+          <Property Name="control_dir_entrega" Type="Int32" />
+          <Property Name="direccion_actualizada" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="paquete" Relationship="OPERADBModel.FK_entrega_paquete" FromRole="entrega" ToRole="paquete" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="id_oficina" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="latitud" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="registro_fotografico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_entrega_paquete">
+          <End Type="OPERADBModel.paquete" Role="paquete" Multiplicity="0..1" />
+          <End Type="OPERADBModel.entrega" Role="entrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquete">
+              <PropertyRef Name="identificador" />
+            </Principal>
+            <Dependent Role="entrega">
+              <PropertyRef Name="identificador_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SPR_CONSULTA_ENVIO_Result">
+          <Property Type="Int64" Name="orden" Nullable="true" />
+          <Property Type="Guid" Name="identificador" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="codigo_alterno" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_evento_carga" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="fecha_ultimo_evento" Nullable="true" Precision="23" />
+          <Property Type="String" Name="destinatario" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="92" />
+          <Property Type="String" Name="referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="provincia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="canton" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="codigo_postal" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ultima_gestion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="oficina" Nullable="true" MaxLength="231" />
+          <Property Type="String" Name="orden_servicio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="usuario" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="receptor" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SPR_CONSULTA_ORDENES_SERVICIO_Result">
+          <Property Type="Int64" Name="orden" Nullable="true" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="codigo_orden_servicio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cliente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="servicio" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="fecha_carga" Nullable="true" Precision="23" />
+          <Property Type="String" Name="oficina_carga" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="numero_registros_cargados" Nullable="true" />
+          <Property Type="String" Name="usuario_carga" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="detalle" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="fecha_ultima_gestion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuario_ultima_transaccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="provincia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="canton" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="numero_identificacion" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="numero_contrato" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="direccion" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="telefono" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="correo_electronico" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SPR_CONSULTA_ENVIO_GUIAS_Result">
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="codigo_alterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="destinatario" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="352" />
+          <Property Type="String" Name="referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="provincia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="canton" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="correo_electronico" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OPERADBModelStoreContainer" CdmEntityContainer="OPERADB">
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="OPERADBModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nm_cliente_corto" ColumnName="nm_cliente_corto" />
+                <ScalarProperty Name="nm_cliente" ColumnName="nm_cliente" />
+                <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+                <ScalarProperty Name="tipo_identificacion" ColumnName="tipo_identificacion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="servicio">
+            <EntityTypeMapping TypeName="OPERADBModel.servicio">
+              <MappingFragment StoreEntitySet="servicio">
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="secuencia_actual" ColumnName="secuencia_actual" />
+                <ScalarProperty Name="secuencia_inicial" ColumnName="secuencia_inicial" />
+                <ScalarProperty Name="prefijo" ColumnName="prefijo" />
+                <ScalarProperty Name="nm_servicio" ColumnName="nm_servicio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_documento">
+            <EntityTypeMapping TypeName="OPERADBModel.tipo_documento">
+              <MappingFragment StoreEntitySet="tipo_documento">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nm" ColumnName="nm" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="OPERADBModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+                <ScalarProperty Name="fecha_ultm_autenticacion" ColumnName="fecha_ultm_autenticacion" />
+                <ScalarProperty Name="fecha_ultm_act_contrasenia" ColumnName="fecha_ultm_act_contrasenia" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="fecha_ultm_act" ColumnName="fecha_ultm_act" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="numero_documento" ColumnName="numero_documento" />
+                <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+                <ScalarProperty Name="nm" ColumnName="nm" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parametro">
+            <EntityTypeMapping TypeName="OPERADBModel.parametro">
+              <MappingFragment StoreEntitySet="parametro">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="valor3" ColumnName="valor3" />
+                <ScalarProperty Name="valor2" ColumnName="valor2" />
+                <ScalarProperty Name="valor1" ColumnName="valor1" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="nm_descriptivo" ColumnName="nm_descriptivo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orden_servicio">
+            <EntityTypeMapping TypeName="OPERADBModel.orden_servicio">
+              <MappingFragment StoreEntitySet="orden_servicio">
+                <ScalarProperty Name="id_contrato" ColumnName="id_contrato" />
+                <ScalarProperty Name="id_canton_carga" ColumnName="id_canton_carga" />
+                <ScalarProperty Name="id_provincia_carga" ColumnName="id_provincia_carga" />
+                <ScalarProperty Name="id_oficina_carga" ColumnName="id_oficina_carga" />
+                <ScalarProperty Name="id_usuario_ultima_gestion" ColumnName="id_usuario_ultima_gestion" />
+                <ScalarProperty Name="fecha_ultima_gestion" ColumnName="fecha_ultima_gestion" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="numero_registros_cargados" ColumnName="numero_registros_cargados" />
+                <ScalarProperty Name="fecha_carga" ColumnName="fecha_carga" />
+                <ScalarProperty Name="id_tipo_servicio" ColumnName="id_tipo_servicio" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="codigo_orden_servicio" ColumnName="codigo_orden_servicio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="oficina">
+            <EntityTypeMapping TypeName="OPERADBModel.oficina">
+              <MappingFragment StoreEntitySet="oficina">
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigo_oficina" ColumnName="codigo_oficina" />
+                <ScalarProperty Name="nm_oficina" ColumnName="nm_oficina" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_USUARIO_CONTRATO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_USUARIO_CONTRATO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_USUARIO_CONTRATO_Result">
+                <ScalarProperty Name="id_codigo_contrato" ColumnName="id_codigo_contrato" />
+                <ScalarProperty Name="contrato" ColumnName="contrato" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="tipo_identificacion" ColumnName="tipo_identificacion" />
+                <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+                <ScalarProperty Name="nm_cliente" ColumnName="nm_cliente" />
+                <ScalarProperty Name="nm_cliente_corto" ColumnName="nm_cliente_corto" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ubicacion_geografica">
+            <EntityTypeMapping TypeName="OPERADBModel.ubicacion_geografica">
+              <MappingFragment StoreEntitySet="ubicacion_geografica">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nm_parroquia" ColumnName="nm_parroquia" />
+                <ScalarProperty Name="nm_canton" ColumnName="nm_canton" />
+                <ScalarProperty Name="nm_provincia" ColumnName="nm_provincia" />
+                <ScalarProperty Name="id_parroquia" ColumnName="id_parroquia" />
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS" FunctionName="OPERADBModel.Store.SPR_CONSULTA_UBICACIONES_GEOGRAFICAS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_UBICACIONES_GEOGRAFICAS_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+                <ScalarProperty Name="ID_CANTON" ColumnName="ID_CANTON" />
+                <ScalarProperty Name="ID_PARROQUIA" ColumnName="ID_PARROQUIA" />
+                <ScalarProperty Name="NM_PROVINCIA" ColumnName="NM_PROVINCIA" />
+                <ScalarProperty Name="NM_CANTON" ColumnName="NM_CANTON" />
+                <ScalarProperty Name="NM_PARROQUIA" ColumnName="NM_PARROQUIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="gestion">
+            <EntityTypeMapping TypeName="OPERADBModel.gestion">
+              <MappingFragment StoreEntitySet="gestion">
+                <ScalarProperty Name="estado_catalogo" ColumnName="estado_catalogo" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nm" ColumnName="nm" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cartero">
+            <EntityTypeMapping TypeName="OPERADBModel.cartero">
+              <MappingFragment StoreEntitySet="cartero">
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nm_cartero" ColumnName="nm_cartero" />
+                <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="destinatario">
+            <EntityTypeMapping TypeName="OPERADBModel.destinatario">
+              <MappingFragment StoreEntitySet="destinatario">
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="interseccion" ColumnName="interseccion" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="calle_principal" ColumnName="calle_principal" />
+                <ScalarProperty Name="parroquia" ColumnName="parroquia" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="destinatario1" ColumnName="destinatario" />
+                <ScalarProperty Name="identificador_paquete" ColumnName="identificador_paquete" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="manifiesto_entrega">
+            <EntityTypeMapping TypeName="OPERADBModel.manifiesto_entrega">
+              <MappingFragment StoreEntitySet="manifiesto_entrega">
+                <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="codigo_manifiesto" ColumnName="codigo_manifiesto" />
+                <ScalarProperty Name="id_cartero" ColumnName="id_cartero" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paquete">
+            <EntityTypeMapping TypeName="OPERADBModel.paquete">
+              <MappingFragment StoreEntitySet="paquete">
+                <ScalarProperty Name="id_orden_servicio" ColumnName="id_orden_servicio" />
+                <ScalarProperty Name="dato_adicional2" ColumnName="dato_adicional2" />
+                <ScalarProperty Name="dato_adicional1" ColumnName="dato_adicional1" />
+                <ScalarProperty Name="guia_generada" ColumnName="guia_generada" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_oficina_ultm_evento" ColumnName="id_oficina_ultm_evento" />
+                <ScalarProperty Name="id_ultm_evento" ColumnName="id_ultm_evento" />
+                <ScalarProperty Name="fecha_ultimo_evento" ColumnName="fecha_ultimo_evento" />
+                <ScalarProperty Name="id_oficina_carga" ColumnName="id_oficina_carga" />
+                <ScalarProperty Name="fecha_evento_carga" ColumnName="fecha_evento_carga" />
+                <ScalarProperty Name="peso_volumentrico" ColumnName="peso_volumentrico" />
+                <ScalarProperty Name="profundidad" ColumnName="profundidad" />
+                <ScalarProperty Name="ancho" ColumnName="ancho" />
+                <ScalarProperty Name="alto" ColumnName="alto" />
+                <ScalarProperty Name="monto_seguro" ColumnName="monto_seguro" />
+                <ScalarProperty Name="tipo_contenido" ColumnName="tipo_contenido" />
+                <ScalarProperty Name="seguro" ColumnName="seguro" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
+                <ScalarProperty Name="identificador" ColumnName="identificador" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contrato">
+            <EntityTypeMapping TypeName="OPERADBModel.contrato">
+              <MappingFragment StoreEntitySet="contrato">
+                <ScalarProperty Name="renovacion" ColumnName="renovacion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="id_asesor" ColumnName="id_asesor" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="evento">
+            <EntityTypeMapping TypeName="OPERADBModel.evento">
+              <MappingFragment StoreEntitySet="evento">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="observacion2" ColumnName="observacion2" />
+                <ScalarProperty Name="observacion1" ColumnName="observacion1" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+                <ScalarProperty Name="id_tipo_evento" ColumnName="id_tipo_evento" />
+                <ScalarProperty Name="identificador_paquete" ColumnName="identificador_paquete" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="evento_orden_servicio">
+            <EntityTypeMapping TypeName="OPERADBModel.evento_orden_servicio">
+              <MappingFragment StoreEntitySet="evento_orden_servicio">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+                <ScalarProperty Name="id_tipo_evento" ColumnName="id_tipo_evento" />
+                <ScalarProperty Name="id_orden_servicio" ColumnName="id_orden_servicio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario_contrato">
+            <EntityTypeMapping TypeName="OPERADBModel.usuario_contrato">
+              <MappingFragment StoreEntitySet="usuario_contrato">
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_contrato" ColumnName="id_contrato" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPR_GENERAR_COD_MANIFIESTO_ENTREGA" FunctionName="OPERADBModel.Store.SPR_GENERAR_COD_MANIFIESTO_ENTREGA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_GENERAR_COD_MANIFIESTO_ENTREGA_Result">
+                <ScalarProperty Name="codigo_manifiesto" ColumnName="codigo_manifiesto" />
+                <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="proceso_tmp">
+            <EntityTypeMapping TypeName="OPERADBModel.proceso_tmp">
+              <MappingFragment StoreEntitySet="proceso_tmp">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="proceso_id" ColumnName="proceso_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lista_manifiesto">
+            <EntityTypeMapping TypeName="OPERADBModel.lista_manifiesto">
+              <MappingFragment StoreEntitySet="lista_manifiesto">
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="identificador_paquete" ColumnName="identificador_paquete" />
+                <ScalarProperty Name="id_manifiesto" ColumnName="id_manifiesto" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPR_INSERTAR_LISTA_MANIFIESTO" FunctionName="OPERADBModel.Store.SPR_INSERTAR_LISTA_MANIFIESTO" />
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_MANIFIESTO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_MANIFIESTO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_MANIFIESTO_Result">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="cartero" ColumnName="cartero" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="destinatario" ColumnName="destinatario" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="oficina" ColumnName="oficina" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_EVENTOS" FunctionName="OPERADBModel.Store.SPR_CONSULTA_EVENTOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_EVENTOS_Result">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="identificador" ColumnName="identificador" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="gestion" ColumnName="gestion" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="oficina" ColumnName="oficina" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="entrega">
+            <EntityTypeMapping TypeName="OPERADBModel.entrega">
+              <MappingFragment StoreEntitySet="entrega">
+                <ScalarProperty Name="registro_fotografico" ColumnName="registro_fotografico" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="direccion_actualizada" ColumnName="direccion_actualizada" />
+                <ScalarProperty Name="control_dir_entrega" ColumnName="control_dir_entrega" />
+                <ScalarProperty Name="locacion_entrega" ColumnName="locacion_entrega" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="identificacion_receptor" ColumnName="identificacion_receptor" />
+                <ScalarProperty Name="receptor" ColumnName="receptor" />
+                <ScalarProperty Name="hora_entrega" ColumnName="hora_entrega" />
+                <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="identificador_paquete" ColumnName="identificador_paquete" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ENVIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ENVIO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ENVIO_Result">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="identificador" ColumnName="identificador" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
+                <ScalarProperty Name="fecha_evento_carga" ColumnName="fecha_evento_carga" />
+                <ScalarProperty Name="fecha_ultimo_evento" ColumnName="fecha_ultimo_evento" />
+                <ScalarProperty Name="destinatario" ColumnName="destinatario" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="ultima_gestion" ColumnName="ultima_gestion" />
+                <ScalarProperty Name="oficina" ColumnName="oficina" />
+                <ScalarProperty Name="orden_servicio" ColumnName="orden_servicio" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="receptor" ColumnName="receptor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ORDENES_SERVICIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ORDENES_SERVICIO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ORDENES_SERVICIO_Result">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo_orden_servicio" ColumnName="codigo_orden_servicio" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="servicio" ColumnName="servicio" />
+                <ScalarProperty Name="fecha_carga" ColumnName="fecha_carga" />
+                <ScalarProperty Name="oficina_carga" ColumnName="oficina_carga" />
+                <ScalarProperty Name="numero_registros_cargados" ColumnName="numero_registros_cargados" />
+                <ScalarProperty Name="usuario_carga" ColumnName="usuario_carga" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="fecha_ultima_gestion" ColumnName="fecha_ultima_gestion" />
+                <ScalarProperty Name="usuario_ultima_transaccion" ColumnName="usuario_ultima_transaccion" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+                <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ENVIO_GUIAS" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ENVIO_GUIAS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ENVIO_GUIAS_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
+                <ScalarProperty Name="destinatario" ColumnName="destinatario" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

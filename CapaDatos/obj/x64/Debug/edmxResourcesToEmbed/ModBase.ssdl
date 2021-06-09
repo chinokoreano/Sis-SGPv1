@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OPERADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="tipo_identificacion" Type="int" />
+    <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
+    <Property Name="nm_cliente" Type="varchar" MaxLength="100" />
+    <Property Name="nm_cliente_corto" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="destinatario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_paquete" Type="uniqueidentifier" />
+    <Property Name="destinatario" Type="varchar" MaxLength="200" />
+    <Property Name="provincia" Type="int" />
+    <Property Name="canton" Type="int" />
+    <Property Name="parroquia" Type="int" />
+    <Property Name="calle_principal" Type="varchar" MaxLength="200" />
+    <Property Name="numero" Type="varchar" MaxLength="50" />
+    <Property Name="interseccion" Type="varchar" MaxLength="100" />
+    <Property Name="referencia" Type="varchar" MaxLength="100" />
+    <Property Name="codigo_postal" Type="varchar" MaxLength="30" />
+    <Property Name="latitud" Type="int" />
+    <Property Name="longitud" Type="int" />
+  </EntityType>
+  <EntityType Name="oficina">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm_oficina" Type="varchar" MaxLength="200" />
+    <Property Name="codigo_oficina" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="int" />
+    <Property Name="fecha_registro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="orden_servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo_orden_servicio" Type="varchar" MaxLength="50" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="id_tipo_servicio" Type="int" />
+    <Property Name="fecha_carga" Type="datetime" />
+    <Property Name="numero_registros_cargados" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="estado" Type="int" />
+    <Property Name="detalle" Type="varchar" MaxLength="100" />
+    <Property Name="fecha_ultima_gestion" Type="datetime" />
+    <Property Name="id_usuario_ultima_gestion" Type="int" />
+    <Property Name="id_oficina_carga" Type="int" />
+    <Property Name="id_provincia_carga" Type="varchar" MaxLength="10" />
+    <Property Name="id_canton_carga" Type="varchar" MaxLength="10" />
+    <Property Name="id_contrato" Type="int" />
+  </EntityType>
+  <EntityType Name="paquete">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="identificador" Type="uniqueidentifier" />
+    <Property Name="codigo_alterno" Type="varchar" MaxLength="50" />
+    <Property Name="peso" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="seguro" Type="char" MaxLength="1" />
+    <Property Name="tipo_contenido" Type="char" MaxLength="1" />
+    <Property Name="monto_seguro" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="alto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ancho" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="profundidad" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="peso_volumentrico" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fecha_evento_carga" Type="datetime" />
+    <Property Name="id_oficina_carga" Type="int" />
+    <Property Name="fecha_ultimo_evento" Type="datetime" />
+    <Property Name="id_ultm_evento" Type="int" />
+    <Property Name="id_oficina_ultm_evento" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="guia_generada" Type="char" MaxLength="1" />
+    <Property Name="dato_adicional1" Type="varchar" MaxLength="100" />
+    <Property Name="dato_adicional2" Type="varchar" MaxLength="100" />
+    <Property Name="id_orden_servicio" Type="int" />
+  </EntityType>
+  <EntityType Name="parametro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm_descriptivo" Type="varchar" MaxLength="100" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="valor1" Type="varchar" MaxLength="300" />
+    <Property Name="valor2" Type="varchar" MaxLength="50" />
+    <Property Name="valor3" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nm_servicio" Type="varchar" MaxLength="30" />
+    <Property Name="prefijo" Type="varchar" MaxLength="5" />
+    <Property Name="secuencia_inicial" Type="int" />
+    <Property Name="secuencia_actual" Type="int" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tipo_documento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nm" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="ubicacion_geografica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_provincia" Type="varchar" MaxLength="5" />
+    <Property Name="id_canton" Type="varchar" MaxLength="5" />
+    <Property Name="id_parroquia" Type="varchar" MaxLength="5" />
+    <Property Name="nm_provincia" Type="varchar" MaxLength="100" />
+    <Property Name="nm_canton" Type="varchar" MaxLength="100" />
+    <Property Name="nm_parroquia" Type="varchar" MaxLength="100" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nm" Type="varchar" MaxLength="100" />
+    <Property Name="tipo_documento" Type="int" />
+    <Property Name="numero_documento" Type="varchar" MaxLength="30" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" />
+    <Property Name="activo" Type="bit" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="fecha_ultm_act" Type="datetime" />
+    <Property Name="usuario" Type="varchar" MaxLength="30" />
+    <Property Name="tipo_usuario" Type="int" />
+    <Property Name="contrasenia" Type="varchar" MaxLength="30" />
+    <Property Name="fecha_ultm_act_contrasenia" Type="datetime" />
+    <Property Name="fecha_ultm_autenticacion" Type="datetime" />
+    <Property Name="id_oficina" Type="int" />
+  </EntityType>
+  <Association Name="FK_usuario_oficina">
+    <End Role="oficina" Type="Self.oficina" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="oficina">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="id_oficina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SPR_CONSULTA_ORDENES_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="opcion" Type="int" Mode="In" />
+    <Parameter Name="id_usuario" Type="int" Mode="In" />
+    <Parameter Name="orden_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_UBICACIONES_GEOGRAFICAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="opcion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPR_CONSULTA_USUARIO_CONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="opcion" Type="int" Mode="In" />
+    <Parameter Name="id_usuario" Type="int" Mode="In" />
+    <Parameter Name="numero_identificacion" Type="varchar" Mode="In" />
+    <Parameter Name="nm_cliente" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="OPERADBModelStoreContainer">
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="destinatario" EntityType="Self.destinatario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oficina" EntityType="Self.oficina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden_servicio" EntityType="Self.orden_servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paquete" EntityType="Self.paquete" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ubicacion_geografica" EntityType="Self.ubicacion_geografica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_usuario_oficina" Association="Self.FK_usuario_oficina">
+      <End Role="oficina" EntitySet="oficina" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

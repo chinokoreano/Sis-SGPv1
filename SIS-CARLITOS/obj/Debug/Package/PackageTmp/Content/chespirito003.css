@@ -1,0 +1,428 @@
+﻿/*Fuentes para avísalo*/
+@font-face {
+    font-family: 'FuturaBQ-BoldOblique';
+    src: url('/fonts/FuturaBQ-BoldOblique.otf') format('opentype');
+}
+
+
+/*////////////////////////////////////////////
+/// ESTILOS PARA EL FOOTER Y LAS TABLAS    ///
+////////////////////////////////////////////*/
+
+#Background {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: #F9F9F9;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    z-index: 100000;
+}
+
+
+#Progress2 {
+    position: fixed;
+    top: 35%;
+    left: 35%;
+    height: 30%;
+    width: 30%;
+    z-index: 100001;
+    background-color: #FFFFFF;
+    /*border: 1px solid Gray;*/
+    background-image: url('gif/carta2.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#Progress {
+    font-size: 25px;
+    text-align: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-position-y: 50%;
+    background-position-x: center;
+    z-index: 100001;
+    background-image: url('/Content/cdeSource/gif/043_success-mail.gif');
+    background-repeat: no-repeat;
+    left: 0;
+    top: 0;
+}
+
+    #Progress .typewrite {
+        position: relative;
+        font-size: 30px;
+        top: 25%;
+        font-family: 'Cutive';
+        text-decoration: none;
+        color: #546e7a;
+    }
+
+@media screen and (max-width: 780px) {
+    #Progress {
+        background-size: 60%;
+    }
+
+        #Progress .typewrite {
+            font-size: 25px;
+        }
+}
+
+#Loader {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: #F0F0F0;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    z-index: 100000;
+    background-image: url('cdeSource/gif/loader.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.footerN {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    color: #557FAA;
+    background-color: #ddd;
+}
+
+.footerTarjetas {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    /*color: #557FAA;
+    background-color: #ddd;*/
+}
+
+.footerNe {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.bg-direccion {
+    position: absolute;
+    /*;*/
+    width: 50%;
+    height: 50%;
+    top: 17%;
+    right: 5px;
+    background-image: url('cdeSource/img/Domicilio-mensaje.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.bg-registro {
+    position: absolute;
+    /*;*/
+    width: 40%;
+    height: 40%;
+    top: 20%;
+    right: 10%;
+    background-image: url('cdeSource/img/Registro.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.bg-preAlerta {
+    position: absolute;
+    /*;*/
+    width: 40%;
+    height: 40%;
+    top: 20%;
+    right: 10%;
+    background-image: url('cdeSource/img/IngreseCodigo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.bg-restablecer {
+    position: absolute;
+    /*;*/
+    width: 40%;
+    height: 40%;
+    top: 20%;
+    right: 10%;
+    background-image: url('cdeSource/img/Restablecer.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.img-tabla {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+}
+
+/*------------------------------------------------------*/
+/*                                                      */
+/*          ESTILOS PARA EL GRID VIEW DE ASP NET        */
+/*                                                      */
+/*------------------------------------------------------*/
+
+.div-formualario {
+    padding: 5px 0px 5px 0px;
+}
+
+.tabla_datos {
+    font-size: 12px;
+}
+
+    .tabla_datos th {
+        background-color: navy;
+        font-size: 12px;
+        font-weight: bolder;
+        height: 50px;
+        /*border-left-width: 2px !important;
+        border-left-color: white !important;*/
+        color: white;
+    }
+
+    .tabla_datos .row-style {
+        /*background-color: #F4FAFA; /*BackColor="#F4FAFA"*/
+        color: #333333;
+    }
+
+    .tabla_datos .alernativedRow-style {
+        background-color: #FFF3B0;
+        color: #284775;
+    }
+
+    .tabla_datos td, .tabla_datos th {
+        border-width: 0.5px;
+        padding: 5px 7px 5px 7px;
+    }
+
+    .tabla_datos .selectedRow-style {
+        background-color: #E2DED6;
+        font-weight: bold;
+        color: #333333;
+    }
+
+    .tabla_datos .editRow-style {
+        background-color: #cccccc;
+    }
+
+    .tabla_datos .pager-style {
+        background-color: #e5e5e5;
+        color: #00528E;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .tabla_datos .footer-style {
+        background-color: #cacaca;
+        color: #333333;
+    }
+    /*label-grid*/
+    .tabla_datos .label_grid {
+        color: #2A5FAA;
+        border: none;
+        font-style: italic;
+    }
+
+    .tabla_datos .control_grid {
+        /*color: #2A5FAA;
+        border: solid 1px #007FFF;
+        font-style: italic;*/
+        width: 100%;
+        resize: none;
+    }
+
+    .tabla_datos .img-button {
+        float: right;
+        padding-right: 10px;
+    }
+
+    .tabla_datos th a {
+        color: #00528E;
+        text-decoration: none;
+    }
+
+    .tabla_datos a {
+        color: #8c8b8b;
+        text-decoration: underline;
+    }
+
+    .tabla_datos .glyphicon {
+        color: #00528E;
+    }
+
+.cabecera_delgada .tabla_datos th {
+    height: 20px
+}
+
+
+.centrar_th_col_1 th:nth-child(1),
+.centrar_th_col_2 th:nth-child(2),
+.centrar_th_col_3 th:nth-child(3),
+.centrar_th_col_4 th:nth-child(4),
+.centrar_th_col_5 th:nth-child(5),
+.centrar_th_col_6 th:nth-child(6),
+.centrar_th_col_7 th:nth-child(7),
+.centrar_th_col_8 th:nth-child(8),
+.centrar_th_col_9 th:nth-child(9),
+.centrar_th_col_10 th:nth-child(10),
+.centrar_th_col_11 th:nth-child(11),
+.centrar_th_col_12 th:nth-child(12) {
+    text-align: center
+}
+
+.centrar_col_1 td:nth-child(1),
+.centrar_col_2 td:nth-child(2),
+.centrar_col_3 td:nth-child(3),
+.centrar_col_4 td:nth-child(4),
+.centrar_col_5 td:nth-child(5),
+.centrar_col_6 td:nth-child(6),
+.centrar_col_7 td:nth-child(7),
+.centrar_col_8 td:nth-child(8),
+.centrar_col_9 td:nth-child(9),
+.centrar_col_10 td:nth-child(10),
+.centrar_col_11 td:nth-child(11),
+.centrar_col_12 td:nth-child(12) {
+    text-align: center
+}
+
+.cent_col_1 .tabla_datos td:nth-child(1),
+.cent_col_2 .tabla_datos td:nth-child(2),
+.cent_col_3 .tabla_datos td:nth-child(3),
+.cent_col_4 .tabla_datos td:nth-child(4),
+.cent_col_5 .tabla_datos td:nth-child(5),
+.cent_col_6 .tabla_datos td:nth-child(6),
+.cent_col_7 .tabla_datos td:nth-child(7),
+.cent_col_8 .tabla_datos td:nth-child(8),
+.cent_col_9 .tabla_datos td:nth-child(9),
+.cent_col_10 .tabla_datos td:nth-child(10),
+.cent_col_11 .tabla_datos td:nth-child(11),
+.cent_col_12 .tabla_datos td:nth-child(12) {
+    text-align: center
+}
+
+.esc_col_1 .tabla_datos th:nth-child(1),
+.esc_col_1 .tabla_datos td:nth-child(1),
+.esc_col_2 .tabla_datos th:nth-child(2),
+.esc_col_2 .tabla_datos td:nth-child(2),
+.esc_col_3 .tabla_datos th:nth-child(3),
+.esc_col_3 .tabla_datos td:nth-child(3),
+.esc_col_4 .tabla_datos th:nth-child(4),
+.esc_col_4 .tabla_datos td:nth-child(4),
+.esc_col_5 .tabla_datos th:nth-child(5),
+.esc_col_5 .tabla_datos td:nth-child(5),
+.esc_col_6 .tabla_datos th:nth-child(6),
+.esc_col_6 .tabla_datos td:nth-child(6),
+.esc_col_7 .tabla_datos th:nth-child(7),
+.esc_col_7 .tabla_datos td:nth-child(7),
+.esc_col_8 .tabla_datos th:nth-child(8),
+.esc_col_8 .tabla_datos td:nth-child(8),
+.esc_col_9 .tabla_datos th:nth-child(9),
+.esc_col_9 .tabla_datos td:nth-child(9),
+.esc_col_10 .tabla_datos th:nth-child(10),
+.esc_col_10 .tabla_datos td:nth-child(10),
+.esc_col_11 .tabla_datos th:nth-child(11),
+.esc_col_11 .tabla_datos td:nth-child(11),
+.esc_col_12 .tabla_datos th:nth-child(12),
+.esc_col_12 .tabla_datos td:nth-child(12) {
+    display: none
+}
+
+@media (min-width: 992px) {
+    .modal-xl {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .tabla_datos .form-control {
+        width: 150px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .tabla_datos .form-control {
+        max-width: 100px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .tabla_datos .form-control {
+        max-width: 200px;
+    }
+}
+
+
+.w-100_important {
+    width: 100% !important;
+}
+
+.fila_inverse {
+    background-color: #E0E0E0 !important;
+    color: #4e4a4a;
+}
+
+/*//////////////////////////////////////////////////////////
+///    Para hacer scroll en el cuerpo de la tabla       ///
+//////////////////////////////////////////////////////////*/
+
+.tabla-scroll tbody,
+.tabla-scroll thead {
+    display: block;
+}
+
+
+.tabla-scroll tbody {
+    max-height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+    .tabla-scroll tbody td, thead th {
+        width: 20%;
+    }
+
+        .tabla-scroll tbody td:last-child, thead th:last-child {
+            border-right: none;
+            text-align: center !important;
+        }
+
+
+
+.ph-card-header {
+    color: white !important;
+    background-color: navy !important;
+}
+
+.ph-card-body {
+    background-color: white !important;
+}
+
+.nav_shadow01 {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.25);
+}
