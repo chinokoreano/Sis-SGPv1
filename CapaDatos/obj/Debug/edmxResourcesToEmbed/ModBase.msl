@@ -39,27 +39,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="usuario">
-      <EntityTypeMapping TypeName="OPERADBModel.usuario">
-        <MappingFragment StoreEntitySet="usuario">
-          <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
-          <ScalarProperty Name="fecha_ultm_autenticacion" ColumnName="fecha_ultm_autenticacion" />
-          <ScalarProperty Name="fecha_ultm_act_contrasenia" ColumnName="fecha_ultm_act_contrasenia" />
-          <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
-          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
-          <ScalarProperty Name="usuario1" ColumnName="usuario" />
-          <ScalarProperty Name="fecha_ultm_act" ColumnName="fecha_ultm_act" />
-          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-          <ScalarProperty Name="activo" ColumnName="activo" />
-          <ScalarProperty Name="telefono" ColumnName="telefono" />
-          <ScalarProperty Name="direccion" ColumnName="direccion" />
-          <ScalarProperty Name="numero_documento" ColumnName="numero_documento" />
-          <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
-          <ScalarProperty Name="nm" ColumnName="nm" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="parametro">
       <EntityTypeMapping TypeName="OPERADBModel.parametro">
         <MappingFragment StoreEntitySet="parametro">
@@ -233,22 +212,6 @@
           <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
           <ScalarProperty Name="identificador" ColumnName="identificador" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="contrato">
-      <EntityTypeMapping TypeName="OPERADBModel.contrato">
-        <MappingFragment StoreEntitySet="contrato">
-          <ScalarProperty Name="renovacion" ColumnName="renovacion" />
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
-          <ScalarProperty Name="id_asesor" ColumnName="id_asesor" />
-          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-          <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -439,5 +402,76 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="OPERADBModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="contrasenia_encriptada" ColumnName="contrasenia_encriptada" />
+          <ScalarProperty Name="cambio_contrasenia" ColumnName="cambio_contrasenia" />
+          <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+          <ScalarProperty Name="fecha_ultm_autenticacion" ColumnName="fecha_ultm_autenticacion" />
+          <ScalarProperty Name="fecha_ultm_act_contrasenia" ColumnName="fecha_ultm_act_contrasenia" />
+          <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="fecha_ultm_act" ColumnName="fecha_ultm_act" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="numero_documento" ColumnName="numero_documento" />
+          <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SPR_CONSULTA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_CONSULTA_CREDENCIALES" />
+    <FunctionImportMapping FunctionImportName="SPR_ACTUALIZA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_ACTUALIZA_CREDENCIALES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result">
+          <ScalarProperty Name="RESULTADO" ColumnName="RESULTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="contrato">
+      <EntityTypeMapping TypeName="OPERADBModel.contrato">
+        <MappingFragment StoreEntitySet="contrato">
+          <ScalarProperty Name="renovacion" ColumnName="renovacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="id_asesor" ColumnName="id_asesor" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="asesor_comercial">
+      <EntityTypeMapping TypeName="OPERADBModel.asesor_comercial">
+        <MappingFragment StoreEntitySet="asesor_comercial">
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_usuario">
+      <EntityTypeMapping TypeName="OPERADBModel.tipo_usuario">
+        <MappingFragment StoreEntitySet="tipo_usuario">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

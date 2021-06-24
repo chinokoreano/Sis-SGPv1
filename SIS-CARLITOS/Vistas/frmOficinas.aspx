@@ -28,19 +28,27 @@
                                 <dx:GridViewCommandColumn ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0">
                                 </dx:GridViewCommandColumn>
                                 <dx:GridViewDataTextColumn FieldName="id" ReadOnly="True" VisibleIndex="1" Caption="Id">
+                                    <EditFormSettings Visible="False" />
                                 </dx:GridViewDataTextColumn>
                                 <dx:GridViewDataTextColumn FieldName="nm_oficina" VisibleIndex="2" Caption="Oficina"></dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="codigo_oficina" VisibleIndex="3" Caption="Código"></dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="estado" VisibleIndex="4" Caption="Estado"></dx:GridViewDataTextColumn>
+                                <dx:GridViewDataTextColumn FieldName="codigo_oficina" VisibleIndex="3" Caption="Codigo"></dx:GridViewDataTextColumn>
+                               <%-- <dx:GridViewDataTextColumn FieldName="estado" VisibleIndex="4" Caption="Estado"></dx:GridViewDataTextColumn>--%>
+                                 <dx:GridViewDataComboBoxColumn FieldName="estado" Caption="Estado" SortIndex="0" SortOrder="Ascending" AdaptivePriority="1" Settings-AllowAutoFilter="Default" Settings-AllowFilterBySearchPanel="True" VisibleIndex="5">
+                                    <PropertiesComboBox DataSourceID="dsEstado" ValueField="id" TextField="nm" ValueType="System.Int32" />
+                                    <Settings AllowHeaderFilter="True" AllowAutoFilter="False" SortMode="DisplayText" />
+                                    <SettingsHeaderFilter Mode="CheckedList" />
+                                </dx:GridViewDataComboBoxColumn>
                                 <dx:GridViewDataDateColumn FieldName="fecha_registro" VisibleIndex="5" Caption="Fecha registro"></dx:GridViewDataDateColumn>
                             </Columns>
                         </dx:ASPxGridView>
-                        <asp:SqlDataSource ID="dsOficinas" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [oficina] WHERE [id] = @id" InsertCommand="INSERT INTO [oficina] ([id], [nm_oficina], [codigo_oficina], [estado], [fecha_registro]) VALUES (@id, @nm_oficina, @codigo_oficina, @estado, @fecha_registro)" SelectCommand="SELECT [id], [nm_oficina], [codigo_oficina], [estado], [fecha_registro] FROM [oficina]" UpdateCommand="UPDATE [oficina] SET [nm_oficina] = @nm_oficina, [codigo_oficina] = @codigo_oficina, [estado] = @estado, [fecha_registro] = @fecha_registro WHERE [id] = @id">
+                        <asp:SqlDataSource ID="dsEstado" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" SelectCommand="SELECT * FROM [estado]">
+                        </asp:SqlDataSource>
+                        <asp:SqlDataSource ID="dsOficinas" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [oficina] WHERE [id] = @id" InsertCommand="INSERT INTO [oficina] ([nm_oficina], [codigo_oficina], [estado], [fecha_registro]) VALUES (@nm_oficina, @codigo_oficina, @estado, getdate())" SelectCommand="SELECT * FROM [oficina]" UpdateCommand="UPDATE [oficina] SET [nm_oficina] = @nm_oficina, [codigo_oficina] = @codigo_oficina, [estado] = @estado, [fecha_registro] = @fecha_registro WHERE [id] = @id">
+                            
                             <DeleteParameters>
                                 <asp:Parameter Name="id" Type="Int32" />
                             </DeleteParameters>
                             <InsertParameters>
-                                <asp:Parameter Name="id" Type="Int32" />
                                 <asp:Parameter Name="nm_oficina" Type="String" />
                                 <asp:Parameter Name="codigo_oficina" Type="String" />
                                 <asp:Parameter Name="estado" Type="Int32" />

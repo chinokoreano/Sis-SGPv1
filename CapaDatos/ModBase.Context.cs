@@ -30,7 +30,6 @@ namespace CapaEntidad
         public virtual DbSet<cliente> cliente { get; set; }
         public virtual DbSet<servicio> servicio { get; set; }
         public virtual DbSet<tipo_documento> tipo_documento { get; set; }
-        public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<parametro> parametro { get; set; }
         public virtual DbSet<orden_servicio> orden_servicio { get; set; }
         public virtual DbSet<oficina> oficina { get; set; }
@@ -40,13 +39,16 @@ namespace CapaEntidad
         public virtual DbSet<destinatario> destinatario { get; set; }
         public virtual DbSet<manifiesto_entrega> manifiesto_entrega { get; set; }
         public virtual DbSet<paquete> paquete { get; set; }
-        public virtual DbSet<contrato> contrato { get; set; }
         public virtual DbSet<evento> evento { get; set; }
         public virtual DbSet<evento_orden_servicio> evento_orden_servicio { get; set; }
         public virtual DbSet<usuario_contrato> usuario_contrato { get; set; }
         public virtual DbSet<proceso_tmp> proceso_tmp { get; set; }
         public virtual DbSet<lista_manifiesto> lista_manifiesto { get; set; }
         public virtual DbSet<entrega> entrega { get; set; }
+        public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<contrato> contrato { get; set; }
+        public virtual DbSet<asesor_comercial> asesor_comercial { get; set; }
+        public virtual DbSet<tipo_usuario> tipo_usuario { get; set; }
     
         public virtual ObjectResult<SPR_CONSULTA_USUARIO_CONTRATO_Result> SPR_CONSULTA_USUARIO_CONTRATO(Nullable<int> opcion, Nullable<int> id_usuario, string numero_identificacion, string nm_cliente)
         {
@@ -199,6 +201,28 @@ namespace CapaEntidad
                 new ObjectParameter("ID_ORDEN", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_CONSULTA_ENVIO_GUIAS_Result>("SPR_CONSULTA_ENVIO_GUIAS", oPCIONParameter, iD_ORDENParameter);
+        }
+    
+        public virtual ObjectResult<string> SPR_CONSULTA_CREDENCIALES(Nullable<int> iD_USUARIO)
+        {
+            var iD_USUARIOParameter = iD_USUARIO.HasValue ?
+                new ObjectParameter("ID_USUARIO", iD_USUARIO) :
+                new ObjectParameter("ID_USUARIO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SPR_CONSULTA_CREDENCIALES", iD_USUARIOParameter);
+        }
+    
+        public virtual ObjectResult<SPR_ACTUALIZA_CREDENCIALES_Result> SPR_ACTUALIZA_CREDENCIALES(Nullable<int> iD_USUARIO, string cONTRASENIA)
+        {
+            var iD_USUARIOParameter = iD_USUARIO.HasValue ?
+                new ObjectParameter("ID_USUARIO", iD_USUARIO) :
+                new ObjectParameter("ID_USUARIO", typeof(int));
+    
+            var cONTRASENIAParameter = cONTRASENIA != null ?
+                new ObjectParameter("CONTRASENIA", cONTRASENIA) :
+                new ObjectParameter("CONTRASENIA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACTUALIZA_CREDENCIALES_Result>("SPR_ACTUALIZA_CREDENCIALES", iD_USUARIOParameter, cONTRASENIAParameter);
         }
     }
 }

@@ -19,22 +19,22 @@ namespace SIS_CARLITOS
                 Response.Redirect(strUlrAutenticacion);
             }
 
-            if (Session["IdTipoUsuario"].ToString() == "0")
+            if (Session["IdTipoUsuario"].ToString() == "0")//ADMINISTRADOR
             {
                 mnu_administracion.Visible = true;
                 mnu_procesos.Visible = true;
             }
 
-            if (Session["IdTipoUsuario"].ToString() == "2")
-            {
-                mnu_administracion.Visible = false;
-                mnu_procesos.Visible = false;
-            }
-
-            if (Session["IdTipoUsuario"].ToString() == "3")
+            if (Session["IdTipoUsuario"].ToString() == "1")//1 OPERADOR
             {
                 mnu_administracion.Visible = false;
                 mnu_procesos.Visible = true;
+            }
+
+            if (Session["IdTipoUsuario"].ToString() == "2")//CORPORATIVO
+            {
+                mnu_administracion.Visible = false;
+                mnu_procesos.Visible = false;
             }
             lblOficina.Text = Session["Oficina"].ToString() + "&nbsp;";
             lblUsuario.Text = Session["Usuario"].ToString() + "&nbsp;";

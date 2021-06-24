@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace SIS_CARLITOS.Recursos
 {
@@ -67,6 +68,8 @@ namespace SIS_CARLITOS.Recursos
             return true;
         }
 
+       
+        
     }
     
 }

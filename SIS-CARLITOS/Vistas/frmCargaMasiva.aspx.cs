@@ -155,7 +155,9 @@ namespace SIS_CARLITOS.Vistas
                     usuario oUsuario = new usuario();
                     oUsuario.id = int.Parse(Session["IdUsuario"].ToString());
                     
-                    oResultado = oClienteCN.FnConsultarClientesContratos(2,oUsuario, oCliente);
+                    oResultado = oClienteCN.FnConsultarClientesContratos(1, oUsuario, oCliente);
+                    
+                    
                     
                     Session["ListaClientes"] = oResultado;
                     
@@ -178,9 +180,40 @@ namespace SIS_CARLITOS.Vistas
         {
             string strRutaArchivoCargado = string.Empty;
             DataTable dt = new DataTable();
-
+            lblMensaje1.Visible = false;
             try
             {
+
+                if (String.IsNullOrEmpty(txtIdCliente.Text.Trim()) || string.IsNullOrEmpty(txtCliente.Text.Trim())||
+                    String.IsNullOrEmpty(txtIdentificacion.Text.Trim()))
+                  
+                {
+                    lblMensaje1.Visible = true;
+                    lblMensaje1.Attributes.Add("class", "btn btn-danger");
+                    lblMensaje1.Text = "Por favor seleccione el cliente";
+                    return;
+
+                }
+
+
+                if (cmbLocalidad.SelectedIndex == -1)
+                {
+                    lblMensaje1.Visible = true;
+                    lblMensaje1.Attributes.Add("class", "btn btn-danger");
+                    lblMensaje1.Text = "Por favor seleccione la locación";
+                    return;
+
+                }
+
+                if (string.IsNullOrEmpty(txtObservacion.Text.Trim())) 
+                {
+                    lblMensaje1.Visible = true;
+                    lblMensaje1.Attributes.Add("class", "btn btn-danger");
+                    lblMensaje1.Text = "Por favor ingrese el detalle de la carga";
+                    return;
+
+                }
+
 
                 ParametroCN oParametroCN = new ParametroCN();
                 List<parametro> oResultado = new List<parametro>();
@@ -201,6 +234,10 @@ namespace SIS_CARLITOS.Vistas
                     FupArchivo.SaveAs(strRutaArchivoCargado + strNombreArchivo);
                     ArchivoCN oArchivoCN = new ArchivoCN();
                     dt = oArchivoCN.FnCargarArchivo(strNombreArchivo);
+
+                    DataTable dtDepurado = new DataTable();
+                    dtDepurado = oArchivoCN.FnDepuraDatos(dt); //Depuracion de caracteres especiales
+
                     PaqueteCN oPaqueteCN = new PaqueteCN();
                     Guid gLote = Guid.NewGuid();
 
@@ -221,16 +258,18 @@ namespace SIS_CARLITOS.Vistas
                     strIdProvinciaCarga = strUbicaionGeografica[0].ToString();
                     strIdCantonCarga = strUbicaionGeografica[1].ToString();
 
-                    oPaqueteCN.FnCargarDatosTablaTemporal(dt, gLote, intIdServicio,intIdUsuario, intIdCliente, strDetalleDeOrdenServicio,intIdOficina, strIdProvinciaCarga, strIdCantonCarga,intIdContrato);
+                    //Carga a tabla temporal
+                    oPaqueteCN.FnCargarDatosTablaTemporal(dtDepurado, gLote, intIdServicio,intIdUsuario, intIdCliente, strDetalleDeOrdenServicio,intIdOficina, strIdProvinciaCarga, strIdCantonCarga,intIdContrato);
 
                     Resultado oResultadoProceso = new Resultado();
                     oResultadoProceso = oPaqueteCN.FnProcesarCargaDatos(gLote);
 
                     if (oResultadoProceso.Codigo1 == "1")
                     {
-                        lblMensaje1.Visible = true;
-                        lblMensaje1.Attributes.Add("class", "btn btn-success");
-                        lblMensaje1.Text = "Orden de Servicio Generada: " + oResultadoProceso.Mensaje1;
+                        lblMensaje.Visible = true;
+                        lblMensaje.Attributes.Add("class", "btn btn-success");
+                        lblMensaje.Text = "Orden de Servicio Generada: " + oResultadoProceso.Mensaje1;
+                        btnGuardar.Visible = false;
                         return;
                     }
                     else
@@ -240,6 +279,13 @@ namespace SIS_CARLITOS.Vistas
                         lblMensaje1.Text = "Problemas al realizar proceso de carga: " + oResultadoProceso.Mensaje1;
                         return;
                     }
+                }
+                else
+                {
+                    lblMensaje1.Visible = true;
+                    lblMensaje1.Attributes.Add("class", "btn btn-danger");
+                    lblMensaje1.Text = "Por favor seleccione el archivo";
+                    return;
                 }
             }
             catch (Exception ex)

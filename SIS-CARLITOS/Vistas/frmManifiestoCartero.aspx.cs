@@ -179,6 +179,8 @@ namespace SIS_CARLITOS.Vistas
                     oResultadoReg = oProcesoCN.FnInsertarRegistro(oRegistro);
                     
                     intControl = intControl + int.Parse(oResultadoReg.Codigo1);
+
+                    
                 }
 
                 if (intControl >0)
@@ -203,12 +205,35 @@ namespace SIS_CARLITOS.Vistas
                         Resultado oResultadoInsListaManifiesto = new Resultado();
 
                         oResultadoInsListaManifiesto = oListaManifiestoCN.FnInsertaListaManifiesto(oManifiestoEntrega, oRegistro, 1);
-
+                        paquete objPaquete = new paquete();
+                        PaqueteCN oPaqueteCN = new PaqueteCN();
+                        paquete oResultadoBusq = new paquete();
                         if (int.Parse(oResultadoInsListaManifiesto.Codigo1)>0)
                         {
-                            //lblMensaje1.Visible = true;
-                            //lblMensaje1.Attributes.Add("class", "btn btn-success");
-                            //lblMensaje1.Text = "Manifiesto de Entrega No: " + oResultado.Mensaje1;
+                            foreach (var itm in ddlListado.Items)
+                            {
+
+                               
+                                objPaquete.codigo = itm.ToString();
+                               
+                                oResultadoBusq = oPaqueteCN.FnConsultarPaquete(objPaquete);
+
+                                evento objEvento = new evento();
+                                objEvento.identificador_paquete = oResultadoBusq.identificador;
+                                objEvento.id_oficina = int.Parse(Session["IdOficina"].ToString());
+                                objEvento.id_usuario = int.Parse(Session["IdUsuario"].ToString());
+                                objEvento.id_tipo_evento = 2;
+                                objEvento.observacion1 = "En proceso de distribución - Cartero: " + cmbCartero.SelectedItem.ToString();
+
+                                EventoCN oEvento = new EventoCN();
+                                oEvento.FnInsertarEvento(objEvento);
+
+                                oPaqueteCN.FnActualizarEventoPaquete(objPaquete, objEvento);
+
+                            }
+
+                            
+
                             lblMensaje1.Visible = false;
                             FnImprimir(oManifiestoEntrega);
                             return;

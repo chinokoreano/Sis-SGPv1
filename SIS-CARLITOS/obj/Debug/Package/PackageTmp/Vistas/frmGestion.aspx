@@ -6,12 +6,12 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <style>
-        .allUpper input {
-            text-transform: uppercase;
+    <script type="text/javascript">
+        function mostrar_procesar() {
+            document.getElementById('procesando_div').style.display = "";
+            setTimeout('document.images["procesando_gif"].src="../Imagenes/ajax-loader.gif"', 200);
         }
-    </style>
-
+    </script>
 
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -49,9 +49,12 @@
 
                                 <asp:Button ID="btnGrabar1" runat="server" class="btn btn-warning" OnClientClick="mostrar_procesar();" Text="Grabar" OnClick="btnGrabar1_Click" />
                             </div>
-                            <div class="col-sm-6" style="padding-bottom: 5px;">
+                            <div class="col-sm-3" style="padding-bottom: 5px;">
                                 <asp:Label ID="lblMensaje" runat="server" Visible="true" Text="" Style="margin-bottom: 10px;"></asp:Label>
 
+                            </div>
+                             <div class="col-sm-6" style="padding-bottom: 5px;">
+                                <asp:HyperLink ID="urlReporte" CssClass="btn btn-success" runat="server" Visible="false" Target="_blank">Desargar manifiesto generado</asp:HyperLink>
                             </div>
                         </div>
 
@@ -64,7 +67,7 @@
     <br />
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-            <div class="card border-dark" style="max-width: 100rem;">
+            <div class="card border-dark" style="max-width: 100rem;" runat="server" id="divListadoEnvios" visible="false">
                 <div class="card-header ph-card-header">Listado de envíos</div>
                 <div class="card-body" style="background-color: white">
                     <form>
@@ -81,11 +84,12 @@
                                 <asp:Label ID="lblTotalEnvios" runat="server" Text="" Visible="false"></asp:Label>
                             </div>
                             <div class="col-sm-3" style="padding-bottom: 5px;">
-                                <asp:Button ID="btnImprimirListado" class="btn btn-warning" Visible="false" runat="server" Text="Imprimir" OnClick="btnImprimirListado_Click" />
+                                <asp:Button ID="btnImprimirListado" class="btn btn-warning" Visible="false" OnClientClick="mostrar_procesar();" runat="server" Text="Imprimir" OnClick="btnImprimirListado_Click" />
+                                <span id="procesando_div" style="display: none; position: absolute; text-align: center">
+                            <img src="../Imagenes/ajax-loader.gif" id="procesando" alt="" />
+                        </span>
                             </div>
-                            <div class="col-sm-6" style="padding-bottom: 5px;">
-                                <asp:HyperLink ID="urlReporte" CssClass="btn btn-success" runat="server" Visible="false" Target="_blank">Desargar manifiesto generado</asp:HyperLink>
-                            </div>
+                           
                         </div>
                     </form>
                 </div>

@@ -46,6 +46,7 @@
                                 </dx:GridViewDataCheckColumn>
                                 <dx:GridViewDataDateColumn FieldName="fecha_ingreso" VisibleIndex="10" Caption="Fecha ingreso"></dx:GridViewDataDateColumn>
                                 <dx:GridViewDataDateColumn FieldName="fecha_ultm_act" readonly="true" VisibleIndex="11" Caption="Fecha act.">
+                                    <EditFormSettings Visible="False" />
                                 </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataTextColumn FieldName="usuario" VisibleIndex="12" Caption="Usuario">
                                 </dx:GridViewDataTextColumn>
@@ -59,13 +60,15 @@
                                 </dx:GridViewDataComboBoxColumn>
 
                                 <dx:GridViewDataTextColumn FieldName="contrasenia" VisibleIndex="13" Caption="Contrasenia">
+                                    <PropertiesTextEdit Password="True" Size="8">
+                                    </PropertiesTextEdit>
                                 </dx:GridViewDataTextColumn>
                                 <dx:GridViewDataDateColumn FieldName="fecha_ultm_act_contrasenia" Visible="false" VisibleIndex="14">
                                 </dx:GridViewDataDateColumn>
                                 <dx:GridViewDataDateColumn FieldName="fecha_ultm_autenticacion" visible="false" VisibleIndex="15">
                                 </dx:GridViewDataDateColumn>
-                                <%--<dx:GridViewDataTextColumn FieldName="id_oficina" VisibleIndex="15">
-                                </dx:GridViewDataTextColumn>--%>
+                                <dx:GridViewDataCheckColumn FieldName="cambio_contrasenia" VisibleIndex="16" Caption="Contraseña cambiada">
+                                </dx:GridViewDataCheckColumn>
                                 <dx:GridViewDataComboBoxColumn FieldName="id_oficina" Caption="Oficina" SortIndex="0" SortOrder="Ascending" AdaptivePriority="1" Settings-AllowAutoFilter="Default" Settings-AllowFilterBySearchPanel="True" VisibleIndex="5">
                                     <PropertiesComboBox DataSourceID="dsOficina" ValueField="id" TextField="nm_oficina" ValueType="System.Int32" />
                                     <Settings AllowHeaderFilter="True" AllowAutoFilter="False" SortMode="DisplayText" />
@@ -73,7 +76,7 @@
                                 </dx:GridViewDataComboBoxColumn>
                             </Columns>
                         </dx:ASPxGridView>
-                        <asp:SqlDataSource ID="dsUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [usuario] WHERE [id] = @id" InsertCommand="INSERT INTO [usuario] ([nm], [tipo_documento], [numero_documento], [direccion], [telefono], [activo], [fecha_ingreso], [fecha_ultm_act], [usuario], [tipo_usuario], [contrasenia], [fecha_ultm_act_contrasenia], [fecha_ultm_autenticacion], [id_oficina]) VALUES (@nm, @tipo_documento, @numero_documento, @direccion, @telefono, @activo, @fecha_ingreso, @fecha_ultm_act, @usuario, @tipo_usuario, @contrasenia, @fecha_ultm_act_contrasenia, @fecha_ultm_autenticacion, @id_oficina)" SelectCommand="SELECT * FROM [usuario]" UpdateCommand="UPDATE [usuario] SET [nm] = @nm, [tipo_documento] = @tipo_documento, [numero_documento] = @numero_documento, [direccion] = @direccion, [telefono] = @telefono, [activo] = @activo, [fecha_ingreso] = @fecha_ingreso, [fecha_ultm_act] = getdate(), [usuario] = @usuario, [tipo_usuario] = @tipo_usuario, [contrasenia] = @contrasenia, [fecha_ultm_act_contrasenia] = @fecha_ultm_act_contrasenia, [fecha_ultm_autenticacion] = @fecha_ultm_autenticacion, [id_oficina] = @id_oficina WHERE [id] = @id">
+                        <asp:SqlDataSource ID="dsUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [usuario] WHERE [id] = @id" InsertCommand="INSERT INTO [usuario] ([nm], [tipo_documento], [numero_documento], [direccion], [telefono], [activo], [fecha_ingreso], [fecha_ultm_act], [usuario], [tipo_usuario], [contrasenia_encriptada], [fecha_ultm_act_contrasenia], [fecha_ultm_autenticacion], [id_oficina],[cambio_contrasenia]) VALUES (@nm, @tipo_documento, @numero_documento, @direccion, @telefono, @activo, GETDATE(), GETDATE(), @usuario, @tipo_usuario, [dbo].[ENCRIPTA_PASS](@contrasenia) , @fecha_ultm_act_contrasenia, @fecha_ultm_autenticacion, @id_oficina,0)" SelectCommand="SELECT [id],[nm],[tipo_documento],[numero_documento],[direccion],[telefono],[activo],[fecha_ingreso],[fecha_ultm_act],[usuario],[tipo_usuario],[dbo].[desencriptar_pass](contrasenia_encriptada) as contrasenia,[fecha_ultm_act_contrasenia],[fecha_ultm_autenticacion],[id_oficina],[cambio_contrasenia] FROM [dbo].[usuario] order by [fecha_ingreso]" UpdateCommand="UPDATE [usuario] SET [nm] = @nm, [tipo_documento] = @tipo_documento, [numero_documento] = @numero_documento, [direccion] = @direccion, [telefono] = @telefono, [activo] = @activo, [fecha_ingreso] = @fecha_ingreso, [fecha_ultm_act] = getdate(), [usuario] = @usuario, [tipo_usuario] = @tipo_usuario, [contrasenia] = @contrasenia, [fecha_ultm_act_contrasenia] = @fecha_ultm_act_contrasenia, [fecha_ultm_autenticacion] = GETDATE(), [id_oficina] = @id_oficina ,[contrasenia_encriptada] = [dbo].[ENCRIPTA_PASS](@contrasenia),[cambio_contrasenia]=@cambio_contrasenia WHERE [id] = @id">
                             <DeleteParameters>
                                 <asp:Parameter Name="id" Type="Int32" />
                             </DeleteParameters>
@@ -92,6 +95,7 @@
                                 <asp:Parameter Name="fecha_ultm_act_contrasenia" Type="DateTime" />
                                 <asp:Parameter Name="fecha_ultm_autenticacion" Type="DateTime" />
                                 <asp:Parameter Name="id_oficina" Type="Int32" />
+                                <asp:Parameter Name="cambio_contrasenia" Type="Boolean" />
                             </InsertParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="nm" Type="String" />
@@ -108,6 +112,7 @@
                                 <asp:Parameter Name="fecha_ultm_autenticacion" Type="DateTime" />
                                 <asp:Parameter Name="id_oficina" Type="Int32" />
                                 <asp:Parameter Name="id" Type="Int32" />
+                                <asp:Parameter Name="cambio_contrasenia" Type="Boolean" />
                             </UpdateParameters>
                         </asp:SqlDataSource>
                         <asp:SqlDataSource ID="dsTipoDocumento" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" SelectCommand="SELECT * FROM [tipo_documento]">

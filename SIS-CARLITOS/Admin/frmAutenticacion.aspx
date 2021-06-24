@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmAutenticacion.aspx.cs" Inherits="SIS_CARLITOS.Admin.frmLogin" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
 
 <html lang="en" class="no-focus"> <!--<![endif]-->
@@ -41,16 +41,17 @@
         <div id="page-container" class="main-content-boxed">
             <!-- Main Container -->
             <main id="main-container">
+               
                 <!-- Page Content -->
-                <div class="bg-image" style="background-image: url('../public/assets/img/photos/photo34@2x.jpg');">
-                    <div class="row mx-0 bg-black-op">
+                <div class="bg-image2" style="background-image: url('../public/assets/img/photos/img_inicio_sesion_ce.jpg');">
+                    <div class="row mx-0 bg-black-op-20">
                         <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                             <div class="p-30 invisible" data-toggle="appear">
-                                <p class="font-size-h3 font-w600 text-white">
-                                    Get Inspired and Create.
-                                </p>
+                                <%--<p class="font-size-h3 font-w600 text-white">
+                                    Derechos Reservados CourieExpress - 2021
+                                </p>--%>
                                 <p class="font-italic text-white-op">
-                                    Copyright &copy; <span class="js-year-copy">2020</span>
+                                    Copyright &copy; <span class="js-year-copy">2021</span>
                                 </p>
                             </div>
                         </div>
@@ -60,7 +61,7 @@
                                 <div class="px-30 py-10">
                                     <a class="link-effect font-w700" href="index.html">
                                         <i class="si si-fire"></i>
-                                        <span class="font-size-xl text-primary-dark">Sistema de Gestión de Paquetería SGP</span><span class="font-size-xl"> v1.0</span>
+                                        <span class="font-size-xl text-primary-dark">Sistema de Gestión de Paquetería SIS-SGP</span><span class="font-size-xl"> v1.0</span>
                                     </a>
                                     <h1 class="h3 font-w700 mt-30 mb-10">Bienvenido</h1>
                                     <h2 class="h5 font-w400 text-muted mb-0">Inicio de sesión</h2>
@@ -71,19 +72,42 @@
                                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                                 <form class="js-validation-signin px-30" runat="server">
+                                     <asp:ScriptManager ID="smMain" runat="server"></asp:ScriptManager>
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <div class="form-material floating">
                                                 <%--<input type="text" class="form-control" id="login-username" name="login-username">
                                                 <label for="login-username">Usuario</label>--%>
-                                                <asp:TextBox ID="txtUsuario" placeholder="Usuario" class="form-control" runat="server" ></asp:TextBox>
+                                                <asp:TextBox ID="txtUsuario" placeholder="Usuario" MaxLength="10" class="form-control" runat="server"></asp:TextBox>
+                                                <cc1:filteredtextboxextender id="FilteredTextBoxExtender4" runat="server" filtermode="ValidChars" targetcontrolid="txtUsuario" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <div class="form-material floating">
-                                                <asp:TextBox ID="txtContrasenia" placeholder="Contraseña" class="form-control" runat="server" TextMode="Password"></asp:TextBox>
+                                                <asp:TextBox ID="txtContrasenia" placeholder="Contraseña" MaxLength="8" class="form-control" runat="server" TextMode="Password"></asp:TextBox>
+                                                <cc1:filteredtextboxextender id="FilteredTextBoxExtender3"  runat="server" filtermode="ValidChars" targetcontrolid="txtContrasenia" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
+                                                <%--<input type="password" class="form-control" id="login-password" name="login-password">
+                                                <label for="login-password">Contraseña</label>--%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <div class="form-material floating">
+                                                <cc1:filteredtextboxextender id="FilteredTextBoxExtender1" runat="server" filtermode="ValidChars" targetcontrolid="txtContraseniaNueva" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
+                                                <asp:TextBox ID="txtContraseniaNueva" visible="false" MaxLength="8" placeholder="Nueva contraseña" class="form-control" runat="server" TextMode="Password" ToolTip="Max. 8 carácteres y debe contener letras números y algunos de estos carácteres especiales /*-+!@$()"></asp:TextBox>
+                                                <%--<input type="password" class="form-control" id="login-password" name="login-password">
+                                                <label for="login-password">Contraseña</label>--%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <div class="form-material floating">
+                                                <cc1:filteredtextboxextender id="FilteredTextBoxExtender2" runat="server" filtermode="ValidChars" targetcontrolid="txtConfirmarContrasenia" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
+                                                <asp:TextBox ID="txtConfirmarContrasenia" visible="false" MaxLength="8" placeholder="Vuelva a registrar contraseña" class="form-control" runat="server" TextMode="Password" ToolTip="Max. 8 carácteres y debe contener letras números y algunos de estos carácteres especiales /*-+!@$()"></asp:TextBox>
                                                 <%--<input type="password" class="form-control" id="login-password" name="login-password">
                                                 <label for="login-password">Contraseña</label>--%>
                                             </div>
@@ -119,15 +143,20 @@
 
                                         <asp:LinkButton runat="server" ID="btnIniciarSesion" Text="<i class='si si-login mr-10'></i> Ingresar" 
                 ValidationGroup="edt"  class="btn btn-sm btn-hero btn-alt-primary" OnClick="btnIniciarSesion_Click"  />
-
-                                        <%--<div class="mt-30">
-                                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="Registrarse">
+                                         <asp:LinkButton runat="server" ID="btnCambiarContrasenia" Visible="false" Text="<i class='si si-login mr-10'></i> Cambiar contraseña" 
+                ValidationGroup="edt"  class="btn btn-sm btn-hero btn-alt-primary" OnClick="btnCambiarContrasenia_Click"  />
+                                         <%--<a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="Registrarse">
                                                 <i class="fa fa-plus mr-5"></i> Crear cuenta
-                                            </a>
-                                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="op_auth_reminder2.html">
-                                                <i class="fa fa-warning mr-5"></i> Forgot Password
-                                            </a>
-                                        </div>--%>
+                                            </a>--%>
+                                        <div class="mt-30">
+                                           
+                                           <%-- <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="op_auth_reminder2.html">
+                                                <i class="fa fa-warning mr-5"></i> Recuperar contraseña
+                                            </a>--%>
+
+                                             
+
+                                        </div>
                                     </div>
                                 </form>
                                 <!-- END Sign In Form -->

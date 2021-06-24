@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CapaServicios.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="protocol" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ldap</Value>
+    </Setting>
+    <Setting Name="server" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">172.17.1.1</Value>
+    </Setting>
+    <Setting Name="port" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">389</Value>
+    </Setting>
+    <Setting Name="path" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DC=correosdelecuador,DC=com,DC=ec</Value>
+    </Setting>
+    <Setting Name="dominio" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">correosdelecuador.com.ec</Value>
+    </Setting>
+    <Setting Name="usuario_administracion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">adminweb</Value>
+    </Setting>
+    <Setting Name="contrasenia_administracion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TcRjN4d7</Value>
+    </Setting>
+    <Setting Name="servidor_correo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">172.17.1.208</Value>
+    </Setting>
+    <Setting Name="usuario_correo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">wcorporativa@correosdelecuador.gob.ec</Value>
+    </Setting>
+    <Setting Name="contrasenia_correo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cdeclave123</Value>
+    </Setting>
+    <Setting Name="puerto_servidor_correo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="correo_remitente" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">soporte@correosdelecuador.gob.ec|Soporte CDE E.P.</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

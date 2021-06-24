@@ -19,7 +19,7 @@
                 <div class="card-body" style="background-color: white">
                     
                         <div class="table-responsive">
-                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="dsGestiones" KeyFieldName="id" Theme="PlasticBlue">
+                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="dsCarteros" KeyFieldName="id" Theme="PlasticBlue">
                                 <Settings ShowFilterRow="True"></Settings>
                                 <SettingsDataSecurity AllowDelete="False"></SettingsDataSecurity>
 
@@ -27,35 +27,53 @@
                                 <Columns>
                                     <dx:GridViewCommandColumn ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0">
                                     </dx:GridViewCommandColumn>
-                                    <dx:GridViewDataTextColumn FieldName="id" ReadOnly="True" VisibleIndex="1" Caption="Id">
+                                    <dx:GridViewDataTextColumn FieldName="id" ReadOnly="True" VisibleIndex="1" Caption="Id" ShowInCustomizationForm="True">
+                                        <EditFormSettings Visible="False" />
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="nm" VisibleIndex="2" Caption="Gestión"></dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="estado" VisibleIndex="3" Caption="Estado"></dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataDateColumn FieldName="fecha_registro" VisibleIndex="4" Caption="Fecha registro"></dx:GridViewDataDateColumn>
-                                    <dx:GridViewDataTextColumn FieldName="estado_catalogo" VisibleIndex="5" Caption="Mostrar catálogo"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="numero_identificacion" VisibleIndex="2" Caption="Identificación" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="nm_cartero" VisibleIndex="3" Caption="Nombres" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="direccion" VisibleIndex="4" Caption="Dirección" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn Caption="Teléfono" FieldName="telefono" ShowInCustomizationForm="True" VisibleIndex="5">
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="correo_electronico" VisibleIndex="6" Caption="Correo electrónico" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                                    <%--<dx:GridViewDataTextColumn Caption="Estado" FieldName="estado" ShowInCustomizationForm="True" VisibleIndex="7">
+                                    </dx:GridViewDataTextColumn>--%>
+                                     <dx:GridViewDataComboBoxColumn FieldName="estado" Caption="Estado" SortIndex="0" SortOrder="Ascending" AdaptivePriority="1" Settings-AllowAutoFilter="Default" Settings-AllowFilterBySearchPanel="True" VisibleIndex="5">
+                                    <PropertiesComboBox DataSourceID="dsEstado" ValueField="id" TextField="nm" ValueType="System.Int32" />
+                                    <Settings AllowHeaderFilter="True" AllowAutoFilter="False" SortMode="DisplayText" />
+                                    <SettingsHeaderFilter Mode="CheckedList" />
+                                </dx:GridViewDataComboBoxColumn>
+                                    <dx:GridViewDataDateColumn FieldName="fecha_ingreso" VisibleIndex="8" Caption="Fecha ingreso" ShowInCustomizationForm="True"></dx:GridViewDataDateColumn>
                                 </Columns>
                             </dx:ASPxGridView>
+                            <asp:SqlDataSource ID="dsEstado" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" SelectCommand="SELECT * FROM [estado]">
+                        </asp:SqlDataSource>
+                            <asp:SqlDataSource ID="dsCarteros" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [cartero] WHERE [id] = @id" InsertCommand="INSERT INTO [cartero] ([numero_identificacion], [nm_cartero], [direccion], [telefono], [correo_electronico], [estado], [fecha_ingreso]) VALUES (@numero_identificacion, @nm_cartero, @direccion, @telefono, @correo_electronico, @estado, getdate())" SelectCommand="SELECT * FROM [cartero]" UpdateCommand="UPDATE [cartero] SET [numero_identificacion] = @numero_identificacion, [nm_cartero] = @nm_cartero, [direccion] = @direccion, [telefono] = @telefono, [correo_electronico] = @correo_electronico, [estado] = @estado, [fecha_ingreso] = @fecha_ingreso WHERE [id] = @id">
+                                <DeleteParameters>
+                                    <asp:Parameter Name="id" Type="Int32" />
+                                </DeleteParameters>
+                                <InsertParameters>
+                                    <asp:Parameter Name="numero_identificacion" Type="String" />
+                                    <asp:Parameter Name="nm_cartero" Type="String" />
+                                    <asp:Parameter Name="direccion" Type="String" />
+                                    <asp:Parameter Name="telefono" Type="String" />
+                                    <asp:Parameter Name="correo_electronico" Type="String" />
+                                    <asp:Parameter Name="estado" Type="Int32" />
+                                    <asp:Parameter Name="fecha_ingreso" Type="DateTime" />
+                                </InsertParameters>
+                                <UpdateParameters>
+                                    <asp:Parameter Name="numero_identificacion" Type="String" />
+                                    <asp:Parameter Name="nm_cartero" Type="String" />
+                                    <asp:Parameter Name="direccion" Type="String" />
+                                    <asp:Parameter Name="telefono" Type="String" />
+                                    <asp:Parameter Name="correo_electronico" Type="String" />
+                                    <asp:Parameter Name="estado" Type="Int32" />
+                                    <asp:Parameter Name="fecha_ingreso" Type="DateTime" />
+                                    <asp:Parameter Name="id" Type="Int32" />
+                                </UpdateParameters>
+                            </asp:SqlDataSource>
 
                         </div>
-                        <asp:SqlDataSource ID="dsGestiones" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [gestion] WHERE [id] = @id" InsertCommand="INSERT INTO [gestion] ([id], [nm], [estado], [fecha_registro], [estado_catalogo]) VALUES (@id, @nm, @estado, @fecha_registro, @estado_catalogo)" SelectCommand="SELECT [id], [nm], [estado], [fecha_registro], [estado_catalogo] FROM [gestion]" UpdateCommand="UPDATE [gestion] SET [nm] = @nm, [estado] = @estado, [fecha_registro] = @fecha_registro, [estado_catalogo] = @estado_catalogo WHERE [id] = @id">
-                            <DeleteParameters>
-                                <asp:Parameter Name="id" Type="Int32" />
-                            </DeleteParameters>
-                            <InsertParameters>
-                                <asp:Parameter Name="id" Type="Int32" />
-                                <asp:Parameter Name="nm" Type="String" />
-                                <asp:Parameter Name="estado" Type="Int32" />
-                                <asp:Parameter Name="fecha_registro" Type="DateTime" />
-                                <asp:Parameter Name="estado_catalogo" Type="Int32" />
-                            </InsertParameters>
-                            <UpdateParameters>
-                                <asp:Parameter Name="nm" Type="String" />
-                                <asp:Parameter Name="estado" Type="Int32" />
-                                <asp:Parameter Name="fecha_registro" Type="DateTime" />
-                                <asp:Parameter Name="estado_catalogo" Type="Int32" />
-                                <asp:Parameter Name="id" Type="Int32" />
-                            </UpdateParameters>
-                        </asp:SqlDataSource>
                     
                 </div>
             </div>

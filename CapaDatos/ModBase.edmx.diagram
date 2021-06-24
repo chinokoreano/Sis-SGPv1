@@ -4,43 +4,47 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b27820ad0e7e41f4abc65de91f6c706a" Name="Diagram1" ZoomLevel="108">
+      <Diagram DiagramId="b27820ad0e7e41f4abc65de91f6c706a" Name="Diagram1" ZoomLevel="78">
         <EntityTypeShape EntityType="OPERADBModel.cliente" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="OPERADBModel.servicio" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="OPERADBModel.tipo_documento" Width="1.5" PointX="6.75" PointY="4.75" />
-        <EntityTypeShape EntityType="OPERADBModel.usuario" Width="1.5" PointX="4.75" PointY="7.75" />
         <EntityTypeShape EntityType="OPERADBModel.parametro" Width="1.5" PointX="9.625" PointY="5" />
         <EntityTypeShape EntityType="OPERADBModel.orden_servicio" Width="1.5" PointX="7.375" PointY="8.75" />
         <EntityTypeShape EntityType="OPERADBModel.oficina" Width="1.5" PointX="2.5" PointY="12.75" />
-        <AssociationConnector Association="OPERADBModel.FK_usuario_oficina" />
         <EntityTypeShape EntityType="OPERADBModel.ubicacion_geografica" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="OPERADBModel.gestion" Width="1.5" PointX="9.375" PointY="8.75" />
         <EntityTypeShape EntityType="OPERADBModel.cartero" Width="1.5" PointX="11.375" PointY="8.75" />
         <AssociationConnector Association="OPERADBModel.FK_orden_servicio_servicio" />
-        <AssociationConnector Association="OPERADBModel.FK_usuario_tipo_documento" />
         <EntityTypeShape EntityType="OPERADBModel.destinatario" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="OPERADBModel.manifiesto_entrega" Width="1.5" PointX="9.625" PointY="20.5" />
         <EntityTypeShape EntityType="OPERADBModel.paquete" Width="1.5" PointX="9.625" PointY="13" />
         <AssociationConnector Association="OPERADBModel.FK_manifiesto_entrega_cartero" />
         <AssociationConnector Association="OPERADBModel.FK_destinatario_paquete" />
         <AssociationConnector Association="OPERADBModel.FK_paquete_orden_servicio" />
-        <EntityTypeShape EntityType="OPERADBModel.contrato" Width="1.5" PointX="9.75" PointY="24.375" />
         <EntityTypeShape EntityType="OPERADBModel.evento" Width="1.5" PointX="13.875" PointY="10.25" />
         <EntityTypeShape EntityType="OPERADBModel.evento_orden_servicio" Width="1.5" PointX="9.625" PointY="28.75" />
         <EntityTypeShape EntityType="OPERADBModel.usuario_contrato" Width="1.5" PointX="12" PointY="4.75" />
-        <AssociationConnector Association="OPERADBModel.FK_contrato_cliente" />
-        <AssociationConnector Association="OPERADBModel.FK_usuario_contrato_contrato" />
         <AssociationConnector Association="OPERADBModel.FK_evento_gestion" />
         <AssociationConnector Association="OPERADBModel.FK_evento_oficina" />
         <AssociationConnector Association="OPERADBModel.FK_evento_paquete" />
         <AssociationConnector Association="OPERADBModel.FK_evento_orden_servicio_orden_servicio" />
-        <AssociationConnector Association="OPERADBModel.FK_usuario_contrato_usuario" />
         <EntityTypeShape EntityType="OPERADBModel.proceso_tmp" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="OPERADBModel.lista_manifiesto" Width="1.5" PointX="11.875" PointY="17" />
         <AssociationConnector Association="OPERADBModel.FK_lista_manifiesto_manifiesto_entrega" />
         <AssociationConnector Association="OPERADBModel.FK_lista_manifiesto_paquete" />
-        <EntityTypeShape EntityType="OPERADBModel.entrega" Width="1.5" PointX="11.875" PointY="0.75" />
+        <EntityTypeShape EntityType="OPERADBModel.entrega" Width="1.5" PointX="13.625" PointY="0.5" />
         <AssociationConnector Association="OPERADBModel.FK_entrega_paquete" />
+        <EntityTypeShape EntityType="OPERADBModel.usuario" Width="1.5" PointX="4.875" PointY="8.125" />
+        <AssociationConnector Association="OPERADBModel.FK_usuario_oficina" />
+        <AssociationConnector Association="OPERADBModel.FK_usuario_tipo_documento" />
+        <AssociationConnector Association="OPERADBModel.FK_usuario_contrato_usuario" />
+        <EntityTypeShape EntityType="OPERADBModel.contrato" Width="1.5" PointX="3" PointY="16.375" />
+        <AssociationConnector Association="OPERADBModel.FK_contrato_cliente" />
+        <AssociationConnector Association="OPERADBModel.FK_usuario_contrato_contrato" />
+        <EntityTypeShape EntityType="OPERADBModel.asesor_comercial" Width="1.5" PointX="1.125" PointY="16.75" />
+        <EntityTypeShape EntityType="OPERADBModel.tipo_usuario" Width="1.5" PointX="0.75" PointY="7.875" />
+        <AssociationConnector Association="OPERADBModel.FK_contrato_asesor_comercial" />
+        <AssociationConnector Association="OPERADBModel.FK_usuario_tipo_usuario" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

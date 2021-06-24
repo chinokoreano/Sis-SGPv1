@@ -35,9 +35,11 @@ namespace SIS_CARLITOS.Vistas
 
             if (!IsPostBack)
             {
-
-
+                FnCargarClientes();
+              
             }
+            
+
         }
 
         protected void detailGrid_DataSelect(object sender, EventArgs e)
@@ -47,22 +49,54 @@ namespace SIS_CARLITOS.Vistas
             //string strId = Session["identificador_paquete"].ToString();
         }
 
-        protected void btnExportar_Click(object sender, EventArgs e)
+        private void FnCargarClientes()
         {
+            List<SPR_CONSULTA_USUARIO_CONTRATO_Result> oResultado = new List<SPR_CONSULTA_USUARIO_CONTRATO_Result>();
+            try
+            {
+                cliente oCliente = new cliente();
+               
+                ClienteCN oClienteCN = new ClienteCN();
+                usuario oUsuario = new usuario();
+                oUsuario.id = int.Parse(Session["IdUsuario"].ToString());
 
+                
+                List<usuario> objUsuario = (List<usuario>)Session["objUsuario"];
+                if (objUsuario[0].tipo_usuario == 0 || objUsuario[0].tipo_usuario == 1)//tipo de usuario 0 - 1 administrador operador
+                {
+                    oResultado = oClienteCN.FnConsultarClientesContratos(3, objUsuario[0], oCliente);
+                }
+                else if (objUsuario[0].tipo_usuario == 2)//tipo de cliente 2 corresponde a cliente corporativo
+                {
+                    oResultado = oClienteCN.FnConsultarClientesContratos(2, objUsuario[0], oCliente);
+                }
+
+                cmbClientes.DataSource = oResultado;
+                cmbClientes.ValueField = "id_codigo_contrato";
+                cmbClientes.TextField = "nm_cliente";
+                cmbClientes.DataBind();
+                
+                    
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
-
-
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             grvEventos.DataSource = null;
             grvEventos.DataBind();
             grvEventos.Visible = false;
+            divBotonImprimir.Visible = false;
 
             List<SPR_CONSULTA_ENVIO_Result> oResultado = new List<SPR_CONSULTA_ENVIO_Result>();
             try
             {
+                
+
                 if (ddlFiltro.SelectedValue.ToString() == "1")
                 {
                     if (!string.IsNullOrEmpty(txtFiltro1.Text) || !string.IsNullOrWhiteSpace(txtFiltro1.Text))
@@ -87,10 +121,37 @@ namespace SIS_CARLITOS.Vistas
                         oResultado = oPaqueteCN.FnTrackingPaquetes(3, null, txtFiltro1.Text.Trim(), null, 0, null, null, null, 0).ToList();
                     }
                 }
-                Session["ListadoEnvios"] = oResultado;
-                grvEnvios.DataSource = oResultado;
-                grvEnvios.DataBind();
+                if (ddlFiltro.SelectedValue.ToString() == "4")
+                {
+                    if (!string.IsNullOrEmpty(txtFechaCargaInicio.Text) && !string.IsNullOrWhiteSpace(txtFechaCargaInicio.Text)
+                        && !string.IsNullOrEmpty(txtFechaCargaFin.Text) && !string.IsNullOrWhiteSpace(txtFechaCargaFin.Text))
+                    {
+                        PaqueteCN oPaqueteCN = new PaqueteCN();
+                        oResultado = oPaqueteCN.FnTrackingPaquetes(4, null, null,null, int.Parse(Session["IdUsuario"].ToString()), txtFechaCargaInicio.Text, txtFechaCargaFin.Text,null, int.Parse(cmbClientes.SelectedItem.Value.ToString())).ToList();
+                    }
+                }
 
+                if (oResultado.Count > 0)
+                {
+                    Session["ListadoEnvios"] = oResultado;
+                    grvEnvios.DataSource = oResultado;
+                    grvEnvios.DataBind();
+                    grvEnvios.Visible = true;
+                    divBotonImprimir.Visible = true;
+                }
+                else
+                {
+                    grvEnvios.DataSource = null;
+                    grvEnvios.DataBind();
+                    grvEnvios.Visible = true;
+
+                    grvEventos.DataSource = null;
+                    grvEventos.DataBind();
+                    grvEventos.Visible = false;
+
+                    divBotonImprimir.Visible = false;
+         
+                }
 
             }
             catch (Exception ex)
@@ -121,26 +182,7 @@ namespace SIS_CARLITOS.Vistas
                 grvEventos.DataBind();
                 grvEventos.Visible = true;
 
-                //int intId = int.Parse((((Label)namingContainer.FindControl("lblId")).Text));
-                //int intIdContrato = int.Parse((((Label)namingContainer.FindControl("lblIdContrato")).Text));
-                //Session["idContrato"] = intIdContrato.ToString();
-                //Session["idCliente"] = intId.ToString();
-                //txtCliente.Text = strNmCliente;
-                //txtIdentificacion.Text = strIdentificacionCliente;
-                //txtIdCliente.Text = intId.ToString();
-
-                //divControl.Visible = true;
-                //if (int.Parse(Session["ControlPantalla"].ToString()) == 1)//1 = Control para mostrar opcion para el cliente corporativo
-                //{
-                //    divDatosCarga.Visible = true;
-                //    divBuscar.Visible = true;
-                //}
-                //else
-                //{
-                //    divClientes.Visible = false;
-
-                //}
-
+               
             }
             catch (Exception ex)
             {
@@ -169,87 +211,83 @@ namespace SIS_CARLITOS.Vistas
         protected void ddlFiltro_SelectedIndexChanged1(object sender, EventArgs e)
         {
             txtFiltro1.Text = string.Empty;
-        }
+            grvEnvios.DataSource = null;
+            grvEnvios.DataBind();
+            grvEventos.DataSource = null;
+            grvEventos.DataBind();
+            grvEnvios.Visible = false;
+            grvEventos.Visible = false;
+            divBotonImprimir.Visible = false;
 
-        protected void btnExportar_Click1(object sender, EventArgs e)
+            if (ddlFiltro.SelectedValue == "4")
+            {
+                txtFiltro1.Visible = false;
+                txtFechaCargaInicio.Visible = true;
+                txtFechaCargaFin.Visible = true;
+                cmbClientes.Enabled = true;
+            }
+            else if (ddlFiltro.SelectedValue.ToString() == "1" || ddlFiltro.SelectedValue.ToString() == "2" || ddlFiltro.SelectedValue.ToString() == "3")
+            {
+
+                txtFiltro1.Visible = true;
+                txtFechaCargaFin.Visible = false;
+                txtFechaCargaInicio.Visible = false;
+                cmbClientes.Enabled = false;
+            }
+        }
+         
+
+        protected void btnImprimir_Click(object sender, EventArgs e)
         {
+            try
+            {
+                List<SPR_CONSULTA_ENVIO_Result> oResultado = new List<SPR_CONSULTA_ENVIO_Result>();
+                oResultado = (List<SPR_CONSULTA_ENVIO_Result>)Session["ListadoEnvios"];
+                DataTable dt = ClsAuxiliar.ConvertToDataTable(oResultado);
+                DsReportes ds = new DsReportes();
+                ds.Tables.Add(dt);
 
-            List<SPR_CONSULTA_ENVIO_Result> oResultado = (List<SPR_CONSULTA_ENVIO_Result>)Session["ListadoEnvios"];
-            DataTable dt = ClsAuxiliar.ConvertToDataTable(oResultado);
+                rpvReporte.LocalReport.DataSources.Clear();
+                ReportParameter[] parameters = new ReportParameter[2];
+                parameters[0] = new ReportParameter("usuario", Session["Usuario"].ToString());
+                parameters[1] = new ReportParameter("oficina", Session["Oficina"].ToString());
 
-            DataGrid dgGrid = new DataGrid();
-            dgGrid.DataSource = dt;
-            dgGrid.DataBind();
-            
-            FnExportarAExcel(dgGrid);
-           
+                rpvReporte.LocalReport.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("dsGestionEnvios", dt));
+                rpvReporte.LocalReport.ReportPath = Server.MapPath("~/Reportes/rptGestionEnvios.rdlc");
+
+                rpvReporte.LocalReport.SetParameters(parameters);
+                string strNmArchivo = "Rpt_GestionEnvios_" + DateTime.Now.ToShortDateString().Replace("/", "") + DateTime.Now.ToLongTimeString().Replace(":", "");
+                Warning[] warnings;
+                string[] streamIds;
+                string contentType;
+                string encoding;
+                string extension;
+
+                //Export the RDLC Report to Byte Array.
+                byte[] bytes = rpvReporte.LocalReport.Render("Excel", null, out contentType, out encoding, out extension, out streamIds, out warnings);
+
+                //Download the RDLC Report in Word, Excel, PDF and Image formats.
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.ContentType = contentType;
+                //Response.AppendHeader("Content-Disposition", "attachment; filename=RDLC." + extension);
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + strNmArchivo + "." + extension);
+                Response.BinaryWrite(bytes);
+                Response.Flush();
+                Response.End();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                string descripcion_error = ex.Message;
+               
+            }
         }
-
-        private void FnExportarAExcel(DataGrid dgv)
-        {
-            HttpResponse response = Response;
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter htw = new HtmlTextWriter(sw);
-            System.Web.UI.Page pageToRender = new System.Web.UI.Page();
-            HtmlForm form = new HtmlForm();
-            form.Controls.Add(dgv);
-            pageToRender.Controls.Add(form);
-            response.Clear();
-            response.Buffer = true;
-            response.ContentType = "application/vnd.ms-excel";
-            response.AddHeader("Content-Disposition", "attachment;filename=" + "listadoEnvios");
-            response.Charset = "UTF-8";
-            response.ContentEncoding = Encoding.Default;
-            pageToRender.RenderControl(htw);
-            response.Write(sw.ToString());
-            response.End();
-        }
-
-        //    private void FnExportarAExcel(DataGrid dgv)
-        //{
-        //    try
-        //    {
-        //        ParametroCN oParametroCN = new ParametroCN();
-        //        List<parametro> oResultadoParametros = new List<parametro>();
-        //        oResultadoParametros = oParametroCN.FnConsultarParametros();
-        //        List<parametro> oResultadoBusq = oResultadoParametros.Where(p => p.tipo == "RUTAREPORTES").ToList();
-
-        //        string[] strRutasReportes = oResultadoBusq[0].valor1.Split(',');
-        //        string strRutaWebReportes = strRutasReportes[0].ToString();
-        //        string strRutaFisicaReportes = strRutasReportes[1].ToString();
-
-        //        if (dgv.Items.Count > 0)
-        //        {
-
-
-        //            string filename = "Envio_"; //+ DateTime.Now.ToString();
-        //            System.IO.StringWriter tw = new System.IO.StringWriter();
-        //            System.Web.UI.HtmlTextWriter hw = new System.Web.UI.HtmlTextWriter(tw);
-
-
-        //            //Get the HTML for the control.
-        //            dgv.RenderControl(hw);
-        //            //Write the HTML back to the browser.
-        //            //Response.ContentType = application/vnd.ms-excel;
-        //            Response.Charset = "UTF-8";
-        //            Response.ContentEncoding = Encoding.Default;
-        //            Response.ContentType = "application/vnd.ms-excel";
-        //            Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename + ".xls");
-
-        //            //Response.Write(tw.ToString());
-        //            Response.WriteFile(strRutaFisicaReportes + filename);
-        //            Response.End();
-
-                   
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
 
        
-        
     }
 }

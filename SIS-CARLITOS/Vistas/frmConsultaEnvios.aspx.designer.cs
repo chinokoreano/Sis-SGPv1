@@ -40,6 +40,15 @@ namespace SIS_CARLITOS.Vistas {
         protected global::System.Web.UI.WebControls.DropDownList ddlFiltro;
         
         /// <summary>
+        /// Control cmbClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbClientes;
+        
+        /// <summary>
         /// Control txtFiltro1.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,22 @@ namespace SIS_CARLITOS.Vistas {
         protected global::System.Web.UI.WebControls.TextBox txtFiltro1;
         
         /// <summary>
-        /// Control txtFechaCarga.
+        /// Control txtFechaCargaInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaCarga;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaCargaInicio;
+        
+        /// <summary>
+        /// Control txtFechaCargaFin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaCargaFin;
         
         /// <summary>
         /// Control btnBuscar.
@@ -76,6 +94,24 @@ namespace SIS_CARLITOS.Vistas {
         protected global::System.Web.UI.WebControls.GridView grvEnvios;
         
         /// <summary>
+        /// Control divBotonImprimir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBotonImprimir;
+        
+        /// <summary>
+        /// Control btnImprimir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnImprimir;
+        
+        /// <summary>
         /// Control grvEventos.
         /// </summary>
         /// <remarks>
@@ -83,5 +119,23 @@ namespace SIS_CARLITOS.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvEventos;
+        
+        /// <summary>
+        /// Control divReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divReporte;
+        
+        /// <summary>
+        /// Control rpvReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rpvReporte;
     }
 }

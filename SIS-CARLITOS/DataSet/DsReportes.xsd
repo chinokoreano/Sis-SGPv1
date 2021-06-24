@@ -14,7 +14,7 @@
   <xs:element name="DsReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsReportes" msprop:Generator_UserDSName="DsReportes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dt_orden" msprop:Generator_TableClassName="dt_ordenDataTable" msprop:Generator_TableVarName="tabledt_orden" msprop:Generator_RowChangedName="dt_ordenRowChanged" msprop:Generator_TablePropName="dt_orden" msprop:Generator_RowDeletingName="dt_ordenRowDeleting" msprop:Generator_RowChangingName="dt_ordenRowChanging" msprop:Generator_RowEvHandlerName="dt_ordenRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_ordenRowDeleted" msprop:Generator_RowClassName="dt_ordenRow" msprop:Generator_UserTableName="dt_orden" msprop:Generator_RowEvArgName="dt_ordenRowChangeEvent">
+        <xs:element name="dt_orden" msprop:Generator_TableClassName="dt_ordenDataTable" msprop:Generator_TableVarName="tabledt_orden" msprop:Generator_TablePropName="dt_orden" msprop:Generator_RowDeletingName="dt_ordenRowDeleting" msprop:Generator_RowChangingName="dt_ordenRowChanging" msprop:Generator_RowEvHandlerName="dt_ordenRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_ordenRowDeleted" msprop:Generator_UserTableName="dt_orden" msprop:Generator_RowChangedName="dt_ordenRowChanged" msprop:Generator_RowEvArgName="dt_ordenRowChangeEvent" msprop:Generator_RowClassName="dt_ordenRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="orden" msprop:Generator_ColumnVarNameInTable="columnorden" msprop:Generator_ColumnPropNameInRow="orden" msprop:Generator_ColumnPropNameInTable="ordenColumn" msprop:Generator_UserColumnName="orden" type="xs:string" minOccurs="0" />
@@ -36,7 +36,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dt_lista_envios" msprop:Generator_TableClassName="dt_lista_enviosDataTable" msprop:Generator_TableVarName="tabledt_lista_envios" msprop:Generator_RowChangedName="dt_lista_enviosRowChanged" msprop:Generator_TablePropName="dt_lista_envios" msprop:Generator_RowDeletingName="dt_lista_enviosRowDeleting" msprop:Generator_RowChangingName="dt_lista_enviosRowChanging" msprop:Generator_RowEvHandlerName="dt_lista_enviosRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_lista_enviosRowDeleted" msprop:Generator_RowClassName="dt_lista_enviosRow" msprop:Generator_UserTableName="dt_lista_envios" msprop:Generator_RowEvArgName="dt_lista_enviosRowChangeEvent">
+        <xs:element name="dt_lista_envios" msprop:Generator_TableClassName="dt_lista_enviosDataTable" msprop:Generator_TableVarName="tabledt_lista_envios" msprop:Generator_TablePropName="dt_lista_envios" msprop:Generator_RowDeletingName="dt_lista_enviosRowDeleting" msprop:Generator_RowChangingName="dt_lista_enviosRowChanging" msprop:Generator_RowEvHandlerName="dt_lista_enviosRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_lista_enviosRowDeleted" msprop:Generator_UserTableName="dt_lista_envios" msprop:Generator_RowChangedName="dt_lista_enviosRowChanged" msprop:Generator_RowEvArgName="dt_lista_enviosRowChangeEvent" msprop:Generator_RowClassName="dt_lista_enviosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:string" minOccurs="0" />
@@ -49,7 +49,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dt_guia_envios" msprop:Generator_TableClassName="dt_guia_enviosDataTable" msprop:Generator_TableVarName="tabledt_guia_envios" msprop:Generator_RowChangedName="dt_guia_enviosRowChanged" msprop:Generator_TablePropName="dt_guia_envios" msprop:Generator_RowDeletingName="dt_guia_enviosRowDeleting" msprop:Generator_RowChangingName="dt_guia_enviosRowChanging" msprop:Generator_RowEvHandlerName="dt_guia_enviosRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_guia_enviosRowDeleted" msprop:Generator_RowClassName="dt_guia_enviosRow" msprop:Generator_UserTableName="dt_guia_envios" msprop:Generator_RowEvArgName="dt_guia_enviosRowChangeEvent">
+        <xs:element name="dt_guia_envios" msprop:Generator_TableClassName="dt_guia_enviosDataTable" msprop:Generator_TableVarName="tabledt_guia_envios" msprop:Generator_TablePropName="dt_guia_envios" msprop:Generator_RowDeletingName="dt_guia_enviosRowDeleting" msprop:Generator_RowChangingName="dt_guia_enviosRowChanging" msprop:Generator_RowEvHandlerName="dt_guia_enviosRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_guia_enviosRowDeleted" msprop:Generator_UserTableName="dt_guia_envios" msprop:Generator_RowChangedName="dt_guia_enviosRowChanged" msprop:Generator_RowEvArgName="dt_guia_enviosRowChangeEvent" msprop:Generator_RowClassName="dt_guia_enviosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:string" minOccurs="0" />
@@ -63,12 +63,13 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dt_lista_envios_eventos" msprop:Generator_TableClassName="dt_lista_envios_eventosDataTable" msprop:Generator_TableVarName="tabledt_lista_envios_eventos" msprop:Generator_TablePropName="dt_lista_envios_eventos" msprop:Generator_RowDeletingName="dt_lista_envios_eventosRowDeleting" msprop:Generator_RowChangingName="dt_lista_envios_eventosRowChanging" msprop:Generator_RowEvHandlerName="dt_lista_envios_eventosRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_lista_envios_eventosRowDeleted" msprop:Generator_UserTableName="dt_lista_envios_eventos" msprop:Generator_RowChangedName="dt_lista_envios_eventosRowChanged" msprop:Generator_RowEvArgName="dt_lista_envios_eventosRowChangeEvent" msprop:Generator_RowClassName="dt_lista_envios_eventosRow">
+        <xs:element name="dt_lista_envios_eventos" msprop:Generator_TableClassName="dt_lista_envios_eventosDataTable" msprop:Generator_TableVarName="tabledt_lista_envios_eventos" msprop:Generator_RowChangedName="dt_lista_envios_eventosRowChanged" msprop:Generator_TablePropName="dt_lista_envios_eventos" msprop:Generator_RowDeletingName="dt_lista_envios_eventosRowDeleting" msprop:Generator_RowChangingName="dt_lista_envios_eventosRowChanging" msprop:Generator_RowEvHandlerName="dt_lista_envios_eventosRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_lista_envios_eventosRowDeleted" msprop:Generator_RowClassName="dt_lista_envios_eventosRow" msprop:Generator_UserTableName="dt_lista_envios_eventos" msprop:Generator_RowEvArgName="dt_lista_envios_eventosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:string" minOccurs="0" />
               <xs:element name="orden" msprop:Generator_ColumnVarNameInTable="columnorden" msprop:Generator_ColumnPropNameInRow="orden" msprop:Generator_ColumnPropNameInTable="ordenColumn" msprop:Generator_UserColumnName="orden" type="xs:string" minOccurs="0" />
               <xs:element name="evento" msprop:Generator_ColumnVarNameInTable="columnevento" msprop:Generator_ColumnPropNameInRow="evento" msprop:Generator_ColumnPropNameInTable="eventoColumn" msprop:Generator_UserColumnName="evento" type="xs:string" minOccurs="0" />
+              <xs:element name="observacion" msprop:Generator_ColumnVarNameInTable="columnobservacion" msprop:Generator_ColumnPropNameInRow="observacion" msprop:Generator_ColumnPropNameInTable="observacionColumn" msprop:Generator_UserColumnName="observacion" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -35,10 +35,13 @@ namespace CapaEntidad
         public Nullable<System.DateTime> fecha_ultm_act_contrasenia { get; set; }
         public Nullable<System.DateTime> fecha_ultm_autenticacion { get; set; }
         public Nullable<int> id_oficina { get; set; }
+        public Nullable<bool> cambio_contrasenia { get; set; }
+        public byte[] contrasenia_encriptada { get; set; }
     
         public virtual oficina oficina { get; set; }
         public virtual tipo_documento tipo_documento1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<usuario_contrato> usuario_contrato { get; set; }
+        public virtual tipo_usuario tipo_usuario1 { get; set; }
     }
 }

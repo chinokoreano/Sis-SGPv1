@@ -34,5 +34,6 @@ namespace CapaEntidad
         public virtual cliente cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<usuario_contrato> usuario_contrato { get; set; }
+        public virtual asesor_comercial asesor_comercial { get; set; }
     }
 }

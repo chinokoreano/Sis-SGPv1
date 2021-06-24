@@ -31,13 +31,13 @@ namespace SIS_CARLITOS.Vistas {
         protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
         
         /// <summary>
-        /// Control dsCliente.
+        /// Control dsClientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsCliente;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsClientes;
         
         /// <summary>
         /// Control dsTipoDocumento.

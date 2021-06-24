@@ -37,10 +37,13 @@
                                 </dx:GridViewDataTextColumn>
                                 <dx:GridViewDataCheckColumn Caption="Estado" FieldName="estado" VisibleIndex="6">
                                 </dx:GridViewDataCheckColumn>
+                                
                                 <dx:GridViewDataDateColumn FieldName="fecha_ingreso" VisibleIndex="7" Caption="Fecha ingreso"></dx:GridViewDataDateColumn>
                             </Columns>
                         </dx:ASPxGridView>
-                        <asp:SqlDataSource ID="dsServicio" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [servicio] WHERE [id] = @id" InsertCommand="INSERT INTO [servicio] ([nm_servicio], [prefijo], [secuencia_inicial], [secuencia_actual], [estado], [fecha_ingreso]) VALUES (@nm_servicio, @prefijo, @secuencia_inicial, @secuencia_actual, @estado, @fecha_ingreso)" SelectCommand="SELECT * FROM [servicio]" UpdateCommand="UPDATE [servicio] SET [nm_servicio] = @nm_servicio, [prefijo] = @prefijo, [secuencia_inicial] = @secuencia_inicial, [secuencia_actual] = @secuencia_actual, [estado] = @estado, [fecha_ingreso] = @fecha_ingreso WHERE [id] = @id">
+                         
+
+                        <asp:SqlDataSource ID="dsServicio" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" DeleteCommand="DELETE FROM [servicio] WHERE [id] = @id" InsertCommand="INSERT INTO [servicio] ([nm_servicio], [prefijo], [secuencia_inicial], [secuencia_actual], [estado], [fecha_ingreso]) VALUES (@nm_servicio, @prefijo, @secuencia_inicial, @secuencia_actual, @estado, getdate())" SelectCommand="SELECT * FROM [servicio]" UpdateCommand="UPDATE [servicio] SET [nm_servicio] = @nm_servicio, [prefijo] = @prefijo, [secuencia_inicial] = @secuencia_inicial, [secuencia_actual] = @secuencia_actual, [estado] = @estado, [fecha_ingreso] = @fecha_ingreso WHERE [id] = @id">
                             <DeleteParameters>
                                 <asp:Parameter Name="id" Type="Int32" />
                             </DeleteParameters>

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CapaNegocio
@@ -166,5 +167,44 @@ namespace CapaNegocio
 
         }
 
+        public DataTable FnDepuraDatos(DataTable dt)
+        {
+            try
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dr["CALLE_PRINCIPAL"] = CleanInput(dr["CALLE_PRINCIPAL"].ToString());
+                    dr["NUMERO"] = CleanInput(dr["NUMERO"].ToString());
+                    dr["INTERSECCION"] = CleanInput(dr["INTERSECCION"].ToString());
+                    dr["REFERENCIA"] = CleanInput(dr["REFERENCIA"].ToString());
+                    dr["DESTINATARIO"] = CleanInput(dr["DESTINATARIO"].ToString());
+                    dr["TELEFONO"] = CleanInput(dr["TELEFONO"].ToString());
+                    dr["CODIGO_POSTAL"] = CleanInput(dr["CODIGO_POSTAL"].ToString());
+                }
+
+                return dt;
+            }
+            catch (Exception ex) 
+            {
+
+                throw ex;
+            }
+        }
+
+        public static string CleanInput(string strIn)
+        {
+            // Replace invalid characters with empty strings.
+            try
+            {
+                return Regex.Replace(strIn, @"[^\w\.@-\\%#\s]", "",
+                                        RegexOptions.None, TimeSpan.FromSeconds(1.5));
+            }
+            // If we timeout when replacing invalid characters,
+            // we should return Empty.
+            catch (RegexMatchTimeoutException)
+            {
+                return String.Empty;
+            }
+        }
     }
 }

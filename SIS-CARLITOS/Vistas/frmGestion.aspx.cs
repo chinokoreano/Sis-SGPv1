@@ -30,13 +30,16 @@ namespace SIS_CARLITOS.Vistas
                 Session["IdGestion"] = 0;
                 FnCargarGestiones();
                 FnAsignarAtributos();
+                fnDataTableTemporal();
+                
             }
         }
 
         private void FnAsignarAtributos()
         {
             txtCodigoEnvio1.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
-            
+            txtObservacion1.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
+
         }
 
         private void FnCargarGestiones()
@@ -72,6 +75,7 @@ namespace SIS_CARLITOS.Vistas
             lblMensaje.Text = "";
             Boolean bolExiste;
             bolExiste = false;
+            
             try
             {
                 if (string.IsNullOrWhiteSpace(txtCodigoEnvio1.Text.Trim()) || string.IsNullOrEmpty(txtCodigoEnvio1.Text.Trim()))
@@ -140,6 +144,7 @@ namespace SIS_CARLITOS.Vistas
 
                 ListItem itm = new ListItem();
                 itm.Text = txtCodigoEnvio1.Text;
+                
                 bolExiste = ddlListado.Items.Contains(itm);
                 if (bolExiste == true)
                 {
@@ -149,10 +154,28 @@ namespace SIS_CARLITOS.Vistas
                     return;
                 }else if (bolExiste == false)
                 {
+                    DataTable dt = (DataTable)Session["DataTable"];
+                    DataRow dr = dt.NewRow();
+                    dr["CODIGO"] = txtCodigoEnvio1.Text.ToUpper();
+                    dr["ORDEN"] = int.Parse(ddlListado.Items.Count.ToString()) + 1;
+                    dr["EVENTO"] = cmbGestion.Text.ToString();
+                    dr["OBSERVACION"] = txtObservacion1.Text.Trim();
+                    dt.Rows.Add(dr);
+                    Session["DataTable"] = dt;
+
                     ddlListado.Items.Add(txtCodigoEnvio1.Text.ToUpper());
+
+                    divListadoEnvios.Visible = true;
+                   
                     lblTotalEnvios.Visible = true;
+                    lblTotalEnvios.Attributes.Add("class", "btn btn-info btn-sm");
                     lblTotalEnvios.Text = "Total de envíos: " + ddlListado.Items.Count.ToString();
+
+
                     btnImprimirListado.Visible = true;
+                    btnImprimirListado.Enabled = true;
+                    urlReporte.Visible = false;
+                    
                 }
 
                 lblMensaje.Visible = true;
@@ -171,7 +194,7 @@ namespace SIS_CARLITOS.Vistas
             }
         }
 
-        private DataTable fnDataTableTemporal()
+        private void fnDataTableTemporal()
         {
 
             DataTable dt = new DataTable();
@@ -182,27 +205,29 @@ namespace SIS_CARLITOS.Vistas
             dt.Columns.Add("OFICINA", Type.GetType("System.String"));
             dt.Columns.Add("USUARIO", Type.GetType("System.String"));
             dt.Columns.Add("FECHA_REGISTRO", Type.GetType("System.String"));
-            return dt;
+            dt.Columns.Add("OBSERVACION", Type.GetType("System.String"));
+            Session["DataTable"] = dt;
+            
         }
 
         protected void btnImprimirListado_Click(object sender, EventArgs e)
         {
-            int intOrden;
-            intOrden = 0;
+            //int intOrden;
+            //intOrden = 0;
             try
             {
-                DataTable dt = fnDataTableTemporal();
-                foreach (var reg in ddlListado.Items)
-                {
-                    ++intOrden;
-                    DataRow dr = dt.NewRow();
-                    dr["CODIGO"] = reg.ToString();
-                    dr["ORDEN"] = intOrden.ToString();
-                    dr["EVENTO"] = cmbGestion.Text.ToString();
-                   
-                    dt.Rows.Add(dr);
-                }
+                //DataTable dt = fnDataTableTemporal();
+                //foreach (var reg in ddlListado.Items)
+                //{
+                //    ++intOrden;
+                //    DataRow dr = dt.NewRow();
+                //    dr["CODIGO"] = reg.ToString();
+                //    dr["ORDEN"] = intOrden.ToString();
+                //    dr["EVENTO"] = cmbGestion.Text.ToString();
 
+                //    dt.Rows.Add(dr);
+                //}
+                DataTable dt = (DataTable)Session["DataTable"];
                 ParametroCN oParametroCN = new ParametroCN();
                 List<parametro> oResultadoParametros = new List<parametro>();
                 oResultadoParametros = oParametroCN.FnConsultarParametros();
@@ -213,6 +238,7 @@ namespace SIS_CARLITOS.Vistas
                 string strRutaFisicaReportes = strRutasReportes[1].ToString();
                 string strRutaMapServer = strRutasReportes[2].ToString();
                 DsReportes ds = new DsReportes();
+                
                 ds.Tables.Add(dt);
                 ReportDataSource reportDataSource = new ReportDataSource("dsListaEnviosEventos", ds.Tables[4]);
 
@@ -263,6 +289,15 @@ namespace SIS_CARLITOS.Vistas
                 urlReporte.Text = "Descargue el listado generado: " + strNmArchivo;
                 urlReporte.Visible = true;
                 urlReporte.NavigateUrl = strUrlReportes + strNmArchivo;
+
+                ddlListado.Items.Clear();
+                ds.Clear();
+                ds.Tables.Clear();
+                btnImprimirListado.Visible = false;
+                lblTotalEnvios.Visible = false;
+                lblTotalEnvios.Text = string.Empty;
+                divListadoEnvios.Visible = false;
+
             }
             catch (Exception ex)
             {

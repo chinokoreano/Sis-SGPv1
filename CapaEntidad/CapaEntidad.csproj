@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="asesor_comercial.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="cartero.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
@@ -114,6 +117,9 @@
     <Compile Include="servicio.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPR_ACTUALIZA_CREDENCIALES_Result.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPR_CONSULTA_ENVIO_GUIAS_Result.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
@@ -139,6 +145,9 @@
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
     <Compile Include="tipo_documento.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_usuario.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
     <Compile Include="ubicacion_geografica.cs">

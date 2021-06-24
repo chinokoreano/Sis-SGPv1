@@ -40,7 +40,7 @@ namespace CapaDatos
 
                 Boolean bolExiste = false;
 
-                string[] aGestiones = oListaParametro[0].valor1.ToString().Split('-');
+                string[] aGestiones = oListaParametro[0].valor1.ToString().Split(',');
                 bolExiste = aGestiones.Contains(oEvento.id_tipo_evento.ToString());
                 return bolExiste;
             }

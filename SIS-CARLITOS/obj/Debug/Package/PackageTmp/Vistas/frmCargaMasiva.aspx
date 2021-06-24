@@ -23,9 +23,6 @@
                 <div class="card-body" style="background-color:white">
             
 
-            <%--<div class="panel panel-default" runat="server" id="divBuscar">
-                <div class="panel-heading"><strong>Buscar cliente</strong></div>
-                <div class="panel-body">--%>
                     <div class="row">
                         <div class="col-sm-3" style="padding-bottom: 5px;">
 
@@ -46,10 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="form-horizontal" runat="server" id="divClientes">
-                        <div class="form-inline">
-                            <div class="div-formualario">
-                                <div class="table-responsive">
+                    <div class="table-responsive" runat="server" id="divClientes">
                                     <asp:GridView ID="grvClientes"
                                         CssClass="tabla_datos col-xs-12 table-bordered"
                                         runat="server"
@@ -129,15 +123,11 @@
 
                                     </asp:GridView>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
-            <%--<div class="panel panel-default" runat="server" id="divDatosCarga" visible="true">
-                <div class="panel-heading"><strong>Carga de datos</strong></div>
-                <div class="panel-body">--%>
+           
             <br />
              <div class="card border-dark" style="max-width: 100rem;" runat="server" id="divDatosCarga">
                 <div class="card-header ph-card-header">Carga de datos</div>

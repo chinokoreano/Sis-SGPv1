@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="OPERADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="asesor_comercial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_identificacion" Type="nchar" MaxLength="10" />
+          <Property Name="nm" Type="nchar" MaxLength="10" />
+          <Property Name="direccion" Type="bit" />
+          <Property Name="telefono" Type="datetime" />
+          <Property Name="correo_electronico" Type="nchar" MaxLength="10" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="fecha_registro" Type="datetime" />
+        </EntityType>
         <EntityType Name="cartero">
           <Key>
             <PropertyRef Name="id" />
@@ -22,7 +35,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tipo_identificacion" Type="int" />
           <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
           <Property Name="nm_cliente" Type="varchar" MaxLength="100" />
@@ -37,7 +50,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="numero_contrato" Type="varchar" MaxLength="50" />
           <Property Name="fecha_inicio" Type="datetime" />
           <Property Name="fecha_fin" Type="datetime" />
@@ -120,7 +133,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nm" Type="varchar" MaxLength="50" />
           <Property Name="estado" Type="int" />
           <Property Name="fecha_registro" Type="datetime" />
@@ -154,7 +167,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nm_oficina" Type="varchar" MaxLength="200" />
           <Property Name="codigo_oficina" Type="varchar" MaxLength="30" />
           <Property Name="estado" Type="int" />
@@ -249,6 +262,14 @@
           <Property Name="nm" Type="varchar" MaxLength="30" />
           <Property Name="estado" Type="bit" />
         </EntityType>
+        <EntityType Name="tipo_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nm" Type="varchar" MaxLength="50" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
         <EntityType Name="ubicacion_geografica">
           <Key>
             <PropertyRef Name="id" />
@@ -281,6 +302,8 @@
           <Property Name="fecha_ultm_act_contrasenia" Type="datetime" />
           <Property Name="fecha_ultm_autenticacion" Type="datetime" />
           <Property Name="id_oficina" Type="int" />
+          <Property Name="cambio_contrasenia" Type="bit" />
+          <Property Name="contrasenia_encriptada" Type="varbinary" MaxLength="100" />
         </EntityType>
         <EntityType Name="usuario_contrato">
           <Key>
@@ -292,6 +315,18 @@
           <Property Name="estado" Type="int" />
           <Property Name="fecha_registro" Type="datetime" />
         </EntityType>
+        <Association Name="FK_contrato_asesor_comercial">
+          <End Role="asesor_comercial" Type="Self.asesor_comercial" Multiplicity="0..1" />
+          <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asesor_comercial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contrato">
+              <PropertyRef Name="id_asesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_contrato_cliente">
           <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
           <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
@@ -484,6 +519,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_usuario_tipo_usuario">
+          <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
+          <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPR_CONSULTA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
+        </Function>
         <Function Name="SPR_CONSULTA_ENVIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OPCION" Type="int" Mode="In" />
           <Parameter Name="CODIGO_ENVIO" Type="varchar" Mode="In" />
@@ -530,6 +584,7 @@
           <Parameter Name="OPCION" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="OPERADBModelStoreContainer">
+          <EntitySet Name="asesor_comercial" EntityType="Self.asesor_comercial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cartero" EntityType="Self.cartero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="contrato" EntityType="Self.contrato" Schema="dbo" store:Type="Tables" />
@@ -547,9 +602,14 @@
           <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ubicacion_geografica" EntityType="Self.ubicacion_geografica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario_contrato" EntityType="Self.usuario_contrato" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_contrato_asesor_comercial" Association="Self.FK_contrato_asesor_comercial">
+            <End Role="asesor_comercial" EntitySet="asesor_comercial" />
+            <End Role="contrato" EntitySet="contrato" />
+          </AssociationSet>
           <AssociationSet Name="FK_contrato_cliente" Association="Self.FK_contrato_cliente">
             <End Role="cliente" EntitySet="cliente" />
             <End Role="contrato" EntitySet="contrato" />
@@ -614,6 +674,10 @@
             <End Role="tipo_documento" EntitySet="tipo_documento" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <AssociationSet Name="FK_usuario_tipo_usuario" Association="Self.FK_usuario_tipo_usuario">
+            <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -623,14 +687,9 @@
           <EntitySet Name="cliente" EntityType="OPERADBModel.cliente" />
           <EntitySet Name="servicio" EntityType="OPERADBModel.servicio" />
           <EntitySet Name="tipo_documento" EntityType="OPERADBModel.tipo_documento" />
-          <EntitySet Name="usuario" EntityType="OPERADBModel.usuario" />
           <EntitySet Name="parametro" EntityType="OPERADBModel.parametro" />
           <EntitySet Name="orden_servicio" EntityType="OPERADBModel.orden_servicio" />
           <EntitySet Name="oficina" EntityType="OPERADBModel.oficina" />
-          <AssociationSet Name="FK_usuario_oficina" Association="OPERADBModel.FK_usuario_oficina">
-            <End Role="oficina" EntitySet="oficina" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
           <FunctionImport Name="SPR_CONSULTA_USUARIO_CONTRATO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_USUARIO_CONTRATO_Result)">
             <Parameter Name="opcion" Mode="In" Type="Int32" />
             <Parameter Name="id_usuario" Mode="In" Type="Int32" />
@@ -647,10 +706,6 @@
             <End Role="servicio" EntitySet="servicio" />
             <End Role="orden_servicio" EntitySet="orden_servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK_usuario_tipo_documento" Association="OPERADBModel.FK_usuario_tipo_documento">
-            <End Role="tipo_documento" EntitySet="tipo_documento" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
           <EntitySet Name="destinatario" EntityType="OPERADBModel.destinatario" />
           <EntitySet Name="manifiesto_entrega" EntityType="OPERADBModel.manifiesto_entrega" />
           <EntitySet Name="paquete" EntityType="OPERADBModel.paquete" />
@@ -666,18 +721,9 @@
             <End Role="orden_servicio" EntitySet="orden_servicio" />
             <End Role="paquete" EntitySet="paquete" />
           </AssociationSet>
-          <EntitySet Name="contrato" EntityType="OPERADBModel.contrato" />
           <EntitySet Name="evento" EntityType="OPERADBModel.evento" />
           <EntitySet Name="evento_orden_servicio" EntityType="OPERADBModel.evento_orden_servicio" />
           <EntitySet Name="usuario_contrato" EntityType="OPERADBModel.usuario_contrato" />
-          <AssociationSet Name="FK_contrato_cliente" Association="OPERADBModel.FK_contrato_cliente">
-            <End Role="cliente" EntitySet="cliente" />
-            <End Role="contrato" EntitySet="contrato" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_contrato_contrato" Association="OPERADBModel.FK_usuario_contrato_contrato">
-            <End Role="contrato" EntitySet="contrato" />
-            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
-          </AssociationSet>
           <AssociationSet Name="FK_evento_gestion" Association="OPERADBModel.FK_evento_gestion">
             <End Role="gestion" EntitySet="gestion" />
             <End Role="evento" EntitySet="evento" />
@@ -693,10 +739,6 @@
           <AssociationSet Name="FK_evento_orden_servicio_orden_servicio" Association="OPERADBModel.FK_evento_orden_servicio_orden_servicio">
             <End Role="orden_servicio" EntitySet="orden_servicio" />
             <End Role="evento_orden_servicio" EntitySet="evento_orden_servicio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_contrato_usuario" Association="OPERADBModel.FK_usuario_contrato_usuario">
-            <End Role="usuario" EntitySet="usuario" />
-            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
           </AssociationSet>
           <FunctionImport Name="SPR_GENERAR_COD_MANIFIESTO_ENTREGA" ReturnType="Collection(OPERADBModel.SPR_GENERAR_COD_MANIFIESTO_ENTREGA_Result)">
           <Parameter Name="id_oficina" Mode="In" Type="Int32" />
@@ -749,6 +791,45 @@
             <Parameter Name="OPCION" Mode="In" Type="Int32" />
             <Parameter Name="ID_ORDEN" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="usuario" EntityType="OPERADBModel.usuario" />
+          <AssociationSet Name="FK_usuario_oficina" Association="OPERADBModel.FK_usuario_oficina">
+            <End Role="oficina" EntitySet="oficina" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_tipo_documento" Association="OPERADBModel.FK_usuario_tipo_documento">
+            <End Role="tipo_documento" EntitySet="tipo_documento" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_contrato_usuario" Association="OPERADBModel.FK_usuario_contrato_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+          </AssociationSet>
+          <FunctionImport Name="SPR_CONSULTA_CREDENCIALES" ReturnType="Collection(String)">
+          <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPR_ACTUALIZA_CREDENCIALES" ReturnType="Collection(OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result)">
+            <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
+            <Parameter Name="CONTRASENIA" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="contrato" EntityType="OPERADBModel.contrato" />
+          <AssociationSet Name="FK_contrato_cliente" Association="OPERADBModel.FK_contrato_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="contrato" EntitySet="contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_contrato_contrato" Association="OPERADBModel.FK_usuario_contrato_contrato">
+            <End Role="contrato" EntitySet="contrato" />
+            <End Role="usuario_contrato" EntitySet="usuario_contrato" />
+          </AssociationSet>
+          <EntitySet Name="asesor_comercial" EntityType="OPERADBModel.asesor_comercial" />
+          <EntitySet Name="tipo_usuario" EntityType="OPERADBModel.tipo_usuario" />
+          <AssociationSet Name="FK_contrato_asesor_comercial" Association="OPERADBModel.FK_contrato_asesor_comercial">
+            <End Role="asesor_comercial" EntitySet="asesor_comercial" />
+            <End Role="contrato" EntitySet="contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_tipo_usuario" Association="OPERADBModel.FK_usuario_tipo_usuario">
+            <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="cliente">
           <Key>
@@ -787,29 +868,6 @@
           <Property Name="nm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Boolean" />
           <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_tipo_documento" FromRole="tipo_documento" ToRole="usuario" />
-        </EntityType>
-        <EntityType Name="usuario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="tipo_documento" Type="Int32" />
-          <Property Name="numero_documento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="activo" Type="Boolean" />
-          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
-          <Property Name="fecha_ultm_act" Type="DateTime" Precision="3" />
-          <Property Name="usuario1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="tipo_usuario" Type="Int32" />
-          <Property Name="contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_ultm_act_contrasenia" Type="DateTime" Precision="3" />
-          <Property Name="fecha_ultm_autenticacion" Type="DateTime" Precision="3" />
-          <Property Name="id_oficina" Type="Int32" />
-          <NavigationProperty Name="oficina" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="usuario" ToRole="oficina" />
-          <NavigationProperty Name="tipo_documento1" Relationship="OPERADBModel.FK_usuario_tipo_documento" FromRole="usuario" ToRole="tipo_documento" />
-          <NavigationProperty Name="usuario_contrato" Relationship="OPERADBModel.FK_usuario_contrato_usuario" FromRole="usuario" ToRole="usuario_contrato" />
         </EntityType>
         <EntityType Name="parametro">
           <Key>
@@ -855,21 +913,9 @@
           <Property Name="codigo_oficina" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Int32" />
           <Property Name="fecha_registro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="oficina" ToRole="usuario" />
           <NavigationProperty Name="evento" Relationship="OPERADBModel.FK_evento_oficina" FromRole="oficina" ToRole="evento" />
+          <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="oficina" ToRole="usuario" />
         </EntityType>
-        <Association Name="FK_usuario_oficina">
-          <End Type="OPERADBModel.oficina" Role="oficina" Multiplicity="0..1" />
-          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="oficina">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="id_oficina" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="SPR_CONSULTA_USUARIO_CONTRATO_Result">
           <Property Type="Int32" Name="id_codigo_contrato" Nullable="true" />
           <Property Type="String" Name="contrato" Nullable="true" MaxLength="50" />
@@ -939,18 +985,6 @@
             </Principal>
             <Dependent Role="orden_servicio">
               <PropertyRef Name="id_tipo_servicio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuario_tipo_documento">
-          <End Type="OPERADBModel.tipo_documento" Role="tipo_documento" Multiplicity="0..1" />
-          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipo_documento">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="tipo_documento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1058,23 +1092,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="contrato">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="numero_contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="3" />
-          <Property Name="id_asesor" Type="Int32" />
-          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
-          <Property Name="estado" Type="Int32" />
-          <Property Name="id_cliente" Type="Int32" />
-          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="renovacion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="cliente" Relationship="OPERADBModel.FK_contrato_cliente" FromRole="contrato" ToRole="cliente" />
-          <NavigationProperty Name="usuario_contrato" Relationship="OPERADBModel.FK_usuario_contrato_contrato" FromRole="contrato" ToRole="usuario_contrato" />
-        </EntityType>
         <EntityType Name="evento">
           <Key>
             <PropertyRef Name="id" />
@@ -1114,33 +1131,9 @@
           <Property Name="id_contrato" Type="Int32" />
           <Property Name="estado" Type="Int32" />
           <Property Name="fecha_registro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="contrato" Relationship="OPERADBModel.FK_usuario_contrato_contrato" FromRole="usuario_contrato" ToRole="contrato" />
           <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_contrato_usuario" FromRole="usuario_contrato" ToRole="usuario" />
+          <NavigationProperty Name="contrato" Relationship="OPERADBModel.FK_usuario_contrato_contrato" FromRole="usuario_contrato" ToRole="contrato" />
         </EntityType>
-        <Association Name="FK_contrato_cliente">
-          <End Type="OPERADBModel.cliente" Role="cliente" Multiplicity="0..1" />
-          <End Type="OPERADBModel.contrato" Role="contrato" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="contrato">
-              <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuario_contrato_contrato">
-          <End Type="OPERADBModel.contrato" Role="contrato" Multiplicity="0..1" />
-          <End Type="OPERADBModel.usuario_contrato" Role="usuario_contrato" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="contrato">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="usuario_contrato">
-              <PropertyRef Name="id_contrato" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_evento_gestion">
           <End Type="OPERADBModel.gestion" Role="gestion" Multiplicity="0..1" />
           <End Type="OPERADBModel.evento" Role="evento" Multiplicity="*" />
@@ -1186,18 +1179,6 @@
             </Principal>
             <Dependent Role="evento_orden_servicio">
               <PropertyRef Name="id_orden_servicio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuario_contrato_usuario">
-          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="0..1" />
-          <End Type="OPERADBModel.usuario_contrato" Role="usuario_contrato" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="usuario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="usuario_contrato">
-              <PropertyRef Name="id_usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1359,6 +1340,161 @@
           <Property Type="String" Name="telefono" Nullable="true" MaxLength="30" />
           <Property Type="String" Name="correo_electronico" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_documento" Type="Int32" />
+          <Property Name="numero_documento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <Property Name="fecha_ultm_act" Type="DateTime" Precision="3" />
+          <Property Name="usuario1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_usuario" Type="Int32" />
+          <Property Name="contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ultm_act_contrasenia" Type="DateTime" Precision="3" />
+          <Property Name="fecha_ultm_autenticacion" Type="DateTime" Precision="3" />
+          <Property Name="id_oficina" Type="Int32" />
+          <Property Name="cambio_contrasenia" Type="Boolean" />
+          <Property Name="contrasenia_encriptada" Type="Binary" MaxLength="100" FixedLength="false" />
+          <NavigationProperty Name="oficina" Relationship="OPERADBModel.FK_usuario_oficina" FromRole="usuario" ToRole="oficina" />
+          <NavigationProperty Name="tipo_documento1" Relationship="OPERADBModel.FK_usuario_tipo_documento" FromRole="usuario" ToRole="tipo_documento" />
+          <NavigationProperty Name="usuario_contrato" Relationship="OPERADBModel.FK_usuario_contrato_usuario" FromRole="usuario" ToRole="usuario_contrato" />
+          <NavigationProperty Name="tipo_usuario1" Relationship="OPERADBModel.FK_usuario_tipo_usuario" FromRole="usuario" ToRole="tipo_usuario" />
+        </EntityType>
+        <Association Name="FK_usuario_oficina">
+          <End Type="OPERADBModel.oficina" Role="oficina" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oficina">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_oficina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_tipo_documento">
+          <End Type="OPERADBModel.tipo_documento" Role="tipo_documento" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_documento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="tipo_documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_contrato_usuario">
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario_contrato" Role="usuario_contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_contrato">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SPR_ACTUALIZA_CREDENCIALES_Result">
+          <Property Type="Int32" Name="RESULTADO" Nullable="false" />
+          <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="21" />
+        </ComplexType>
+        <EntityType Name="contrato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_fin" Type="DateTime" Precision="3" />
+          <Property Name="id_asesor" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="renovacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cliente" Relationship="OPERADBModel.FK_contrato_cliente" FromRole="contrato" ToRole="cliente" />
+          <NavigationProperty Name="usuario_contrato" Relationship="OPERADBModel.FK_usuario_contrato_contrato" FromRole="contrato" ToRole="usuario_contrato" />
+          <NavigationProperty Name="asesor_comercial" Relationship="OPERADBModel.FK_contrato_asesor_comercial" FromRole="contrato" ToRole="asesor_comercial" />
+        </EntityType>
+        <Association Name="FK_contrato_cliente">
+          <End Type="OPERADBModel.cliente" Role="cliente" Multiplicity="0..1" />
+          <End Type="OPERADBModel.contrato" Role="contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contrato">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_contrato_contrato">
+          <End Type="OPERADBModel.contrato" Role="contrato" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario_contrato" Role="usuario_contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contrato">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_contrato">
+              <PropertyRef Name="id_contrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="asesor_comercial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_identificacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="nm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="direccion" Type="Boolean" />
+          <Property Name="telefono" Type="DateTime" Precision="3" />
+          <Property Name="correo_electronico" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="contrato" Relationship="OPERADBModel.FK_contrato_asesor_comercial" FromRole="asesor_comercial" ToRole="contrato" />
+        </EntityType>
+        <EntityType Name="tipo_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_tipo_usuario" FromRole="tipo_usuario" ToRole="usuario" />
+        </EntityType>
+        <Association Name="FK_contrato_asesor_comercial">
+          <End Type="OPERADBModel.asesor_comercial" Role="asesor_comercial" Multiplicity="0..1" />
+          <End Type="OPERADBModel.contrato" Role="contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asesor_comercial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contrato">
+              <PropertyRef Name="id_asesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_tipo_usuario">
+          <End Type="OPERADBModel.tipo_usuario" Role="tipo_usuario" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1398,27 +1534,6 @@
             <EntityTypeMapping TypeName="OPERADBModel.tipo_documento">
               <MappingFragment StoreEntitySet="tipo_documento">
                 <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="nm" ColumnName="nm" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="OPERADBModel.usuario">
-              <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
-                <ScalarProperty Name="fecha_ultm_autenticacion" ColumnName="fecha_ultm_autenticacion" />
-                <ScalarProperty Name="fecha_ultm_act_contrasenia" ColumnName="fecha_ultm_act_contrasenia" />
-                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
-                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
-                <ScalarProperty Name="usuario1" ColumnName="usuario" />
-                <ScalarProperty Name="fecha_ultm_act" ColumnName="fecha_ultm_act" />
-                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="numero_documento" ColumnName="numero_documento" />
-                <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
                 <ScalarProperty Name="nm" ColumnName="nm" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -1597,22 +1712,6 @@
                 <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
                 <ScalarProperty Name="identificador" ColumnName="identificador" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="contrato">
-            <EntityTypeMapping TypeName="OPERADBModel.contrato">
-              <MappingFragment StoreEntitySet="contrato">
-                <ScalarProperty Name="renovacion" ColumnName="renovacion" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
-                <ScalarProperty Name="id_asesor" ColumnName="id_asesor" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1803,6 +1902,77 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="OPERADBModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="contrasenia_encriptada" ColumnName="contrasenia_encriptada" />
+                <ScalarProperty Name="cambio_contrasenia" ColumnName="cambio_contrasenia" />
+                <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
+                <ScalarProperty Name="fecha_ultm_autenticacion" ColumnName="fecha_ultm_autenticacion" />
+                <ScalarProperty Name="fecha_ultm_act_contrasenia" ColumnName="fecha_ultm_act_contrasenia" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="fecha_ultm_act" ColumnName="fecha_ultm_act" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="numero_documento" ColumnName="numero_documento" />
+                <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+                <ScalarProperty Name="nm" ColumnName="nm" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_CONSULTA_CREDENCIALES" />
+          <FunctionImportMapping FunctionImportName="SPR_ACTUALIZA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_ACTUALIZA_CREDENCIALES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result">
+                <ScalarProperty Name="RESULTADO" ColumnName="RESULTADO" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="contrato">
+            <EntityTypeMapping TypeName="OPERADBModel.contrato">
+              <MappingFragment StoreEntitySet="contrato">
+                <ScalarProperty Name="renovacion" ColumnName="renovacion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="id_asesor" ColumnName="id_asesor" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asesor_comercial">
+            <EntityTypeMapping TypeName="OPERADBModel.asesor_comercial">
+              <MappingFragment StoreEntitySet="asesor_comercial">
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nm" ColumnName="nm" />
+                <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_usuario">
+            <EntityTypeMapping TypeName="OPERADBModel.tipo_usuario">
+              <MappingFragment StoreEntitySet="tipo_usuario">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nm" ColumnName="nm" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

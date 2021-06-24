@@ -18,5 +18,21 @@ namespace CapaNegocio
             return oResultado;
 
         }
+
+        public Resultado FnActualizaUsuario(usuario oUsuario, string strContrasenia)
+        {
+            Resultado oResultado = new Resultado();
+            try
+            {
+                UsuarioCD oUsuarioCD = new UsuarioCD();
+                oResultado = oUsuarioCD.FnActualizaUsuario(oUsuario, strContrasenia);
+                return oResultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

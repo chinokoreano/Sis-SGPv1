@@ -20,7 +20,7 @@ namespace CapaEntidad
         public Nullable<int> estado { get; set; }
         public Nullable<System.DateTime> fecha_registro { get; set; }
     
-        public virtual contrato contrato { get; set; }
         public virtual usuario usuario { get; set; }
+        public virtual contrato contrato { get; set; }
     }
 }

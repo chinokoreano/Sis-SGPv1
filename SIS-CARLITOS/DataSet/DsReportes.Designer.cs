@@ -1539,6 +1539,8 @@ namespace SIS_CARLITOS.DataSet {
             
             private global::System.Data.DataColumn columnevento;
             
+            private global::System.Data.DataColumn columnobservacion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public dt_lista_envios_eventosDataTable() {
@@ -1598,6 +1600,14 @@ namespace SIS_CARLITOS.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn observacionColumn {
+                get {
+                    return this.columnobservacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1633,12 +1643,13 @@ namespace SIS_CARLITOS.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public dt_lista_envios_eventosRow Adddt_lista_envios_eventosRow(string codigo, string orden, string evento) {
+            public dt_lista_envios_eventosRow Adddt_lista_envios_eventosRow(string codigo, string orden, string evento, string observacion) {
                 dt_lista_envios_eventosRow rowdt_lista_envios_eventosRow = ((dt_lista_envios_eventosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         codigo,
                         orden,
-                        evento};
+                        evento,
+                        observacion};
                 rowdt_lista_envios_eventosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdt_lista_envios_eventosRow);
                 return rowdt_lista_envios_eventosRow;
@@ -1664,6 +1675,7 @@ namespace SIS_CARLITOS.DataSet {
                 this.columncodigo = base.Columns["codigo"];
                 this.columnorden = base.Columns["orden"];
                 this.columnevento = base.Columns["evento"];
+                this.columnobservacion = base.Columns["observacion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1675,6 +1687,8 @@ namespace SIS_CARLITOS.DataSet {
                 base.Columns.Add(this.columnorden);
                 this.columnevento = new global::System.Data.DataColumn("evento", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnevento);
+                this.columnobservacion = new global::System.Data.DataColumn("observacion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnobservacion);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2780,6 +2794,23 @@ namespace SIS_CARLITOS.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string observacion {
+                get {
+                    try {
+                        return ((string)(this[this.tabledt_lista_envios_eventos.observacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'observacion\' de la tabla \'dt_lista_envios_eventos\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledt_lista_envios_eventos.observacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscodigoNull() {
                 return this.IsNull(this.tabledt_lista_envios_eventos.codigoColumn);
             }
@@ -2812,6 +2843,18 @@ namespace SIS_CARLITOS.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SeteventoNull() {
                 this[this.tabledt_lista_envios_eventos.eventoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsobservacionNull() {
+                return this.IsNull(this.tabledt_lista_envios_eventos.observacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetobservacionNull() {
+                this[this.tabledt_lista_envios_eventos.observacionColumn] = global::System.Convert.DBNull;
             }
         }
         

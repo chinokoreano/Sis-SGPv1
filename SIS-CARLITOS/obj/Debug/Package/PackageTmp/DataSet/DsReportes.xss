@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:dt_orden" ZOrder="2" X="245" Y="40" Height="334" Width="173" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="330" />
     <Shape ID="DesignTable:dt_lista_envios" ZOrder="4" X="549" Y="224" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
     <Shape ID="DesignTable:dt_guia_envios" ZOrder="3" X="43" Y="235" Height="181" Width="151" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
-    <Shape ID="DesignTable:dt_lista_envios_eventos" ZOrder="1" X="338" Y="412" Height="86" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
+    <Shape ID="DesignTable:dt_lista_envios_eventos" ZOrder="1" X="338" Y="412" Height="105" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
