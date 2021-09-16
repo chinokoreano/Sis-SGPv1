@@ -274,9 +274,22 @@ namespace SIS_CARLITOS.Vistas
                     }
                     else
                     {
+                        
+                        SucesoCN oSucesoCN = new SucesoCN();
+                        suceso objSuceso = new suceso();
+                        objSuceso.id_lote = gLote;
+                        List<suceso> oResultadoSucesos = new List<suceso>();
+                        oResultadoSucesos = oSucesoCN.FnConsultarSucesos(objSuceso);
+                        string strResultado;
+                        strResultado = string.Empty;
+                        foreach (var itm in oResultadoSucesos)
+                        {
+                            strResultado = strResultado + itm.mensaje;
+                        }
                         lblMensaje1.Visible = true;
                         lblMensaje1.Attributes.Add("class", "btn btn-danger");
-                        lblMensaje1.Text = "Problemas al realizar proceso de carga: " + oResultadoProceso.Mensaje1;
+                        lblMensaje1.Text = "Problemas al realizar proceso de carga: " + strResultado;
+                        //Response.Redirect("~/frmErrorCarga.aspx?mensaje=" + "Error: " + Server.UrlEncode(strResultado));
                         return;
                     }
                 }

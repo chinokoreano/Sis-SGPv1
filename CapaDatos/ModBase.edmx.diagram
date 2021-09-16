@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b27820ad0e7e41f4abc65de91f6c706a" Name="Diagram1" ZoomLevel="78">
+      <Diagram DiagramId="b27820ad0e7e41f4abc65de91f6c706a" Name="Diagram1" ZoomLevel="102">
         <EntityTypeShape EntityType="OPERADBModel.cliente" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="OPERADBModel.servicio" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="OPERADBModel.tipo_documento" Width="1.5" PointX="6.75" PointY="4.75" />
@@ -41,10 +41,11 @@
         <EntityTypeShape EntityType="OPERADBModel.contrato" Width="1.5" PointX="3" PointY="16.375" />
         <AssociationConnector Association="OPERADBModel.FK_contrato_cliente" />
         <AssociationConnector Association="OPERADBModel.FK_usuario_contrato_contrato" />
-        <EntityTypeShape EntityType="OPERADBModel.asesor_comercial" Width="1.5" PointX="1.125" PointY="16.75" />
         <EntityTypeShape EntityType="OPERADBModel.tipo_usuario" Width="1.5" PointX="0.75" PointY="7.875" />
-        <AssociationConnector Association="OPERADBModel.FK_contrato_asesor_comercial" />
         <AssociationConnector Association="OPERADBModel.FK_usuario_tipo_usuario" />
+        <EntityTypeShape EntityType="OPERADBModel.suceso" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="OPERADBModel.asesor_comercial" Width="1.5" PointX="14.375" PointY="6" />
+        <AssociationConnector Association="OPERADBModel.FK_contrato_asesor_comercial" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

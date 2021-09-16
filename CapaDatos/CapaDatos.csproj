@@ -75,6 +75,7 @@
     <Compile Include="DetalleOrdenServicioCD.cs" />
     <Compile Include="EventoCD.cs" />
     <Compile Include="GestionCD.cs" />
+    <Compile Include="SucesoCD.cs" />
     <Compile Include="OficinaCD.cs" />
     <Compile Include="OrdenServicioCD.cs" />
     <Compile Include="PaqueteCD.cs" />

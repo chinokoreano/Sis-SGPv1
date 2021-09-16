@@ -995,7 +995,6 @@
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -1213,7 +1212,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>COURIER EXPRESS EL ECUADOR</Value>
+                  <Value>COURIEXPRESS EL ECUADOR</Value>
                   <Style>
                     <FontSize>11pt</FontSize>
                     <FontWeight>Bold</FontWeight>

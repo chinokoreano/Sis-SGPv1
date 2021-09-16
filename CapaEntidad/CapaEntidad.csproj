@@ -144,6 +144,9 @@
     <Compile Include="SPR_GENERAR_COD_MANIFIESTO_ENTREGA_Result.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="suceso.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="tipo_documento.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>

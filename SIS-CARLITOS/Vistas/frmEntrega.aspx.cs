@@ -137,6 +137,26 @@ namespace SIS_CARLITOS.Vistas
                     return;
                 }
 
+                ParametroCN oParametroCN = new ParametroCN();
+                List<parametro> oResultadoParametros = new List<parametro>();
+                oResultadoParametros = oParametroCN.FnConsultarParametros();
+                List<parametro> oResultadoBusqParam = oResultadoParametros.Where(p => p.tipo == "ENTREGA_PRECONDICION").ToList();
+
+                string[] strPreCondiciones = oResultadoBusqParam[0].valor1.Split(',');
+
+
+                foreach (var itm in strPreCondiciones)
+                {
+                    if (itm.ToString() == oResultadoBusq.id_ultm_evento.ToString())
+                    {
+                        lblMensaje.Visible = true;
+                        lblMensaje.Attributes.Add("class", "btn btn-danger");
+                        lblMensaje.Text = "Codigo de envío ya ha sido entregado o devuelto";
+                        txtCodigoEnvio1.Focus();
+                        return;
+                    }
+                }
+
                 entrega objEntrega = new entrega();
                 objEntrega.identificador_paquete = oResultadoBusq.identificador;
                 objEntrega.fecha_entrega = txtFechaEntrega1.Text.Trim();

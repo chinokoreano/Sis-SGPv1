@@ -36,9 +36,9 @@ namespace SIS_CARLITOS.Vistas
             if (!IsPostBack)
             {
                 FnCargarClientes();
-              
+
             }
-            
+
 
         }
 
@@ -55,12 +55,12 @@ namespace SIS_CARLITOS.Vistas
             try
             {
                 cliente oCliente = new cliente();
-               
+
                 ClienteCN oClienteCN = new ClienteCN();
                 usuario oUsuario = new usuario();
                 oUsuario.id = int.Parse(Session["IdUsuario"].ToString());
 
-                
+
                 List<usuario> objUsuario = (List<usuario>)Session["objUsuario"];
                 if (objUsuario[0].tipo_usuario == 0 || objUsuario[0].tipo_usuario == 1)//tipo de usuario 0 - 1 administrador operador
                 {
@@ -75,8 +75,8 @@ namespace SIS_CARLITOS.Vistas
                 cmbClientes.ValueField = "id_codigo_contrato";
                 cmbClientes.TextField = "nm_cliente";
                 cmbClientes.DataBind();
-                
-                    
+
+
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace SIS_CARLITOS.Vistas
             List<SPR_CONSULTA_ENVIO_Result> oResultado = new List<SPR_CONSULTA_ENVIO_Result>();
             try
             {
-                
+
 
                 if (ddlFiltro.SelectedValue.ToString() == "1")
                 {
@@ -124,15 +124,24 @@ namespace SIS_CARLITOS.Vistas
                 if (ddlFiltro.SelectedValue.ToString() == "4")
                 {
                     if (!string.IsNullOrEmpty(txtFechaCargaInicio.Text) && !string.IsNullOrWhiteSpace(txtFechaCargaInicio.Text)
-                        && !string.IsNullOrEmpty(txtFechaCargaFin.Text) && !string.IsNullOrWhiteSpace(txtFechaCargaFin.Text))
+                        && !string.IsNullOrEmpty(txtFechaCargaFin.Text) && !string.IsNullOrWhiteSpace(txtFechaCargaFin.Text) && cmbClientes.SelectedIndex != -1)
                     {
                         PaqueteCN oPaqueteCN = new PaqueteCN();
-                        oResultado = oPaqueteCN.FnTrackingPaquetes(4, null, null,null, int.Parse(Session["IdUsuario"].ToString()), txtFechaCargaInicio.Text, txtFechaCargaFin.Text,null, int.Parse(cmbClientes.SelectedItem.Value.ToString())).ToList();
+                        oResultado = oPaqueteCN.FnTrackingPaquetes(4, null, null, null, int.Parse(Session["IdUsuario"].ToString()), txtFechaCargaInicio.Text, txtFechaCargaFin.Text, null, int.Parse(cmbClientes.SelectedItem.Value.ToString())).ToList();
+                    }
+                }
+                if (ddlFiltro.SelectedValue.ToString() == "5")
+                {
+                    if (!string.IsNullOrEmpty(txtFiltro1.Text) || !string.IsNullOrWhiteSpace(txtFiltro1.Text))
+                    {
+                        PaqueteCN oPaqueteCN = new PaqueteCN();
+                        oResultado = oPaqueteCN.FnTrackingPaquetes(5, txtFiltro1.Text.Trim(), null, null, 0, null, null, null, 0).ToList();
                     }
                 }
 
                 if (oResultado.Count > 0)
                 {
+
                     Session["ListadoEnvios"] = oResultado;
                     grvEnvios.DataSource = oResultado;
                     grvEnvios.DataBind();
@@ -150,7 +159,7 @@ namespace SIS_CARLITOS.Vistas
                     grvEventos.Visible = false;
 
                     divBotonImprimir.Visible = false;
-         
+
                 }
 
             }
@@ -158,7 +167,7 @@ namespace SIS_CARLITOS.Vistas
             {
 
                 string strDescripcionError = ex.Message + ex.InnerException;
-                Response.Redirect("~/frmError.aspx?mensaje=" + "Error: " + strDescripcionError);
+                Response.Redirect("~/frmError.aspx?mensaje=" + "Error: " + Server.UrlEncode(strDescripcionError));
             }
         }
 
@@ -182,7 +191,9 @@ namespace SIS_CARLITOS.Vistas
                 grvEventos.DataBind();
                 grvEventos.Visible = true;
 
-               
+                Session["ListaEventos"] = oResultado;
+                
+                divImprimirHistorial.Visible = true;
             }
             catch (Exception ex)
             {
@@ -218,6 +229,7 @@ namespace SIS_CARLITOS.Vistas
             grvEnvios.Visible = false;
             grvEventos.Visible = false;
             divBotonImprimir.Visible = false;
+            divImprimirHistorial.Visible = false;
 
             if (ddlFiltro.SelectedValue == "4")
             {
@@ -226,7 +238,7 @@ namespace SIS_CARLITOS.Vistas
                 txtFechaCargaFin.Visible = true;
                 cmbClientes.Enabled = true;
             }
-            else if (ddlFiltro.SelectedValue.ToString() == "1" || ddlFiltro.SelectedValue.ToString() == "2" || ddlFiltro.SelectedValue.ToString() == "3")
+            else if (ddlFiltro.SelectedValue.ToString() == "1" || ddlFiltro.SelectedValue.ToString() == "2" || ddlFiltro.SelectedValue.ToString() == "3" || ddlFiltro.SelectedValue.ToString() == "5")
             {
 
                 txtFiltro1.Visible = true;
@@ -235,7 +247,7 @@ namespace SIS_CARLITOS.Vistas
                 cmbClientes.Enabled = false;
             }
         }
-         
+
 
         protected void btnImprimir_Click(object sender, EventArgs e)
         {
@@ -263,6 +275,7 @@ namespace SIS_CARLITOS.Vistas
                 string encoding;
                 string extension;
 
+
                 //Export the RDLC Report to Byte Array.
                 byte[] bytes = rpvReporte.LocalReport.Render("Excel", null, out contentType, out encoding, out extension, out streamIds, out warnings);
 
@@ -284,10 +297,71 @@ namespace SIS_CARLITOS.Vistas
             {
 
                 string descripcion_error = ex.Message;
-               
+
             }
         }
 
-       
+        protected void btnImprimirHistorial_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                          
+
+                List<SPR_CONSULTA_EVENTOS_Result> oResultado = (List<SPR_CONSULTA_EVENTOS_Result>)Session["ListaEventos"];
+                
+                DataTable dt = ClsAuxiliar.ConvertToDataTable(oResultado);
+                DsReportes ds = new DsReportes();
+                ds.Tables.Add(dt);
+
+                rpvReporte.LocalReport.DataSources.Clear();
+                ReportParameter[] parameters = new ReportParameter[2];
+                parameters[0] = new ReportParameter("usuario", Session["Usuario"].ToString());
+                parameters[1] = new ReportParameter("oficina", Session["Oficina"].ToString());
+
+                rpvReporte.LocalReport.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("ds", ds.Tables[4]));
+                rpvReporte.LocalReport.ReportPath = Server.MapPath("~/Reportes/rptHistorialPaquete.rdlc");
+
+                rpvReporte.LocalReport.SetParameters(parameters);
+                string strNmArchivo = "Rpt_Historial_Paquete" + DateTime.Now.ToShortDateString().Replace("/", "") + DateTime.Now.ToLongTimeString().Replace(":", "");
+                string deviceInfo = "<DeviceInfo>" +
+                        "  <OutputFormat>PDF</OutputFormat>" +
+                        "  <PageWidth>8.27in</PageWidth>" +
+                        "  <PageHeight>11.69in</PageHeight>" +
+                        "  <MarginTop>0.25in</MarginTop>" +
+                        "  <MarginLeft>0.4in</MarginLeft>" +
+                        "  <MarginRight>0in</MarginRight>" +
+                        "  <MarginBottom>0.25in</MarginBottom>" +
+                        "  <EmbedFonts>None</EmbedFonts>" +
+                        "</DeviceInfo>";
+                Warning[] warnings;
+                string[] streamIds;
+                string contentType;
+                string encoding;
+                string extension;
+
+                
+                //Export the RDLC Report to Byte Array.
+                byte[] bytes = rpvReporte.LocalReport.Render("PDF", deviceInfo, out contentType, out encoding, out extension, out streamIds, out warnings);
+
+                //Download the RDLC Report in Word, Excel, PDF and Image formats.
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.ContentType = contentType;
+                //Response.AppendHeader("Content-Disposition", "attachment; filename=RDLC." + extension);
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + strNmArchivo + "." + extension);
+                Response.BinaryWrite(bytes);
+                Response.Flush();
+                Response.End();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                string descripcion_error = ex.Message;
+            }
+        }
     }
 }

@@ -5,11 +5,11 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="numero_identificacion" Type="nchar" MaxLength="10" />
-    <Property Name="nm" Type="nchar" MaxLength="10" />
-    <Property Name="direccion" Type="bit" />
-    <Property Name="telefono" Type="datetime" />
-    <Property Name="correo_electronico" Type="nchar" MaxLength="10" />
+    <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
+    <Property Name="nm" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="20" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="50" />
     <Property Name="estado" Type="bit" />
     <Property Name="fecha_registro" Type="datetime" />
   </EntityType>
@@ -249,6 +249,14 @@
     <Property Name="estado" Type="bit" />
     <Property Name="fecha_ingreso" Type="datetime" />
   </EntityType>
+  <EntityType Name="suceso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_lote" Type="uniqueidentifier" />
+    <Property Name="mensaje" Type="text" />
+  </EntityType>
   <EntityType Name="tipo_documento">
     <Key>
       <PropertyRef Name="id" />
@@ -310,18 +318,6 @@
     <Property Name="estado" Type="int" />
     <Property Name="fecha_registro" Type="datetime" />
   </EntityType>
-  <Association Name="FK_contrato_asesor_comercial">
-    <End Role="asesor_comercial" Type="Self.asesor_comercial" Multiplicity="0..1" />
-    <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="asesor_comercial">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="contrato">
-        <PropertyRef Name="id_asesor" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_contrato_cliente">
     <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
     <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
@@ -514,18 +510,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_usuario_tipo_usuario">
-    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="0..1" />
-    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tipo_usuario">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="usuario">
-        <PropertyRef Name="tipo_usuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
     <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
@@ -596,15 +580,12 @@
     <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suceso" EntityType="Self.suceso" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ubicacion_geografica" EntityType="Self.ubicacion_geografica" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuario_contrato" EntityType="Self.usuario_contrato" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_contrato_asesor_comercial" Association="Self.FK_contrato_asesor_comercial">
-      <End Role="asesor_comercial" EntitySet="asesor_comercial" />
-      <End Role="contrato" EntitySet="contrato" />
-    </AssociationSet>
     <AssociationSet Name="FK_contrato_cliente" Association="Self.FK_contrato_cliente">
       <End Role="cliente" EntitySet="cliente" />
       <End Role="contrato" EntitySet="contrato" />
@@ -667,10 +648,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_usuario_tipo_documento" Association="Self.FK_usuario_tipo_documento">
       <End Role="tipo_documento" EntitySet="tipo_documento" />
-      <End Role="usuario" EntitySet="usuario" />
-    </AssociationSet>
-    <AssociationSet Name="FK_usuario_tipo_usuario" Association="Self.FK_usuario_tipo_usuario">
-      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
       <End Role="usuario" EntitySet="usuario" />
     </AssociationSet>
   </EntityContainer>

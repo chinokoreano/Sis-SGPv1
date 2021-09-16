@@ -338,29 +338,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ENVIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ENVIO">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ENVIO_Result">
-          <ScalarProperty Name="orden" ColumnName="orden" />
-          <ScalarProperty Name="identificador" ColumnName="identificador" />
-          <ScalarProperty Name="codigo" ColumnName="codigo" />
-          <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
-          <ScalarProperty Name="fecha_evento_carga" ColumnName="fecha_evento_carga" />
-          <ScalarProperty Name="fecha_ultimo_evento" ColumnName="fecha_ultimo_evento" />
-          <ScalarProperty Name="destinatario" ColumnName="destinatario" />
-          <ScalarProperty Name="direccion" ColumnName="direccion" />
-          <ScalarProperty Name="referencia" ColumnName="referencia" />
-          <ScalarProperty Name="provincia" ColumnName="provincia" />
-          <ScalarProperty Name="canton" ColumnName="canton" />
-          <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
-          <ScalarProperty Name="ultima_gestion" ColumnName="ultima_gestion" />
-          <ScalarProperty Name="oficina" ColumnName="oficina" />
-          <ScalarProperty Name="orden_servicio" ColumnName="orden_servicio" />
-          <ScalarProperty Name="usuario" ColumnName="usuario" />
-          <ScalarProperty Name="receptor" ColumnName="receptor" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ORDENES_SERVICIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ORDENES_SERVICIO">
       <ResultMapping>
         <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ORDENES_SERVICIO_Result">
@@ -450,6 +427,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tipo_usuario">
+      <EntityTypeMapping TypeName="OPERADBModel.tipo_usuario">
+        <MappingFragment StoreEntitySet="tipo_usuario">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nm" ColumnName="nm" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suceso">
+      <EntityTypeMapping TypeName="OPERADBModel.suceso">
+        <MappingFragment StoreEntitySet="suceso">
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="asesor_comercial">
       <EntityTypeMapping TypeName="OPERADBModel.asesor_comercial">
         <MappingFragment StoreEntitySet="asesor_comercial">
@@ -464,14 +459,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tipo_usuario">
-      <EntityTypeMapping TypeName="OPERADBModel.tipo_usuario">
-        <MappingFragment StoreEntitySet="tipo_usuario">
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="nm" ColumnName="nm" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ENVIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ENVIO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ENVIO_Result">
+          <ScalarProperty Name="orden" ColumnName="orden" />
+          <ScalarProperty Name="identificador" ColumnName="identificador" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
+          <ScalarProperty Name="fecha_evento_carga" ColumnName="fecha_evento_carga" />
+          <ScalarProperty Name="fecha_ultimo_evento" ColumnName="fecha_ultimo_evento" />
+          <ScalarProperty Name="destinatario" ColumnName="destinatario" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="canton" ColumnName="canton" />
+          <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+          <ScalarProperty Name="ultima_gestion" ColumnName="ultima_gestion" />
+          <ScalarProperty Name="oficina" ColumnName="oficina" />
+          <ScalarProperty Name="orden_servicio" ColumnName="orden_servicio" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="receptor" ColumnName="receptor" />
+          <ScalarProperty Name="seguro" ColumnName="seguro" />
+          <ScalarProperty Name="monto_seguro" ColumnName="monto_seguro" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

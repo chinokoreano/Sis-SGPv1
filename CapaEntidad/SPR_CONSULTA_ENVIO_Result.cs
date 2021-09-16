@@ -30,5 +30,7 @@ namespace CapaEntidad
         public string orden_servicio { get; set; }
         public string usuario { get; set; }
         public string receptor { get; set; }
+        public string seguro { get; set; }
+        public Nullable<decimal> monto_seguro { get; set; }
     }
 }

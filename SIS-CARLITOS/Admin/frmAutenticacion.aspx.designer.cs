@@ -10,7 +10,7 @@
 namespace SIS_CARLITOS.Admin {
     
     
-    public partial class frmLogin {
+    public partial class frmAutenticacion {
         
         /// <summary>
         /// Control smMain.

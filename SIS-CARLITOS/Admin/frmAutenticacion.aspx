@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmAutenticacion.aspx.cs" Inherits="SIS_CARLITOS.Admin.frmLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmAutenticacion.aspx.cs" Inherits="SIS_CARLITOS.Admin.frmAutenticacion" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
 
@@ -47,8 +47,8 @@
                     <div class="row mx-0 bg-black-op-20">
                         <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                             <div class="p-30 invisible" data-toggle="appear">
-                                <%--<p class="font-size-h3 font-w600 text-white">
-                                    Derechos Reservados CourieExpress - 2021
+                                <%--<p class="font-size-h4 font-w600 text-black">
+                                    CourieExpress - 2021
                                 </p>--%>
                                 <p class="font-italic text-white-op">
                                     Copyright &copy; <span class="js-year-copy">2021</span>
@@ -58,20 +58,23 @@
                         <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="animated fadeInRight">
                             <div class="content content-full">
                                 <!-- Header -->
+                                <h6 class="h5 text-muted mb-0 font-size-h6 mb-10">Recomendamos: Firefox ó Chrome</h6>
                                 <div class="px-30 py-10">
                                     <a class="link-effect font-w700" href="index.html">
                                         <i class="si si-fire"></i>
                                         <span class="font-size-xl text-primary-dark">Sistema de Gestión de Paquetería SIS-SGP</span><span class="font-size-xl"> v1.0</span>
                                     </a>
+                                    
                                     <h1 class="h3 font-w700 mt-30 mb-10">Bienvenido</h1>
                                     <h2 class="h5 font-w400 text-muted mb-0">Inicio de sesión</h2>
+                                   
                                 </div>
                                 <!-- END Header -->
 
                                 <!-- Sign In Form -->
                                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                <form class="js-validation-signin px-30" runat="server">
+                                <form  runat="server">
                                      <asp:ScriptManager ID="smMain" runat="server"></asp:ScriptManager>
                                     <div class="form-group row">
                                         <div class="col-12">
@@ -172,19 +175,19 @@
 
         <!-- Codebase Core JS -->
         <script src="../public/assets/js/core/jquery.min.js"></script>
-        <script src="../public/assets/js/core/popper.min.js"></script>
-        <script src="../public/assets/js/core/bootstrap.min.js"></script>
+        <%--<script src="../public/assets/js/core/popper.min.js"></script>
+        <script src="../public/assets/js/core/bootstrap.min.js"></script>--%>
         <script src="../public/assets/js/core/jquery.slimscroll.min.js"></script>
         <script src="../public/assets/js/core/jquery.scrollLock.min.js"></script>
         <script src="../public/assets/js/core/jquery.appear.min.js"></script>
-        <script src="../public/assets/js/core/jquery.countTo.min.js"></script>
-        <script src="../public/assets/js/core/js.cookie.min.js"></script>
+        <%--<script src="../public/assets/js/core/jquery.countTo.min.js"></script>--%>
+        <%--<script src="../public/assets/js/core/js.cookie.min.js"></script>--%>
         <script src="../public/assets/js/codebase.js"></script>
 
         <!-- Page JS Plugins -->
-        <script src="../public/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+       <%-- <script src="../public/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>--%>
 
         <!-- Page JS Code -->
-        <script src="../public/assets/js/pages/op_auth_signin.js"></script>
+        <%--<script src="../public/assets/js/pages/op_auth_signin.js"></script>--%>
     </body>
 </html>

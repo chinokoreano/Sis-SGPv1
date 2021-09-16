@@ -76,6 +76,7 @@
     <Compile Include="ProcesoCN.cs" />
     <Compile Include="ServicioCN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SucesoCN.cs" />
     <Compile Include="UbicacionGeograficaCN.cs" />
     <Compile Include="UsuarioCN.cs" />
   </ItemGroup>

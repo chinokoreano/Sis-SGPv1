@@ -47,8 +47,9 @@ namespace CapaEntidad
         public virtual DbSet<entrega> entrega { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<contrato> contrato { get; set; }
-        public virtual DbSet<asesor_comercial> asesor_comercial { get; set; }
         public virtual DbSet<tipo_usuario> tipo_usuario { get; set; }
+        public virtual DbSet<suceso> suceso { get; set; }
+        public virtual DbSet<asesor_comercial> asesor_comercial { get; set; }
     
         public virtual ObjectResult<SPR_CONSULTA_USUARIO_CONTRATO_Result> SPR_CONSULTA_USUARIO_CONTRATO(Nullable<int> opcion, Nullable<int> id_usuario, string numero_identificacion, string nm_cliente)
         {
@@ -132,47 +133,6 @@ namespace CapaEntidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_CONSULTA_EVENTOS_Result>("SPR_CONSULTA_EVENTOS", oPCIONParameter, iDENTIFICADOR_PAQUETEParameter);
         }
     
-        public virtual ObjectResult<SPR_CONSULTA_ENVIO_Result> SPR_CONSULTA_ENVIO(Nullable<int> oPCION, string cODIGO_ENVIO, string cODIGO_ORDEN_SERVICIO, string dESTINATARIO, Nullable<int> uSUARIO, string fECHA1, string fECHA2, string gESTION, Nullable<int> iD_CLIENTE)
-        {
-            var oPCIONParameter = oPCION.HasValue ?
-                new ObjectParameter("OPCION", oPCION) :
-                new ObjectParameter("OPCION", typeof(int));
-    
-            var cODIGO_ENVIOParameter = cODIGO_ENVIO != null ?
-                new ObjectParameter("CODIGO_ENVIO", cODIGO_ENVIO) :
-                new ObjectParameter("CODIGO_ENVIO", typeof(string));
-    
-            var cODIGO_ORDEN_SERVICIOParameter = cODIGO_ORDEN_SERVICIO != null ?
-                new ObjectParameter("CODIGO_ORDEN_SERVICIO", cODIGO_ORDEN_SERVICIO) :
-                new ObjectParameter("CODIGO_ORDEN_SERVICIO", typeof(string));
-    
-            var dESTINATARIOParameter = dESTINATARIO != null ?
-                new ObjectParameter("DESTINATARIO", dESTINATARIO) :
-                new ObjectParameter("DESTINATARIO", typeof(string));
-    
-            var uSUARIOParameter = uSUARIO.HasValue ?
-                new ObjectParameter("USUARIO", uSUARIO) :
-                new ObjectParameter("USUARIO", typeof(int));
-    
-            var fECHA1Parameter = fECHA1 != null ?
-                new ObjectParameter("FECHA1", fECHA1) :
-                new ObjectParameter("FECHA1", typeof(string));
-    
-            var fECHA2Parameter = fECHA2 != null ?
-                new ObjectParameter("FECHA2", fECHA2) :
-                new ObjectParameter("FECHA2", typeof(string));
-    
-            var gESTIONParameter = gESTION != null ?
-                new ObjectParameter("GESTION", gESTION) :
-                new ObjectParameter("GESTION", typeof(string));
-    
-            var iD_CLIENTEParameter = iD_CLIENTE.HasValue ?
-                new ObjectParameter("ID_CLIENTE", iD_CLIENTE) :
-                new ObjectParameter("ID_CLIENTE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_CONSULTA_ENVIO_Result>("SPR_CONSULTA_ENVIO", oPCIONParameter, cODIGO_ENVIOParameter, cODIGO_ORDEN_SERVICIOParameter, dESTINATARIOParameter, uSUARIOParameter, fECHA1Parameter, fECHA2Parameter, gESTIONParameter, iD_CLIENTEParameter);
-        }
-    
         public virtual ObjectResult<SPR_CONSULTA_ORDENES_SERVICIO_Result> SPR_CONSULTA_ORDENES_SERVICIO(Nullable<int> opcion, Nullable<int> id_usuario, Nullable<int> orden_id)
         {
             var opcionParameter = opcion.HasValue ?
@@ -223,6 +183,47 @@ namespace CapaEntidad
                 new ObjectParameter("CONTRASENIA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACTUALIZA_CREDENCIALES_Result>("SPR_ACTUALIZA_CREDENCIALES", iD_USUARIOParameter, cONTRASENIAParameter);
+        }
+    
+        public virtual ObjectResult<SPR_CONSULTA_ENVIO_Result> SPR_CONSULTA_ENVIO(Nullable<int> oPCION, string cODIGO_ENVIO, string cODIGO_ORDEN_SERVICIO, string dESTINATARIO, Nullable<int> uSUARIO, string fECHA1, string fECHA2, string gESTION, Nullable<int> iD_CLIENTE)
+        {
+            var oPCIONParameter = oPCION.HasValue ?
+                new ObjectParameter("OPCION", oPCION) :
+                new ObjectParameter("OPCION", typeof(int));
+    
+            var cODIGO_ENVIOParameter = cODIGO_ENVIO != null ?
+                new ObjectParameter("CODIGO_ENVIO", cODIGO_ENVIO) :
+                new ObjectParameter("CODIGO_ENVIO", typeof(string));
+    
+            var cODIGO_ORDEN_SERVICIOParameter = cODIGO_ORDEN_SERVICIO != null ?
+                new ObjectParameter("CODIGO_ORDEN_SERVICIO", cODIGO_ORDEN_SERVICIO) :
+                new ObjectParameter("CODIGO_ORDEN_SERVICIO", typeof(string));
+    
+            var dESTINATARIOParameter = dESTINATARIO != null ?
+                new ObjectParameter("DESTINATARIO", dESTINATARIO) :
+                new ObjectParameter("DESTINATARIO", typeof(string));
+    
+            var uSUARIOParameter = uSUARIO.HasValue ?
+                new ObjectParameter("USUARIO", uSUARIO) :
+                new ObjectParameter("USUARIO", typeof(int));
+    
+            var fECHA1Parameter = fECHA1 != null ?
+                new ObjectParameter("FECHA1", fECHA1) :
+                new ObjectParameter("FECHA1", typeof(string));
+    
+            var fECHA2Parameter = fECHA2 != null ?
+                new ObjectParameter("FECHA2", fECHA2) :
+                new ObjectParameter("FECHA2", typeof(string));
+    
+            var gESTIONParameter = gESTION != null ?
+                new ObjectParameter("GESTION", gESTION) :
+                new ObjectParameter("GESTION", typeof(string));
+    
+            var iD_CLIENTEParameter = iD_CLIENTE.HasValue ?
+                new ObjectParameter("ID_CLIENTE", iD_CLIENTE) :
+                new ObjectParameter("ID_CLIENTE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_CONSULTA_ENVIO_Result>("SPR_CONSULTA_ENVIO", oPCIONParameter, cODIGO_ENVIOParameter, cODIGO_ORDEN_SERVICIOParameter, dESTINATARIOParameter, uSUARIOParameter, fECHA1Parameter, fECHA2Parameter, gESTIONParameter, iD_CLIENTEParameter);
         }
     }
 }

@@ -121,6 +121,33 @@ namespace SIS_CARLITOS.Vistas {
         protected global::System.Web.UI.WebControls.GridView grvEventos;
         
         /// <summary>
+        /// Control divImprimirHistorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divImprimirHistorial;
+        
+        /// <summary>
+        /// Control btnImprimirHistorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnImprimirHistorial;
+        
+        /// <summary>
+        /// Control urlReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink urlReporte;
+        
+        /// <summary>
         /// Control divReporte.
         /// </summary>
         /// <remarks>

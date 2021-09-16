@@ -129,6 +129,14 @@ namespace SIS_CARLITOS.Vistas
                     }
                 }
 
+                if (oResultadoBusq.id_ultm_evento == int.Parse(Session["IdGestion"].ToString()))
+                {
+                    lblMensaje.Visible = true;
+                    lblMensaje.Attributes.Add("class", "btn btn-danger");
+                    lblMensaje.Text = "Codigo de envío ya tiene registrado la gestión actual";
+                    txtCodigoEnvio1.Focus();
+                    return;
+                }
 
                 evento objEvento = new evento();
                 objEvento.identificador_paquete = oResultadoBusq.identificador;
@@ -183,6 +191,9 @@ namespace SIS_CARLITOS.Vistas
                 lblMensaje.Text = "Transacción exitosa";
                 txtCodigoEnvio1.Text = string.Empty;
                 txtCodigoEnvio1.Focus();
+                
+                
+                
                 return;
 
             }
@@ -298,6 +309,11 @@ namespace SIS_CARLITOS.Vistas
                 lblTotalEnvios.Text = string.Empty;
                 divListadoEnvios.Visible = false;
 
+                txtCodigoEnvio1.Enabled = false;
+                txtObservacion1.Enabled = false;
+                btnGrabar1.Enabled = false;
+                cmbGestion.SelectedIndex = -1;
+                cmbGestion.Enabled = true;
             }
             catch (Exception ex)
             {

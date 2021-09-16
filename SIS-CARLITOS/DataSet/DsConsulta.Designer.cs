@@ -313,6 +313,10 @@ namespace SIS_CARLITOS.DataSet {
             
             private global::System.Data.DataColumn columnreceptor;
             
+            private global::System.Data.DataColumn columnseguro;
+            
+            private global::System.Data.DataColumn columnmonto_seguro;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public dtGestionEnvioDataTable() {
@@ -484,6 +488,22 @@ namespace SIS_CARLITOS.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn seguroColumn {
+                get {
+                    return this.columnseguro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn monto_seguroColumn {
+                get {
+                    return this.columnmonto_seguro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -536,7 +556,9 @@ namespace SIS_CARLITOS.DataSet {
                         string oficina, 
                         string orden_servicio, 
                         string usuario, 
-                        string receptor) {
+                        string receptor, 
+                        string seguro, 
+                        string monto_seguro) {
                 dtGestionEnvioRow rowdtGestionEnvioRow = ((dtGestionEnvioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         orden,
@@ -555,7 +577,9 @@ namespace SIS_CARLITOS.DataSet {
                         oficina,
                         orden_servicio,
                         usuario,
-                        receptor};
+                        receptor,
+                        seguro,
+                        monto_seguro};
                 rowdtGestionEnvioRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtGestionEnvioRow);
                 return rowdtGestionEnvioRow;
@@ -595,6 +619,8 @@ namespace SIS_CARLITOS.DataSet {
                 this.columnorden_servicio = base.Columns["orden_servicio"];
                 this.columnusuario = base.Columns["usuario"];
                 this.columnreceptor = base.Columns["receptor"];
+                this.columnseguro = base.Columns["seguro"];
+                this.columnmonto_seguro = base.Columns["monto_seguro"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -634,6 +660,10 @@ namespace SIS_CARLITOS.DataSet {
                 base.Columns.Add(this.columnusuario);
                 this.columnreceptor = new global::System.Data.DataColumn("receptor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnreceptor);
+                this.columnseguro = new global::System.Data.DataColumn("seguro", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnseguro);
+                this.columnmonto_seguro = new global::System.Data.DataColumn("monto_seguro", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmonto_seguro);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1050,6 +1080,38 @@ namespace SIS_CARLITOS.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string seguro {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtGestionEnvio.seguroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'seguro\' de la tabla \'dtGestionEnvio\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtGestionEnvio.seguroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string monto_seguro {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtGestionEnvio.monto_seguroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'monto_seguro\' de la tabla \'dtGestionEnvio\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtGestionEnvio.monto_seguroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsordenNull() {
                 return this.IsNull(this.tabledtGestionEnvio.ordenColumn);
             }
@@ -1250,6 +1312,30 @@ namespace SIS_CARLITOS.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetreceptorNull() {
                 this[this.tabledtGestionEnvio.receptorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsseguroNull() {
+                return this.IsNull(this.tabledtGestionEnvio.seguroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetseguroNull() {
+                this[this.tabledtGestionEnvio.seguroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Ismonto_seguroNull() {
+                return this.IsNull(this.tabledtGestionEnvio.monto_seguroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setmonto_seguroNull() {
+                this[this.tabledtGestionEnvio.monto_seguroColumn] = global::System.Convert.DBNull;
             }
         }
         

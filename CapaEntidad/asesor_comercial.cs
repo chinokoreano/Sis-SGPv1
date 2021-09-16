@@ -23,8 +23,8 @@ namespace CapaEntidad
         public int id { get; set; }
         public string numero_identificacion { get; set; }
         public string nm { get; set; }
-        public Nullable<bool> direccion { get; set; }
-        public Nullable<System.DateTime> telefono { get; set; }
+        public string direccion { get; set; }
+        public string telefono { get; set; }
         public string correo_electronico { get; set; }
         public Nullable<bool> estado { get; set; }
         public Nullable<System.DateTime> fecha_registro { get; set; }

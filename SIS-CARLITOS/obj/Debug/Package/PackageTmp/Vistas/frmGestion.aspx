@@ -49,12 +49,12 @@
 
                                 <asp:Button ID="btnGrabar1" runat="server" class="btn btn-warning" OnClientClick="mostrar_procesar();" Text="Grabar" OnClick="btnGrabar1_Click" />
                             </div>
-                            <div class="col-sm-3" style="padding-bottom: 5px;">
+                            <div class="col-sm-6" style="padding-bottom: 5px;">
                                 <asp:Label ID="lblMensaje" runat="server" Visible="true" Text="" Style="margin-bottom: 10px;"></asp:Label>
 
                             </div>
                              <div class="col-sm-6" style="padding-bottom: 5px;">
-                                <asp:HyperLink ID="urlReporte" CssClass="btn btn-success" runat="server" Visible="false" Target="_blank">Desargar manifiesto generado</asp:HyperLink>
+                                <asp:HyperLink ID="urlReporte" CssClass="btn btn-success" runat="server" Visible="false" Target="_blank">Desargar listado generado</asp:HyperLink>
                             </div>
                         </div>
 

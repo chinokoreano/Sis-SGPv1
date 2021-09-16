@@ -13,7 +13,11 @@
          function mostrar_procesar2() {
             document.getElementById('procesando_div2').style.display = "";
             setTimeout('document.images["procesando_gif"].src="../Imagenes/ajax-loader.gif"', 200);
-        }
+         }
+         function mostrar_procesar3() {
+            document.getElementById('procesando_div3').style.display = "";
+            setTimeout('document.images["procesando_gif"].src="../Imagenes/ajax-loader.gif"', 200);
+         }
     </script>
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -23,6 +27,7 @@
 
             <asp:PostBackTrigger ControlID="btnImprimir" />
             <asp:PostBackTrigger ControlID="btnbuscar" />
+            <asp:PostBackTrigger ControlID="btnImprimirHistorial" />
         </Triggers>
         <ContentTemplate>
             <div class="card border-dark" style="max-width: 100rem;">
@@ -34,15 +39,15 @@
                         <div class="col-sm-3" style="padding-bottom: 5px;">
 
                             <asp:DropDownList ID="ddlFiltro" CssClass="form-control dropdown form-control-sm" Visible="true" runat="server" OnSelectedIndexChanged="ddlFiltro_SelectedIndexChanged1" AutoPostBack="True">
-                                <asp:ListItem Value="1">Codigo Paquete</asp:ListItem>
+                                <asp:ListItem Value="1">Código Paquete</asp:ListItem>
                                 <asp:ListItem Value="2">Destinatario</asp:ListItem>
-                                <asp:ListItem Value="3">Orden Trabajo</asp:ListItem>
+                                <asp:ListItem Value="3">Orden Servicio</asp:ListItem>
                                 <asp:ListItem Value="4">Fecha Carga</asp:ListItem>
-
+                                <asp:ListItem Value="5">Código Alterno</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
-                     <div class="row" runat="server" >
+                    <div class="row" runat="server" >
                         <div class="col-sm-3" style="padding-bottom: 5px;">
                             <dx:ASPxComboBox ID="cmbClientes" runat="server" CssClass="form-control dropdown form-control-sm" Width="100%" NullValueItemDisplayText= "{0} ({1})" NullText="Cliente Empresarial" NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen" AutoPostBack="True" Enabled="False" LoadDropDownOnDemand="True" >
                             </dx:ASPxComboBox>
@@ -227,6 +232,24 @@
                                         <asp:Label ID="Label17" runat="server" Text='<%# Bind("receptor") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
+                                 <asp:TemplateField HeaderText="Seguro">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox18" runat="server" Text='<%# Bind("seguro") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label18" runat="server" Text='<%# Bind("seguro") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                 <asp:TemplateField HeaderText="Monto">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox19" runat="server" Text='<%# Bind("monto_seguro") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label19" runat="server" Text='<%# Bind("monto_seguro") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                  
                             </Columns>
                         </asp:GridView>
@@ -236,7 +259,7 @@
                         <div class="col-sm-3" style="padding-bottom: 5px;">
                             <asp:Button ID="btnImprimir" runat="server" class="btn btn-success" Text="Exportar a Excel" OnClientClick="mostrar_procesar2();" OnClick="btnImprimir_Click" />
                             <span id="procesando_div2" style="display: none; position: absolute; text-align: center">
-                            <img src="../Imagenes/ajax-loader.gif" id="procesando" alt="" />
+                            <img src="../Imagenes/ajax-loader.gif" id="procesando2" alt="" />
                         </div>
                     </div>
                                        
@@ -310,11 +333,26 @@
                         </asp:GridView>
                     </div>
 
+                    <div class="row" runat="server" visible="false" id="divImprimirHistorial" style="padding-top: 10px;">
+                        <div class="col-sm-3" style="padding-bottom: 5px;">
+                            <asp:Button ID="btnImprimirHistorial" runat="server" class="btn btn-success" Text="Exportar Historial" OnClientClick="mostrar_procesar3();" OnClick="btnImprimirHistorial_Click" />
+                            <span id="procesando_div3" style="display: none; position: absolute; text-align: center">
+                                <img src="../Imagenes/ajax-loader.gif" id="procesando3" alt="" />
+                        </div>
+                        <div class="col-sm-3" style="padding-bottom: 5px;">
+                            <asp:HyperLink ID="urlReporte" CssClass="btn btn-success" runat="server" Visible="false" Target="_blank">Desargar historial</asp:HyperLink>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+            
             <div runat="server" id="divReporte" style="margin-right: 100px; margin-left: 100px;">
                 <rsweb:ReportViewer ID="rpvReporte" Visible="false" runat="server" Height="300px" ShowPageNavigationControls="False" ShowZoomControl="False" Width="80%" ShowRefreshButton="False" ShowCredentialPrompts="False" ShowBackButton="False" ShowFindControls="False" ShowDocumentMapButton="False" ShowParameterPrompts="False" ShowPromptAreaButton="False" ShowWaitControlCancelLink="True"></rsweb:ReportViewer>
             </div>
+
+
+            </span>
 
 
             </span>

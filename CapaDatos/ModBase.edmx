@@ -10,11 +10,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="numero_identificacion" Type="nchar" MaxLength="10" />
-          <Property Name="nm" Type="nchar" MaxLength="10" />
-          <Property Name="direccion" Type="bit" />
-          <Property Name="telefono" Type="datetime" />
-          <Property Name="correo_electronico" Type="nchar" MaxLength="10" />
+          <Property Name="numero_identificacion" Type="varchar" MaxLength="20" />
+          <Property Name="nm" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="20" />
+          <Property Name="correo_electronico" Type="varchar" MaxLength="50" />
           <Property Name="estado" Type="bit" />
           <Property Name="fecha_registro" Type="datetime" />
         </EntityType>
@@ -254,6 +254,14 @@
           <Property Name="estado" Type="bit" />
           <Property Name="fecha_ingreso" Type="datetime" />
         </EntityType>
+        <EntityType Name="suceso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_lote" Type="uniqueidentifier" />
+          <Property Name="mensaje" Type="text" />
+        </EntityType>
         <EntityType Name="tipo_documento">
           <Key>
             <PropertyRef Name="id" />
@@ -315,18 +323,6 @@
           <Property Name="estado" Type="int" />
           <Property Name="fecha_registro" Type="datetime" />
         </EntityType>
-        <Association Name="FK_contrato_asesor_comercial">
-          <End Role="asesor_comercial" Type="Self.asesor_comercial" Multiplicity="0..1" />
-          <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="asesor_comercial">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="contrato">
-              <PropertyRef Name="id_asesor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_contrato_cliente">
           <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
           <End Role="contrato" Type="Self.contrato" Multiplicity="*" />
@@ -519,18 +515,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_usuario_tipo_usuario">
-          <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="0..1" />
-          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipo_usuario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="tipo_usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
           <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
@@ -601,15 +585,12 @@
           <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="suceso" EntityType="Self.suceso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ubicacion_geografica" EntityType="Self.ubicacion_geografica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario_contrato" EntityType="Self.usuario_contrato" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_contrato_asesor_comercial" Association="Self.FK_contrato_asesor_comercial">
-            <End Role="asesor_comercial" EntitySet="asesor_comercial" />
-            <End Role="contrato" EntitySet="contrato" />
-          </AssociationSet>
           <AssociationSet Name="FK_contrato_cliente" Association="Self.FK_contrato_cliente">
             <End Role="cliente" EntitySet="cliente" />
             <End Role="contrato" EntitySet="contrato" />
@@ -672,10 +653,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_usuario_tipo_documento" Association="Self.FK_usuario_tipo_documento">
             <End Role="tipo_documento" EntitySet="tipo_documento" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_tipo_usuario" Association="Self.FK_usuario_tipo_usuario">
-            <End Role="tipo_usuario" EntitySet="tipo_usuario" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
@@ -771,17 +748,6 @@
             <End Role="paquete" EntitySet="paquete" />
             <End Role="entrega" EntitySet="entrega" />
           </AssociationSet>
-          <FunctionImport Name="SPR_CONSULTA_ENVIO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_ENVIO_Result)">
-            <Parameter Name="OPCION" Mode="In" Type="Int32" />
-            <Parameter Name="CODIGO_ENVIO" Mode="In" Type="String" />
-            <Parameter Name="CODIGO_ORDEN_SERVICIO" Mode="In" Type="String" />
-            <Parameter Name="DESTINATARIO" Mode="In" Type="String" />
-            <Parameter Name="USUARIO" Mode="In" Type="Int32" />
-            <Parameter Name="FECHA1" Mode="In" Type="String" />
-            <Parameter Name="FECHA2" Mode="In" Type="String" />
-            <Parameter Name="GESTION" Mode="In" Type="String" />
-            <Parameter Name="ID_CLIENTE" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPR_CONSULTA_ORDENES_SERVICIO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_ORDENES_SERVICIO_Result)">
             <Parameter Name="opcion" Mode="In" Type="Int32" />
             <Parameter Name="id_usuario" Mode="In" Type="Int32" />
@@ -820,16 +786,28 @@
             <End Role="contrato" EntitySet="contrato" />
             <End Role="usuario_contrato" EntitySet="usuario_contrato" />
           </AssociationSet>
-          <EntitySet Name="asesor_comercial" EntityType="OPERADBModel.asesor_comercial" />
           <EntitySet Name="tipo_usuario" EntityType="OPERADBModel.tipo_usuario" />
-          <AssociationSet Name="FK_contrato_asesor_comercial" Association="OPERADBModel.FK_contrato_asesor_comercial">
-            <End Role="asesor_comercial" EntitySet="asesor_comercial" />
-            <End Role="contrato" EntitySet="contrato" />
-          </AssociationSet>
           <AssociationSet Name="FK_usuario_tipo_usuario" Association="OPERADBModel.FK_usuario_tipo_usuario">
             <End Role="tipo_usuario" EntitySet="tipo_usuario" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <EntitySet Name="suceso" EntityType="OPERADBModel.suceso" />
+          <EntitySet Name="asesor_comercial" EntityType="OPERADBModel.asesor_comercial" />
+          <AssociationSet Name="FK_contrato_asesor_comercial" Association="OPERADBModel.FK_contrato_asesor_comercial">
+            <End Role="asesor_comercial" EntitySet="asesor_comercial" />
+            <End Role="contrato" EntitySet="contrato" />
+          </AssociationSet>
+          <FunctionImport Name="SPR_CONSULTA_ENVIO" ReturnType="Collection(OPERADBModel.SPR_CONSULTA_ENVIO_Result)">
+            <Parameter Name="OPCION" Mode="In" Type="Int32" />
+            <Parameter Name="CODIGO_ENVIO" Mode="In" Type="String" />
+            <Parameter Name="CODIGO_ORDEN_SERVICIO" Mode="In" Type="String" />
+            <Parameter Name="DESTINATARIO" Mode="In" Type="String" />
+            <Parameter Name="USUARIO" Mode="In" Type="Int32" />
+            <Parameter Name="FECHA1" Mode="In" Type="String" />
+            <Parameter Name="FECHA2" Mode="In" Type="String" />
+            <Parameter Name="GESTION" Mode="In" Type="String" />
+            <Parameter Name="ID_CLIENTE" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="cliente">
           <Key>
@@ -1288,25 +1266,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="SPR_CONSULTA_ENVIO_Result">
-          <Property Type="Int64" Name="orden" Nullable="true" />
-          <Property Type="Guid" Name="identificador" Nullable="false" />
-          <Property Type="String" Name="codigo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="codigo_alterno" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="fecha_evento_carga" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="fecha_ultimo_evento" Nullable="true" Precision="23" />
-          <Property Type="String" Name="destinatario" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="direccion" Nullable="true" MaxLength="92" />
-          <Property Type="String" Name="referencia" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="provincia" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="canton" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="codigo_postal" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="ultima_gestion" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="oficina" Nullable="true" MaxLength="231" />
-          <Property Type="String" Name="orden_servicio" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="usuario" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="receptor" Nullable="true" MaxLength="200" />
-        </ComplexType>
         <ComplexType Name="SPR_CONSULTA_ORDENES_SERVICIO_Result">
           <Property Type="Int64" Name="orden" Nullable="true" />
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1448,20 +1407,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="asesor_comercial">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="numero_identificacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="nm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="direccion" Type="Boolean" />
-          <Property Name="telefono" Type="DateTime" Precision="3" />
-          <Property Name="correo_electronico" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="estado" Type="Boolean" />
-          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="contrato" Relationship="OPERADBModel.FK_contrato_asesor_comercial" FromRole="asesor_comercial" ToRole="contrato" />
-        </EntityType>
         <EntityType Name="tipo_usuario">
           <Key>
             <PropertyRef Name="id" />
@@ -1470,6 +1415,40 @@
           <Property Name="nm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Boolean" />
           <NavigationProperty Name="usuario" Relationship="OPERADBModel.FK_usuario_tipo_usuario" FromRole="tipo_usuario" ToRole="usuario" />
+        </EntityType>
+        <Association Name="FK_usuario_tipo_usuario">
+          <End Type="OPERADBModel.tipo_usuario" Role="tipo_usuario" Multiplicity="0..1" />
+          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="suceso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_lote" Type="Guid" />
+          <Property Name="mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="asesor_comercial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="correo_electronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="contrato" Relationship="OPERADBModel.FK_contrato_asesor_comercial" FromRole="asesor_comercial" ToRole="contrato" />
         </EntityType>
         <Association Name="FK_contrato_asesor_comercial">
           <End Type="OPERADBModel.asesor_comercial" Role="asesor_comercial" Multiplicity="0..1" />
@@ -1483,18 +1462,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_usuario_tipo_usuario">
-          <End Type="OPERADBModel.tipo_usuario" Role="tipo_usuario" Multiplicity="0..1" />
-          <End Type="OPERADBModel.usuario" Role="usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipo_usuario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="tipo_usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <ComplexType Name="SPR_CONSULTA_ENVIO_Result">
+          <Property Type="Int64" Name="orden" Nullable="true" />
+          <Property Type="Guid" Name="identificador" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="codigo_alterno" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_evento_carga" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="fecha_ultimo_evento" Nullable="true" Precision="23" />
+          <Property Type="String" Name="destinatario" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="92" />
+          <Property Type="String" Name="referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="provincia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="canton" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="codigo_postal" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ultima_gestion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="oficina" Nullable="true" MaxLength="231" />
+          <Property Type="String" Name="orden_servicio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="usuario" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="receptor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="seguro" Nullable="true" MaxLength="1" />
+          <Property Type="Decimal" Name="monto_seguro" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1838,29 +1826,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ENVIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ENVIO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ENVIO_Result">
-                <ScalarProperty Name="orden" ColumnName="orden" />
-                <ScalarProperty Name="identificador" ColumnName="identificador" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
-                <ScalarProperty Name="fecha_evento_carga" ColumnName="fecha_evento_carga" />
-                <ScalarProperty Name="fecha_ultimo_evento" ColumnName="fecha_ultimo_evento" />
-                <ScalarProperty Name="destinatario" ColumnName="destinatario" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="referencia" ColumnName="referencia" />
-                <ScalarProperty Name="provincia" ColumnName="provincia" />
-                <ScalarProperty Name="canton" ColumnName="canton" />
-                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
-                <ScalarProperty Name="ultima_gestion" ColumnName="ultima_gestion" />
-                <ScalarProperty Name="oficina" ColumnName="oficina" />
-                <ScalarProperty Name="orden_servicio" ColumnName="orden_servicio" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="receptor" ColumnName="receptor" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ORDENES_SERVICIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ORDENES_SERVICIO">
             <ResultMapping>
               <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ORDENES_SERVICIO_Result">
@@ -1950,6 +1915,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tipo_usuario">
+            <EntityTypeMapping TypeName="OPERADBModel.tipo_usuario">
+              <MappingFragment StoreEntitySet="tipo_usuario">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nm" ColumnName="nm" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suceso">
+            <EntityTypeMapping TypeName="OPERADBModel.suceso">
+              <MappingFragment StoreEntitySet="suceso">
+                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="asesor_comercial">
             <EntityTypeMapping TypeName="OPERADBModel.asesor_comercial">
               <MappingFragment StoreEntitySet="asesor_comercial">
@@ -1964,15 +1947,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tipo_usuario">
-            <EntityTypeMapping TypeName="OPERADBModel.tipo_usuario">
-              <MappingFragment StoreEntitySet="tipo_usuario">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="nm" ColumnName="nm" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPR_CONSULTA_ENVIO" FunctionName="OPERADBModel.Store.SPR_CONSULTA_ENVIO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_CONSULTA_ENVIO_Result">
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="identificador" ColumnName="identificador" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
+                <ScalarProperty Name="fecha_evento_carga" ColumnName="fecha_evento_carga" />
+                <ScalarProperty Name="fecha_ultimo_evento" ColumnName="fecha_ultimo_evento" />
+                <ScalarProperty Name="destinatario" ColumnName="destinatario" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="ultima_gestion" ColumnName="ultima_gestion" />
+                <ScalarProperty Name="oficina" ColumnName="oficina" />
+                <ScalarProperty Name="orden_servicio" ColumnName="orden_servicio" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="receptor" ColumnName="receptor" />
+                <ScalarProperty Name="seguro" ColumnName="seguro" />
+                <ScalarProperty Name="monto_seguro" ColumnName="monto_seguro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
