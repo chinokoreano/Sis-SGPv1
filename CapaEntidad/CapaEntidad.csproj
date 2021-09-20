@@ -120,6 +120,9 @@
     <Compile Include="SPR_ACTUALIZA_CREDENCIALES_Result.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPR_ACT_ULTIMO_EVENTO1_Result.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPR_CONSULTA_ENVIO_GUIAS_Result.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>

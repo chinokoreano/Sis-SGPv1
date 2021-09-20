@@ -94,7 +94,25 @@ namespace CapaDatos
             }
         }
 
+        public List<SPR_ACT_ULTIMO_EVENTO1_Result> FnActUltimoEvento(int intOpcion, paquete oPaquete)
+        {
+            List<SPR_ACT_ULTIMO_EVENTO1_Result> oResultado = new List<SPR_ACT_ULTIMO_EVENTO1_Result>();
+              
+            try
+            {
+                using (OPERADB DB = new OPERADB())
+                {
+                    oResultado = DB.SPR_ACT_ULTIMO_EVENTO1(oPaquete.codigo, intOpcion).ToList();
+                    
+                }
+                return oResultado;
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
 
     }
 }

@@ -148,6 +148,14 @@
       <Parameter Name="GESTION" Mode="In" Type="String" />
       <Parameter Name="ID_CLIENTE" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="SPR_ACT_ULTIMO_EVENTO">
+      <Parameter Name="CODIGO_ENVIO" Mode="In" Type="String" />
+      <Parameter Name="OPCION" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPR_ACT_ULTIMO_EVENTO1" ReturnType="Collection(OPERADBModel.SPR_ACT_ULTIMO_EVENTO1_Result)">
+      <Parameter Name="CODIGO_ENVIO" Mode="In" Type="String" />
+      <Parameter Name="OPCION" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="cliente">
     <Key>
@@ -822,5 +830,9 @@
     <Property Type="String" Name="receptor" Nullable="true" MaxLength="200" />
     <Property Type="String" Name="seguro" Nullable="true" MaxLength="1" />
     <Property Type="Decimal" Name="monto_seguro" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SPR_ACT_ULTIMO_EVENTO1_Result">
+    <Property Type="String" Name="codigo1" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="mensaje1" Nullable="false" MaxLength="19" />
   </ComplexType>
 </Schema>

@@ -58,5 +58,22 @@ namespace CapaNegocio
                 throw ex;
             }
         }
+
+        public List<SPR_ACT_ULTIMO_EVENTO1_Result> FnActUltimoEvento(int intOpcion, paquete oPaquete)
+        {
+            List<SPR_ACT_ULTIMO_EVENTO1_Result> oResultado = new List<SPR_ACT_ULTIMO_EVENTO1_Result>();
+
+            try
+            {
+                EventoCD oEventoCD = new EventoCD();
+                oResultado = oEventoCD.FnActUltimoEvento(intOpcion, oPaquete).ToList();
+                return oResultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

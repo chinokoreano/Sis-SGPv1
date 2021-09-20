@@ -1592,6 +1592,7 @@
     <Content Include="Vistas\frmMantEntregas.aspx" />
     <Content Include="Vistas\frmAsesorComercial.aspx" />
     <Content Include="Vistas\frmAdmOrdenes.aspx" />
+    <Content Include="Vistas\frmActGestiones.aspx" />
     <Content Include="Vistas\frmUsuarioContrato.aspx" />
     <Content Include="Vistas\frmContrato.aspx" />
     <Content Include="Vistas\frmCliente.aspx" />
@@ -1737,6 +1738,13 @@
     </Compile>
     <Compile Include="Vistas\frmAdmOrdenes.aspx.designer.cs">
       <DependentUpon>frmAdmOrdenes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmActGestiones.aspx.cs">
+      <DependentUpon>frmActGestiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmActGestiones.aspx.designer.cs">
+      <DependentUpon>frmActGestiones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmUsuarioContrato.aspx.cs">
       <DependentUpon>frmUsuarioContrato.aspx</DependentUpon>

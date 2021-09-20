@@ -91,7 +91,8 @@ namespace SIS_CARLITOS.Vistas
             grvEventos.DataBind();
             grvEventos.Visible = false;
             divBotonImprimir.Visible = false;
-
+            btnImprimirHistorial.Visible = false;
+            
             List<SPR_CONSULTA_ENVIO_Result> oResultado = new List<SPR_CONSULTA_ENVIO_Result>();
             try
             {
@@ -194,6 +195,7 @@ namespace SIS_CARLITOS.Vistas
                 Session["ListaEventos"] = oResultado;
                 
                 divImprimirHistorial.Visible = true;
+                btnImprimirHistorial.Visible = true;
             }
             catch (Exception ex)
             {
