@@ -484,12 +484,11 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SPR_ACT_ULTIMO_EVENTO" FunctionName="OPERADBModel.Store.SPR_ACT_ULTIMO_EVENTO" />
-    <FunctionImportMapping FunctionImportName="SPR_ACT_ULTIMO_EVENTO1" FunctionName="OPERADBModel.Store.SPR_ACT_ULTIMO_EVENTO">
+    <FunctionImportMapping FunctionImportName="SPR_ACT_ULTIMO_EVENTO" FunctionName="OPERADBModel.Store.SPR_ACT_ULTIMO_EVENTO">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACT_ULTIMO_EVENTO1_Result">
-          <ScalarProperty Name="codigo1" ColumnName="codigo1" />
-          <ScalarProperty Name="mensaje1" ColumnName="mensaje1" />
+        <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACT_ULTIMO_EVENTO_Result">
+          <ScalarProperty Name="CODIGO1" ColumnName="CODIGO1" />
+          <ScalarProperty Name="MENSAJE1" ColumnName="MENSAJE1" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -7,46 +7,19 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SIS_CARLITOS.Admin {
+namespace SIS_CARLITOS.Vistas {
     
     
-    public partial class frmAutenticacion2 {
+    public partial class frmCambioContrasena {
         
         /// <summary>
-        /// Control smMain.
+        /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager smMain;
-        
-        /// <summary>
-        /// Control txtUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
-        
-        /// <summary>
-        /// Control FilteredTextBoxExtender4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender4;
-        
-        /// <summary>
-        /// Control txtContrasenia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContrasenia;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// Control FilteredTextBoxExtender3.
@@ -56,6 +29,15 @@ namespace SIS_CARLITOS.Admin {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender3;
+        
+        /// <summary>
+        /// Control txtContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContrasenia;
         
         /// <summary>
         /// Control FilteredTextBoxExtender1.
@@ -94,24 +76,6 @@ namespace SIS_CARLITOS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtConfirmarContrasenia;
         
         /// <summary>
-        /// Control lblMensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
-        
-        /// <summary>
-        /// Control btnIniciarSesion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnIniciarSesion;
-        
-        /// <summary>
         /// Control btnCambiarContrasenia.
         /// </summary>
         /// <remarks>
@@ -119,5 +83,14 @@ namespace SIS_CARLITOS.Admin {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCambiarContrasenia;
+        
+        /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
     }
 }

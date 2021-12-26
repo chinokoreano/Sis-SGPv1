@@ -76,7 +76,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/Vistas/frmConsultaOrdenes">Órdenes de Servicio</a>
                             <a class="dropdown-item" href="/Vistas/frmConsultaEnvios">Eventos</a>
-
+                            
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="mnu_procesos" runat="server" visible="false">
@@ -88,6 +88,8 @@
                             <a class="dropdown-item" href="/Vistas/frmManifiestoCartero">Manifiesto Cartero</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/Vistas/frmEntrega">Entrega</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/Vistas/frmConsultaReporteGestiones">Re-Impresión</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="mnu_administracion" runat="server" visible="false">
@@ -117,6 +119,8 @@
                             <a class="dropdown-item" href="/CentroAyuda/PlantillaAchivoCliente.xlsx">Archivo de carga</a>
                             <a class="dropdown-item" href="/CentroAyuda/FormularioSolicitudUsuarios.pdf" target="_blank">Fomulario de creación de usuarios</a>
                             <a class="dropdown-item" href="/CentroAyuda/C39H12L3.ttf" target="_blank">Fuente - Código de barras</a>
+                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/Vistas/frmCambioContrasena">Cambio de contraseña</a>
                         </div>
                     </li>
 

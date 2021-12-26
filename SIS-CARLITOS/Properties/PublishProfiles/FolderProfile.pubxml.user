@@ -13,7 +13,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/07/2020 18:25:14</publishTime>
     </File>
     <File Include="Admin/frmAutenticacion.aspx">
-      <publishTime>06/30/2021 22:41:23</publishTime>
+      <publishTime>10/16/2021 17:07:40</publishTime>
     </File>
     <File Include="Admin/frmAutenticacion1.aspx">
       <publishTime>06/26/2021 16:00:11</publishTime>
@@ -43,25 +43,25 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>06/16/2016 12:18:22</publishTime>
     </File>
     <File Include="bin/CapaDatos.dll">
-      <publishTime>07/27/2021 20:57:53</publishTime>
+      <publishTime>12/26/2021 10:58:08</publishTime>
     </File>
     <File Include="bin/CapaDatos.dll.config">
       <publishTime>09/17/2020 13:35:44</publishTime>
     </File>
     <File Include="bin/CapaDatos.pdb">
-      <publishTime>07/27/2021 20:57:53</publishTime>
+      <publishTime>12/26/2021 10:58:08</publishTime>
     </File>
     <File Include="bin/CapaEntidad.dll">
-      <publishTime>07/27/2021 20:57:52</publishTime>
+      <publishTime>12/26/2021 10:58:07</publishTime>
     </File>
     <File Include="bin/CapaEntidad.pdb">
-      <publishTime>07/27/2021 20:57:52</publishTime>
+      <publishTime>12/26/2021 10:58:07</publishTime>
     </File>
     <File Include="bin/CapaNegocio.dll">
-      <publishTime>07/27/2021 20:57:53</publishTime>
+      <publishTime>12/26/2021 12:01:22</publishTime>
     </File>
     <File Include="bin/CapaNegocio.pdb">
-      <publishTime>07/27/2021 20:57:53</publishTime>
+      <publishTime>12/26/2021 12:01:22</publishTime>
     </File>
     <File Include="bin/de/DevExpress.Data.v20.1.resources.dll">
       <publishTime>05/29/2021 09:58:26</publishTime>
@@ -886,10 +886,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/20/2021 22:04:10</publishTime>
     </File>
     <File Include="bin/SIS-CARLITOS.dll">
-      <publishTime>07/27/2021 21:10:12</publishTime>
+      <publishTime>12/26/2021 16:35:41</publishTime>
     </File>
     <File Include="bin/SIS-CARLITOS.pdb">
-      <publishTime>07/27/2021 21:10:12</publishTime>
+      <publishTime>12/26/2021 16:35:41</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>12/01/2020 14:40:24</publishTime>
@@ -1018,7 +1018,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>06/17/2021 10:54:27</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>06/08/2021 21:29:02</publishTime>
+      <publishTime>10/16/2021 16:59:06</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>10/07/2020 18:25:14</publishTime>
@@ -5047,7 +5047,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/07/2020 18:25:54</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>06/22/2021 19:16:29</publishTime>
+      <publishTime>12/26/2021 15:58:02</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>10/07/2020 18:25:54</publishTime>
@@ -5070,14 +5070,20 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="ViewSwitcher.ascx">
       <publishTime>10/07/2020 18:25:54</publishTime>
     </File>
+    <File Include="Vistas/frmActGestiones.aspx">
+      <publishTime>09/19/2021 22:11:56</publishTime>
+    </File>
     <File Include="Vistas/frmAdmOrdenes.aspx">
       <publishTime>06/22/2021 16:25:34</publishTime>
     </File>
     <File Include="Vistas/frmAsesorComercial.aspx">
       <publishTime>06/19/2021 16:05:59</publishTime>
     </File>
+    <File Include="Vistas/frmCambioContrasena.aspx">
+      <publishTime>11/03/2021 17:17:31</publishTime>
+    </File>
     <File Include="Vistas/frmCargaMasiva.aspx">
-      <publishTime>06/22/2021 19:19:13</publishTime>
+      <publishTime>10/16/2021 16:19:23</publishTime>
     </File>
     <File Include="Vistas/frmCarteros.aspx">
       <publishTime>07/04/2021 21:20:44</publishTime>
@@ -5091,11 +5097,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="Vistas/frmConsultaOrdenes.aspx">
       <publishTime>06/08/2021 19:07:01</publishTime>
     </File>
+    <File Include="Vistas/frmConsultaReporteGestiones.aspx">
+      <publishTime>12/26/2021 16:01:05</publishTime>
+    </File>
     <File Include="Vistas/frmContrato.aspx">
       <publishTime>06/19/2021 14:42:42</publishTime>
     </File>
     <File Include="Vistas/frmEntrega.aspx">
-      <publishTime>06/08/2021 19:07:39</publishTime>
+      <publishTime>11/03/2021 16:28:55</publishTime>
     </File>
     <File Include="Vistas/frmGestion.aspx">
       <publishTime>07/17/2021 20:12:07</publishTime>
@@ -5125,7 +5134,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>05/01/2021 14:46:18</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/27/2021 21:15:37</publishTime>
+      <publishTime>12/26/2021 16:49:56</publishTime>
     </File>
   </ItemGroup>
 </Project>

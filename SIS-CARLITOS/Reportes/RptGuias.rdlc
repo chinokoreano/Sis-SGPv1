@@ -199,7 +199,7 @@
                               <Top>2.37099cm</Top>
                               <Left>0.0125in</Left>
                               <Height>0cm</Height>
-                              <Width>18.40082cm</Width>
+                              <Width>8.62886cm</Width>
                               <ZIndex>9</ZIndex>
                               <Style>
                                 <Border>
@@ -779,8 +779,8 @@
                               <rd:DefaultName>destinatario</rd:DefaultName>
                               <Top>1.82273cm</Top>
                               <Left>8.837cm</Left>
-                              <Height>0.48123cm</Height>
-                              <Width>9.32215cm</Width>
+                              <Height>0.79873cm</Height>
+                              <Width>9.47384cm</Width>
                               <ZIndex>30</ZIndex>
                               <Style>
                                 <Border>
@@ -1616,9 +1616,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>identificacion</rd:DefaultName>
-                              <Top>2.5121cm</Top>
+                              <Top>2.65321cm</Top>
                               <Left>10.84465cm</Left>
-                              <Height>0.41452cm</Height>
+                              <Height>0.30516cm</Height>
                               <Width>3.62571cm</Width>
                               <ZIndex>58</ZIndex>
                               <Style>

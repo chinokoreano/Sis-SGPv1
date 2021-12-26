@@ -9,10 +9,11 @@
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>--%>
    <!-- Jumbotron -->
-<div class="jumbotron jumbotron-fluid rounded-lg">
+    <div class="jumbotron bg-dark text-white">
+<%--<div class="jumbotron jumbotron-fluid rounded-lg">--%>
   <div class="container">
     <h1 class="display-4">SIS-SGP v1.0</h1>
-    <p class="lead" style="font-display:block">Sistema de Gestión de Paquetería.</p>
+    <p class="lead" style="font-display:block">Sistema de Gestión de Paquetería SIS-SGP.</p>
   </div>
 </div>
 

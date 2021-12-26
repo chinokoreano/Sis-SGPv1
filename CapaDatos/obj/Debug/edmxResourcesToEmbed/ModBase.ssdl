@@ -513,6 +513,7 @@
   <Function Name="SPR_ACT_ULTIMO_EVENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CODIGO_ENVIO" Type="varchar" Mode="In" />
     <Parameter Name="OPCION" Type="int" Mode="In" />
+    <Parameter Name="USUARIO" Type="varchar" Mode="In" />
   </Function>
   <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="int" Mode="In" />

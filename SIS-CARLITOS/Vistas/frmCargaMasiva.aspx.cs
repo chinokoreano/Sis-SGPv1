@@ -126,6 +126,9 @@ namespace SIS_CARLITOS.Vistas
         {
             List<SPR_CONSULTA_USUARIO_CONTRATO_Result> oResultado = new List<SPR_CONSULTA_USUARIO_CONTRATO_Result>();
             lblMensaje.Text = string.Empty;
+            divDatosCarga.Visible = false;
+            btnGuardar.Visible = false;
+            lblMensaje1.Visible = false;
             try
             {
                 if (string.IsNullOrEmpty(txtfiltro1.Text.Trim()) || string.IsNullOrWhiteSpace(txtfiltro1.Text.Trim()))
@@ -321,10 +324,13 @@ namespace SIS_CARLITOS.Vistas
                 Session["idContrato"] = intIdContrato.ToString();
                 Session["idCliente"] = intId.ToString();
                 txtCliente.Text = strNmCliente;
-                txtIdentificacion.Text = strIdentificacionCliente;
-                txtIdCliente.Text = intId.ToString();
+                txtIdentificacion.Text = "RUC/CED: " + strIdentificacionCliente;
+                txtIdCliente.Text = "ID: " + intId.ToString();
                 
                 divControl.Visible = true;
+                divDatosCarga.Visible = true;
+                btnGuardar.Visible = true;
+
                 if (int.Parse(Session["ControlPantalla"].ToString()) == 1)//1 = Control para mostrar opcion para el cliente corporativo
                 {
                     divDatosCarga.Visible = true;
@@ -359,6 +365,12 @@ namespace SIS_CARLITOS.Vistas
                 string strDescripcionError = ex.Message + ex.InnerException;
                 Response.Redirect("~/frmError.aspx?mensaje=" + "Error: " + strDescripcionError);
             }
+        }
+
+        protected void cmbLocalidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblMensaje1.Visible = false;
+            lblMensaje1.Text = string.Empty;
         }
     }
 }

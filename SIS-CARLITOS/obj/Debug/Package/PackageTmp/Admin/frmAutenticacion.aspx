@@ -145,7 +145,7 @@
                                         </button>--%>
 
                                         <asp:LinkButton runat="server" ID="btnIniciarSesion" Text="<i class='si si-login mr-10'></i> Ingresar" 
-                ValidationGroup="edt"  class="btn btn-sm btn-hero btn-alt-primary" OnClick="btnIniciarSesion_Click"  />
+                ValidationGroup="edt"  class="btn btn-info" OnClick="btnIniciarSesion_Click"  />
                                          <asp:LinkButton runat="server" ID="btnCambiarContrasenia" Visible="false" Text="<i class='si si-login mr-10'></i> Cambiar contraseña" 
                 ValidationGroup="edt"  class="btn btn-sm btn-hero btn-alt-primary" OnClick="btnCambiarContrasenia_Click"  />
                                          <%--<a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="Registrarse">

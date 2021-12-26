@@ -76,22 +76,46 @@ namespace CapaNegocio
                         da = new OleDbDataAdapter(strSQL, oledbConn);
                         dt = new System.Data.DataTable();
                         da.Fill(dt);
+                        //elimina las filas en blanco del datatable
+                        for (int i = dt.Rows.Count - 1; i >= 0; i--)
+                        {
+                            if (dt.Rows[i][0].ToString() == String.Empty && dt.Rows[i][1].ToString() == String.Empty)
+                            {
+                                dt.Rows.RemoveAt(i);
+                            }
+                        }
+                        
+                        while (dt.Columns.Count > 22)
+                        {
+                            {
+                               dt.Columns.RemoveAt(dt.Columns.Count -1);
+                            }
+                        }
+                        
+
+                        //if (dt.Columns.Count > 22)//NUMERO DE COLUMNAS QUE DEBE TENER EL ARCHIVO
+                        //{
+                            
+                        //    throw new Exception("Por favor verifique que el archivo tenga solo contenga el número de columnas definidas en el formato de carga");
+
+                        //}
+
+                        
+
 
                         if (dt.Rows.Count == 0)
                         {
                             throw new Exception("No existe datos en el archivo.");
                         }
-                        else
+
+                        string[] strListaCampos = strCamposArchivo.ToString().Split(',');
+                        FnValidarColumnasArchivo(dt, strListaCampos);
+                        string strResultadoValidacionCampo = fnValidaCamposArchivo(dt, strCamposObligatorios);
+                        if (!strResultadoValidacionCampo.Equals("-1"))
                         {
-                            string[] strListaCampos = strCamposArchivo.ToString().Split(',');
-                            FnValidarColumnasArchivo(dt, strListaCampos);
-                            string strResultadoValidacionCampo = fnValidaCamposArchivo(dt, strCamposObligatorios);
-                            if (!strResultadoValidacionCampo.Equals("-1"))
-                            {
-                                throw new Exception(strResultadoValidacionCampo);
-                            }
+                            throw new Exception(strResultadoValidacionCampo);
                         }
-                       
+
                     }
                 }
                 oledbConn.Close();

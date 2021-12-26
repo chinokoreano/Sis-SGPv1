@@ -64,12 +64,14 @@ namespace SIS_CARLITOS.Admin
                     List<oficina> oResultadoOficinaBusq = oResultadoOficinas.Where(p => p.id == oResultado[0].id_oficina).ToList();
 
                     Session["objUsuario"] = oResultado;
-                    Session["Usuario"] = oResultado[0].nm;
+                    Session["Usuario"] = oResultado[0].nm;//nombre de usuario
                     Session["IdUsuario"] = oResultado[0].id;
                     Session["IdTipoUsuario"] = oResultado[0].tipo_usuario;
 
                     Session["Oficina"] = oResultadoOficinaBusq[0].nm_oficina;
                     Session["IdOficina"] = oResultadoOficinaBusq[0].id;
+                    Session["Login"] = oResultado[0].usuario1;
+
                     Response.Redirect("~/Default.aspx");
                 }
                 else

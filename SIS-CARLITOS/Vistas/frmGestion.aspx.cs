@@ -223,31 +223,20 @@ namespace SIS_CARLITOS.Vistas
 
         protected void btnImprimirListado_Click(object sender, EventArgs e)
         {
-            //int intOrden;
-            //intOrden = 0;
+            
             try
             {
-                //DataTable dt = fnDataTableTemporal();
-                //foreach (var reg in ddlListado.Items)
-                //{
-                //    ++intOrden;
-                //    DataRow dr = dt.NewRow();
-                //    dr["CODIGO"] = reg.ToString();
-                //    dr["ORDEN"] = intOrden.ToString();
-                //    dr["EVENTO"] = cmbGestion.Text.ToString();
-
-                //    dt.Rows.Add(dr);
-                //}
+                
                 DataTable dt = (DataTable)Session["DataTable"];
                 ParametroCN oParametroCN = new ParametroCN();
                 List<parametro> oResultadoParametros = new List<parametro>();
                 oResultadoParametros = oParametroCN.FnConsultarParametros();
-                List<parametro> oResultadoBusq = oResultadoParametros.Where(p => p.tipo == "RUTAREPORTES").ToList();
+                List<parametro> oResultadoBusq = oResultadoParametros.Where(p => p.tipo == "RUTAREPORTESGESTION").ToList();
 
                 string[] strRutasReportes = oResultadoBusq[0].valor1.Split(',');
-                string strRutaWebReportes = strRutasReportes[0].ToString();
-                string strRutaFisicaReportes = strRutasReportes[1].ToString();
-                string strRutaMapServer = strRutasReportes[2].ToString();
+                string strRutaWebReportes = strRutasReportes[0].ToString();//ruta donde se encuentra el .rpt
+                //string strRutaFisicaReportes = strRutasReportes[1].ToString();
+                string strRutaMapServer = strRutasReportes[1].ToString();//ruta donde se guarda fisicamente el reporte
                 DsReportes ds = new DsReportes();
                 
                 ds.Tables.Add(dt);
@@ -255,6 +244,8 @@ namespace SIS_CARLITOS.Vistas
 
                 LocalReport localReport = new LocalReport();
                 localReport.ReportPath = strRutaWebReportes + "rptListadoEnvios.rdlc";
+
+                string strNmGestion = cmbGestion.SelectedItem.ToString();
 
                 ReportParameter[] parameters = new ReportParameter[3];
                 parameters[0] = new ReportParameter("oficina", Session["Oficina"].ToString());
@@ -285,17 +276,16 @@ namespace SIS_CARLITOS.Vistas
                 System.Security.PermissionSet sec = new System.Security.PermissionSet(System.Security.Permissions.PermissionState.Unrestricted);
                 localReport.SetBasePermissionsForSandboxAppDomain(sec);
 
-                string strNmArchivo = "Listado_" + DateTime.Now.ToShortDateString().Replace("/", "") + DateTime.Now.ToLongTimeString().Replace(":", "") + ".pdf";
-                //using (FileStream fs = File.Create(Server.MapPath("~/Reportes/" + strNmArchivo)))
+                string strNmArchivo = "Rpt_Gestion_" + strNmGestion + "_" + DateTime.Now.ToShortDateString().Replace("/", ".") + "_" +DateTime.Now.ToLongTimeString().Replace(":", ".") + "_"+Session["Usuario"].ToString() + ".pdf";
+                
                 using (FileStream fs = File.Create(Server.MapPath(strRutaMapServer + strNmArchivo)))
                 {
                     fs.Write(renderedBytes, 0, renderedBytes.Length);
                 }
 
-                //System.Diagnostics.Process.Start(@"C:\DesarrollosPersonales\SisCarlitosV1.1\SIS-CARLITOS\Reportes\" + strNmArchivo);
-                //System.Diagnostics.Process.Start(strRutaFisicaReportes + strNmArchivo);
+                
 
-                string strUrlReportes = System.Configuration.ConfigurationManager.AppSettings["URLReportes"].ToString();
+                string strUrlReportes = System.Configuration.ConfigurationManager.AppSettings["URLRepositorioReportes"].ToString() + "Gestion/";
 
                 urlReporte.Text = "Descargue el listado generado: " + strNmArchivo;
                 urlReporte.Visible = true;

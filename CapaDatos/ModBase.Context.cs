@@ -226,7 +226,7 @@ namespace CapaEntidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_CONSULTA_ENVIO_Result>("SPR_CONSULTA_ENVIO", oPCIONParameter, cODIGO_ENVIOParameter, cODIGO_ORDEN_SERVICIOParameter, dESTINATARIOParameter, uSUARIOParameter, fECHA1Parameter, fECHA2Parameter, gESTIONParameter, iD_CLIENTEParameter);
         }
     
-        public virtual int SPR_ACT_ULTIMO_EVENTO(string cODIGO_ENVIO, Nullable<int> oPCION)
+        public virtual ObjectResult<SPR_ACT_ULTIMO_EVENTO_Result> SPR_ACT_ULTIMO_EVENTO(string cODIGO_ENVIO, Nullable<int> oPCION, string uSUARIO)
         {
             var cODIGO_ENVIOParameter = cODIGO_ENVIO != null ?
                 new ObjectParameter("CODIGO_ENVIO", cODIGO_ENVIO) :
@@ -236,20 +236,11 @@ namespace CapaEntidad
                 new ObjectParameter("OPCION", oPCION) :
                 new ObjectParameter("OPCION", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPR_ACT_ULTIMO_EVENTO", cODIGO_ENVIOParameter, oPCIONParameter);
-        }
+            var uSUARIOParameter = uSUARIO != null ?
+                new ObjectParameter("USUARIO", uSUARIO) :
+                new ObjectParameter("USUARIO", typeof(string));
     
-        public virtual ObjectResult<SPR_ACT_ULTIMO_EVENTO1_Result> SPR_ACT_ULTIMO_EVENTO1(string cODIGO_ENVIO, Nullable<int> oPCION)
-        {
-            var cODIGO_ENVIOParameter = cODIGO_ENVIO != null ?
-                new ObjectParameter("CODIGO_ENVIO", cODIGO_ENVIO) :
-                new ObjectParameter("CODIGO_ENVIO", typeof(string));
-    
-            var oPCIONParameter = oPCION.HasValue ?
-                new ObjectParameter("OPCION", oPCION) :
-                new ObjectParameter("OPCION", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACT_ULTIMO_EVENTO1_Result>("SPR_ACT_ULTIMO_EVENTO1", cODIGO_ENVIOParameter, oPCIONParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACT_ULTIMO_EVENTO_Result>("SPR_ACT_ULTIMO_EVENTO", cODIGO_ENVIOParameter, oPCIONParameter, uSUARIOParameter);
         }
     }
 }

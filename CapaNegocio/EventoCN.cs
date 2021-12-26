@@ -59,14 +59,14 @@ namespace CapaNegocio
             }
         }
 
-        public List<SPR_ACT_ULTIMO_EVENTO1_Result> FnActUltimoEvento(int intOpcion, paquete oPaquete)
+        public List<SPR_ACT_ULTIMO_EVENTO_Result> FnActUltimoEvento(int intOpcion, paquete oPaquete, usuario oUsuario)
         {
-            List<SPR_ACT_ULTIMO_EVENTO1_Result> oResultado = new List<SPR_ACT_ULTIMO_EVENTO1_Result>();
+            List<SPR_ACT_ULTIMO_EVENTO_Result> oResultado = new List<SPR_ACT_ULTIMO_EVENTO_Result>();
 
             try
             {
                 EventoCD oEventoCD = new EventoCD();
-                oResultado = oEventoCD.FnActUltimoEvento(intOpcion, oPaquete).ToList();
+                oResultado = oEventoCD.FnActUltimoEvento(intOpcion, oPaquete,oUsuario).ToList();
                 return oResultado;
             }
             catch (Exception ex)

@@ -11,9 +11,9 @@ namespace CapaEntidad
 {
     using System;
     
-    public partial class SPR_ACT_ULTIMO_EVENTO1_Result
+    public partial class SPR_ACT_ULTIMO_EVENTO_Result
     {
-        public string codigo1 { get; set; }
-        public string mensaje1 { get; set; }
+        public string CODIGO1 { get; set; }
+        public string MENSAJE1 { get; set; }
     }
 }

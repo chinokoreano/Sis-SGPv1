@@ -9,6 +9,7 @@
             setTimeout('document.images["procesando_gif"].src="../Imagenes/ajax-loader.gif"', 200);
         }
     </script>
+    
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <%--<h3>Carga Masiva</h3>--%>
@@ -19,7 +20,7 @@
         <ContentTemplate>
 
             <div class="card border-dark" style="max-width: 100rem;" runat="server" id="divBuscar">
-                <div class="card-header ph-card-header">Cliente</div>
+                <div class="card-header ph-card-header">Buscar Cliente</div>
                 <div class="card-body" style="background-color:white">
             
 
@@ -32,7 +33,7 @@
                             </asp:DropDownList>
                         </div>
                         <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <asp:TextBox ID="txtfiltro1" placeholder="Cliente" class="form-control form-control-sm" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtfiltro1" placeholder="Cliente" class="form-control form-control-sm" runat="server" onkeypress="hideOnKeyPress()"></asp:TextBox>
                             <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" TargetControlID="txtfiltro1" ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890abcdefghijklmnñopqrstuvwxyz " />
                         </div>
                         <div class="col-sm-1" style="padding-bottom: 5px;">
@@ -134,15 +135,15 @@
                 <div class="card-body" style="background-color:white">
                     <div class="row">
                         <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <asp:TextBox runat="server" ID="txtIdCliente" CssClass="form-control form-control-sm" placeholder="IdCliente" MaxLength="100" ReadOnly="True" />
+                            <asp:TextBox runat="server" ID="txtIdCliente" CssClass="form-control form-control-sm" placeholder="IdCliente" MaxLength="100" ReadOnly="True" BackColor="#FFFF99" Font-Bold="True" Font-Size="X-Small" />
                         </div>
                          <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Número de Identificación" MaxLength="20" ReadOnly="True" />
+                            <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Número de Identificación" MaxLength="20" ReadOnly="True" BackColor="#FFFF99" Font-Bold="True" Font-Size="X-Small"/>
                             <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="txtIdentificacion"
-                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789 "></cc1:FilteredTextBoxExtender>
+                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789:/ "></cc1:FilteredTextBoxExtender>
                         </div>
                         <div class="col-sm-6" style="padding-bottom: 5px;">
-                            <asp:TextBox runat="server" ID="txtCliente" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Nombre o Razón Social" MaxLength="100" ReadOnly="True" />
+                            <asp:TextBox runat="server" ID="txtCliente" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Nombre o Razón Social" MaxLength="100" ReadOnly="True" Font-Bold="True"  BackColor="#FFFF99" Font-Size="X-Small" />
                             <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="txtCliente"
                                 ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789 "></cc1:FilteredTextBoxExtender>
                         </div>
@@ -150,7 +151,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm" Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Punto de Carga o Retiro" NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen">
+                            <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm" Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Punto de Carga o Retiro" NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen" OnSelectedIndexChanged="cmbLocalidad_SelectedIndexChanged">
                                     
                                 </dx:ASPxComboBox>
                         </div>
@@ -188,5 +189,10 @@
 
         </ContentTemplate>
     </asp:UpdatePanel>
-
+    <script type="text/javascript">               
+        function hideOnKeyPress() {
+            document.getElementById("<%=lblMensaje1.ClientID%>").style.visibility = "hidden";
+        }
+    
+    </script>
 </asp:Content>

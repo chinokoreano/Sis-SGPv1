@@ -78,12 +78,14 @@ namespace SIS_CARLITOS.Vistas
 
 
                 EventoCN oEventoCN = new EventoCN();
-                                
 
-                List<SPR_ACT_ULTIMO_EVENTO1_Result> oResultado = new List<SPR_ACT_ULTIMO_EVENTO1_Result>();
-                oResultado = oEventoCN.FnActUltimoEvento(1, objPaquete);
+                usuario oUsuario = new usuario();
+                oUsuario.nm = Session["Usuario"].ToString();
 
-                if (oResultado[0].codigo1 == "1")
+                List<SPR_ACT_ULTIMO_EVENTO_Result> oResultado = new List<SPR_ACT_ULTIMO_EVENTO_Result>();
+                oResultado = oEventoCN.FnActUltimoEvento(1, objPaquete,oUsuario);
+
+                if (oResultado[0].CODIGO1 == "1")
                 {
                     lblMensaje.Visible = true;
                     lblMensaje.Attributes.Add("class", "btn btn-success");

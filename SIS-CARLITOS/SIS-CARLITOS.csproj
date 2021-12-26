@@ -183,7 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Admin\frmAutenticacion2.aspx" />
     <Content Include="Admin\frmAutenticacion.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -1589,6 +1588,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Vistas\frmConsultaReporteGestiones.aspx" />
+    <Content Include="Vistas\frmCambioContrasena.aspx" />
     <Content Include="Vistas\frmMantEntregas.aspx" />
     <Content Include="Vistas\frmAsesorComercial.aspx" />
     <Content Include="Vistas\frmAdmOrdenes.aspx" />
@@ -1615,13 +1616,6 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\frmAutenticacion2.aspx.cs">
-      <DependentUpon>frmAutenticacion2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\frmAutenticacion2.aspx.designer.cs">
-      <DependentUpon>frmAutenticacion2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\frmAutenticacion.aspx.cs">
       <DependentUpon>frmAutenticacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1717,6 +1711,20 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmConsultaReporteGestiones.aspx.cs">
+      <DependentUpon>frmConsultaReporteGestiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmConsultaReporteGestiones.aspx.designer.cs">
+      <DependentUpon>frmConsultaReporteGestiones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmCambioContrasena.aspx.cs">
+      <DependentUpon>frmCambioContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmCambioContrasena.aspx.designer.cs">
+      <DependentUpon>frmCambioContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmMantEntregas.aspx.cs">
       <DependentUpon>frmMantEntregas.aspx</DependentUpon>

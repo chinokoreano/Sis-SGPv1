@@ -69,12 +69,12 @@ namespace SIS_CARLITOS.Vistas
                 ParametroCN oParametroCN = new ParametroCN();
                 List<parametro> oResultadoParametros = new List<parametro>();
                 oResultadoParametros = oParametroCN.FnConsultarParametros();
-                List<parametro> oResultadoBusq = oResultadoParametros.Where(p => p.tipo == "RUTAREPORTES").ToList();
+                List<parametro> oResultadoBusq = oResultadoParametros.Where(p => p.tipo == "RUTAREPORTESMANIFIESTOS").ToList();
 
                 string[] strRutasReportes = oResultadoBusq[0].valor1.Split(',');
                 string strRutaWebReportes = strRutasReportes[0].ToString();
-                string strRutaFisicaReportes = strRutasReportes[1].ToString();
-                string strRutaMapServer = strRutasReportes[2].ToString();
+                //string strRutaFisicaReportes = strRutasReportes[1].ToString();
+                string strRutaMapServer = strRutasReportes[1].ToString();
 
                 ListaManifiestoCN oListaManifiestoCN = new ListaManifiestoCN();
                 oResultado = oListaManifiestoCN.FnImprimirListaManifiest(oManifiestoEntrega, 1);
@@ -112,7 +112,7 @@ namespace SIS_CARLITOS.Vistas
                 System.Security.PermissionSet sec = new System.Security.PermissionSet(System.Security.Permissions.PermissionState.Unrestricted);
                 localReport.SetBasePermissionsForSandboxAppDomain(sec);
 
-                string strNmArchivo = "Manifiesto_" + DateTime.Now.ToShortDateString().Replace("/", "") + DateTime.Now.ToLongTimeString().Replace(":", "") + ".pdf";
+                string strNmArchivo = "Rpt_Man_" + cmbCartero.SelectedItem.ToString().Replace(" ",".") + "_" + DateTime.Now.ToShortDateString().Replace("/", ".") + "_" + DateTime.Now.ToLongTimeString().Replace(":", ".") + "_" + Session["Usuario"].ToString() + ".pdf";
                 //using (FileStream fs = File.Create(Server.MapPath("~/Reportes/" + strNmArchivo)))
                 using (FileStream fs = File.Create(Server.MapPath(strRutaMapServer + strNmArchivo)))
                 {
@@ -122,7 +122,7 @@ namespace SIS_CARLITOS.Vistas
                 //System.Diagnostics.Process.Start(@"C:\DesarrollosPersonales\SisCarlitosV1.1\SIS-CARLITOS\Reportes\" + strNmArchivo);
                 //System.Diagnostics.Process.Start(strRutaFisicaReportes + strNmArchivo);
 
-                string strUrlReportes = System.Configuration.ConfigurationManager.AppSettings["URLReportes"].ToString();
+                string strUrlReportes = System.Configuration.ConfigurationManager.AppSettings["URLRepositorioReportes"].ToString() + "Manifiesto/";
 
                 urlReporte.Text = "Descargue el manifiesto generado: " + strNmArchivo;
                 urlReporte.Visible = true;
