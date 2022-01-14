@@ -172,19 +172,6 @@ namespace CapaEntidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SPR_CONSULTA_CREDENCIALES", iD_USUARIOParameter);
         }
     
-        public virtual ObjectResult<SPR_ACTUALIZA_CREDENCIALES_Result> SPR_ACTUALIZA_CREDENCIALES(Nullable<int> iD_USUARIO, string cONTRASENIA)
-        {
-            var iD_USUARIOParameter = iD_USUARIO.HasValue ?
-                new ObjectParameter("ID_USUARIO", iD_USUARIO) :
-                new ObjectParameter("ID_USUARIO", typeof(int));
-    
-            var cONTRASENIAParameter = cONTRASENIA != null ?
-                new ObjectParameter("CONTRASENIA", cONTRASENIA) :
-                new ObjectParameter("CONTRASENIA", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACTUALIZA_CREDENCIALES_Result>("SPR_ACTUALIZA_CREDENCIALES", iD_USUARIOParameter, cONTRASENIAParameter);
-        }
-    
         public virtual ObjectResult<SPR_CONSULTA_ENVIO_Result> SPR_CONSULTA_ENVIO(Nullable<int> oPCION, string cODIGO_ENVIO, string cODIGO_ORDEN_SERVICIO, string dESTINATARIO, Nullable<int> uSUARIO, string fECHA1, string fECHA2, string gESTION, Nullable<int> iD_CLIENTE)
         {
             var oPCIONParameter = oPCION.HasValue ?
@@ -241,6 +228,23 @@ namespace CapaEntidad
                 new ObjectParameter("USUARIO", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACT_ULTIMO_EVENTO_Result>("SPR_ACT_ULTIMO_EVENTO", cODIGO_ENVIOParameter, oPCIONParameter, uSUARIOParameter);
+        }
+    
+        public virtual ObjectResult<SPR_ACTUALIZA_CREDENCIALES_Result> SPR_ACTUALIZA_CREDENCIALES(Nullable<int> iD_USUARIO, string cONTRASENIA, Nullable<int> oPCION)
+        {
+            var iD_USUARIOParameter = iD_USUARIO.HasValue ?
+                new ObjectParameter("ID_USUARIO", iD_USUARIO) :
+                new ObjectParameter("ID_USUARIO", typeof(int));
+    
+            var cONTRASENIAParameter = cONTRASENIA != null ?
+                new ObjectParameter("CONTRASENIA", cONTRASENIA) :
+                new ObjectParameter("CONTRASENIA", typeof(string));
+    
+            var oPCIONParameter = oPCION.HasValue ?
+                new ObjectParameter("OPCION", oPCION) :
+                new ObjectParameter("OPCION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACTUALIZA_CREDENCIALES_Result>("SPR_ACTUALIZA_CREDENCIALES", iD_USUARIOParameter, cONTRASENIAParameter, oPCIONParameter);
         }
     }
 }

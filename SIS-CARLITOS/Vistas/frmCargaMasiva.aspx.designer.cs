@@ -103,51 +103,6 @@ namespace SIS_CARLITOS.Vistas {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatosCarga;
         
         /// <summary>
-        /// Control txtIdCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdCliente;
-        
-        /// <summary>
-        /// Control txtIdentificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdentificacion;
-        
-        /// <summary>
-        /// Control FilteredTextBoxExtender2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
-        
-        /// <summary>
-        /// Control txtCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCliente;
-        
-        /// <summary>
-        /// Control FilteredTextBoxExtender1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
-        
-        /// <summary>
         /// Control cmbLocalidad.
         /// </summary>
         /// <remarks>
@@ -191,6 +146,51 @@ namespace SIS_CARLITOS.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FupArchivo;
+        
+        /// <summary>
+        /// Control txtIdCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIdCliente;
+        
+        /// <summary>
+        /// Control txtIdentificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIdentificacion;
+        
+        /// <summary>
+        /// Control FilteredTextBoxExtender2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
+        
+        /// <summary>
+        /// Control txtCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCliente;
+        
+        /// <summary>
+        /// Control FilteredTextBoxExtender1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
         
         /// <summary>
         /// Control divControl.

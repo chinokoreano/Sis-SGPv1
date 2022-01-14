@@ -40,6 +40,42 @@ namespace SIS_CARLITOS.Admin {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender4;
         
         /// <summary>
+        /// Control divCorreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCorreo;
+        
+        /// <summary>
+        /// Control txtCorreoElectronico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCorreoElectronico;
+        
+        /// <summary>
+        /// Control FilteredTextBoxExtender5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender5;
+        
+        /// <summary>
+        /// Control divContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContrasenia;
+        
+        /// <summary>
         /// Control txtContrasenia.
         /// </summary>
         /// <remarks>
@@ -56,6 +92,15 @@ namespace SIS_CARLITOS.Admin {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender3;
+        
+        /// <summary>
+        /// Control lnkRecuperarContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkRecuperarContrasenia;
         
         /// <summary>
         /// Control FilteredTextBoxExtender1.
@@ -119,5 +164,14 @@ namespace SIS_CARLITOS.Admin {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCambiarContrasenia;
+        
+        /// <summary>
+        /// Control btnRecuperarContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnRecuperarContrasenia;
     }
 }

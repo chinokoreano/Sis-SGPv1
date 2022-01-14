@@ -76,6 +76,7 @@
     <Compile Include="ProcesoCN.cs" />
     <Compile Include="ServicioCN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiciosUtiles.cs" />
     <Compile Include="SucesoCN.cs" />
     <Compile Include="UbicacionGeograficaCN.cs" />
     <Compile Include="UsuarioCN.cs" />
@@ -88,6 +89,10 @@
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
       <Project>{D1CD5933-4C18-4606-ACE4-770ECA2DFACA}</Project>
       <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaServicios\CapaServicios.csproj">
+      <Project>{EDAAD6EC-FE1F-44E2-9036-E56E940AED9F}</Project>
+      <Name>CapaServicios</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

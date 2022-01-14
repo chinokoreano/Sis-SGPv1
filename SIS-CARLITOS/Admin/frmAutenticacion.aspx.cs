@@ -15,9 +15,10 @@ namespace SIS_CARLITOS.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             txtUsuario.Focus();
+
         }
 
-        protected void btnIniciarSesion_Click(object sender, EventArgs e)
+        protected void btnIniciarSesion_Click1(object sender, EventArgs e)
         {
             List<usuario> oResultado = new List<usuario>();
             lblMensaje.Visible = false;
@@ -82,7 +83,7 @@ namespace SIS_CARLITOS.Admin
 
             }
 
-            
+
             catch (Exception)
             {
 
@@ -90,68 +91,140 @@ namespace SIS_CARLITOS.Admin
             }
 
 
-}
-
-protected void btnCambiarContrasenia_Click(object sender, EventArgs e)
-{
-    List<usuario> oResultado = new List<usuario>();
-    try
-    {
-        usuario oUsuario = new usuario();
-        oUsuario.usuario1 = txtUsuario.Text.Trim();
-        oUsuario.contrasenia = txtContrasenia.Text.Trim();
-
-        UsuarioCN oUsuarioCN = new UsuarioCN();
-        oResultado = oUsuarioCN.FnConsultaUsuario(oUsuario);
-        Resultado oResultadoA = new Resultado();
-
-        if (oResultado == null)
-        {
-            lblMensaje.Visible = true;
-            lblMensaje.Text = "Por favor verifique que el usuario y la contraseña sean correctos.";
-            txtUsuario.Focus();
         }
-        else
-        {
-            if (!string.IsNullOrEmpty(txtContraseniaNueva.Text.Trim()) && !string.IsNullOrWhiteSpace(txtContraseniaNueva.Text.Trim())
-                && !string.IsNullOrEmpty(txtConfirmarContrasenia.Text.Trim()) && !string.IsNullOrWhiteSpace(txtConfirmarContrasenia.Text.Trim()))
-            {
-                if (txtContraseniaNueva.Text.Trim().Equals(txtConfirmarContrasenia.Text.Trim()))
-                {
-                    oResultadoA = oUsuarioCN.FnActualizaUsuario(oResultado[0], txtConfirmarContrasenia.Text.Trim());
-                    if (oResultadoA.Codigo1 == "1")
-                    {
-                        lblMensaje.Visible = true;
-                        lblMensaje.Attributes.Add("class", "text-success");//class="btn btn-info"
-                        lblMensaje.Text = "Cambio de contraseña realizado correctamente. Por favor inicie sesión.";
 
-                        txtUsuario.Text = String.Empty;
-                        txtContrasenia.Text = String.Empty;
-                        txtConfirmarContrasenia.Visible = false;
-                        txtContraseniaNueva.Visible = false;
-                        btnCambiarContrasenia.Visible = false;
-                        txtUsuario.Focus();
-                        btnIniciarSesion.Visible = true;
-                    }
+        private void FnCambiarContrasenia()
+        {
+            List<usuario> oResultado = new List<usuario>();
+            try
+            {
+                usuario oUsuario = new usuario();
+                oUsuario.usuario1 = txtUsuario.Text.Trim();
+                oUsuario.contrasenia = txtContrasenia.Text.Trim();
+
+                UsuarioCN oUsuarioCN = new UsuarioCN();
+                oResultado = oUsuarioCN.FnConsultaUsuario(oUsuario);
+                Resultado oResultadoA = new Resultado();
+
+                if (oResultado == null)
+                {
+                    lblMensaje.Visible = true;
+                    lblMensaje.Text = "Por favor verifique que el usuario y la contraseña sean correctos.";
+                    txtUsuario.Focus();
                 }
                 else
                 {
-                    lblMensaje.Visible = true;
-                    lblMensaje.Text = "Contraseña no coinciden por favor verifique.";
+                    if (!string.IsNullOrEmpty(txtContraseniaNueva.Text.Trim()) && !string.IsNullOrWhiteSpace(txtContraseniaNueva.Text.Trim())
+                        && !string.IsNullOrEmpty(txtConfirmarContrasenia.Text.Trim()) && !string.IsNullOrWhiteSpace(txtConfirmarContrasenia.Text.Trim()))
+                    {
+                        if (txtContraseniaNueva.Text.Trim().Equals(txtConfirmarContrasenia.Text.Trim()))
+                        {
+                            oResultadoA = oUsuarioCN.FnActualizaUsuario(oResultado[0], txtConfirmarContrasenia.Text.Trim(),1);
+                            if (oResultadoA.Codigo1 == "1")
+                            {
+                                lblMensaje.Visible = true;
+                                lblMensaje.Attributes.Add("class", "text-success");//class="btn btn-info"
+                                lblMensaje.Text = "Cambio de contraseña realizado correctamente. Por favor inicie sesión.";
+
+                                txtUsuario.Text = String.Empty;
+                                txtContrasenia.Text = String.Empty;
+                                txtConfirmarContrasenia.Visible = false;
+                                txtContraseniaNueva.Visible = false;
+                                btnCambiarContrasenia.Visible = false;
+                                txtUsuario.Focus();
+                                btnIniciarSesion.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            lblMensaje.Visible = true;
+                            lblMensaje.Text = "Contraseña no coinciden por favor verifique.";
+                        }
+
+                    }
                 }
 
+
             }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
+        private void FnRecuperarContrasenia()
+        {
 
-    }
-    catch (Exception ex)
-    {
+            if (string.IsNullOrEmpty(txtUsuario.Text.Trim()) || string.IsNullOrWhiteSpace(txtUsuario.Text.Trim()))
+            {
+                lblMensaje.Visible = true;
+                lblMensaje.Text = "Por favor ingrese el usuario.";
+                txtUsuario.Focus();
+                return;
+            }
 
-        throw ex;
-    }
+            if (string.IsNullOrEmpty(txtCorreoElectronico.Text.Trim()) || string.IsNullOrWhiteSpace(txtCorreoElectronico.Text.Trim()))
+            {
+                lblMensaje.Visible = true;
+                lblMensaje.Text = "Por favor ingrese el correo electrónico.";
+                txtUsuario.Focus();
+                return;
+            }
 
+            List<usuario> oResultadoUsuario = new List<usuario>();
+            usuario oUsuario = new usuario();
+            oUsuario.usuario1 = txtUsuario.Text.Trim().ToUpper();
+            oUsuario.correo_electronico = txtCorreoElectronico.Text.Trim().ToUpper();
 
-}
+            UsuarioCN oUsuarioCN = new UsuarioCN();
+            oResultadoUsuario = oUsuarioCN.FnConsultaUsuario(oUsuario);
+
+           
+            if (oUsuario.usuario1.Trim() == oResultadoUsuario[0].usuario1.ToString().ToUpper().Trim() 
+                && oUsuario.correo_electronico.Trim() == oResultadoUsuario[0].correo_electronico.ToString().ToUpper().Trim())
+            {
+                Resultado oResultado = new Resultado();
+                ServiciosUtiles oServiciosUtiles = new ServiciosUtiles();
+                oResultado = oServiciosUtiles.generarContrasenia(1, 6);
+
+                oUsuarioCN.FnActualizaUsuario(oResultadoUsuario[0], oResultado.Mensaje1,2);
+
+                oServiciosUtiles.enviarCorreo("cac.soporte24@gmail.com", "romerocarlos79@hotmail.com", "Asunto", "Mensaje1", "");
+            }
+            else
+            {
+                lblMensaje.Visible = true;
+                lblMensaje.Text = "Por favor verifique el usuario y el correo electrónicos sean correctos.";
+                txtUsuario.Focus();
+                return;
+            }
+
+        }
+
+        //FnRecuperarContrasenia();
+        protected void lnkRecuperarContrasenia_Click(object sender, EventArgs e)
+        {
+            divCorreo.Visible = true;
+            divContrasenia.Visible = false;
+            txtUsuario.Visible = true;
+
+            btnRecuperarContrasenia.Visible = true;
+            btnIniciarSesion.Visible = false;
+            lblMensaje.Visible = false;
+
+            lnkRecuperarContrasenia.Visible = false;
+        }
+
+        protected void btnCambiarContrasenia_Click1(object sender, EventArgs e)
+        {
+            FnCambiarContrasenia();
+        }
+
+        protected void btnRecuperarContrasenia_Click(object sender, EventArgs e)
+        {
+            FnRecuperarContrasenia();
+        }
     }
 }

@@ -9,7 +9,7 @@
             setTimeout('document.images["procesando_gif"].src="../Imagenes/ajax-loader.gif"', 200);
         }
     </script>
-    
+
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <%--<h3>Carga Masiva</h3>--%>
@@ -21,9 +21,7 @@
 
             <div class="card border-dark" style="max-width: 100rem;" runat="server" id="divBuscar">
                 <div class="card-header ph-card-header">Buscar Cliente</div>
-                <div class="card-body" style="background-color:white">
-            
-
+                <div class="card-body" style="background-color: white">
                     <div class="row">
                         <div class="col-sm-3" style="padding-bottom: 5px;">
 
@@ -45,137 +43,167 @@
                     </div>
 
                     <div class="table-responsive" runat="server" id="divClientes">
-                                    <asp:GridView ID="grvClientes"
-                                        CssClass="tabla_datos col-xs-12 table-bordered"
-                                        runat="server"
-                                        PagerStyle-CssClass="pager-style"
-                                        AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" PageSize="5" AllowPaging="True" OnPageIndexChanging="grvClientes_PageIndexChanging">
-                                        
-                                        <RowStyle CssClass="row-style" />
-                                        <AlternatingRowStyle CssClass="alernativedRow-style" />
-                                        <SelectedRowStyle CssClass="editRow-style" />
-                                        <EditRowStyle CssClass="editRow-style" />
-                                        <Columns>
+                        <asp:GridView ID="grvClientes"
+                            CssClass="tabla_datos col-xs-12 table-bordered"
+                            runat="server"
+                            PagerStyle-CssClass="pager-style"
+                            AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" PageSize="5" AllowPaging="True" OnPageIndexChanging="grvClientes_PageIndexChanging">
 
-                                             <asp:TemplateField HeaderText="IdCliente">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("id_cliente") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblId" runat="server" Text='<%# Bind("id_cliente") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                             <asp:TemplateField HeaderText="Contrato">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox runat="server" Text='<%# Bind("contrato") %>' ID="TextBox6"></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblNumeroContrato" runat="server" Text='<%# Bind("contrato") %>' ></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                                                                       
-                                            <asp:TemplateField HeaderText="Nombre o Razón Social">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("nm_cliente") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lbl_Nm_Cliente" runat="server" Text='<%# Bind("nm_cliente") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Identificación">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("numero_identificacion") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lbl_Numero_Identificacion" runat="server" Text='<%# Bind("numero_identificacion") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Dirección">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("direccion") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("direccion") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Teléfono">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("telefono") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("telefono") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="IdContrato" Visible="false">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox runat="server" Text='<%# Bind("id_codigo_contrato") %>' ID="TextBox7"></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblIdContrato" runat="server" Text='<%# Bind("id_codigo_contrato") %>' ></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Seleccionar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="btnImgSeleccionar" runat="server" OnClick="btnImgSeleccionar_Click" ImageUrl="~/Imagenes/seleccionar.png" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" Width="30px" />
-                                            </asp:TemplateField>
-                                        </Columns>
+                            <RowStyle CssClass="row-style" />
+                            <AlternatingRowStyle CssClass="alernativedRow-style" />
+                            <SelectedRowStyle CssClass="editRow-style" />
+                            <EditRowStyle CssClass="editRow-style" />
+                            <Columns>
 
-                                    </asp:GridView>
-                                </div>
+                                <asp:TemplateField HeaderText="IdCliente">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("id_cliente") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblId" runat="server" Text='<%# Bind("id_cliente") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Contrato">
+                                    <EditItemTemplate>
+                                        <asp:TextBox runat="server" Text='<%# Bind("contrato") %>' ID="TextBox6"></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblNumeroContrato" runat="server" Text='<%# Bind("contrato") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Nombre o Razón Social">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("nm_cliente") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Nm_Cliente" runat="server" Text='<%# Bind("nm_cliente") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Identificación">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("numero_identificacion") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Numero_Identificacion" runat="server" Text='<%# Bind("numero_identificacion") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Dirección">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("direccion") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("direccion") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Teléfono">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("telefono") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("telefono") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="IdContrato" Visible="false">
+                                    <EditItemTemplate>
+                                        <asp:TextBox runat="server" Text='<%# Bind("id_codigo_contrato") %>' ID="TextBox7"></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIdContrato" runat="server" Text='<%# Bind("id_codigo_contrato") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Seleccionar">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="btnImgSeleccionar" runat="server" OnClick="btnImgSeleccionar_Click" ImageUrl="~/Imagenes/seleccionar.png" />
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="30px" />
+                                </asp:TemplateField>
+                            </Columns>
+
+                        </asp:GridView>
+                    </div>
 
                 </div>
             </div>
 
-           
+
             <br />
-             <div class="card border-dark" style="max-width: 100rem;" runat="server" id="divDatosCarga">
+
+           <%-- <div class="form-group row">
+                <div class="col-sm-10">
+                    <label for="ddlSaca">Saca:</label>
+
+                    <dx:ASPxComboBox ID="ddlSaca" runat="server" onkeypress="hideOnKeyPress(); return true;" CssClass="form-control dropdown form-control-sm" Width="100%" NullText="Seleccione" ToolTip="Interseccion" AutoPostBack="True" DropDownRows="10" LoadDropDownOnDemand="True" Style="left: 0px; top: 0px" OnSelectedIndexChanged="ddlSaca_SelectedIndexChanged">
+                    </dx:ASPxComboBox>
+                </div>
+            </div>--%>
+
+
+
+            <div class="card border-dark" style="max-width: 100rem;" runat="server" id="divDatosCarga">
                 <div class="card-header ph-card-header">Carga de datos</div>
-                <div class="card-body" style="background-color:white">
-                    <div class="row">
-                        <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <asp:TextBox runat="server" ID="txtIdCliente" CssClass="form-control form-control-sm" placeholder="IdCliente" MaxLength="100" ReadOnly="True" BackColor="#FFFF99" Font-Bold="True" Font-Size="X-Small" />
-                        </div>
-                         <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Número de Identificación" MaxLength="20" ReadOnly="True" BackColor="#FFFF99" Font-Bold="True" Font-Size="X-Small"/>
-                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="txtIdentificacion"
-                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789:/ "></cc1:FilteredTextBoxExtender>
-                        </div>
-                        <div class="col-sm-6" style="padding-bottom: 5px;">
-                            <asp:TextBox runat="server" ID="txtCliente" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Nombre o Razón Social" MaxLength="100" ReadOnly="True" Font-Bold="True"  BackColor="#FFFF99" Font-Size="X-Small" />
-                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="txtCliente"
-                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789 "></cc1:FilteredTextBoxExtender>
-                        </div>
-                       
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm" Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Punto de Carga o Retiro" NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen" OnSelectedIndexChanged="cmbLocalidad_SelectedIndexChanged">
+                <div class="card-body" style="background-color: white">
+                    <div class="container py-3">
+                        <div id="informacion-personal">
+                            <div class="row justify-content-center">
+                                <!--Doble columna!-->
+
+                                <div class="col-12 col-md-6">
                                     
-                                </dx:ASPxComboBox>
-                        </div>
-                        <div class="col-sm-3" style="padding-bottom: 5px;">
-                            <asp:DropDownList ID="ddlServicio" runat="server" CssClass="form-control dropdown form-control-sm" AutoPostBack="true" ToolTip="Servicio"></asp:DropDownList>
-                        </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtObservacion" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Detalle" MaxLength="100" />
-                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" TargetControlID="txtObservacion"
-                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789 "></cc1:FilteredTextBoxExtender>
+                                        <div class="col-sm-12" style="padding-bottom: 5px;">
+                                            <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm" Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Punto de Carga o Retiro" NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen" OnSelectedIndexChanged="cmbLocalidad_SelectedIndexChanged">
+                                            </dx:ASPxComboBox>
+                                        </div>
+                                        <div class="col-sm-12" style="padding-bottom: 5px;">
+                                            <asp:DropDownList ID="ddlServicio" runat="server" CssClass="form-control dropdown form-control-sm" AutoPostBack="true" ToolTip="Servicio"></asp:DropDownList>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <asp:TextBox runat="server" ID="txtObservacion" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Detalle" MaxLength="100" />
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" TargetControlID="txtObservacion"
+                                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789 "></cc1:FilteredTextBoxExtender>
+                                        </div>
+                                        <p></p>
+                                        <div class="col-sm-12">
+                                            <asp:FileUpload ID="FupArchivo" CssClass="form-control form-control-sm text-uppercase" runat="server" />
+                                        </div>
+                                    
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                   
+                                        <div class="col-sm-10" style="padding-bottom: 5px;">
+                                            <asp:TextBox runat="server" ID="txtIdCliente" CssClass="form-control form-control-sm" placeholder="IdCliente" MaxLength="100" ReadOnly="True" BackColor="#FFFF99"/>
+                                        </div>
+                                    
+                                    
+                                        <div class="col-sm-10" style="padding-bottom: 5px;">
+                                            <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Número de Identificación" MaxLength="20" ReadOnly="True" BackColor="#FFFF99" />
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="txtIdentificacion"
+                                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789:/ "></cc1:FilteredTextBoxExtender>
+                                        </div>
+                                   
+                                        <div class="col-sm-10" style="padding-bottom: 5px;">
+                                            <asp:TextBox runat="server" ID="txtCliente" CssClass="form-control form-control-sm text-uppercase" AutoCompleteType="Enabled" placeholder="Nombre o Razón Social" MaxLength="100" ReadOnly="True" BackColor="#FFFF99" />
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="txtCliente"
+                                                ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789 "></cc1:FilteredTextBoxExtender>
+                                        </div>
+                                    
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-9">
-                            <asp:FileUpload ID="FupArchivo" CssClass="form-control form-control-sm text-uppercase" runat="server" />
-                        </div>
-                    </div>
+
+
+
+
                 </div>
             </div>
             <br />
             <div runat="server" id="divControl" visible="false">
                 <div class="row">
                     <div class="col-sm-2">
-                        <asp:LinkButton ID="btnGuardar" runat="server" class="btn btn-warning" OnClick="btnGuardar_Click" text="Grabar" OnClientClick="mostrar_procesar();"></asp:LinkButton>
+                        <asp:LinkButton ID="btnGuardar" runat="server" class="btn btn-warning" OnClick="btnGuardar_Click" Text="Grabar" OnClientClick="mostrar_procesar();"></asp:LinkButton>
                         <span id="procesando_div" style="display: none; position: absolute; text-align: center">
                             <img src="../Imagenes/ajax-loader.gif" id="procesando" alt="" />
                         </span>
@@ -193,6 +221,6 @@
         function hideOnKeyPress() {
             document.getElementById("<%=lblMensaje1.ClientID%>").style.visibility = "hidden";
         }
-    
+
     </script>
 </asp:Content>

@@ -382,6 +382,7 @@
     <EntitySetMapping Name="usuario">
       <EntityTypeMapping TypeName="OPERADBModel.usuario">
         <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
           <ScalarProperty Name="contrasenia_encriptada" ColumnName="contrasenia_encriptada" />
           <ScalarProperty Name="cambio_contrasenia" ColumnName="cambio_contrasenia" />
           <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
@@ -403,14 +404,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="SPR_CONSULTA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_CONSULTA_CREDENCIALES" />
-    <FunctionImportMapping FunctionImportName="SPR_ACTUALIZA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_ACTUALIZA_CREDENCIALES">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result">
-          <ScalarProperty Name="RESULTADO" ColumnName="RESULTADO" />
-          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="contrato">
       <EntityTypeMapping TypeName="OPERADBModel.contrato">
         <MappingFragment StoreEntitySet="contrato">
@@ -489,6 +482,14 @@
         <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACT_ULTIMO_EVENTO_Result">
           <ScalarProperty Name="CODIGO1" ColumnName="CODIGO1" />
           <ScalarProperty Name="MENSAJE1" ColumnName="MENSAJE1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPR_ACTUALIZA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_ACTUALIZA_CREDENCIALES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result">
+          <ScalarProperty Name="RESULTADO" ColumnName="RESULTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -37,6 +37,7 @@ namespace CapaEntidad
         public Nullable<int> id_oficina { get; set; }
         public Nullable<bool> cambio_contrasenia { get; set; }
         public byte[] contrasenia_encriptada { get; set; }
+        public string correo_electronico { get; set; }
     
         public virtual oficina oficina { get; set; }
         public virtual tipo_documento tipo_documento1 { get; set; }

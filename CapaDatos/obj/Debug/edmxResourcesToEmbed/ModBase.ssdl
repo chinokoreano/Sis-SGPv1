@@ -307,6 +307,7 @@
     <Property Name="id_oficina" Type="int" />
     <Property Name="cambio_contrasenia" Type="bit" />
     <Property Name="contrasenia_encriptada" Type="varbinary" MaxLength="100" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="usuario_contrato">
     <Key>
@@ -518,6 +519,7 @@
   <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
     <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
+    <Parameter Name="OPCION" Type="int" Mode="In" />
   </Function>
   <Function Name="SPR_CONSULTA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="int" Mode="In" />

@@ -12,31 +12,34 @@
       <Value Profile="(Default)">389</Value>
     </Setting>
     <Setting Name="path" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">DC=correosdelecuador,DC=com,DC=ec</Value>
+      <Value Profile="(Default)">DC=dominio,DC=com,DC=ec</Value>
     </Setting>
     <Setting Name="dominio" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">correosdelecuador.com.ec</Value>
+      <Value Profile="(Default)">dominio.com.ec</Value>
     </Setting>
     <Setting Name="usuario_administracion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">adminweb</Value>
+      <Value Profile="(Default)">usuario</Value>
     </Setting>
     <Setting Name="contrasenia_administracion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">TcRjN4d7</Value>
+      <Value Profile="(Default)">password1</Value>
     </Setting>
     <Setting Name="servidor_correo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">172.17.1.208</Value>
+      <Value Profile="(Default)">smtp.gmail.com</Value>
     </Setting>
     <Setting Name="usuario_correo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">wcorporativa@correosdelecuador.gob.ec</Value>
+      <Value Profile="(Default)">cacsoporte247@gmail.com</Value>
     </Setting>
     <Setting Name="contrasenia_correo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">cdeclave123</Value>
+      <Value Profile="(Default)">*carlos2021</Value>
     </Setting>
     <Setting Name="puerto_servidor_correo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">25</Value>
+      <Value Profile="(Default)">587</Value>
     </Setting>
     <Setting Name="correo_remitente" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">soporte@correosdelecuador.gob.ec|Soporte CDE E.P.</Value>
+      <Value Profile="(Default)">cacsoporte247@gmail.com|Soporte 24-7 Soluciones TICS</Value>
+    </Setting>
+    <Setting Name="enable_ssl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

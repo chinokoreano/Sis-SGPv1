@@ -236,6 +236,12 @@ namespace SIS_CARLITOS.Vistas
 
                             lblMensaje1.Visible = false;
                             FnImprimir(oManifiestoEntrega);
+                            divReporte.Visible = true;
+                            divListadoPaquetes.Visible = false;
+                            cmbCartero.Enabled = false;
+                            txtCodigoEnvio1.Enabled = false;
+                            btnAgregar1.Enabled = false;
+                            lblMensaje.Visible = false;
                             return;
                         }
                         
@@ -326,6 +332,8 @@ namespace SIS_CARLITOS.Vistas
 
                 if (bolResultado == true)
                 {
+                    divGrabar.Visible = true;
+                    divListadoPaquetes.Visible = true;
                     ddlListado.Items.Add(txtCodigoEnvio1.Text.ToUpper());
                     ddlListado.DataBind();
 

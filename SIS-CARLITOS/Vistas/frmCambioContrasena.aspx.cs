@@ -79,7 +79,7 @@ namespace SIS_CARLITOS.Vistas
                         }
                         if (txtContraseniaNueva.Text.Trim().Equals(txtConfirmarContrasenia.Text.Trim()))
                         {
-                            oResultadoA = oUsuarioCN.FnActualizaUsuario(oResultado[0], txtConfirmarContrasenia.Text.Trim());
+                            oResultadoA = oUsuarioCN.FnActualizaUsuario(oResultado[0], txtConfirmarContrasenia.Text.Trim(),1);
                             if (oResultadoA.Codigo1 == "1")
                             {
                                 lblMensaje.Visible = true;

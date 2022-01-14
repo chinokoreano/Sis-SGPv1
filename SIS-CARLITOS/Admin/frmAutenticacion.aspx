@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-        <title>Sis SGP Sistema Gestion de Paquetería &amp;</title>
+        <title>Sis - SGP Sistema Gestion de Paquetería &amp;</title>
 
         <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -79,30 +79,47 @@
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <div class="form-material floating">
-                                                <%--<input type="text" class="form-control" id="login-username" name="login-username">
-                                                <label for="login-username">Usuario</label>--%>
+                                               
                                                 <asp:TextBox ID="txtUsuario" placeholder="Usuario" MaxLength="10" class="form-control" runat="server"></asp:TextBox>
                                                 <cc1:filteredtextboxextender id="FilteredTextBoxExtender4" runat="server" filtermode="ValidChars" targetcontrolid="txtUsuario" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group row" runat="server" id="divCorreo"  visible="false">
+                                        <div class="col-12">
+                                            <div class="form-material floating">
+                                              
+                                                <asp:TextBox ID="txtCorreoElectronico" placeholder="Correo Electrónico"  MaxLength="50" class="form-control" runat="server"></asp:TextBox>
+                                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterMode="ValidChars" TargetControlID="txtCorreoElectronico" ValidChars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789-_.@"></cc1:FilteredTextBoxExtender>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" runat="server" id="divContrasenia" visible="true">
                                         <div class="col-12">
                                             <div class="form-material floating">
                                                 <asp:TextBox ID="txtContrasenia" placeholder="Contraseña" MaxLength="8" class="form-control" runat="server" TextMode="Password"></asp:TextBox>
                                                 <cc1:filteredtextboxextender id="FilteredTextBoxExtender3"  runat="server" filtermode="ValidChars" targetcontrolid="txtContrasenia" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
-                                                <%--<input type="password" class="form-control" id="login-password" name="login-password">
-                                                <label for="login-password">Contraseña</label>--%>
+                                              
                                             </div>
                                         </div>
                                     </div>
+
+                                     <div class="form-group row">
+                                        <div class="col-12">
+                                            <div class="form-material floating">                                           
+                                                <asp:LinkButton ID="lnkRecuperarContrasenia" runat="server" visible="false" OnClick="lnkRecuperarContrasenia_Click">Recuperar contraseña</asp:LinkButton>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <div class="form-material floating">
                                                 <cc1:filteredtextboxextender id="FilteredTextBoxExtender1" runat="server" filtermode="ValidChars" targetcontrolid="txtContraseniaNueva" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
                                                 <asp:TextBox ID="txtContraseniaNueva" visible="false" MaxLength="8" placeholder="Nueva contraseña" class="form-control" runat="server" TextMode="Password" ToolTip="Max. 8 carácteres y debe contener letras números y algunos de estos carácteres especiales /*-+!@$()"></asp:TextBox>
-                                                <%--<input type="password" class="form-control" id="login-password" name="login-password">
-                                                <label for="login-password">Contraseña</label>--%>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -111,8 +128,7 @@
                                             <div class="form-material floating">
                                                 <cc1:filteredtextboxextender id="FilteredTextBoxExtender2" runat="server" filtermode="ValidChars" targetcontrolid="txtConfirmarContrasenia" validchars="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789/*-+!@$()"></cc1:filteredtextboxextender>
                                                 <asp:TextBox ID="txtConfirmarContrasenia" visible="false" MaxLength="8" placeholder="Vuelva a registrar contraseña" class="form-control" runat="server" TextMode="Password" ToolTip="Max. 8 carácteres y debe contener letras números y algunos de estos carácteres especiales /*-+!@$()"></asp:TextBox>
-                                                <%--<input type="password" class="form-control" id="login-password" name="login-password">
-                                                <label for="login-password">Contraseña</label>--%>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -145,9 +161,12 @@
                                         </button>--%>
 
                                         <asp:LinkButton runat="server" ID="btnIniciarSesion" Text="<i class='si si-login mr-10'></i> Ingresar" 
-                ValidationGroup="edt"  class="btn btn-info" OnClick="btnIniciarSesion_Click"  />
+                ValidationGroup="edt"  class="btn btn-info" OnClick="btnIniciarSesion_Click1"  />
                                          <asp:LinkButton runat="server" ID="btnCambiarContrasenia" Visible="false" Text="<i class='si si-login mr-10'></i> Cambiar contraseña" 
-                ValidationGroup="edt"  class="btn btn-sm btn-hero btn-alt-primary" OnClick="btnCambiarContrasenia_Click"  />
+                ValidationGroup="edt"  class="btn btn-sm btn-hero btn-alt-primary" OnClick="btnCambiarContrasenia_Click1"  />
+                                        <asp:LinkButton runat="server" ID="btnRecuperarContrasenia" Visible="false" Text="<i class='si si-login mr-10'></i> Aceptar" 
+                ValidationGroup="edt"  class="btn btn-sm btn-hero btn-alt-primary" OnClick="btnRecuperarContrasenia_Click"  />
+
                                          <%--<a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="Registrarse">
                                                 <i class="fa fa-plus mr-5"></i> Crear cuenta
                                             </a>--%>

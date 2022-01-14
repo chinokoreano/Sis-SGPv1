@@ -52,7 +52,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DC=correosdelecuador,DC=com,DC=ec")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DC=dominio,DC=com,DC=ec")]
         public string path {
             get {
                 return ((string)(this["path"]));
@@ -61,7 +61,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("correosdelecuador.com.ec")]
+        [global::System.Configuration.DefaultSettingValueAttribute("dominio.com.ec")]
         public string dominio {
             get {
                 return ((string)(this["dominio"]));
@@ -70,7 +70,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("adminweb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("usuario")]
         public string usuario_administracion {
             get {
                 return ((string)(this["usuario_administracion"]));
@@ -79,7 +79,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TcRjN4d7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("password1")]
         public string contrasenia_administracion {
             get {
                 return ((string)(this["contrasenia_administracion"]));
@@ -88,7 +88,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("172.17.1.208")]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
         public string servidor_correo {
             get {
                 return ((string)(this["servidor_correo"]));
@@ -97,7 +97,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("wcorporativa@correosdelecuador.gob.ec")]
+        [global::System.Configuration.DefaultSettingValueAttribute("cacsoporte247@gmail.com")]
         public string usuario_correo {
             get {
                 return ((string)(this["usuario_correo"]));
@@ -106,7 +106,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("cdeclave123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("*carlos2021")]
         public string contrasenia_correo {
             get {
                 return ((string)(this["contrasenia_correo"]));
@@ -115,7 +115,7 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("587")]
         public string puerto_servidor_correo {
             get {
                 return ((string)(this["puerto_servidor_correo"]));
@@ -124,10 +124,19 @@ namespace CapaServicios.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("soporte@correosdelecuador.gob.ec|Soporte CDE E.P.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("cacsoporte247@gmail.com|Soporte 24-7 Soluciones TICS")]
         public string correo_remitente {
             get {
                 return ((string)(this["correo_remitente"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string enable_ssl {
+            get {
+                return ((string)(this["enable_ssl"]));
             }
         }
     }

@@ -50,7 +50,7 @@ namespace CapaDatos
             }
         }
 
-        public Resultado FnActualizaUsuario(usuario oUsuario, string strContrasenia)
+        public Resultado FnActualizaUsuario(usuario oUsuario, string strContrasenia, int intOpcion)
         {
             List<SPR_ACTUALIZA_CREDENCIALES_Result> oResultado = new List<SPR_ACTUALIZA_CREDENCIALES_Result>();
             Resultado oResultadoF = new Resultado();
@@ -60,7 +60,7 @@ namespace CapaDatos
                 using (OPERADB DB = new OPERADB())
                 {
 
-                    oResultado = DB.SPR_ACTUALIZA_CREDENCIALES(oUsuario.id, strContrasenia).ToList();
+                    oResultado = DB.SPR_ACTUALIZA_CREDENCIALES(oUsuario.id, strContrasenia, intOpcion).ToList();
                     if (oResultado[0].RESULTADO == 1)
                     {
                         oResultadoF.Codigo1 = oResultado[0].RESULTADO.ToString();

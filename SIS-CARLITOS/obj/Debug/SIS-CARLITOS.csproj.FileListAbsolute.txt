@@ -1325,3 +1325,6 @@ C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.dll
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.pdb
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\RdlCompile.cache
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\RdlCompile.compiled
+C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\CapaServicios.dll
+C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\CapaServicios.pdb
+C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\CapaServicios.dll.config

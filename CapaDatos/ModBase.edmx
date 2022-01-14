@@ -312,6 +312,7 @@
           <Property Name="id_oficina" Type="int" />
           <Property Name="cambio_contrasenia" Type="bit" />
           <Property Name="contrasenia_encriptada" Type="varbinary" MaxLength="100" />
+          <Property Name="correo_electronico" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="usuario_contrato">
           <Key>
@@ -523,6 +524,7 @@
         <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
           <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
+          <Parameter Name="OPCION" Type="int" Mode="In" />
         </Function>
         <Function Name="SPR_CONSULTA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
@@ -778,10 +780,6 @@
           <FunctionImport Name="SPR_CONSULTA_CREDENCIALES" ReturnType="Collection(String)">
           <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPR_ACTUALIZA_CREDENCIALES" ReturnType="Collection(OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result)">
-            <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
-            <Parameter Name="CONTRASENIA" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="contrato" EntityType="OPERADBModel.contrato" />
           <AssociationSet Name="FK_contrato_cliente" Association="OPERADBModel.FK_contrato_cliente">
             <End Role="cliente" EntitySet="cliente" />
@@ -817,6 +815,11 @@
             <Parameter Name="CODIGO_ENVIO" Mode="In" Type="String" />
             <Parameter Name="OPCION" Mode="In" Type="Int32" />
             <Parameter Name="USUARIO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPR_ACTUALIZA_CREDENCIALES" ReturnType="Collection(OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result)">
+            <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
+            <Parameter Name="CONTRASENIA" Mode="In" Type="String" />
+            <Parameter Name="OPCION" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="cliente">
@@ -1334,6 +1337,7 @@
           <NavigationProperty Name="tipo_documento1" Relationship="OPERADBModel.FK_usuario_tipo_documento" FromRole="usuario" ToRole="tipo_documento" />
           <NavigationProperty Name="usuario_contrato" Relationship="OPERADBModel.FK_usuario_contrato_usuario" FromRole="usuario" ToRole="usuario_contrato" />
           <NavigationProperty Name="tipo_usuario1" Relationship="OPERADBModel.FK_usuario_tipo_usuario" FromRole="usuario" ToRole="tipo_usuario" />
+          <Property Name="correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_usuario_oficina">
           <End Type="OPERADBModel.oficina" Role="oficina" Multiplicity="0..1" />
@@ -1371,10 +1375,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="SPR_ACTUALIZA_CREDENCIALES_Result">
-          <Property Type="Int32" Name="RESULTADO" Nullable="false" />
-          <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="21" />
-        </ComplexType>
         <EntityType Name="contrato">
           <Key>
             <PropertyRef Name="id" />
@@ -1496,6 +1496,10 @@
         <ComplexType Name="SPR_ACT_ULTIMO_EVENTO_Result">
           <Property Type="String" Name="CODIGO1" Nullable="false" MaxLength="1" />
           <Property Type="String" Name="MENSAJE1" Nullable="false" MaxLength="19" />
+        </ComplexType>
+        <ComplexType Name="SPR_ACTUALIZA_CREDENCIALES_Result">
+          <Property Type="Int32" Name="RESULTADO" Nullable="false" />
+          <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="21" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1884,6 +1888,7 @@
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="OPERADBModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
                 <ScalarProperty Name="contrasenia_encriptada" ColumnName="contrasenia_encriptada" />
                 <ScalarProperty Name="cambio_contrasenia" ColumnName="cambio_contrasenia" />
                 <ScalarProperty Name="id_oficina" ColumnName="id_oficina" />
@@ -1905,14 +1910,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SPR_CONSULTA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_CONSULTA_CREDENCIALES" />
-          <FunctionImportMapping FunctionImportName="SPR_ACTUALIZA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_ACTUALIZA_CREDENCIALES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result">
-                <ScalarProperty Name="RESULTADO" ColumnName="RESULTADO" />
-                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="contrato">
             <EntityTypeMapping TypeName="OPERADBModel.contrato">
               <MappingFragment StoreEntitySet="contrato">
@@ -1991,6 +1988,14 @@
               <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACT_ULTIMO_EVENTO_Result">
                 <ScalarProperty Name="CODIGO1" ColumnName="CODIGO1" />
                 <ScalarProperty Name="MENSAJE1" ColumnName="MENSAJE1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPR_ACTUALIZA_CREDENCIALES" FunctionName="OPERADBModel.Store.SPR_ACTUALIZA_CREDENCIALES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result">
+                <ScalarProperty Name="RESULTADO" ColumnName="RESULTADO" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

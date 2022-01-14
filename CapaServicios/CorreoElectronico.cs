@@ -1,76 +1,146 @@
 ﻿using CapaEntidad;
+using EASendMail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using MailAddress = System.Net.Mail.MailAddress;
+using SmtpClient = System.Net.Mail.SmtpClient;
 
 namespace CapaServicios
 {
     public class CorreoElectronico
     {
-        public Resultado enviarCorreo(string strUsuarioDominio, int intOpcion, string strPara, string strInfo)
+        //public Resultado enviarCorreo(string strDe, string strPara, string strAsunto, string strMensaje, string strCC)
+        //{
+        //    Resultado resultado;
+
+
+        //    try
+        //    {
+        //        String strServidor = Properties.Settings.Default.servidor_correo;
+        //        int strPuertoServidor = int.Parse(Properties.Settings.Default.puerto_servidor_correo);
+        //        String strUsuario = Properties.Settings.Default.usuario_correo;
+        //        String strContrasenia = Properties.Settings.Default.contrasenia_correo;
+        //        string strSslActivo = Properties.Settings.Default.enable_ssl;
+
+
+
+        //        MailMessage mail = new MailMessage();
+        //        mail.IsBodyHtml = true;
+        //        mail.From = new MailAddress("cacsoporte247@gmail.com");
+
+        //        string[] Destinatarios = strPara.ToString().Split(',');
+
+
+        //        foreach (var itm in Destinatarios)
+        //        {
+        //            mail.To.Add(new MailAddress(itm.ToString(), ""));
+        //        }
+
+
+        //        mail.Subject = strAsunto;
+        //        mail.Body = strMensaje;
+
+        //        if (!string.IsNullOrEmpty(strCC) && strCC.Trim().Contains("@"))
+        //        {
+        //            string[] strCopia = strCC.ToString().Split(',');
+        //            foreach (var itm in strCopia)
+        //            {
+        //                mail.CC.Add(new MailAddress(itm.ToString(), ""));
+        //            }
+        //        }
+
+        //        using (SmtpClient smtp = new SmtpClient())
+        //        {
+        //            smtp.Host = "smtp.mail.yahoo.com";//strServidor;
+        //            smtp.Port = 465;//strPuertoServidor;
+
+        //            //if (strSslActivo == "1")
+        //            //    smtp.EnableSsl = true;
+        //            //else
+        //            //    smtp.EnableSsl = false;
+
+
+        //            System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
+        //            NetworkCred.UserName = "sistema";
+        //            NetworkCred.Password = "emricxcawswdbqqc";
+
+        //            //smtp.UseDefaultCredentials = false;
+
+        //            smtp.Credentials = NetworkCred;
+        //            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //            smtp.EnableSsl = true;
+
+
+        //            //await smtp.SendMailAsync(mail);
+
+        //            smtp.Send(mail);
+
+
+        //            Resultado r = new Resultado();
+        //            r.Codigo1 = "1";
+        //            r.Mensaje1 = "Mensaje enviado correctamente";
+        //            return r;
+        //        }
+        //    }
+
+
+
+        //    catch (Exception e)
+        //    {
+        //        resultado = new Resultado();
+        //        resultado.Codigo1 = "-1";
+        //        resultado.Mensaje1 = e.Message;
+        //    }
+
+        //    return resultado;
+
+        //}
+
+        public Resultado enviarCorreo(string strDe, string strPara, string strAsunto, string strMensaje, string strCC)
         {
             Resultado resultado;
-            string strAsunto;
-            string strMensaje;
 
-            strAsunto = string.Empty;
-            strMensaje = string.Empty;
-
-            try
-            {
-                String strServidor = Properties.Settings.Default.servidor_correo;
-                int strPuertoServidor = int.Parse(Properties.Settings.Default.puerto_servidor_correo);
-                String strUsuario = Properties.Settings.Default.usuario_correo;
-                String strContrasenia = Properties.Settings.Default.contrasenia_correo;
-                string[] strDe = Properties.Settings.Default.correo_remitente.ToString().Split('|');
-
-
-                if (intOpcion == 1)
-                {
-                    strAsunto = "Correos del Ecuador CDE EP. - Restablecer contraseña";
-                    strMensaje = "<body style=\"margin:0px;font-family:Arial, Helvetica, sans-serif;font-size:12px;\">" + "Estimado usuario.<br /><br />"
-                            + "    En base a su solicitud el sistema ha procedido a asignarle una contraseña temporal." + "<br>" + "<br>" + "<b>Usuario: </b>" + strUsuarioDominio + "<br>" + "<b>Contraseña: </b>" + strInfo + "<br>" + "<br>" + "<p  style=\"color:red;font-weight:bold;\">Por favor recuerde cambiar su contraseña, para lo cual debe ingresar la contraseña temporal asignada<br /></p>" + "<br>" + "Recuerda que para mayor seguridad tu contraseña debe incluir al menos una letra en mayúscula, minúscula y un dígito." + "<br>" + "<br>" + "<b>Saludos,</b>" + "<br>" + "<b>Correos del Ecuador CDE EP</b>" + "<br>" + "<br>" + "Este correo electrónico fue generado automáticamente, por favor no responda al mismo. Si Necesita Mayor Información Por Favor Comunicarse : Al 1700 CORREO (267736)";
-                }
-                else if (intOpcion == 2)
-                {
-                    strAsunto = "Correos del Ecuador CDE EP. - Cambio de Contraseña";
-                    strMensaje = "<body style=\"margin:0px;font-family:Arial, Helvetica, sans-serif;font-size:12px;\">" + "Estimado usuario.<br /><br />"
-                            + "    Usted ha procedido a realizar el cambio de su contraseña." + "<br>" + "<br>" + "<b>Usuario: </b>" + strUsuarioDominio + "<br>" + "<p  style=\"color:red;font-weight:bold;\">Por favor recuerde cambiar su contraseña periodicamente<br /></p>" + "<br>" + "<b>Saludos,</b>" + "<br>" + "<b>Correos del Ecuador CDE EP</b>" + "<br>" + "<br>" + "Este correo electrónico fue generado automáticamente, por favor no responda al mismo. Si Necesita Mayor Información Por Favor Comunicarse : Al 1700 CORREO (267736)";
-                }
-
-
-
-
+            try { 
                 MailMessage mail = new MailMessage();
-                mail.IsBodyHtml = true;
-                mail.From = new MailAddress(strDe[0].ToString(), strDe[1].ToString());
-                mail.To.Add(new MailAddress(strPara, ""));
-                mail.Subject = strAsunto;
-                mail.Body = strMensaje;
-                mail.CC.Add(new MailAddress(strDe[0].ToString(), strDe[1].ToString()));
+                SmtpClient SmtpServer = new SmtpClient();
+                mail.To.Add("romerocarlos79@hotmail.com");
+
+              
+                mail.From = new MailAddress("cacsoporte247@gmail.com", (string)"Sorporte 247");
+                mail.Subject = "Asunto";
+                mail.IsBodyHtml = true; //to make message body as html  
+                mail.Body = "Prueba";
                 using (SmtpClient smtp = new SmtpClient())
                 {
-                    smtp.Host = strServidor; // "172.17.1.208";
-                    smtp.Port = strPuertoServidor; // 25;
-                    //smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Host = "smtp.gmail.com"; // "172.17.1.208";
+                    smtp.Port = int.Parse("587");
+                    smtp.EnableSsl = true;
                     System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
-                    NetworkCred.UserName = strUsuario;
-                    NetworkCred.Password = strContrasenia;
-                    smtp.UseDefaultCredentials = true;
+                    NetworkCred.UserName = "cacsoporte247@gmail.com";
+                    NetworkCred.Password = "*carlos2021";
+                    
                     smtp.Credentials = NetworkCred;
                     smtp.Send(mail);
-                    Resultado r = new Resultado();
-                    r.Codigo1 = "1";
-                    r.Mensaje1 = "Mensaje enviado correctamente";
-                    return r;
+                    smtp.Dispose();
+       
                 }
+
+
+                Console.WriteLine("email was sent successfully!");
+                Resultado r = new Resultado();
+                r.Codigo1 = "1";
+                r.Mensaje1 = "Mensaje enviado correctamente";
+                return r;
+
             }
-
-
-
             catch (Exception e)
             {
                 resultado = new Resultado();
@@ -79,8 +149,7 @@ namespace CapaServicios
             }
 
             return resultado;
-
         }
-
+        //}
     }
 }

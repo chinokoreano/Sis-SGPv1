@@ -67,6 +67,33 @@ namespace SIS_CARLITOS.Vistas {
         protected global::System.Web.UI.WebControls.Label lblMensaje;
         
         /// <summary>
+        /// Control divReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divReporte;
+        
+        /// <summary>
+        /// Control lblMensaje1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje1;
+        
+        /// <summary>
+        /// Control urlReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink urlReporte;
+        
+        /// <summary>
         /// Control divListadoPaquetes.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace SIS_CARLITOS.Vistas {
         protected global::System.Web.UI.WebControls.Label lblTotalEnvios;
         
         /// <summary>
+        /// Control divGrabar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGrabar;
+        
+        /// <summary>
         /// Control btnGrabar.
         /// </summary>
         /// <remarks>
@@ -101,23 +137,5 @@ namespace SIS_CARLITOS.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnGrabar;
-        
-        /// <summary>
-        /// Control lblMensaje1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje1;
-        
-        /// <summary>
-        /// Control urlReporte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink urlReporte;
     }
 }
