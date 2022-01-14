@@ -81,7 +81,7 @@
                             CssClass="tabla_datos col-xs-12 table-bordered"
                             runat="server"
                             PagerStyle-CssClass="pager-style"
-                            AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" PageSize="5" AllowPaging="True" OnPageIndexChanging="grvEnvios_PageIndexChanging">
+                            AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" PageSize="3" AllowPaging="True" OnPageIndexChanging="grvEnvios_PageIndexChanging">
 
                             <PagerStyle CssClass="pager-style" />
 
@@ -144,6 +144,14 @@
                                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("fecha_ultimo_evento") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Ultm. Gestión">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox13" runat="server" Text='<%# Bind("ultima_gestion") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label13" runat="server" Text='<%# Bind("ultima_gestion") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Destinatario">
                                     <EditItemTemplate>
                                         <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("destinatario") %>'></asp:TextBox>
@@ -190,14 +198,6 @@
                                     </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="Label12" runat="server" Text='<%# Bind("codigo_postal") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Ultm. Gestión">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox13" runat="server" Text='<%# Bind("ultima_gestion") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label13" runat="server" Text='<%# Bind("ultima_gestion") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Oficina">

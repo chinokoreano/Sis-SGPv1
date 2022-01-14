@@ -8,7 +8,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-   <script type="text/javascript">
+    <script type="text/javascript">
         function mostrar_procesar() {
             document.getElementById('procesando_div').style.display = "";
             setTimeout('document.images["procesando_gif"].src="../Imagenes/ajax-loader.gif"', 200);
@@ -31,7 +31,7 @@
                             CssClass="tabla_datos col-xs-12 table-bordered"
                             runat="server"
                             PagerStyle-CssClass="pager-style"
-                            AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" AllowPaging="True" OnPageIndexChanging="grvClientes_PageIndexChanging">
+                            AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" AllowPaging="True" OnPageIndexChanging="grvClientes_PageIndexChanging" PageSize="5">
 
                             <PagerStyle CssClass="pager-style" />
 

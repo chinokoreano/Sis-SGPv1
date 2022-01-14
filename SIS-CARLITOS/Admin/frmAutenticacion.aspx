@@ -61,8 +61,8 @@
                                 <h6 class="h5 text-muted mb-0 font-size-h6 mb-10">Recomendamos: Firefox ó Chrome</h6>
                                 <div class="px-30 py-10">
                                     <a class="link-effect font-w700" href="index.html">
-                                        <i class="si si-fire"></i>
-                                        <span class="font-size-xl text-primary-dark">Sistema de Gestión de Paquetería SIS-SGP</span><span class="font-size-xl"> v1.0</span>
+                                       <%-- <i class="si si-fire"></i>--%>
+                                        <span class="font-size-xl text-primary-dark">Sistema de Gestión de Paquetería SIS-SGP</span><span class="font-size-xl"> v1.0.1</span>
                                     </a>
                                     
                                     <h1 class="h3 font-w700 mt-30 mb-10">Bienvenido</h1>
