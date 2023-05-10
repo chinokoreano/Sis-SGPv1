@@ -46,6 +46,9 @@
         <EntityTypeShape EntityType="OPERADBModel.suceso" Width="1.5" PointX="3.375" PointY="5.75" />
         <EntityTypeShape EntityType="OPERADBModel.asesor_comercial" Width="1.5" PointX="14.375" PointY="6" />
         <AssociationConnector Association="OPERADBModel.FK_contrato_asesor_comercial" />
+        <EntityTypeShape EntityType="OPERADBModel.casillero_secuencia" Width="1.5" PointX="14.375" PointY="16.375" />
+        <EntityTypeShape EntityType="OPERADBModel.persona" Width="1.5" PointX="16.625" PointY="15.125" />
+        <AssociationConnector Association="OPERADBModel.FK_persona_casillero_secuencia" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

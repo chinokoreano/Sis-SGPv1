@@ -1317,14 +1317,12 @@ C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\de\DevExpress.Web.ASPxSpellCheck
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\es\DevExpress.Web.ASPxSpellChecker.v20.1.resources.dll
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\ja\DevExpress.Web.ASPxSpellChecker.v20.1.resources.dll
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\ru\DevExpress.Web.ASPxSpellChecker.v20.1.resources.dll
-C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.csprojAssemblyReference.cache
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.dll.licenses
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.csproj.CoreCompileInputs.cache
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.csproj.CopyComplete
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.dll
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.pdb
-C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\RdlCompile.cache
-C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\RdlCompile.compiled
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\CapaServicios.dll
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\CapaServicios.pdb
 C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\bin\CapaServicios.dll.config
+C:\Desarrollos\SisCarlitosV1.1\SIS-CARLITOS\obj\Debug\SIS-CARLITOS.csproj.AssemblyReference.cache

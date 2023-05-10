@@ -16,6 +16,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="~/Content/chespirito003.css" rel="stylesheet" />
 
+    <script src="https://kit.fontawesome.com/c1d9f84fb5.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -76,6 +77,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/Vistas/frmConsultaOrdenes">Órdenes de Servicio</a>
                             <a class="dropdown-item" href="/Vistas/frmConsultaEnvios">Eventos</a>
+                          
                             
                         </div>
                     </li>
@@ -89,7 +91,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/Vistas/frmEntrega">Entrega</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Vistas/frmConsultaReporteGestiones">Re-Impresión</a>
+                            <a class="dropdown-item" href="/Vistas/frmConsultaReporteGestiones">Descarga</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="mnu_administracion" runat="server" visible="false">

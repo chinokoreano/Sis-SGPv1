@@ -110,10 +110,10 @@ namespace CapaServicios
             try { 
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient();
-                mail.To.Add("romerocarlos79@hotmail.com");
+                mail.To.Add("******");
 
               
-                mail.From = new MailAddress("cacsoporte247@gmail.com", (string)"Sorporte 247");
+                mail.From = new MailAddress("*****", (string)"Sorporte 247");
                 mail.Subject = "Asunto";
                 mail.IsBodyHtml = true; //to make message body as html  
                 mail.Body = "Prueba";
@@ -124,8 +124,8 @@ namespace CapaServicios
                     smtp.Port = int.Parse("587");
                     smtp.EnableSsl = true;
                     System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
-                    NetworkCred.UserName = "cacsoporte247@gmail.com";
-                    NetworkCred.Password = "*carlos2021";
+                    NetworkCred.UserName = "******";
+                    NetworkCred.Password = "******";
                     
                     smtp.Credentials = NetworkCred;
                     smtp.Send(mail);

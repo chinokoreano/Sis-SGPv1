@@ -60,12 +60,12 @@ namespace CapaDatos
                 using (OPERADB DB = new OPERADB())
                 {
 
-                    oResultado = DB.SPR_ACTUALIZA_CREDENCIALES(oUsuario.id, strContrasenia, intOpcion).ToList();
-                    if (oResultado[0].RESULTADO == 1)
-                    {
-                        oResultadoF.Codigo1 = oResultado[0].RESULTADO.ToString();
-                        oResultadoF.Mensaje1 = oResultado[0].MENSAJE.ToString();
-                    }
+                    //oResultado = DB.SPR_ACTUALIZA_CREDENCIALES(oUsuario.id, strContrasenia, intOpcion).ToList();
+                    //if (oResultado[0].RESULTADO == 1)
+                    //{
+                    //    oResultadoF.Codigo1 = oResultado[0].RESULTADO.ToString();
+                    //    oResultadoF.Mensaje1 = oResultado[0].MENSAJE.ToString();
+                    //}
 
                 }
 

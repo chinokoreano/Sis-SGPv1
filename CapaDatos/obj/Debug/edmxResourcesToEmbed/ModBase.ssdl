@@ -26,6 +26,19 @@
     <Property Name="estado" Type="int" />
     <Property Name="fecha_ingreso" Type="datetime" />
   </EntityType>
+  <EntityType Name="casillero_secuencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prefijo" Type="varchar" MaxLength="50" />
+    <Property Name="secuencia" Type="int" />
+    <Property Name="casillero" Type="varchar" MaxLength="50" />
+    <Property Name="tipo" Type="int" />
+    <Property Name="estado" Type="int" />
+    <Property Name="fec_creacion" Type="datetime" />
+    <Property Name="usu_creacion" Type="int" />
+  </EntityType>
   <EntityType Name="cliente">
     <Key>
       <PropertyRef Name="id" />
@@ -226,6 +239,32 @@
     <Property Name="valor2" Type="varchar" MaxLength="50" />
     <Property Name="valor3" Type="int" />
     <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="per_id" />
+    </Key>
+    <Property Name="per_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="per_tipo_documento" Type="int" />
+    <Property Name="per_numero_identificacion" Type="varchar" MaxLength="50" />
+    <Property Name="per_nombres" Type="varchar" MaxLength="100" />
+    <Property Name="per_apellidos" Type="varchar" MaxLength="100" />
+    <Property Name="per_telefono_convencional" Type="varchar" MaxLength="20" />
+    <Property Name="per_celular" Type="varchar" MaxLength="20" />
+    <Property Name="per_correo_electronico" Type="varchar" MaxLength="100" />
+    <Property Name="id_provincia" Type="int" />
+    <Property Name="id_canton" Type="int" />
+    <Property Name="id_parroquia" Type="int" />
+    <Property Name="direccion_domiciliaria" Type="varchar" MaxLength="200" />
+    <Property Name="direccion_trabajo" Type="varchar" MaxLength="200" />
+    <Property Name="per_casillero" Type="int" />
+    <Property Name="per_contrasenia" Type="varchar" MaxLength="50" />
+    <Property Name="per_codigo_confirmacion" Type="int" />
+    <Property Name="fec_creacion" Type="datetime" />
+    <Property Name="fec_modificacion" Type="datetime" />
+    <Property Name="usu_creacion" Type="int" />
+    <Property Name="usu_modificacion" Type="int" />
+    <Property Name="per_estado" Type="int" />
   </EntityType>
   <EntityType Name="proceso_tmp">
     <Key>
@@ -463,6 +502,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_persona_casillero_secuencia">
+    <End Role="casillero_secuencia" Type="Self.casillero_secuencia" Multiplicity="0..1" />
+    <End Role="persona" Type="Self.persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="casillero_secuencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="persona">
+        <PropertyRef Name="per_casillero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_usuario_contrato_contrato">
     <End Role="contrato" Type="Self.contrato" Multiplicity="0..1" />
     <End Role="usuario_contrato" Type="Self.usuario_contrato" Multiplicity="*" />
@@ -519,7 +570,6 @@
   <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
     <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
-    <Parameter Name="OPCION" Type="int" Mode="In" />
   </Function>
   <Function Name="SPR_CONSULTA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
@@ -572,6 +622,7 @@
   <EntityContainer Name="OPERADBModelStoreContainer">
     <EntitySet Name="asesor_comercial" EntityType="Self.asesor_comercial" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cartero" EntityType="Self.cartero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="casillero_secuencia" EntityType="Self.casillero_secuencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="contrato" EntityType="Self.contrato" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="destinatario" EntityType="Self.destinatario" Schema="dbo" store:Type="Tables" />
@@ -585,6 +636,7 @@
     <EntitySet Name="orden_servicio" EntityType="Self.orden_servicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="paquete" EntityType="Self.paquete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="suceso" EntityType="Self.suceso" Schema="dbo" store:Type="Tables" />
@@ -640,6 +692,10 @@
     <AssociationSet Name="FK_paquete_orden_servicio" Association="Self.FK_paquete_orden_servicio">
       <End Role="orden_servicio" EntitySet="orden_servicio" />
       <End Role="paquete" EntitySet="paquete" />
+    </AssociationSet>
+    <AssociationSet Name="FK_persona_casillero_secuencia" Association="Self.FK_persona_casillero_secuencia">
+      <End Role="casillero_secuencia" EntitySet="casillero_secuencia" />
+      <End Role="persona" EntitySet="persona" />
     </AssociationSet>
     <AssociationSet Name="FK_usuario_contrato_contrato" Association="Self.FK_usuario_contrato_contrato">
       <End Role="contrato" EntitySet="contrato" />

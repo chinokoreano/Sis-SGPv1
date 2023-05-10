@@ -1468,11 +1468,13 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <EmbeddedResource Include="Reportes\rptEtiquetas.rdlc" />
     <EmbeddedResource Include="Reportes\RptGestionEnvios.rdlc" />
     <EmbeddedResource Include="Reportes\RptHistorialPaquete.rdlc" />
     <EmbeddedResource Include="Reportes\RptListadoEnvios.rdlc" />
     <EmbeddedResource Include="Reportes\RptListaManifiesto.rdlc" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Reportes\rptEtiquetas.rpt" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -1588,6 +1590,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Vistas\frmCargaManual.aspx" />
+    <Content Include="Vistas\frmConsultaOrdenes2.aspx" />
     <Content Include="Vistas\frmConsultaReporteGestiones.aspx" />
     <Content Include="Vistas\frmCambioContrasena.aspx" />
     <Content Include="Vistas\frmMantEntregas.aspx" />
@@ -1711,6 +1715,20 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmCargaManual.aspx.cs">
+      <DependentUpon>frmCargaManual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmCargaManual.aspx.designer.cs">
+      <DependentUpon>frmCargaManual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmConsultaOrdenes2.aspx.cs">
+      <DependentUpon>frmConsultaOrdenes2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmConsultaOrdenes2.aspx.designer.cs">
+      <DependentUpon>frmConsultaOrdenes2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmConsultaReporteGestiones.aspx.cs">
       <DependentUpon>frmConsultaReporteGestiones.aspx</DependentUpon>

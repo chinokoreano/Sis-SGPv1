@@ -31,6 +31,19 @@
           <Property Name="estado" Type="int" />
           <Property Name="fecha_ingreso" Type="datetime" />
         </EntityType>
+        <EntityType Name="casillero_secuencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prefijo" Type="varchar" MaxLength="50" />
+          <Property Name="secuencia" Type="int" />
+          <Property Name="casillero" Type="varchar" MaxLength="50" />
+          <Property Name="tipo" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="fec_creacion" Type="datetime" />
+          <Property Name="usu_creacion" Type="int" />
+        </EntityType>
         <EntityType Name="cliente">
           <Key>
             <PropertyRef Name="id" />
@@ -231,6 +244,32 @@
           <Property Name="valor2" Type="varchar" MaxLength="50" />
           <Property Name="valor3" Type="int" />
           <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="per_tipo_documento" Type="int" />
+          <Property Name="per_numero_identificacion" Type="varchar" MaxLength="50" />
+          <Property Name="per_nombres" Type="varchar" MaxLength="100" />
+          <Property Name="per_apellidos" Type="varchar" MaxLength="100" />
+          <Property Name="per_telefono_convencional" Type="varchar" MaxLength="20" />
+          <Property Name="per_celular" Type="varchar" MaxLength="20" />
+          <Property Name="per_correo_electronico" Type="varchar" MaxLength="100" />
+          <Property Name="id_provincia" Type="int" />
+          <Property Name="id_canton" Type="int" />
+          <Property Name="id_parroquia" Type="int" />
+          <Property Name="direccion_domiciliaria" Type="varchar" MaxLength="200" />
+          <Property Name="direccion_trabajo" Type="varchar" MaxLength="200" />
+          <Property Name="per_casillero" Type="int" />
+          <Property Name="per_contrasenia" Type="varchar" MaxLength="50" />
+          <Property Name="per_codigo_confirmacion" Type="int" />
+          <Property Name="fec_creacion" Type="datetime" />
+          <Property Name="fec_modificacion" Type="datetime" />
+          <Property Name="usu_creacion" Type="int" />
+          <Property Name="usu_modificacion" Type="int" />
+          <Property Name="per_estado" Type="int" />
         </EntityType>
         <EntityType Name="proceso_tmp">
           <Key>
@@ -468,6 +507,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_persona_casillero_secuencia">
+          <End Role="casillero_secuencia" Type="Self.casillero_secuencia" Multiplicity="0..1" />
+          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="casillero_secuencia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="per_casillero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_usuario_contrato_contrato">
           <End Role="contrato" Type="Self.contrato" Multiplicity="0..1" />
           <End Role="usuario_contrato" Type="Self.usuario_contrato" Multiplicity="*" />
@@ -524,7 +575,6 @@
         <Function Name="SPR_ACTUALIZA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
           <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
-          <Parameter Name="OPCION" Type="int" Mode="In" />
         </Function>
         <Function Name="SPR_CONSULTA_CREDENCIALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
@@ -577,6 +627,7 @@
         <EntityContainer Name="OPERADBModelStoreContainer">
           <EntitySet Name="asesor_comercial" EntityType="Self.asesor_comercial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cartero" EntityType="Self.cartero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="casillero_secuencia" EntityType="Self.casillero_secuencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="contrato" EntityType="Self.contrato" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="destinatario" EntityType="Self.destinatario" Schema="dbo" store:Type="Tables" />
@@ -590,6 +641,7 @@
           <EntitySet Name="orden_servicio" EntityType="Self.orden_servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="paquete" EntityType="Self.paquete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="suceso" EntityType="Self.suceso" Schema="dbo" store:Type="Tables" />
@@ -645,6 +697,10 @@
           <AssociationSet Name="FK_paquete_orden_servicio" Association="Self.FK_paquete_orden_servicio">
             <End Role="orden_servicio" EntitySet="orden_servicio" />
             <End Role="paquete" EntitySet="paquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_persona_casillero_secuencia" Association="Self.FK_persona_casillero_secuencia">
+            <End Role="casillero_secuencia" EntitySet="casillero_secuencia" />
+            <End Role="persona" EntitySet="persona" />
           </AssociationSet>
           <AssociationSet Name="FK_usuario_contrato_contrato" Association="Self.FK_usuario_contrato_contrato">
             <End Role="contrato" EntitySet="contrato" />
@@ -819,8 +875,13 @@
           <FunctionImport Name="SPR_ACTUALIZA_CREDENCIALES" ReturnType="Collection(OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result)">
             <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
             <Parameter Name="CONTRASENIA" Mode="In" Type="String" />
-            <Parameter Name="OPCION" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="casillero_secuencia" EntityType="OPERADBModel.casillero_secuencia" />
+          <EntitySet Name="persona" EntityType="OPERADBModel.persona" />
+          <AssociationSet Name="FK_persona_casillero_secuencia" Association="OPERADBModel.FK_persona_casillero_secuencia">
+            <End Role="casillero_secuencia" EntitySet="casillero_secuencia" />
+            <End Role="persona" EntitySet="persona" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="cliente">
           <Key>
@@ -1501,6 +1562,59 @@
           <Property Type="Int32" Name="RESULTADO" Nullable="false" />
           <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="21" />
         </ComplexType>
+        <EntityType Name="casillero_secuencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prefijo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="secuencia" Type="Int32" />
+          <Property Name="casillero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="fec_creacion" Type="DateTime" Precision="3" />
+          <Property Name="usu_creacion" Type="Int32" />
+          <NavigationProperty Name="persona" Relationship="OPERADBModel.FK_persona_casillero_secuencia" FromRole="casillero_secuencia" ToRole="persona" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="per_tipo_documento" Type="Int32" />
+          <Property Name="per_numero_identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="per_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="per_apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="per_telefono_convencional" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="per_celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="per_correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_provincia" Type="Int32" />
+          <Property Name="id_canton" Type="Int32" />
+          <Property Name="id_parroquia" Type="Int32" />
+          <Property Name="direccion_domiciliaria" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_trabajo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="per_casillero" Type="Int32" />
+          <Property Name="per_contrasenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="per_codigo_confirmacion" Type="Int32" />
+          <Property Name="fec_creacion" Type="DateTime" Precision="3" />
+          <Property Name="fec_modificacion" Type="DateTime" Precision="3" />
+          <Property Name="usu_creacion" Type="Int32" />
+          <Property Name="usu_modificacion" Type="Int32" />
+          <Property Name="per_estado" Type="Int32" />
+          <NavigationProperty Name="casillero_secuencia" Relationship="OPERADBModel.FK_persona_casillero_secuencia" FromRole="persona" ToRole="casillero_secuencia" />
+        </EntityType>
+        <Association Name="FK_persona_casillero_secuencia">
+          <End Type="OPERADBModel.casillero_secuencia" Role="casillero_secuencia" Multiplicity="0..1" />
+          <End Type="OPERADBModel.persona" Role="persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="casillero_secuencia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="per_casillero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1999,6 +2113,47 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="casillero_secuencia">
+            <EntityTypeMapping TypeName="OPERADBModel.casillero_secuencia">
+              <MappingFragment StoreEntitySet="casillero_secuencia">
+                <ScalarProperty Name="usu_creacion" ColumnName="usu_creacion" />
+                <ScalarProperty Name="fec_creacion" ColumnName="fec_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="casillero" ColumnName="casillero" />
+                <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+                <ScalarProperty Name="prefijo" ColumnName="prefijo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona">
+            <EntityTypeMapping TypeName="OPERADBModel.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="per_estado" ColumnName="per_estado" />
+                <ScalarProperty Name="usu_modificacion" ColumnName="usu_modificacion" />
+                <ScalarProperty Name="usu_creacion" ColumnName="usu_creacion" />
+                <ScalarProperty Name="fec_modificacion" ColumnName="fec_modificacion" />
+                <ScalarProperty Name="fec_creacion" ColumnName="fec_creacion" />
+                <ScalarProperty Name="per_codigo_confirmacion" ColumnName="per_codigo_confirmacion" />
+                <ScalarProperty Name="per_contrasenia" ColumnName="per_contrasenia" />
+                <ScalarProperty Name="per_casillero" ColumnName="per_casillero" />
+                <ScalarProperty Name="direccion_trabajo" ColumnName="direccion_trabajo" />
+                <ScalarProperty Name="direccion_domiciliaria" ColumnName="direccion_domiciliaria" />
+                <ScalarProperty Name="id_parroquia" ColumnName="id_parroquia" />
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="per_correo_electronico" ColumnName="per_correo_electronico" />
+                <ScalarProperty Name="per_celular" ColumnName="per_celular" />
+                <ScalarProperty Name="per_telefono_convencional" ColumnName="per_telefono_convencional" />
+                <ScalarProperty Name="per_apellidos" ColumnName="per_apellidos" />
+                <ScalarProperty Name="per_nombres" ColumnName="per_nombres" />
+                <ScalarProperty Name="per_numero_identificacion" ColumnName="per_numero_identificacion" />
+                <ScalarProperty Name="per_tipo_documento" ColumnName="per_tipo_documento" />
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

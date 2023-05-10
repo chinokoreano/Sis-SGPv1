@@ -493,5 +493,46 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="casillero_secuencia">
+      <EntityTypeMapping TypeName="OPERADBModel.casillero_secuencia">
+        <MappingFragment StoreEntitySet="casillero_secuencia">
+          <ScalarProperty Name="usu_creacion" ColumnName="usu_creacion" />
+          <ScalarProperty Name="fec_creacion" ColumnName="fec_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="casillero" ColumnName="casillero" />
+          <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+          <ScalarProperty Name="prefijo" ColumnName="prefijo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="OPERADBModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="per_estado" ColumnName="per_estado" />
+          <ScalarProperty Name="usu_modificacion" ColumnName="usu_modificacion" />
+          <ScalarProperty Name="usu_creacion" ColumnName="usu_creacion" />
+          <ScalarProperty Name="fec_modificacion" ColumnName="fec_modificacion" />
+          <ScalarProperty Name="fec_creacion" ColumnName="fec_creacion" />
+          <ScalarProperty Name="per_codigo_confirmacion" ColumnName="per_codigo_confirmacion" />
+          <ScalarProperty Name="per_contrasenia" ColumnName="per_contrasenia" />
+          <ScalarProperty Name="per_casillero" ColumnName="per_casillero" />
+          <ScalarProperty Name="direccion_trabajo" ColumnName="direccion_trabajo" />
+          <ScalarProperty Name="direccion_domiciliaria" ColumnName="direccion_domiciliaria" />
+          <ScalarProperty Name="id_parroquia" ColumnName="id_parroquia" />
+          <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="per_correo_electronico" ColumnName="per_correo_electronico" />
+          <ScalarProperty Name="per_celular" ColumnName="per_celular" />
+          <ScalarProperty Name="per_telefono_convencional" ColumnName="per_telefono_convencional" />
+          <ScalarProperty Name="per_apellidos" ColumnName="per_apellidos" />
+          <ScalarProperty Name="per_nombres" ColumnName="per_nombres" />
+          <ScalarProperty Name="per_numero_identificacion" ColumnName="per_numero_identificacion" />
+          <ScalarProperty Name="per_tipo_documento" ColumnName="per_tipo_documento" />
+          <ScalarProperty Name="per_id" ColumnName="per_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

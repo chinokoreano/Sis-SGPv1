@@ -25,6 +25,19 @@ namespace CapaNegocio
             }
         }
 
+        public void FnCargarManualDatosTablaTemporal(Guid gLote, int intIdServicio, int intIdUsuario, int intIdCliente, string strDetalleOrdenServicio, int intIdOficina, string strIdProvinciaCarga, string strIdCantonCarga, int intIdContrato)
+        {
+            try
+            {
+                PaqueteCD oPaqueteCD = new PaqueteCD();
+                oPaqueteCD.FnCargarManualDatosTablaTemporal(gLote, intIdServicio, intIdUsuario, intIdCliente, strDetalleOrdenServicio, intIdOficina, strIdProvinciaCarga, strIdCantonCarga, intIdContrato);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public Resultado FnProcesarCargaDatos(Guid gIdentificador)
         {
             Resultado oResultado = new Resultado();

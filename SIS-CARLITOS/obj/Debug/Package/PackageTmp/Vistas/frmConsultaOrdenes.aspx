@@ -8,7 +8,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-   <script type="text/javascript">
+    <script type="text/javascript">
         function mostrar_procesar() {
             document.getElementById('procesando_div').style.display = "";
             setTimeout('document.images["procesando_gif"].src="../Imagenes/ajax-loader.gif"', 200);
@@ -20,18 +20,30 @@
         <ContentTemplate>
             <div class="card border-dark" style="max-width: 100rem;">
                 <div class="card-header ph-card-header">Generación de órdenes de servicio - Guías de envío</div>
-                 <span id="procesando_div" style="display: none; position: relative; text-align: center">
-                                        <img src="../Imagenes/ajax-loader.gif" id="procesando" alt="" />
-                                    </span>
-                <div class="card-body" style="background-color:white">
-                    <asp:Label ID="lblMensaje" class="btn btn-success"  runat="server" visible="false" Text="" style="margin-bottom: 10px;"></asp:Label>
-                    <asp:HyperLink ID="urlReporte" runat="server" class="btn btn-success" visible="false" Target="_blank">Desargar archivo generado</asp:HyperLink>
+                <span id="procesando_div" style="display: none; position: relative; text-align: center">
+                    <img src="../Imagenes/ajax-loader.gif" id="procesando" alt="" />
+                </span>
+                <div class="card-body" style="background-color: white">
+
+                    <div class="input-group mb-3" id="panFiltro" runat="server" width="100%" visible="true" defaultbutton="btnFiltrar">
+                        <asp:TextBox ID="txtFiltro" runat="server" CssClass="form-control form-control-sm" MaxLength="50" placeholder="Filtro" Style="left: 0px; top: 0px"></asp:TextBox>
+                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="txtFiltro"
+                            ValidChars="ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789-/"></cc1:FilteredTextBoxExtender>
+                        <div class="input-group-append">
+
+                            <asp:LinkButton ID="btnFiltrar" runat="server" CssClass="btn btn-primary btn-sm active" Text="Filtrar" CausesValidation="false" OnClick="btnFiltrar_Click"><i class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;Filtrar</asp:LinkButton>
+                        </div>
+                    </div>
+
+
+                    <asp:Label ID="lblMensaje" class="btn btn-success" runat="server" Visible="false" Text="" Style="margin-bottom: 10px;"></asp:Label>
+                    <asp:HyperLink ID="urlReporte" runat="server" class="btn btn-success" Visible="false" Target="_blank">Desargar archivo generado</asp:HyperLink>
                     <div class="table-responsive">
-                           <asp:GridView ID="grvOrdServicios"
+                        <asp:GridView ID="grvOrdServicios"
                             CssClass="tabla_datos col-xs-12 table-bordered"
                             runat="server"
                             PagerStyle-CssClass="pager-style"
-                            AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" AllowPaging="True" OnPageIndexChanging="grvClientes_PageIndexChanging">
+                            AutoGenerateColumns="False" ViewStateMode="Enabled" EmptyDataText="No existe información" AllowPaging="True" OnPageIndexChanging="grvClientes_PageIndexChanging" PageSize="5">
 
                             <PagerStyle CssClass="pager-style" />
 
@@ -158,7 +170,7 @@
                 </div>
             </div>
 
-          
+
         </ContentTemplate>
     </asp:UpdatePanel>
 

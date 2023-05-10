@@ -116,7 +116,6 @@ C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\bin\Debug\es\DevExpress.Xpo.v20.1.res
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\bin\Debug\ja\DevExpress.Xpo.v20.1.resources.dll
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\bin\Debug\ru\DevExpress.Xpo.v20.1.resources.dll
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\bin\Debug\es\EntityFramework.resources.dll
-C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\obj\Debug\CapaNegocio.csprojAssemblyReference.cache
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\obj\Debug\CapaNegocio.dll
@@ -124,3 +123,4 @@ C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\obj\Debug\CapaNegocio.pdb
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\bin\Debug\CapaServicios.dll
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\bin\Debug\CapaServicios.pdb
 C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\bin\Debug\CapaServicios.dll.config
+C:\Desarrollos\SisCarlitosV1.1\CapaNegocio\obj\Debug\CapaNegocio.csprojAssemblyReference.cache

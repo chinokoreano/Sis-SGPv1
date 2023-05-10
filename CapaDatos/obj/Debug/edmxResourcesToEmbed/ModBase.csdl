@@ -152,8 +152,13 @@
     <FunctionImport Name="SPR_ACTUALIZA_CREDENCIALES" ReturnType="Collection(OPERADBModel.SPR_ACTUALIZA_CREDENCIALES_Result)">
       <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
       <Parameter Name="CONTRASENIA" Mode="In" Type="String" />
-      <Parameter Name="OPCION" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="casillero_secuencia" EntityType="OPERADBModel.casillero_secuencia" />
+    <EntitySet Name="persona" EntityType="OPERADBModel.persona" />
+    <AssociationSet Name="FK_persona_casillero_secuencia" Association="OPERADBModel.FK_persona_casillero_secuencia">
+      <End Role="casillero_secuencia" EntitySet="casillero_secuencia" />
+      <End Role="persona" EntitySet="persona" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="cliente">
     <Key>
@@ -834,4 +839,57 @@
     <Property Type="Int32" Name="RESULTADO" Nullable="false" />
     <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="21" />
   </ComplexType>
+  <EntityType Name="casillero_secuencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prefijo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secuencia" Type="Int32" />
+    <Property Name="casillero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="fec_creacion" Type="DateTime" Precision="3" />
+    <Property Name="usu_creacion" Type="Int32" />
+    <NavigationProperty Name="persona" Relationship="OPERADBModel.FK_persona_casillero_secuencia" FromRole="casillero_secuencia" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="per_id" />
+    </Key>
+    <Property Name="per_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="per_tipo_documento" Type="Int32" />
+    <Property Name="per_numero_identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="per_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="per_apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="per_telefono_convencional" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="per_celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="per_correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_provincia" Type="Int32" />
+    <Property Name="id_canton" Type="Int32" />
+    <Property Name="id_parroquia" Type="Int32" />
+    <Property Name="direccion_domiciliaria" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="direccion_trabajo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="per_casillero" Type="Int32" />
+    <Property Name="per_contrasenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="per_codigo_confirmacion" Type="Int32" />
+    <Property Name="fec_creacion" Type="DateTime" Precision="3" />
+    <Property Name="fec_modificacion" Type="DateTime" Precision="3" />
+    <Property Name="usu_creacion" Type="Int32" />
+    <Property Name="usu_modificacion" Type="Int32" />
+    <Property Name="per_estado" Type="Int32" />
+    <NavigationProperty Name="casillero_secuencia" Relationship="OPERADBModel.FK_persona_casillero_secuencia" FromRole="persona" ToRole="casillero_secuencia" />
+  </EntityType>
+  <Association Name="FK_persona_casillero_secuencia">
+    <End Type="OPERADBModel.casillero_secuencia" Role="casillero_secuencia" Multiplicity="0..1" />
+    <End Type="OPERADBModel.persona" Role="persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="casillero_secuencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="persona">
+        <PropertyRef Name="per_casillero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

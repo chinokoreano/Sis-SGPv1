@@ -50,6 +50,8 @@ namespace CapaEntidad
         public virtual DbSet<tipo_usuario> tipo_usuario { get; set; }
         public virtual DbSet<suceso> suceso { get; set; }
         public virtual DbSet<asesor_comercial> asesor_comercial { get; set; }
+        public virtual DbSet<casillero_secuencia> casillero_secuencia { get; set; }
+        public virtual DbSet<persona> persona { get; set; }
     
         public virtual ObjectResult<SPR_CONSULTA_USUARIO_CONTRATO_Result> SPR_CONSULTA_USUARIO_CONTRATO(Nullable<int> opcion, Nullable<int> id_usuario, string numero_identificacion, string nm_cliente)
         {
@@ -230,7 +232,7 @@ namespace CapaEntidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACT_ULTIMO_EVENTO_Result>("SPR_ACT_ULTIMO_EVENTO", cODIGO_ENVIOParameter, oPCIONParameter, uSUARIOParameter);
         }
     
-        public virtual ObjectResult<SPR_ACTUALIZA_CREDENCIALES_Result> SPR_ACTUALIZA_CREDENCIALES(Nullable<int> iD_USUARIO, string cONTRASENIA, Nullable<int> oPCION)
+        public virtual ObjectResult<SPR_ACTUALIZA_CREDENCIALES_Result> SPR_ACTUALIZA_CREDENCIALES(Nullable<int> iD_USUARIO, string cONTRASENIA)
         {
             var iD_USUARIOParameter = iD_USUARIO.HasValue ?
                 new ObjectParameter("ID_USUARIO", iD_USUARIO) :
@@ -240,11 +242,7 @@ namespace CapaEntidad
                 new ObjectParameter("CONTRASENIA", cONTRASENIA) :
                 new ObjectParameter("CONTRASENIA", typeof(string));
     
-            var oPCIONParameter = oPCION.HasValue ?
-                new ObjectParameter("OPCION", oPCION) :
-                new ObjectParameter("OPCION", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACTUALIZA_CREDENCIALES_Result>("SPR_ACTUALIZA_CREDENCIALES", iD_USUARIOParameter, cONTRASENIAParameter, oPCIONParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPR_ACTUALIZA_CREDENCIALES_Result>("SPR_ACTUALIZA_CREDENCIALES", iD_USUARIOParameter, cONTRASENIAParameter);
         }
     }
 }

@@ -117,6 +117,43 @@ namespace CapaDatos
             }
         }
 
+        public void FnCargarManualDatosTablaTemporal(Guid gLote, int intIdServicio, int intIdUsuario, int intIdCliente, string strDetalleOrdenServicio, int intIdOficina, string strIdProvinciaCarga, string strIdCantonCarga, int intIdContrato)
+        {
+            string strConexion = System.Configuration.ConfigurationManager.ConnectionStrings["OPERADB_DAO"].ToString();
+            try
+            {
+
+                using (SqlConnection con = new SqlConnection(strConexion))
+                {
+                    con.Open();
+                    string sql = null;
+                    sql = "INSERT INTO PAQUETE_TEMPORAL (ID_LOTE,CODIGO,CODIGO_ALTERNO,PROVINCIA,CANTON,CALLE_PRINCIPAL,";
+                    sql = sql + "REFERENCIA,CODIGO_POSTAL,DESTINATARIO,TELEFONO,LATITUD,LONGITUD,PESO,SEGURO,TIPO_CONTENIDO,MONTO_SEGURO,ALTO, ";
+                    sql = sql + "ANCHO,PROFUNDIDAD,DATO_ADICIONAL1,DATO_ADICIONAL2,ID_OFICINA_CARGA,ID_USUARIO,ID_SERVICIO,ID_CLIENTE,DETALLE_ORDEN_SERVICIO,ID_PROVINCIA_CARGA,ID_CANTON_CARGA,ID_CONTRATO)";
+                    sql = sql + "SELECT IDENTIFICADOR,CODIGO,CODIGO_ALTERNO,(select dbo.GET_UBICACION_GEOGRAFICA(RIGHT('00' + CAST(LOCACION AS VARCHAR), 2), '', 'P'))";
+                    sql = sql + ",(select dbo.GET_UBICACION_GEOGRAFICA(RIGHT('00' + CAST(LOCACION AS VARCHAR), 2), RIGHT('00' + CAST(LOCACION AS VARCHAR), 2), 'C'))";
+                    sql = sql + ",DIRECCION,REFERENCIA, CODIGO_POSTAL,DESTINATARIO,TELEFONO,LATITUD, LONGITUD,PESO,SEGURO,TIPO_CONTENIDO";
+                    sql = sql + ",MONTO_SEGURO, ALTO, ANCHO, PROFUNDIDAD, DATO_ADICIONAL1, DATO_ADICIONAL2";
+                    sql = sql + "," + intIdOficina + "," + intIdUsuario + "," + intIdServicio;
+                    sql = sql + "," + intIdCliente + ",'" + strDetalleOrdenServicio + "','" + strIdProvinciaCarga + "'";
+                    sql = sql + ",'" + strIdCantonCarga + "'," + intIdContrato + " FROM paquete_temporal";
+                    sql = sql + " WHERE IDENTIFICADOR='" + gLote + "'";
+
+                   
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                       cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void FnCargarDatosTablaTemporal(DataTable dt,Guid gLote, int intIdServicio,int intIdUsuario,int intIdCliente,string strDetalleOrdenServicio, int intIdOficina, string strIdProvinciaCarga, string strIdCantonCarga, int intIdContrato)
         {
             string strConexion = System.Configuration.ConfigurationManager.ConnectionStrings["OPERADB_DAO"].ToString();

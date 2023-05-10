@@ -64,6 +64,9 @@
     <Compile Include="cartero.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="casillero_secuencia.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="cliente.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
@@ -102,6 +105,9 @@
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
     <Compile Include="parametro.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="persona.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
     <Compile Include="proceso_tmp.cs">
