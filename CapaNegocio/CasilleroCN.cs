@@ -17,7 +17,11 @@ namespace CapaNegocio
             {
                 DateTime dtFecha = DateTime.Now;
                 CrudGenerico<casillero_secuencia> crud = new CrudGenerico<casillero_secuencia>();
-                casillero_secuencia casilleroBusq = crud.ObtenerUltimo(c => c.tipo == tipo);
+
+                List<casillero_secuencia> casilleros = crud.ObtenerTodos(c => c.tipo == tipo);
+                casillero_secuencia casilleroBusq = casilleros.LastOrDefault();
+                //cityNames.OrderByDescending(city => city).ToList()
+
                 casillero_secuencia casillero = new casillero_secuencia();
                 if (casilleroBusq == null)
                 {

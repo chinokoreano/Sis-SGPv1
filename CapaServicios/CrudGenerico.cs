@@ -70,8 +70,6 @@ namespace CapaServicios
             T resultado = null;
             try
             {
-
-
                 using (OPERADB dB = new OPERADB())
                 {
                     if (filter != null)
@@ -87,27 +85,7 @@ namespace CapaServicios
             }
         }
 
-        public T ObtenerUltimo(Expression<Func<T, bool>> filter = null)
-        {
-            T resultado = null;
-            try
-            {
-
-
-                using (OPERADB dB = new OPERADB())
-                {
-                    if (filter != null)
-                    {
-                        resultado = dB.Set<T>().Where(filter).LastOrDefault();
-                    }
-                }
-                return resultado;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+       
 
         public T Obtener(int id)
         {
