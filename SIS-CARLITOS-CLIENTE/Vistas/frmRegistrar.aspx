@@ -5,144 +5,147 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="card container p-5 my-5" style="max-width: 100rem;" runat="server">
+    <asp:UpdatePanel ID="udp1" runat="server">
+        <ContentTemplate>
+            <div class="container">
+                <section class="mt-4">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card shadow-lg p-3">
+                                <div class="card-body">
+                                    <h3 class="text-center font-spe">Registrarse</h3>
 
-        <div class="card-body" style="background-color: white">
-            <h3 class="card-title">Registrarse</h3>
-            <h6 class="card-subtitle mb-2 text-muted">Información personal</h6>
-            <p class="card-text">Por favor registre los datos a continuación.</p>
-            <div class="container py-5">
-                <div id="informacion-personal">
-                    <div class="row justify-content-center">
-                        <!--Doble columna!-->
-                        <div class="col-12 col-md-12">
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <dx:ASPxComboBox ID="cmbTipoDocumento" runat="server"  CssClass="form-control dropdown form-control-sm"  Theme="PlasticBlue" DataSourceID="dsTipoDocumento" TextField="nm" ValueField="id" ValueType="System.Int32">
-                                        
-                                    </dx:ASPxComboBox>
-                                    <asp:SqlDataSource ID="dsTipoDocumento" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" SelectCommand="SELECT [id], [nm] FROM [tipo_documento]"></asp:SqlDataSource>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtDocumentoIdentificacion" runat="server" placeholder="Cédula/RUC/Pasaporte" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterMode="ValidChars" TargetControlID="txtDocumentoIdentificacion" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtNombres" runat="server" placeholder="Nombres" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterMode="ValidChars" TargetControlID="txtNombres" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtApellidos" runat="server" placeholder="Apellidos" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterMode="ValidChars" TargetControlID="txtApellidos" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtCorreo" runat="server" placeholder="Correo electrónico" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterMode="ValidChars" TargetControlID="txtCorreo" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm" 
-                                        Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Punto de Carga o Retiro" 
-                                        NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen" 
-                                        OnSelectedIndexChanged="cmbLocalidad_SelectedIndexChanged">
-                                    </dx:ASPxComboBox>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-7 mb-3">
+                                            <label for="txtDocumentoIdentificacion" class="form-label">Tipo de documento</label>
+                                            <dx:ASPxComboBox ID="cmbTipoDocumento" runat="server" CssClass="form-control dropdown form-control-sm"
+                                                Theme="PlasticBlue" DataSourceID="dsTipoDocumento"
+                                                TextField="nm" ValueField="id" ValueType="System.Int32"
+                                                NullValueItemDisplayText="{0} ({1})" NullText="Documento de identificación"
+                                                NullTextDisplayMode="UnfocusedAndFocused">
+                                            </dx:ASPxComboBox>
+                                            <asp:SqlDataSource ID="dsTipoDocumento" runat="server" ConnectionString="<%$ ConnectionStrings:OPERADB_DAO %>" SelectCommand="SELECT [id], [nm] FROM [tipo_documento]"></asp:SqlDataSource>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 col-lg-7 mb-3">
+                                            <label for="txtDocumentoIdentificacion" class="form-label">Identificación</label>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDocumentoIdentificacion" ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
+                                            <asp:TextBox ID="txtDocumentoIdentificacion" runat="server" class="form-control" placeholder="Cédula" MaxLength="10" autocomplete="off" AutoCompleteType="Disabled" type="tel"></asp:TextBox>
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender10" runat="server" FilterMode="ValidChars" TargetControlID="txtDocumentoIdentificacion" ValidChars="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 mb-3">
+                                            <label for="txtNombres" class="form-label">Nombres</label>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNombres" ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
+                                            <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" autocomplete="off" AutoCompleteType="Disabled" type="text"></asp:TextBox>
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterMode="ValidChars" TargetControlID="txtNombres" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"></cc1:FilteredTextBoxExtender>
+                                        </div>
+
+                                        <div class="col-12 col-lg-6 mb-3">
+                                            <label for="txtApellidos" class="form-label">Apellidos</label>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtApellidos" ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
+                                            <asp:TextBox ID="txtApellidos" runat="server" CssClass="form-control" autocomplete="off" AutoCompleteType="Disabled" type="text"></asp:TextBox>
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender11" runat="server" FilterMode="ValidChars" TargetControlID="txtApellidos" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"></cc1:FilteredTextBoxExtender>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <label for="txtCorreo" class="form-label">Correo electrónico</label>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCorreo" ValidationGroup="correo" CssClass="text-danger" ErrorMessage="(obligatorio)" />
+                                            <div class="input-group">
+                                                <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control text-lowercase txt_correo" type="email" ValidationGroup="correo"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Verifíca que tu correo este ingresado correctamente"></asp:TextBox>
+                                                <asp:LinkButton ID="btn_solicitarCodigo" runat="server" CssClass="btn btn-spe" ValidationGroup="correo"><i class="far fa-envelope me-2"></i>Solicitar código</asp:LinkButton>
+                                            </div>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationGroup="correo"
+                                                ControlToValidate="txtCorreo" runat="server" ErrorMessage="correo incorrecto Ejm: usr@dominio.com" CssClass="text-danger"
+                                                ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
+                                                Display="Dynamic"></asp:RegularExpressionValidator>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <asp:Label runat="server" ID="lbl_codigo" class="form-label">Código de verificación</asp:Label>
+                                            <div class="input-group mb-3">
+                                                <asp:TextBox ID="txt_codigo" runat="server" CssClass="form-control text-lowercase text-center" type="tel" ValidationGroup="codigo" placeholder="Revisa tu correo" MaxLength="4"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Ingresa el código que se envió a tu correo para continuar" aria-describedby="txt_codigo"></asp:TextBox>
+                                                <asp:LinkButton ID="btn_validarCodigo" runat="server" CssClass="btn btn-outline-success" ValidationGroup="correo" Visible="false"><i class="fas fa-check me-2"></i>Verificar código</asp:LinkButton>
+                                            </div>
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterMode="ValidChars" TargetControlID="txt_codigo" ValidChars="1234567890"></cc1:FilteredTextBoxExtender>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <label for="cmbLocalidad" class="form-label">Ciudad</label>
+                                            <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm"
+                                                Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Punto de Carga o Retiro"
+                                                NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen"
+                                                OnSelectedIndexChanged="cmbLocalidad_SelectedIndexChanged">
+                                            </dx:ASPxComboBox>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <label for="txtDireccion1" class="form-label">Dirección</label>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDireccion1" ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
+                                            <asp:TextBox ID="txtDireccion1" runat="server" CssClass="form-control" autocomplete="off" AutoCompleteType="Disabled" type="text"></asp:TextBox>
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterMode="ValidChars" TargetControlID="txtDireccion1" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"></cc1:FilteredTextBoxExtender>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <label for="txtReferencia" class="form-label">Referencia</label>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtReferencia" ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
+                                            <asp:TextBox ID="txtReferencia" runat="server" CssClass="form-control" autocomplete="off" AutoCompleteType="Disabled" type="text"></asp:TextBox>
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterMode="ValidChars" TargetControlID="txtReferencia" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"></cc1:FilteredTextBoxExtender>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <label for="txtTelefono" class="form-label">Teléfono</label>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtReferencia" ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
+                                            <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" autocomplete="off" AutoCompleteType="Disabled" type="text"></asp:TextBox>
+                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" runat="server" FilterMode="ValidChars" TargetControlID="txtTelefono" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"></cc1:FilteredTextBoxExtender>
+                                        </div>
+
+                                          <div class="col-12 mb-4">
+                                            <asp:Label runat="server" ID="lbl_contrasena" Text="" Visible="true">Contraseña</asp:Label><img src="/Content/Assets/Ico/Caps_Lock-512.png" class="d-24x24 me-1 d-none capLockIndicator" />
+                                            <asp:TextBox ID="txtContrasenia" runat="server" CssClass="form-control capLock" TextMode="Password" 
+                                                oncopy="return false" onpaste="return false" oncut="return false" Visible="true"
+                                                autocomplete="off"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                                                ControlToValidate="txtContrasenia" runat="server" ErrorMessage="Debe contener al menos una letra mayúscula,  minúsculas y un número. Longitud de 6 a 20 caracteres" ValidationGroup="formulario_registro"
+                                                CssClass="text-danger" ValidationExpression="^.*(?=.{6})(?=.*[\d])(?=.*[A-Z])(?=.*[a-z]).*$" Display="Dynamic"></asp:RegularExpressionValidator>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtContrasenia" ValidationGroup="formulario_registro"
+                                                CssClass="text-danger position-absolute" ErrorMessage="(obligatorio)" />
+                                        </div>
+                                        <div class="col-12 mb-5">
+                                            <asp:Label runat="server" ID="lbl_confirmar" Text="Confirmar contraseña" Visible="true"></asp:Label><img src="/Content/Assets/Ico/Caps_Lock-512.png" class="d-24x24 me-1 d-none capLockIndicator" />
+                                            <asp:TextBox ID="txtConfirmarContrasenia" runat="server" CssClass="form-control capLock" TextMode="Password" 
+                                                oncopy="return false" onpaste="return false" oncut="return false" Visible="true"
+                                                autocomplete="off"></asp:TextBox>
+                                            <asp:CompareValidator runat="server" ControlToCompare="txtContrasenia" ControlToValidate="txtConfirmarContrasenia" ValidationGroup="formulario_registro"
+                                                CssClass="text-danger" Display="Dynamic" ErrorMessage="Las contraseñas no coinciden" />
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtConfirmarContrasenia" ValidationGroup="formulario_registro"
+                                                CssClass="text-danger position-absolute" ErrorMessage="(Debes confirmar la contraseña)" />
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <asp:Button ID="btnGrabar" runat="server" class="btn btn-primary text-decoration-none text-white" OnClientClick="mostrar_procesar();" Text="Guardar" OnClick="btnGrabar_Click" />
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
 
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtDireccion1" runat="server" placeholder="Dirección" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" runat="server" FilterMode="ValidChars" TargetControlID="txtDireccion1" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtReferencia" runat="server" placeholder="Referencia" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender8" runat="server" FilterMode="ValidChars" TargetControlID="txtReferencia" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtTelefono" runat="server" placeholder="Teléfono" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender9" runat="server" FilterMode="ValidChars" TargetControlID="txtTelefono" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtContrasenia" runat="server" placeholder="Contraseña" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterMode="ValidChars" TargetControlID="txtContrasenia" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group last mb-3">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtConfirmarContrasenia" runat="server" placeholder="Confirmar Contraseña" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterMode="ValidChars" TargetControlID="txtConfirmarContrasenia" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                             <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:Button ID="btnGrabar" runat="server" class="btn btn-primary text-decoration-none text-white" OnClientClick="mostrar_procesar();" Text="Guardar" OnClick="btnGrabar_Click" />
-                                </div>
-                            </div>
                         </div>
-
-                       <%-- <div class="col-12 col-md-6">
-
-
-                            
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txt" runat="server" placeholder="Telefono" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender9" runat="server" FilterMode="ValidChars" TargetControlID="txt" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="TextBox3" runat="server" placeholder="Apellidos" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender10" runat="server" FilterMode="ValidChars" TargetControlID="txtApellidos" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="TextBox4" runat="server" placeholder="Correo electrónico" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender11" runat="server" FilterMode="ValidChars" TargetControlID="txtCorreo" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtDireccionCliente" runat="server" placeholder="Dirección" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender12" runat="server" FilterMode="ValidChars" TargetControlID="txtDireccionCliente" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group first">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="TextBox6" runat="server" placeholder="Contraseña" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender13" runat="server" FilterMode="ValidChars" TargetControlID="txtContrasenia" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                            <div class="form-group last mb-3">
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="TextBox7" runat="server" placeholder="Confirmar Contraseña" MaxLength="30" CssClass="form-control form-control-sm" TextMode="SingleLine"></asp:TextBox>
-                                    <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender14" runat="server" FilterMode="ValidChars" TargetControlID="txtConfirmarContrasenia" ValidChars="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
-                                </div>
-                            </div>
-                           
-                        </div>--%>
-
                     </div>
-                </div>
+                </section>
             </div>
-        </div>
-    </div>
-
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="udp1">
+        <ProgressTemplate>
+            <div id="Background"></div>
+            <div id="Loader"></div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
 </asp:Content>

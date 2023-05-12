@@ -15,6 +15,20 @@ namespace SIS_CARLITOS.Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             FnCargarUbicacionesGeograficas();
+            if (!IsPostBack)
+            {
+
+                FnAsignarAtributos();
+            }
+        }
+
+        private void FnAsignarAtributos()
+        {
+            txtApellidos.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
+            txtNombres.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
+            txtDireccion1.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
+            txtReferencia.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
+            
         }
 
         private void FnCargarUbicacionesGeograficas()
