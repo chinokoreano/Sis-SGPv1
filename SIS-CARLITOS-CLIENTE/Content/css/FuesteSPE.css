@@ -1,0 +1,41 @@
+﻿@font-face {
+    font-family: Gotham;
+    src: url(/Content/Fonts/SPE/Gotham-Medium.otf);
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url(/Content/Fonts/SPE/GothamBold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Gotham-bold;
+    src: url(/Content/Fonts/SPE/Gotham-Black.otf);
+}
+
+@font-face {
+    font-family: Gotham-light;
+    src: url(/Content/Fonts/SPE/Gotham-Light.otf);
+}
+
+@font-face {
+    font-family: Gotham-ultra;
+    src: url(/Content/Fonts/SPE/Gotham-Ultra.otf);
+}
+
+.font-spe {
+    font-family: Gotham;
+}
+
+.font-spe-bolder {
+    font-family: Gotham-bold;
+}
+
+.font-spe-light {
+    font-family: Gotham-light;
+}
+
+.font-spe-ultra {
+    font-family: Gotham-ultra;
+}

@@ -1,0 +1,32 @@
+﻿para deserealizar en JSÓN ignorando referencias circulares
+
+JsonSerializerSettings jss = new JsonSerializerSettings();
+            jss.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            string json = JsonConvert.SerializeObject(menu, jss);
+
+
+public Base_maestraEntities()
+            : base("name=Base_maestraEntities")
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+        }
+
+
+ALTER TABLE [dbo].[av_direccion]  WITH CHECK ADD  CONSTRAINT [fk_av_direc_reference_bm_ubi_g] FOREIGN KEY([ubi_geo_id])
+REFERENCES [dbo].[bm_ubi_geografica] ([ubi_geo_id])
+GO
+
+ALTER TABLE [dbo].[av_direccion] CHECK CONSTRAINT [fk_av_direc_reference_bm_ubi_g]
+GO
+
+
+Constructores
+av_historial_prealerta
+ public av_historial_prealerta(int pa_id, int? ep_id)
+        {
+            this.pa_id = pa_id;
+            this.ep_id = ep_id;
+        }
+
+Para analizar etiquetas en el bound
+<!--visible='<%# Convert.ToInt32(Eval("pa_id_ultimo_evento")) > 0%>'-->

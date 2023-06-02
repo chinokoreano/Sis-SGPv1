@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using CapaServicios;
+using Logica.LogicaUtilitarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,24 +98,25 @@ namespace SIS_CARLITOS.Vistas
                 persona.per_contrasenia = txtContrasenia.Text.Trim();
 
                 resultado = PersonaCN.Validacion(persona, 0);
-                if (resultado != string.Empty)
-                {
-                    return;
-                }
+                AlertasJS.Advertencia(this, "Selecciona al menos un envío para realizar el pago");
+                //if (resultado != string.Empty)
+                //{
+                //    AlertasJS.Advertencia(this, "Selecciona al menos un envío para realizar el pago");
+                //}
 
-                CrudGenerico<persona> crud = new CrudGenerico<persona>();
-                int idCasillero = CasilleroCN.Obtener(1);
-                if (idCasillero >0)
-                {
-                    persona.per_casillero = idCasillero;
-                    bolResultado = crud.Crear(persona);
-                    if (bolResultado == true)
-                    {
-                        CrudGenerico<casillero_secuencia> casillero = new CrudGenerico<casillero_secuencia>();
-                        casillero_secuencia casilleroGenerado = casillero.Obtener(idCasillero);
+                //CrudGenerico<persona> crud = new CrudGenerico<persona>();
+                //int idCasillero = CasilleroCN.Obtener(1);
+                //if (idCasillero >0)
+                //{
+                //    persona.per_casillero = idCasillero;
+                //    bolResultado = crud.Crear(persona);
+                //    if (bolResultado == true)
+                //    {
+                //        CrudGenerico<casillero_secuencia> casillero = new CrudGenerico<casillero_secuencia>();
+                //        casillero_secuencia casilleroGenerado = casillero.Obtener(idCasillero);
 
-                    }
-                }
+                //    }
+                //}
 
 
             }

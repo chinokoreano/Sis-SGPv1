@@ -16,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SIS_CARLITOS</RootNamespace>
     <AssemblyName>SIS-CARLITOS</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -27,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>4.1</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,6 +85,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -113,10 +115,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -139,6 +139,7 @@
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -183,21 +184,119 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Content\Assets\GIF\loading-9.gif" />
+    <Content Include="Content\Assets\Ico\actualizar_opcion_entrega.png" />
+    <Content Include="Content\Assets\Ico\billing.png" />
+    <Content Include="Content\Assets\Ico\buscar_32.png" />
+    <Content Include="Content\Assets\Ico\Caps_Lock-512.png" />
+    <Content Include="Content\Assets\Ico\check-list_32.png" />
+    <Content Include="Content\Assets\Ico\consulting_50_50.png" />
+    <Content Include="Content\Assets\Ico\credit-card-disable.png" />
+    <Content Include="Content\Assets\Ico\credit-card.png" />
+    <Content Include="Content\Assets\Ico\delivery-50.png" />
+    <Content Include="Content\Assets\Ico\filedisable_32.png" />
+    <Content Include="Content\Assets\Ico\file_32.png" />
+    <Content Include="Content\Assets\Ico\immigration_32.png" />
+    <Content Include="Content\Assets\Ico\inspecion_aduana.png" />
+    <Content Include="Content\Assets\Ico\inspecion_aduana_32.png" />
+    <Content Include="Content\Assets\Ico\package_delivery.png" />
+    <Content Include="Content\Assets\Ico\pago_advertencia.png" />
+    <Content Include="Content\Assets\Ico\parcel.png" />
+    <Content Include="Content\Assets\Ico\parcel_32.png" />
+    <Content Include="Content\Assets\Ico\pickup.png" />
+    <Content Include="Content\Assets\Ico\right-arrow.png" />
+    <Content Include="Content\Assets\Ico\tooltip.png" />
+    <Content Include="Content\Assets\Imagenes\01.jpg" />
+    <Content Include="Content\Assets\Imagenes\02.png" />
+    <Content Include="Content\Assets\Imagenes\03.png" />
+    <Content Include="Content\Assets\Imagenes\04.png" />
+    <Content Include="Content\Assets\Imagenes\05.png" />
+    <Content Include="Content\Assets\Imagenes\05a.jpg" />
+    <Content Include="Content\Assets\Imagenes\05b.jpg" />
+    <Content Include="Content\Assets\Imagenes\06.jpg" />
+    <Content Include="Content\Assets\Imagenes\06.png" />
+    <Content Include="Content\Assets\Imagenes\07.png" />
+    <Content Include="Content\Assets\Imagenes\08.png" />
+    <Content Include="Content\Assets\Imagenes\09.png" />
+    <Content Include="Content\Assets\Imagenes\10.png" />
+    <Content Include="Content\Assets\Imagenes\11.png" />
+    <Content Include="Content\Assets\Imagenes\5c.jpg" />
+    <Content Include="Content\Assets\Imagenes\entrega-rapida.png" />
+    <Content Include="Content\Assets\Imagenes\Flyer-ExportaFacil-2.jpg" />
+    <Content Include="Content\Assets\Imagenes\fondo-montanas-1600x900.jpg" />
+    <Content Include="Content\Assets\Imagenes\front\e-commerce.jpg" />
+    <Content Include="Content\Assets\Imagenes\front\Fondo-1400x986.jpg" />
+    <Content Include="Content\Assets\Imagenes\front\recepcion-mujer-2.jpg" />
+    <Content Include="Content\Assets\Imagenes\front\recepcion-mujer.jpg" />
+    <Content Include="Content\Assets\Imagenes\front\reparto-caja.jpg" />
+    <Content Include="Content\Assets\Imagenes\Oops.png" />
+    <Content Include="Content\Assets\Imagenes\Oops2.png" />
+    <Content Include="Content\Assets\Imagenes\Recomendaciones.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-01.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-02.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-03.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-04.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-05.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-05a.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-05b.png" />
+    <Content Include="Content\Assets\Imagenes\TICs-05c.png" />
+    <Content Include="Content\Assets\Imagenes\trackingbanner.png" />
+    <Content Include="Content\Assets\Imagenes\trackingbanner2.png" />
+    <Content Include="Content\Assets\Imagenes\Twitter.png" />
+    <Content Include="Content\Assets\Logos\001-a.png" />
+    <Content Include="Content\Assets\Logos\001-b.png" />
+    <Content Include="Content\Assets\Logos\001-c.png" />
+    <Content Include="Content\Assets\Logos\001-d.png" />
+    <Content Include="Content\Assets\Logos\002-a.png" />
+    <Content Include="Content\Assets\Logos\002-b.png" />
+    <Content Include="Content\Assets\Logos\002-c.png" />
+    <Content Include="Content\Assets\Logos\002-d.png" />
+    <Content Include="Content\Assets\Logos\003-a.png" />
+    <Content Include="Content\Assets\Logos\003-b.png" />
+    <Content Include="Content\Assets\Logos\003-c.png" />
+    <Content Include="Content\Assets\Logos\003-d.png" />
+    <Content Include="Content\Assets\Logos\004-a.png" />
+    <Content Include="Content\Assets\Logos\004-b.png" />
+    <Content Include="Content\Assets\Logos\004-c.png" />
+    <Content Include="Content\Assets\Logos\004-d.png" />
+    <Content Include="Content\Assets\Logos\condor-SPE.ico" />
+    <Content Include="Content\Assets\Logos\FIRMAMAIL-SPE.png" />
+    <Content Include="Content\Assets\Logos\Sipostal-01.png" />
+    <Content Include="Content\Assets\Logos\Sipostal-02.png" />
+    <Content Include="Content\Assets\Logos\Sipostal-03.png" />
+    <Content Include="Content\Assets\Logos\Sipostal-04.png" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.css" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.rtl.css" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.css" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap.css" />
+    <Content Include="Content\Bootstrap\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap.rtl.css" />
+    <Content Include="Content\Bootstrap\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\ColoresEstilos.css" />
+    <Content Include="Content\css\FuesteSPE.css" />
+    <Content Include="Content\css\lineatiempo.css" />
+    <Content Include="Content\css\LineaTiempo2SPE.css" />
+    <Content Include="Content\css\Site-6.css" />
+    <Content Include="Content\js\animaciones-1.js" />
+    <Content Include="Content\js\Cookies.js" />
+    <Content Include="Content\js\init-popOver.js" />
+    <Content Include="Content\js\main-4.js" />
+    <Content Include="Content\js\modal-alertas-3.js" />
+    <Content Include="Content\Notas\accordion_faq.txt" />
+    <Content Include="Content\Notas\Menu.txt" />
+    <Content Include="Content\Notas\varios.txt" />
     <Content Include="Vistas\Admin\frmLogin.aspx" />
-    <Content Include="Vistas\frmRegistrarPaquete.aspx" />
     <Content Include="Vistas\frmRegistrar.aspx" />
-    <Content Include="Admin\frmAutenticacion_.aspx" />
-    <Content Include="Admin\frmAutenticacion.aspx" />
     <Content Include="Contact.aspx" />
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\chespirito003.css" />
-    <Content Include="Content\cssLogin.css" />
-    <Content Include="Content\Site11.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="frmErrorCarga.aspx" />
@@ -436,15 +535,33 @@
     <Content Include="DataSet\DsReportes.xsc">
       <DependentUpon>DsReportes.xsd</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="DataSet\DsConsulta.xsc">
       <DependentUpon>DsConsulta.xsd</DependentUpon>
     </Content>
+    <Content Include="Content\Assets\Logos\Sipostal-01.7z" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap.min.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap.rtl.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\Fonts\SPE\Gotham-Black.otf" />
+    <Content Include="Content\Fonts\SPE\Gotham-Light.otf" />
+    <Content Include="Content\Fonts\SPE\Gotham-Medium.otf" />
+    <Content Include="Content\Fonts\SPE\Gotham-Ultra.otf" />
+    <Content Include="Content\Fonts\SPE\GothamBold.ttf" />
+    <Content Include="Content\json\configuracion.json" />
+    <Content Include="Content\json\configuracion1.json" />
     <None Include="DataSet\DsConsulta.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1620,7 +1737,9 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Bundle.config" />
+    <Content Include="Bundle.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -1631,33 +1750,12 @@
     <Compile Include="Vistas\Admin\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\frmRegistrarPaquete.aspx.cs">
-      <DependentUpon>frmRegistrarPaquete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\frmRegistrarPaquete.aspx.designer.cs">
-      <DependentUpon>frmRegistrarPaquete.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\frmRegistrar.aspx.cs">
       <DependentUpon>frmRegistrar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\frmRegistrar.aspx.designer.cs">
       <DependentUpon>frmRegistrar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\frmAutenticacion_.aspx.cs">
-      <DependentUpon>frmAutenticacion_.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\frmAutenticacion_.aspx.designer.cs">
-      <DependentUpon>frmAutenticacion_.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\frmAutenticacion.aspx.cs">
-      <DependentUpon>frmAutenticacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\frmAutenticacion.aspx.designer.cs">
-      <DependentUpon>frmAutenticacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

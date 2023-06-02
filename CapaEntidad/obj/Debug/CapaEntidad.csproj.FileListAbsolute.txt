@@ -28,3 +28,9 @@ C:\Desarrollos\SisCarlitosV1.1\CapaEntidad\obj\Debug\CapaEntidad.csprojAssemblyR
 C:\Desarrollos\SisCarlitosV1.1\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Desarrollos\SisCarlitosV1.1\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Desarrollos\SisCarlitosV1.1\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Desarrollo\SIS_SGPV1\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Desarrollo\SIS_SGPV1\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.csprojAssemblyReference.cache
+C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.pdb

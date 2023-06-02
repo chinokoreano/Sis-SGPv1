@@ -8,7 +8,7 @@
     <asp:UpdatePanel ID="udp1" runat="server">
         <ContentTemplate>
             <div class="container">
-                <section class="mt-4">
+                <section class="mt-2">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card shadow-lg p-3">
@@ -17,7 +17,7 @@
 
                                     <div class="row">
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="txtDocumentoIdentificacion" class="form-label">Tipo de documento</label>
+                                            <label for="txtDocumentoIdentificacion" class="form-label font-spe1">Tipo de documento</label>
                                             <dx:ASPxComboBox ID="cmbTipoDocumento" runat="server" CssClass="form-control dropdown form-control-sm"
                                                 Theme="PlasticBlue" DataSourceID="dsTipoDocumento"
                                                 TextField="nm" ValueField="id" ValueType="System.Int32"
@@ -28,7 +28,7 @@
                                         </div>
 
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="txtDocumentoIdentificacion" class="form-label">Identificación</label>
+                                            <label for="txtDocumentoIdentificacion" class="form-label font-spe1">Identificación</label>
                                             
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDocumentoIdentificacion" 
                                                 ValidationGroup="formulario_registro" CssClass="text-danger position-absolute" ErrorMessage="(obligatorio)" />
@@ -42,7 +42,7 @@
 
                                     <div class="row">
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="txtNombres" class="form-label">Nombres</label>
+                                            <label for="txtNombres" class="form-label font-spe1">Nombres</label>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNombres" ValidationGroup="formulario_registro" 
                                                 CssClass="text-danger" ErrorMessage="(obligatorio)" />
                                             <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control capLock" autocomplete="off" 
@@ -51,7 +51,7 @@
                                         </div>
 
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="txtApellidos" class="form-label">Apellidos</label>
+                                            <label for="txtApellidos" class="form-label font-spe1">Apellidos</label>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtApellidos" ValidationGroup="formulario_registro" 
                                                 CssClass="text-danger" ErrorMessage="(obligatorio)" />
                                             <asp:TextBox ID="txtApellidos" runat="server" CssClass="form-control capLock" autocomplete="off" AutoCompleteType="Disabled" placeholder="Apellidos" type="text"></asp:TextBox>
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 mb-3">
-                                            <label for="txtCorreo" class="form-label">Correo electrónico</label>
+                                            <label for="txtCorreo" class="form-label font-spe1">Correo electrónico</label>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCorreo" ValidationGroup="correo" 
                                                 CssClass="text-danger" ErrorMessage="(obligatorio)" />
                                             <div class="input-group">
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 mb-3">
-                                            <asp:Label runat="server" ID="lbl_codigo" class="form-label">Código de verificación</asp:Label>
+                                            <asp:Label runat="server" ID="lbl_codigo" class="form-label font-spe1">Código de verificación</asp:Label>
                                             <div class="input-group mb-3">
                                                 <asp:TextBox ID="txt_codigo" runat="server" CssClass="form-control text-lowercase text-center" type="tel" ValidationGroup="codigo" placeholder="Revisa tu correo" MaxLength="4"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Ingresa el código que se envió a tu correo para continuar" aria-describedby="txt_codigo"></asp:TextBox>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="cmbLocalidad" class="form-label">Ciudad</label>
+                                            <label for="cmbLocalidad" class="form-label font-spe1">Ciudad</label>
                                             <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm"
                                                 Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Locación"
                                                 NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen"
@@ -98,7 +98,7 @@
                                         </div>
 
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="txtDireccion1" class="form-label">Dirección</label>
+                                            <label for="txtDireccion1" class="form-label font-spe1">Dirección</label>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDireccion1" 
                                                 ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
                                             <asp:TextBox ID="txtDireccion1" runat="server" CssClass="form-control capLock" placeholder="Dirección" 
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="txtReferencia" class="form-label">Referencia</label>
+                                            <label for="txtReferencia" class="form-label font-spe1">Referencia</label>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtReferencia" 
                                                 ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
                                             <asp:TextBox ID="txtReferencia" runat="server" CssClass="form-control capLock" placeholder="Referencia" 
@@ -117,7 +117,7 @@
                                         </div>
 
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <label for="txtTelefono" class="form-label">Teléfono</label>
+                                            <label for="txtTelefono" class="form-label font-spe1">Teléfono</label>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtTelefono" ValidationGroup="formulario_registro" CssClass="text-danger" ErrorMessage="(obligatorio)" />
                                             <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeholder="Teléfono" autocomplete="off" AutoCompleteType="Disabled" type="text"></asp:TextBox>
                                             <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" runat="server" FilterMode="ValidChars" TargetControlID="txtTelefono" ValidChars="1234567890 "></cc1:FilteredTextBoxExtender>
@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <asp:Label runat="server" ID="lbl_contrasena" Text="" Visible="true">Contraseña</asp:Label>
+                                            <asp:Label runat="server" ID="lbl_contrasena" class="font-spe1" Text="" Visible="true">Contraseña</asp:Label>
                                             <img src="/Content/Assets/Ico/Caps_Lock-512.png" class="d-24x24 me-1 d-none capLockIndicator" />
                                             <asp:TextBox ID="txtContrasenia" runat="server" CssClass="form-control capLock" TextMode="Password"
                                                 oncopy="return false" onpaste="return false" oncut="return false" Visible="true"
@@ -138,7 +138,7 @@
                                         </div>
 
                                         <div class="col-12 col-lg-6 mb-3">
-                                            <asp:Label runat="server" ID="lbl_confirmar" Text="Confirmar contraseña" Visible="true"></asp:Label><img src="/Content/Assets/Ico/Caps_Lock-512.png" class="d-24x24 me-1 d-none capLockIndicator" />
+                                            <asp:Label runat="server" ID="lbl_confirmar" Text="Confirmar contraseña" class="font-spe1" Visible="true"></asp:Label><img src="/Content/Assets/Ico/Caps_Lock-512.png" class="d-24x24 me-1 d-none capLockIndicator" />
                                             <asp:TextBox ID="txtConfirmarContrasenia" runat="server" CssClass="form-control capLock" TextMode="Password"
                                                 oncopy="return false" onpaste="return false" oncut="return false" Visible="true"
                                                 autocomplete="off"></asp:TextBox>

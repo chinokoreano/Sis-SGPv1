@@ -1,0 +1,26 @@
+﻿<div class="collapse navbar-collapse" id="men-spe">
+    <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/Navegacion/PreguntasFrecuentes">Preguntas Frecuentes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Navegacion/Agencias">Agencias</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Multilevel</a>
+            <ul class="dropdown-menu dropdown-menu-dark shadow">
+                <li><a class="dropdown-item" href="#">Gallery</a></li>
+                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                <li class="dropend">
+                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Submenu Right</a>
+                    <ul class="dropdown-menu dropdown-menu-dark shadow">
+                        <li><a class="dropdown-item" href="">Second level 1</a></li>
+                        <li><a class="dropdown-item" href="">Second level 2</a></li>
+                        <li><a class="dropdown-item" href="">Second level 3</a></li>
+                        <li><a class="dropdown-item" href="">Third level 5</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

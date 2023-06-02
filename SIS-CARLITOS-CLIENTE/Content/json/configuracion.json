@@ -1,0 +1,54 @@
+﻿{
+  "pmz_param": {
+    "sin_motor": "credenciales_pmz_pruebas",
+    "motor": "credenciales_pmz_pruebas",
+    "limite_motor": 70,
+    "ambiente": "DESARROLLO"
+  },
+  "dominio_spe": "SERVICIOPOSTAL",
+  "api_spe": {
+    "facturacion": "https://wsapifacturacion.serviciopostal.gob.ec/api",
+    "impresion": "https://wsapireportes.serviciopostal.gob.ec:9097/api",
+    "ips": "https://wsapiips.serviciopostal.gob.ec:9094/api",
+    "mipro": "https://wsapimipro.serviciopostal.gob.ec:9091/api",
+    "ultima_milla": "https://wsultimamillatest.serviciopostal.gob.ec:8081/api",
+    "local": "https://wsapilocal.serviciopostal.gob.ec:9092/api",
+    "proveedor_pago": "https://wsproveedorpagostest.serviciopostal.gob.ec:8082/api",
+    "seguridad": "https://wsapiseguridad.serviciopostal.gob.ec:9096/api",
+    "dinarp": "https://wsapidinardap.serviciopostal.gob.ec:9098"
+  },
+  "autorizacion": {
+    "llave": "SiPostalKey",
+    "url": "https://wsapilocal.serviciopostal.gob.ec:9092/api/Usuarios/Login",
+    "usuario": "9UhiTml3NMk=",
+    "pwd": "+UzWE6lF7Ik="
+  },
+  "autorizacionDinarp": {
+    "llave": "SiPostalKey",
+    "url": "https://wsapidinardap.serviciopostal.gob.ec:9098/Usuarios/Login",
+    "usuario": "9UhiTml3NMk=",
+    "pwd": "+UzWE6lF7Ik="
+  },
+  "parametros_cobro_siPostal": {
+    "fac_estado": 1,
+    "det_fac_estado": 1,
+    "tip_item_id": 1, //Nacionalizacion
+    "usu_creaion": 2, //Usuario virtual.siPostal
+    "caj_id": 1,
+    "lug_pag_id": 1, //Si Postal
+    "psp_id": 3 //Paymentez
+  },
+  "parametros_cobro_SkyPostal": {
+    "fac_estado": 1,
+    "det_fac_estado": 1,
+    "tip_item_id": 1, //Nacionalizacion
+    "usu_creaion": 2, //Usuario virtual.siPostal
+    "caj_id": 1,
+    "lug_pag_id": 1, //Si Postal
+    "psp_id": 3 //Paymentez
+  },
+  "vista_boton_pago": {
+    "mostrar": true,
+    "mensaje": "En breve se habilitará el botón de pago."
+  }
+}
