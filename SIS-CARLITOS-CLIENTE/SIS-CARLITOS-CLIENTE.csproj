@@ -184,6 +184,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Vistas\Admin\frmLogin.aspx" />
+    <Content Include="Vistas\frmRegistrarPaquete.aspx" />
     <Content Include="Vistas\frmRegistrar.aspx" />
     <Content Include="Admin\frmAutenticacion_.aspx" />
     <Content Include="Admin\frmAutenticacion.aspx" />
@@ -1629,6 +1630,13 @@
     </Compile>
     <Compile Include="Vistas\Admin\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmRegistrarPaquete.aspx.cs">
+      <DependentUpon>frmRegistrarPaquete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmRegistrarPaquete.aspx.designer.cs">
+      <DependentUpon>frmRegistrarPaquete.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmRegistrar.aspx.cs">
       <DependentUpon>frmRegistrar.aspx</DependentUpon>

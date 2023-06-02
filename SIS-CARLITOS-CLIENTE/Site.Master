@@ -14,7 +14,7 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="~/Content/chespirito003.css" rel="stylesheet" />
+    <link href="~/Content/Site11.css" rel="stylesheet" />
 
     <script src="https://kit.fontawesome.com/c1d9f84fb5.js" crossorigin="anonymous"></script>
 

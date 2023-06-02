@@ -62,6 +62,8 @@ namespace SIS_CARLITOS.Vistas
         {
             string resultado = string.Empty;
             Boolean bolResultado = false;
+            string strIdProvinciaCarga = string.Empty;
+            string strIdCantonCarga = string.Empty;
             try
             {
                 persona persona = new persona();
@@ -74,15 +76,22 @@ namespace SIS_CARLITOS.Vistas
                 persona.per_correo_electronico = txtCorreo.Text.Trim().ToUpper();
 
                 string strIdUbicacion = string.Empty;
-                strIdUbicacion = cmbLocalidad.SelectedItem.Value.ToString();
-                string[] strUbicaionGeografica = strIdUbicacion.Split('-');
-                string strIdProvinciaCarga = string.Empty;
-                string strIdCantonCarga = string.Empty;
-                strIdProvinciaCarga = strUbicaionGeografica[0].ToString();
-                strIdCantonCarga = strUbicaionGeografica[1].ToString();
-
-                persona.id_provincia = int.Parse(strIdProvinciaCarga);
-                persona.id_canton = int.Parse(strIdCantonCarga);
+                try
+                {
+                    strIdUbicacion = cmbLocalidad.SelectedItem.Value.ToString();
+                    string[] strUbicaionGeografica = strIdUbicacion.Split('-');                    
+                    strIdProvinciaCarga = strUbicaionGeografica[0].ToString();
+                    strIdCantonCarga = strUbicaionGeografica[1].ToString();
+                    persona.id_provincia = int.Parse(strIdProvinciaCarga);
+                    persona.id_canton = int.Parse(strIdCantonCarga);
+                }
+                catch (Exception)
+                {
+                    persona.id_provincia = 0;
+                    persona.id_canton = 0;
+                }
+                
+                
 
                 persona.direccion_domiciliaria = txtDireccion1.Text.Trim().ToUpper();
                 persona.per_contrasenia = txtContrasenia.Text.Trim();
