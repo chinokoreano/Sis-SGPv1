@@ -159,6 +159,7 @@
       <End Role="casillero_secuencia" EntitySet="casillero_secuencia" />
       <End Role="persona" EntitySet="persona" />
     </AssociationSet>
+    <EntitySet Name="parametro_configuracion" EntityType="OPERADBModel.parametro_configuracion" />
   </EntityContainer>
   <EntityType Name="cliente">
     <Key>
@@ -892,4 +893,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="parametro_configuracion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grupo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="valor_max" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="valor_html" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="valor_clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="valor_numerico" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="valor_decimal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="estado" Type="Boolean" />
+  </EntityType>
 </Schema>

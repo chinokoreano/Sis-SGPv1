@@ -10,16 +10,13 @@ namespace CapaNegocio
 {
     public class ServiciosUtiles
     {
-        public Resultado enviarCorreo(string strDe, string strPara, string strAsunto, string strMensaje, string strCC)
+        public void enviarCorreo(string remitente, string para, string asunto, string mensaje, string cc, string plantilla, Dictionary<string, string> valores)
         {
-            Resultado oResultado = new Resultado();
-            oResultado.Codigo1 = "-1";
-            oResultado.Mensaje1 = "";
+            
             try
             {
-                CorreoElectronico oCorreo = new CorreoElectronico();
-                oResultado = oCorreo.enviarCorreo(strDe, strPara, strAsunto, strMensaje, strCC);
-                return oResultado;
+                CorreoElectronico.enviar(remitente, para, asunto, mensaje, cc, plantilla, valores);
+                
             }
             catch (Exception ex)
             {
@@ -46,6 +43,6 @@ namespace CapaNegocio
 
                 throw ex;
             }
-        }
+        }        
     }
 }

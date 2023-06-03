@@ -245,6 +245,22 @@
           <Property Name="valor3" Type="int" />
           <Property Name="estado" Type="bit" />
         </EntityType>
+        <EntityType Name="parametro_configuracion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grupo" Type="varchar" MaxLength="100" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="valor" Type="varchar" MaxLength="100" />
+          <Property Name="valor_max" Type="varchar(max)" />
+          <Property Name="valor_html" Type="varchar(max)" />
+          <Property Name="valor_clave" Type="varchar" MaxLength="100" />
+          <Property Name="valor_numerico" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="valor_decimal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
         <EntityType Name="persona">
           <Key>
             <PropertyRef Name="per_id" />
@@ -641,6 +657,7 @@
           <EntitySet Name="orden_servicio" EntityType="Self.orden_servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="paquete" EntityType="Self.paquete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parametro_configuracion" EntityType="Self.parametro_configuracion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
@@ -882,6 +899,7 @@
             <End Role="casillero_secuencia" EntitySet="casillero_secuencia" />
             <End Role="persona" EntitySet="persona" />
           </AssociationSet>
+          <EntitySet Name="parametro_configuracion" EntityType="OPERADBModel.parametro_configuracion" />
         </EntityContainer>
         <EntityType Name="cliente">
           <Key>
@@ -1615,6 +1633,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="parametro_configuracion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grupo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="valor_max" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="valor_html" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="valor_clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="valor_numerico" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="valor_decimal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="estado" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2151,6 +2185,23 @@
                 <ScalarProperty Name="per_numero_identificacion" ColumnName="per_numero_identificacion" />
                 <ScalarProperty Name="per_tipo_documento" ColumnName="per_tipo_documento" />
                 <ScalarProperty Name="per_id" ColumnName="per_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parametro_configuracion">
+            <EntityTypeMapping TypeName="OPERADBModel.parametro_configuracion">
+              <MappingFragment StoreEntitySet="parametro_configuracion">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="valor_decimal" ColumnName="valor_decimal" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="valor_numerico" ColumnName="valor_numerico" />
+                <ScalarProperty Name="valor_clave" ColumnName="valor_clave" />
+                <ScalarProperty Name="valor_html" ColumnName="valor_html" />
+                <ScalarProperty Name="valor_max" ColumnName="valor_max" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

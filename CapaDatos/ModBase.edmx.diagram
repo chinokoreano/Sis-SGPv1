@@ -49,6 +49,7 @@
         <EntityTypeShape EntityType="OPERADBModel.casillero_secuencia" Width="1.5" PointX="14.375" PointY="16.375" />
         <EntityTypeShape EntityType="OPERADBModel.persona" Width="1.5" PointX="16.625" PointY="15.125" />
         <AssociationConnector Association="OPERADBModel.FK_persona_casillero_secuencia" />
+        <EntityTypeShape EntityType="OPERADBModel.parametro_configuracion" Width="1.5" PointX="5.375" PointY="14.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

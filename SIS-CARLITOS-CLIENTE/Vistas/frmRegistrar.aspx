@@ -34,7 +34,7 @@
                                                 ValidationGroup="formulario_registro" CssClass="text-danger position-absolute" ErrorMessage="(obligatorio)" />
                                                                                         
 
-                                            <asp:TextBox ID="txtDocumentoIdentificacion" runat="server" class="form-control" placeholder="Cédula" MaxLength="10" autocomplete="off" AutoCompleteType="Disabled" type="tel"></asp:TextBox>
+                                            <asp:TextBox ID="txtDocumentoIdentificacion" runat="server" class="form-control" placeholder="Cédula" MaxLength="20" autocomplete="off" AutoCompleteType="Disabled" type="tel"></asp:TextBox>
                                             <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender10" runat="server" FilterMode="ValidChars" 
                                                 TargetControlID="txtDocumentoIdentificacion" ValidChars="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"></cc1:FilteredTextBoxExtender>
                                         </div>
@@ -67,7 +67,7 @@
                                             <div class="input-group">
                                                 <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control text-lowercase txt_correo" type="email" ValidationGroup="correo"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Verifíca que tu correo este ingresado correctamente" placeholder="usr@dominio.com"></asp:TextBox>
-                                                <asp:LinkButton ID="btn_solicitarCodigo" runat="server" CssClass="btn btn-primary" ValidationGroup="correo">
+                                                <asp:LinkButton ID="btn_solicitarCodigo" runat="server" CssClass="btn btn-primary" ValidationGroup="correo" OnClick="btn_solicitarCodigo_Click">
                                                     <i class="far fa-envelope me-2"></i>Solicitar código</asp:LinkButton>
                                             </div>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationGroup="correo"
@@ -93,7 +93,7 @@
                                             <dx:ASPxComboBox ID="cmbLocalidad" runat="server" CssClass="form-control dropdown form-control-sm"
                                                 Width="100%" NullValueItemDisplayText="{0} ({1})" NullText="Locación"
                                                 NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Punto de Origen"
-                                                OnSelectedIndexChanged="cmbLocalidad_SelectedIndexChanged">
+                                                >
                                             </dx:ASPxComboBox>
                                         </div>
 

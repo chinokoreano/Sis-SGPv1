@@ -240,6 +240,22 @@
     <Property Name="valor3" Type="int" />
     <Property Name="estado" Type="bit" />
   </EntityType>
+  <EntityType Name="parametro_configuracion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="grupo" Type="varchar" MaxLength="100" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="valor" Type="varchar" MaxLength="100" />
+    <Property Name="valor_max" Type="varchar(max)" />
+    <Property Name="valor_html" Type="varchar(max)" />
+    <Property Name="valor_clave" Type="varchar" MaxLength="100" />
+    <Property Name="valor_numerico" Type="int" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="valor_decimal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
   <EntityType Name="persona">
     <Key>
       <PropertyRef Name="per_id" />
@@ -636,6 +652,7 @@
     <EntitySet Name="orden_servicio" EntityType="Self.orden_servicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="paquete" EntityType="Self.paquete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="parametro" EntityType="Self.parametro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="parametro_configuracion" EntityType="Self.parametro_configuracion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="proceso_tmp" EntityType="Self.proceso_tmp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />

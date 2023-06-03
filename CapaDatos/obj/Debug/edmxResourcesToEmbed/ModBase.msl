@@ -534,5 +534,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="parametro_configuracion">
+      <EntityTypeMapping TypeName="OPERADBModel.parametro_configuracion">
+        <MappingFragment StoreEntitySet="parametro_configuracion">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="valor_decimal" ColumnName="valor_decimal" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="valor_numerico" ColumnName="valor_numerico" />
+          <ScalarProperty Name="valor_clave" ColumnName="valor_clave" />
+          <ScalarProperty Name="valor_html" ColumnName="valor_html" />
+          <ScalarProperty Name="valor_max" ColumnName="valor_max" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

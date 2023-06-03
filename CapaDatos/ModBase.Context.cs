@@ -52,6 +52,7 @@ namespace CapaEntidad
         public virtual DbSet<asesor_comercial> asesor_comercial { get; set; }
         public virtual DbSet<casillero_secuencia> casillero_secuencia { get; set; }
         public virtual DbSet<persona> persona { get; set; }
+        public virtual DbSet<parametro_configuracion> parametro_configuracion { get; set; }
     
         public virtual ObjectResult<SPR_CONSULTA_USUARIO_CONTRATO_Result> SPR_CONSULTA_USUARIO_CONTRATO(Nullable<int> opcion, Nullable<int> id_usuario, string numero_identificacion, string nm_cliente)
         {

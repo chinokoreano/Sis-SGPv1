@@ -19,17 +19,7 @@ namespace SIS_CARLITOS.Vistas
             if (!IsPostBack)
             {
 
-                FnAsignarAtributos();
             }
-        }
-
-        private void FnAsignarAtributos()
-        {
-            txtApellidos.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
-            txtNombres.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
-            txtDireccion1.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
-            txtReferencia.Attributes.Add("onkeyup", "javascript:this.value=this.value.toUpperCase() ;");
-            
         }
 
         private void FnCargarUbicacionesGeograficas()
@@ -53,12 +43,7 @@ namespace SIS_CARLITOS.Vistas
             }
         }
 
-        protected void cmbLocalidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //lblMensaje1.Visible = false;
-            //lblMensaje1.Text = string.Empty;
-        }
-
+        
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
             string resultado = string.Empty;
@@ -91,18 +76,17 @@ namespace SIS_CARLITOS.Vistas
                     persona.id_provincia = 0;
                     persona.id_canton = 0;
                 }
-                
-                
-
                 persona.direccion_domiciliaria = txtDireccion1.Text.Trim().ToUpper();
                 persona.per_contrasenia = txtContrasenia.Text.Trim();
 
                 resultado = PersonaCN.Validacion(persona, 0);
-                AlertasJS.Advertencia(this, "Selecciona al menos un envío para realizar el pago");
-                //if (resultado != string.Empty)
-                //{
-                //    AlertasJS.Advertencia(this, "Selecciona al menos un envío para realizar el pago");
-                //}
+
+                if (resultado != string.Empty)
+                {
+                    AlertasJS.Advertencia(this, resultado);
+                }
+
+
 
                 //CrudGenerico<persona> crud = new CrudGenerico<persona>();
                 //int idCasillero = CasilleroCN.Obtener(1);
@@ -126,6 +110,11 @@ namespace SIS_CARLITOS.Vistas
                 string strDescripcionError = ex.Message + ex.InnerException;
                 Response.Redirect("~/frmErrorCarga.aspx?mensaje=" + "Error: " + Server.UrlEncode(strDescripcionError));
             }
+        }
+
+        protected void btn_solicitarCodigo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

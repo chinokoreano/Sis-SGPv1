@@ -109,8 +109,6 @@ namespace CapaServicios
             List<T> resultado = null;
             try
             {
-
-
                 using (OPERADB dB = new OPERADB())
                 {
                     if (filter != null)

@@ -109,6 +109,9 @@
     <Compile Include="parametro.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="parametro_configuracion.cs">
+      <DependentUpon>ModBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="persona.cs">
       <DependentUpon>ModBase.tt</DependentUpon>
     </Compile>
