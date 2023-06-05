@@ -309,7 +309,7 @@
     <Content Include="Content\css\FuesteSPE.css" />
     <Content Include="Content\css\lineatiempo.css" />
     <Content Include="Content\css\LineaTiempo2SPE.css" />
-    <Content Include="Content\css\Site-6.css" />
+    <Content Include="Content\css\Site-06.css" />
     <Content Include="Content\js\animaciones-1.js" />
     <Content Include="Content\js\Cookies.js" />
     <Content Include="Content\js\init-popOver.js" />
@@ -1768,6 +1768,10 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom\SessionManager.cs" />
     <Compile Include="Vistas\Admin\frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

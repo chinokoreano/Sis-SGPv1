@@ -1,0 +1,727 @@
+﻿:root {
+    --bs-spe-rgb: 32, 41, 92;
+}
+/*____________________________________________________
+|                                                    |
+|       ESTILOS PARA EL LOADER DEL POSTBACK          |
+|___________________________________________________*/
+
+#Background, .background_ini {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: #F9F9F9;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    z-index: 100000;
+}
+
+
+
+#Loader,
+.loader_ini {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: #F0F0F0;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    z-index: 100000;
+    background-image: url('/Content/Assets/GIF/loading-9.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/*______________________
+|                       |
+|   ESTILOS NAV BAR     |
+|______________________*/
+
+.nav-spe li a, .spe-item {
+    color: white !important;
+}
+
+    .nav-spe li a:hover, .img-nav-spe:hover, .spe-item:hover {
+        filter: invert(46%) sepia(39%) saturate(5388%) hue-rotate(166deg) brightness(101%) contrast(101%);
+        filter: invert(46%) sepia(39%) saturate(5388%) hue-rotate(166deg) brightness(101%) contrast(101%);
+    }
+
+@media only screen and (max-width: 576px) {
+    .img-nav-spe {
+        max-width: 300px !important;
+        height: auto;
+    }
+}
+
+.navbar-dark .navbar-toggler {
+    filter: invert(46%) sepia(39%) saturate(5388%) hue-rotate(166deg) brightness(101%) contrast(101%);
+    filter: invert(46%) sepia(39%) saturate(5388%) hue-rotate(166deg) brightness(101%) contrast(101%);
+}
+
+.txt-spe {
+    color: #20295c;
+}
+
+@media (min-width: 768px) {
+
+    .menu-izquierda.dropdown-menu[data-bs-popper] {
+        right: 0 !important;
+        left: unset;
+    }
+}
+
+.no-caret-right .dropdown-toggle::after {
+    display: none;
+}
+
+/*------------------------------------------
+|           FIN ESTILOS NAVBAR             |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+/*__________________________
+|                           |
+|   TAMAÑO DISPLAY EN PX    |
+|__________________________*/
+
+
+.d-50x50 {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.d-24x24 {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.d-28x28 {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+.d-30x30 {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.d-32x32 {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+
+.d-16x16 {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+
+.d-64x64 {
+    width: 64px !important;
+    height: 64px !important;
+}
+
+.d-h-32 {
+    height: 32px;
+    width: auto
+}
+
+/*______________________________
+|                               |
+|   ESTILOS DE LOGITUD Y ALTO   |
+|______________________________*/
+
+.max-h-15 {
+    max-height: 15px;
+    width: auto;
+}
+
+.max-h-20 {
+    max-height: 20px;
+    width: auto;
+}
+
+
+.max-h-25 {
+    max-height: 25px;
+    width: auto;
+}
+
+.max-h-30 {
+    max-height: 30px;
+    width: auto;
+}
+
+.max-h-50 {
+    max-height: 50px;
+    width: auto;
+}
+
+.max-h-100 {
+    max-height: 100px;
+    width: auto;
+}
+
+.max-h-150 {
+    max-height: 150px;
+    width: auto;
+}
+
+.max-h-200 {
+    max-height: 200px;
+    width: auto;
+}
+
+.max-h-300 {
+    max-height: 300px;
+    width: auto;
+}
+
+.max-h-400 {
+    max-height: 400px;
+    width: auto;
+}
+
+.max-h-500 {
+    max-height: 500px;
+    width: auto;
+}
+
+
+.max-w-25 {
+    max-width: 25px;
+    height: auto;
+}
+
+.max-w-30 {
+    max-width: 30px;
+    height: auto;
+}
+
+.max-w-50 {
+    max-width: 50px;
+    height: auto;
+}
+
+.max-w-100 {
+    max-width: 100px;
+    height: auto;
+}
+
+.max-w-150 {
+    max-width: 150px;
+    height: auto;
+}
+
+.max-w-200 {
+    max-width: 200px;
+    height: auto;
+}
+
+.max-w-300 {
+    max-width: 300px;
+    height: auto;
+}
+
+.max-w-400 {
+    max-width: 400px;
+    height: auto;
+}
+
+.max-w-500 {
+    max-width: 500px;
+    height: auto;
+}
+
+
+
+/*______________________
+|                       |
+|   ESTILOS TABLAS      |
+|______________________*/
+
+
+.centrar-texto-tabla th, .centrar-texto-tabla td {
+    vertical-align: middle !important;
+}
+
+.centrar-texto-tabla th {
+    text-align: center;
+}
+
+.align-bottom td, .align-bottom th {
+    vertical-align: bottom;
+}
+
+/*param crear una linea vertical entre las columnas*/
+.lvc1 td:nth-child(1) {
+    border-right: solid 2px #827575;
+}
+
+.lvc2 td:nth-child(2) {
+    border-right: solid 2px #827575;
+}
+
+.lvc3 td:nth-child(3) {
+    border-right: solid 2px #827575;
+}
+
+.lvc4 td:nth-child(4) {
+    border-right: solid 2px #827575;
+}
+
+.lvc5 td:nth-child(5) {
+    border-right: solid 2px #827575;
+}
+
+.lvc6 td:nth-child(6) {
+    border-right: solid 2px #827575;
+}
+
+.lvc7 td:nth-child(7) {
+    border-right: solid 2px #827575;
+}
+
+.lvc8 td:nth-child(8) {
+    border-right: solid 2px #827575;
+}
+
+.lvc9 td:nth-child(9) {
+    border-right: solid 2px #827575;
+}
+
+.lvc10 td:nth-child(10) {
+    border-right: solid 2px #827575;
+}
+
+/*Para cetrar columnas especificas*/
+.cc1 tr td:nth-child(1),
+.cc2 tr td:nth-child(2),
+.cc3 tr td:nth-child(3),
+.cc4 tr td:nth-child(4),
+.cc5 tr td:nth-child(5),
+.cc6 tr td:nth-child(6),
+.cc7 tr td:nth-child(7),
+.cc8 tr td:nth-child(8),
+.cc9 tr td:nth-child(9),
+.cc10 tr td:nth-child(10),
+.cc11 tr td:nth-child(11),
+.cc12 tr td:nth-child(12),
+.cc13 tr td:nth-child(13),
+.cc14 tr td:nth-child(14),
+.cc15 tr td:nth-child(15),
+.cc16 tr td:nth-child(16),
+.cc17 tr td:nth-child(17),
+.cc18 tr td:nth-child(18),
+.cc19 tr td:nth-child(19),
+.cc20 tr td:nth-child(20) {
+    text-align: center;
+}
+
+/*Para el ordenamiento de tablas*/
+
+/*https://www.mclibre.org/consultar/amaya/css/css-selectores.html*/
+th[class="ordenable"] {
+    color: #0061f2;
+}
+
+    th[class="ordenable"]:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: #0042a6;
+    }
+
+/*param ocultar columnas de las tablas*/
+.co1 td:nth-child(1),
+.co1 th:nth-child(1),
+.co2 td:nth-child(2),
+.co2 th:nth-child(2),
+.co3 td:nth-child(3),
+.co3 th:nth-child(3),
+.co4 td:nth-child(4),
+.co4 th:nth-child(4),
+.co5 td:nth-child(5),
+.co5 th:nth-child(5),
+.co6 td:nth-child(6),
+.co6 th:nth-child(6),
+.co7 td:nth-child(7),
+.co7 th:nth-child(7),
+.co8 td:nth-child(8),
+.co8 th:nth-child(8),
+.co9 td:nth-child(9),
+.co9 th:nth-child(9),
+.co10 td:nth-child(10),
+.co10 th:nth-child(10),
+.co11 td:nth-child(11),
+.co11 th:nth-child(11),
+.co12 td:nth-child(12),
+.co12 th:nth-child(12),
+.co13 td:nth-child(13),
+.co13 th:nth-child(13),
+.co14 td:nth-child(14),
+.co14 th:nth-child(14),
+.co15 td:nth-child(15),
+.co15 th:nth-child(15),
+.co16 td:nth-child(16),
+.co16 th:nth-child(16),
+.co17 td:nth-child(17),
+.co17 th:nth-child(17),
+.co18 td:nth-child(18),
+.co18 th:nth-child(18),
+.co19 td:nth-child(19),
+.co19 th:nth-child(19),
+.co20 td:nth-child(20),
+.co20 th:nth-child(20) {
+    display: none;
+}
+
+
+/*Para definir el alto de la cabecera y de las filas*/
+.th-20 th {
+    height: 20px
+}
+
+.th-25 th {
+    height: 25px
+}
+
+.th-30 th {
+    height: 30px
+}
+
+.th-35 th {
+    height: 35px
+}
+
+.th-40 th {
+    height: 40px
+}
+
+.th-50 th {
+    height: 50px
+}
+
+.th-55 th {
+    height: 55px
+}
+
+.th-60 th {
+    height: 60px
+}
+
+.th-65 th {
+    height: 65px
+}
+
+.py-td-10 td {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.py-td-15 td {
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+.py-td-18 td {
+    padding-top: 18px;
+    padding-bottom: 18px
+}
+
+.py-td-20 td {
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+.py-td-23 td {
+    padding-top: 23px;
+    padding-bottom: 23px
+}
+
+
+.sin-linea-header .table > :not(:first-child) {
+    border-top: none;
+}
+
+/*------------------------------------------
+|           FIN ESTILOS TABLAS             |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+/*______________________
+|                       |
+|   ESTILOS BACKGROUND  |
+|______________________*/
+
+.height-intro {
+    min-height: calc(100vh - 106px);
+}
+
+.bg-image-body {
+    background-image: url(/Content/Assets/Imagenes/front/recepcion-mujer.jpg);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+.bg-triangulos {
+    background-image: url(/Content/Assets/Imagenes/02.png);
+}
+
+
+.bg-spe {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-spe-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-luanda {
+    background: linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203));
+}
+
+.bg-bluelagoo {
+    background: linear-gradient(to right, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
+}
+
+.bg-spe-gradient {
+    background: rgb(32,41,92);
+    background: linear-gradient(90deg, rgba(32,41,92,1) 22%, rgba(67,75,118,1) 65%, rgba(122,128,158,1) 87%);
+}
+
+.bg-montana {
+    background: url(/Content/Assets/Imagenes/fondo-montanas-1600x900.jpg);
+}
+
+.bg-splash {
+    background: url(https://biotechindia.com/wp-content/uploads/2019/05/background-3-1024x640.jpg)
+}
+
+.bg-recepcion {
+    background-image: url(/Content/Assets/Imagenes/front/recepcion-mujer.jpg);
+}
+
+.bg-recepcion-2 {
+    background-image: url(/Content/Assets/Imagenes/front/recepcion-mujer-2.jpg);
+}
+
+.bg-ecomerce {
+    background-image: url(/Content/Assets/Imagenes/front/e-commerce.jpg);
+}
+
+.bg-blur {
+    backdrop-filter: blur(8px);
+}
+
+/*-------------------------------------------------
+|           FIN ESTILOS DE BACKGROUND             |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+/*______________________
+|                       |
+|   ESTILOS ACCORDEONES |
+|______________________*/
+
+a[aria-expanded="false"] .rotar-indicador-acordeon {
+    display: inline-block;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transition: transform 0.6s linear;
+}
+
+a[aria-expanded="true"] .rotar-indicador-acordeon {
+    display: inline-block;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transition: transform 0.6s linear;
+}
+
+a[aria-expanded="true"].acordeon-encabezado:not(.collapsed) {
+    color: #0c63e4;
+    background-color: #e7f1ff;
+    box-shadow: 0 0 0 0.3rem rgb(92 223 92 / 57%);
+}
+
+button[aria-expanded="true"].accordion-button {
+    font-size: 1.5rem !important;
+    transition: transform 0.6s linear;
+}
+
+.accordion-item .collapse.show {
+    background-color: #ffffe5;
+}
+
+/*-------------------------------------------------
+|           FIN ESTILOS ACCORDEONES                |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+
+
+
+/*__________________________
+|                           |
+|   ESTILOS BORDER RADUIS   |
+|__________________________*/
+
+.br-10 {
+    border-radius: 10px;
+}
+
+.br-15 {
+    border-radius: 15px;
+}
+
+.br-20 {
+    border-radius: 20px;
+}
+
+.br-25 {
+    border-radius: 25px;
+}
+
+.br-30 {
+    border-radius: 30px;
+}
+
+.br-40 {
+    border-radius: 40px;
+}
+
+.br-50 {
+    border-radius: 50px;
+}
+
+/*-----------------------------------------------
+|           FIN ESTILOS BODER RADUIS            |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+/*__________________________
+|                           |
+|           VARIOS          |
+|__________________________*/
+
+.ico-w38 {
+    padding: unset;
+    width: 38px;
+    font-size: 25px;
+    justify-content: center !important;
+}
+
+.btn-spe {
+    color: #fff;
+    background-color: rgba(var(--bs-spe-rgb));
+}
+
+    .btn-spe:hover {
+        color: rgba(var(--bs-spe-rgb));
+        background-color: rgba(var(--bs-light-rgb));
+        border-color: rgba(var(--bs-spe-rgb));
+    }
+
+.btn-outline-spe {
+    color: rgba(var(--bs-spe-rgb));
+    background-color: #fff;
+    border-color: rgba(var(--bs-spe-rgb));
+}
+
+    .btn-outline-spe:hover {
+        color: rgba(var(--bs-light-rgb));
+        background-color: rgba(var(--bs-spe-rgb));
+    }
+
+.bg-opacity-50 {
+    --bs-bg-opacity: 0.5;
+}
+
+.fs-7 {
+    font-size: 0.75rem !important;
+}
+
+.fs-8 {
+    font-size: 0.5rem !important;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+/*__________________________
+|                           |
+|    Colored Toasts         |
+|__________________________*/
+
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-error {
+    background-color: #f27474 !important;
+}
+
+.colored-toast.swal2-icon-warning {
+    background-color: #f8bb86 !important;
+}
+
+.colored-toast.swal2-icon-info {
+    background-color: #3fc3ee !important;
+}
+
+.colored-toast.swal2-icon-question {
+    background-color: #87adbd !important;
+}
+
+.colored-toast .swal2-title {
+    color: white;
+}
+
+.colored-toast .swal2-close {
+    color: white;
+}
+
+.colored-toast .swal2-html-container {
+    color: white;
+}
+
+/*____________________________
+|                             |
+|    Esticlos para check Box  |
+|____________________________*/
+
+
+.cb24 input {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.cb32 input {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+/*____________________________
+|                             |
+|   Bordes Rectos             |
+|____________________________*/
+
+
+.rounded-bottom-none {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.rounded-top-none {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}

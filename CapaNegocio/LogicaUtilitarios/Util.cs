@@ -57,7 +57,7 @@ namespace Logica.LogicaUtilitarios
             return cadena;
         }
 
-        public static string Base64Encode(string plainText)
+        public static string Base64_Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
             return System.Convert.ToBase64String(plainTextBytes);

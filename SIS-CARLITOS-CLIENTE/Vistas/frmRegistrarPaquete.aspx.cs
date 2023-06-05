@@ -29,7 +29,7 @@ namespace SIS_CARLITOS.Vistas
             int codigo = rdm.Next(1000, 9999);
             Dictionary<string, string> valores = new Dictionary<string, string>();
             valores.Add("@@codigo", codigo.ToString());
-            CorreoElectronico.enviar("carlosdarwinromero@gmail.com", "romerocarlos79@hotmail.com", "CODIGO DE VERIFICACION", "", "", "PLANTILLA_CODIGO_VERIFICACION",valores);
+            
         }
     }
 }

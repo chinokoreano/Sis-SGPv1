@@ -157,6 +157,15 @@ namespace SIS_CARLITOS.Vistas {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
         
         /// <summary>
+        /// Control divDatosAdicionales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatosAdicionales;
+        
+        /// <summary>
         /// Control cmbLocalidad.
         /// </summary>
         /// <remarks>

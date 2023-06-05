@@ -28,7 +28,7 @@ namespace CapaServicios
                     plantillaHtml = plantillaHtml.Replace(itm.Key, itm.Value);
                 }
 
-                email.From.Add(new MailboxAddress("Sender Name", remitente));
+                email.From.Add(new MailboxAddress("Sender Name", plantillaCorreo.valor));//remitente registrado en la planilla
                 email.To.Add(new MailboxAddress("Receiver Name", para));
 
                 email.Subject = asunto;
