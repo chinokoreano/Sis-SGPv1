@@ -34,3 +34,9 @@ C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.csprojAssemblyReferenc
 C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Desarrollo\SIS_SGPV1\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Developer\Sis-SGPv1\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Developer\Sis-SGPv1\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Developer\Sis-SGPv1\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Developer\Sis-SGPv1\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Developer\Sis-SGPv1\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Developer\Sis-SGPv1\CapaEntidad\obj\Debug\CapaEntidad.pdb
